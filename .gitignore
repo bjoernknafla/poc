@@ -23,8 +23,19 @@ build
 *.user
 Debug/
 Release/
+bin/
+obj/
 *.ncb
 *.obj
+*.VisualState.xml
+TestResults.xml
+*.exe
+*.dll
+*.pdb
+*.cache
+
+#Ignore Windows
+Thumbs.db
 
 #Compile intermediates
 *.o
