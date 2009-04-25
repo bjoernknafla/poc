@@ -29,6 +29,7 @@
 		324867D00FA34DD500784249 /* poc_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_def.h; sourceTree = "<group>"; };
 		324867D20FA34E6700784249 /* poc_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_undef.h; sourceTree = "<group>"; };
 		324867D30FA34EA300784249 /* poc_arch_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_arch_def.h; sourceTree = "<group>"; };
+		324867D40FA361D000784249 /* poc_arch_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_arch_undef.h; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* poc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* poc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = poc.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +101,7 @@
 				324867CD0FA34B0200784249 /* poc_os_undef.h */,
 				324867CC0FA34A3100784249 /* poc_arch.h */,
 				324867D30FA34EA300784249 /* poc_arch_def.h */,
+				324867D40FA361D000784249 /* poc_arch_undef.h */,
 			);
 			path = poc;
 			sourceTree = "<group>";

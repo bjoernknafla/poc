@@ -27,13 +27,13 @@
 /// See http://predef.sourceforge.net/index.php for macros defined by language standards, compilers, libraries, etc.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///@{
+#define POC_OS_UNKNOWN_STRING "Unknown operating system"
+#define POC_OS_UNIX_STRING "Unix (generic)"
 #define POC_OS_MACOSX_STRING "Mac OS X"
 #define POC_OS_LINUX_STRING "Linux"
-#define POC_OS_UNIX_STRING "Unix (generic)"
 #define POC_OS_WIN_STRING "Windows"
 #define POC_OS_WIN32_STRING "Win32"
 #define POC_OS_WIN64_STRING "Win64"
-#define POC_OS_UNKNOWN_STRING "Unknown operating system"
 ///@}
 
 
@@ -121,8 +121,9 @@
 #endif
 
 // No known operating system detected
-#if !defined(POC_OS_STRING)
-#   define POC_OS_STRING POC_OS_UNKNOWN_STRING
+#if !defined(POC_OS_STRING) || !defined(POC_OS_ID)
+#   define POC_OS_UNKNOWN POC_OS_UNKNOWN_ID
 #   define POC_OS_ID POC_OS_UNKNOWN_ID
+#   define POC_OS_STRING POC_OS_UNKNOWN_STRING
 #   error Operating system unknown.
 #endif
