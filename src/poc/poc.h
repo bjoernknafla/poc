@@ -20,6 +20,9 @@
 #define POC_poc_H
 
 
+/// @TODO: Add undef not allowed preprocessor macros to all include guard secured headers and only allow undefs in the
+///        undef headers if these preprocessor symbols aren't defined.
+
 #include "poc_os.h"
 #include "poc_compiler.h"
 #include "poc_arch.h"
