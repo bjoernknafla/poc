@@ -1,6 +1,6 @@
 
-#ifndef POC_poc_utility_macros_H
-#define POC_poc_utility_macros_H
+#ifndef POC_poc_preprocessor_utilities_H
+#define POC_poc_preprocessor_utilities_H
 
 
 #if defined( POC_CONCAT )
@@ -26,7 +26,7 @@
 
 
 
-#include "poc_utility_macros_def.h"
+#include "poc_preprocessor_utilities_def.h"
 
 
-#endif // POC_poc_utility_macros_H
+#endif // POC_poc_preprocessor_utilities_H

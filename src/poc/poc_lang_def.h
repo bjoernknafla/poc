@@ -1,6 +1,90 @@
 
 // Include macros prefixed with POC_COMPILER
-#include "poc_compiler_def.h"
+// #include "poc_compiler_def.h"
+
+
+#define POC_LANG_UNKNOWN_ID 0
+#define POC_LANG_C_ID 1
+#define POC_LANG_C_UNKNOWN_ID 2
+#define POC_LANG_C_C89_ID 4
+#define POC_LANG_C_C99_ID 8
+#define POC_LANG_CPP_ID 16
+#define POC_LANG_CPP_UNKNOWN_ID 32
+#define POC_LANG_CPP_CPP98_ID 64
+#define POC_LANG_CPP_CPP2003_ID 128
+#define POC_LANG_OBJC_ID 256
+#define POC_LANG_OPENCL_ID 512
+
+
+
+#define POC_LANG_UNKNOWN_STRING "Unknown language"
+#define POC_LANG_C_STRING "C"
+#define POC_LANG_C_UNKNOWN_STRING "Unknown C"
+#define POC_LANG_C_C89_STRING "C C89"
+#define POC_LANG_C_C99_STRING "C C99"
+#define POC_LANG_CPP_STRING "C++"
+#define POC_LANG_CPP_UNKNOWN_STRING "Unknown C++"
+#define POC_LANG_CPP_CPP98_STRING "C++ '98"
+#define POC_LANG_OBJC_STRING "Objective-C"
+#define POC_LANG_OPENCL_STRING "OpenCL"
+
+#define POC_LANG_C_C89_VERSION 199409L
+#define POC_LANG_C_C99_VERSION 199901L
+#define POC_LANG_CPP_CPP98_VERSION 199711L
+
+
+// See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
+// why to add @c 0 to a preprocessor symbol (if a symbol is defined but doesn't represent a number the @code +0 @endcode
+// transforms it into a number).
+#if defined(__STDC__)
+#   if defined(__STDC_VERSION__) && ((__STDC_VERSION__ + 0) == POC_LANG_C_C89_VERSION)
+#       define POC_LANG_C (POC_LANG_C_ID | POC_LANG_C_C89_ID)
+#       define POC_LANG_C_C89 POC_LANG_C_C89_ID
+#   elif defined(__STDC_VERSION__) && ((__STDC_VERSION__ + 0) == POC_LANG_C_C99_VERSION)
+#       define POC_LANG_C (POC_LANG_C_ID | POC_LANG_C_C99_ID)
+#       define POC_LANG_C_C99 POC_LANG_C_C99_ID
+#   else
+#       define POC_LANG_C POC_LANG_C_ID
+#   endif
+
+
+// See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
+// why to add @c 0 to a preprocessor symbol (if a symbol is defined but doesn't represent a number the @code +0 @endcode
+// transforms it into a number).
+#if defined(__cplusplus)
+#   if ((__cplusplus + 0) == POC_LANG_CPP_CPP98_VERSION)
+#       define POC_LANG_CPP (POC_LANG_CPP_ID | POC_LANG_CPP_CPP98_ID)
+#       define POC_LANG_CPP_CPP98 POC_LANG_CPP_CPP98_ID
+#   else
+#       define POC_LANG_CPP POC_LANG_CPP_ID      
+#   endif
+
+
+#if defined(__OBJC__)
+#   define POC_LANG_OBJC POC_LANG_OBJC_ID
+#endif
+
+
+#if defined(__OPENCL_VERSION__)
+#   define POC_LANG_OPENCL POC_LANG_OPENCL_ID
+#endif
+
+
+
+
+
+#if defined(POC_LANG_C_C99)
+#   define POC_LANG_C_TYPE_BOOL_SUPPORT
+#   define POC_LANG_C_TYPE_LONG_LONG_SUPPORT
+#   define POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT
+#   define POC_LANG_C_TYPE_COMPLEX_SUPPORT
+#   define POC_LANG_C_TYPE_IMAGINARY_SUPPORT
+#   define POC_LANG_C_HEADER_STDBOOL_SUPPORT
+#   if defined(__STDC_HOSTED__) && (1 == __STD_HOSTED__)
+#       define POC_LANG_C_HEADER_STDINT_SUPPORT
+#   endif
+#endif
+
 
 
 
@@ -75,75 +159,3 @@
 #       define POC_LANG_CPP __cplusplus
 #   endif
 #endif
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect if the language knows the restrict keyword.
-//
-// @todo Complete
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#if defined(POC_LANG_C_STDC99)
-#   define POC_RESTRICT restrict
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#else
-#   define POC_RESTRICT
-#endif
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect and set inline directives.
-//
-// @todo Complete.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#if defined(POC_LANG_C_STDC99) || defined(POC_LANG_CPP)
-#   define POC_INLINE inline
-#else
-#   define POC_INLINE
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect and set memory alignment directives.
-// 
-// Be carefull when using the alignment values that the value of @c POC_ALIGN_BEGIN( val ) and the value of the
-// corresponding @c POC_ALIGN_END( val ) are equal.
-//
-// See @example platform_config_lang_test.cpp for an example how to use the alignment macros.
-// 
-// @todo Check if ALIGN is correctly used (do the directives assume bit-sized or byte-sized values?).
-// @todo Implement.
-// @todo Move alignment into its own header and possibly put it into the memory sub-project.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#if defined(POC_COMPILER_GCC) // Uses byte-alignment-values
-#   define POC_ALIGN_BEGIN( ALIGN )
-#   define POC_ALIGN_END( ALIGN ) __attribute__((__aligned__( ALIGN )))
-// #   define POC_ALIGN_MAX_BEGIN
-// #   define POC_ALIGN_MAX_END __attribute__((__aligned__))
-#elif defined(POC_COMPILER_ICC) // Uses byte-alignment-values, for Intel C++ 10.1 alignment values of 8 don't work.
-#   define POC_ALIGN_BEGIN( ALIGN ) __declspec(align( ALIGN ))
-#   define POC_ALIGN_END( ALIGN )
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#elif defined(POC_COMPILER_MSVC)
-#   define POC_ALIGN_BEGIN( ALIGN ) __declspec(align( ALIGN ))
-#   define POC_ALIGN_END( ALIGN )
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#else
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-
-
-#define IDM_RESTRICT POC_RESTRICT
-#define IDM_INLINE POC_INLINE
-#define IDM_ALIGN_BEGIN( ALIGN ) POC_ALIGN_BEGIN( ALIGN )
-#define IDM_ALIGN_END( ALIGN ) POC_ALIGN_END( ALIGN )
-// #   define IDM_ALIGN_MAX_BEGIN POC_ALIGN_MAX_BEGIN
-// #   define IDM_ALIGN_MAX_END POC_ALIGN_MAX_END
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect and set visibility when importing or exporting symbols from libraries or DLLs.
-//
-// @todo Implement.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-

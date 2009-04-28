@@ -36,10 +36,10 @@
 		32A9B6160FA5F83100FF0967 /* poc_data_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_data_model.h; sourceTree = "<group>"; };
 		32A9B6170FA5F83900FF0967 /* poc_data_model_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_data_model_def.h; sourceTree = "<group>"; };
 		32A9B6180FA5F84400FF0967 /* poc_data_model_os_arch_lang_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_data_model_os_arch_lang_undef.h; sourceTree = "<group>"; };
-		32A9B6190FA609E000FF0967 /* poc_utility_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_utility_macros.h; sourceTree = "<group>"; };
+		32A9B6190FA609E000FF0967 /* poc_preprocessor_utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_preprocessor_utilities.h; sourceTree = "<group>"; };
 		32A9B61A0FA609F700FF0967 /* poc_static_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_static_assert.h; sourceTree = "<group>"; };
-		32A9B61B0FA60CFE00FF0967 /* poc_utility_macros_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_utility_macros_def.h; sourceTree = "<group>"; };
-		32A9B61C0FA60D6100FF0967 /* poc_utility_macros_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_utility_macros_undef.h; sourceTree = "<group>"; };
+		32A9B61B0FA60CFE00FF0967 /* poc_preprocessor_utilities_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_preprocessor_utilities_def.h; sourceTree = "<group>"; };
+		32A9B61C0FA60D6100FF0967 /* poc_preprocessor_utilities_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_preprocessor_utilities_undef.h; sourceTree = "<group>"; };
 		32A9B61D0FA60DF500FF0967 /* poc_static_assert_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_static_assert_def.h; sourceTree = "<group>"; };
 		32A9B61E0FA60F4B00FF0967 /* poc_static_assert_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_static_assert_undef.h; sourceTree = "<group>"; };
 		32A9B6250FA63F2D00FF0967 /* poc_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_endian.h; sourceTree = "<group>"; };
@@ -52,6 +52,10 @@
 		32A9B62C0FA6469E00FF0967 /* poc_lang_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_lang_undef.h; sourceTree = "<group>"; };
 		32A9B62D0FA646D600FF0967 /* poc_lang_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_lang_compiler_undef.h; sourceTree = "<group>"; };
 		32A9B62E0FA6471D00FF0967 /* poc_posix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_posix.h; sourceTree = "<group>"; };
+		32A9B62F0FA700D200FF0967 /* poc_portability_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros.h; sourceTree = "<group>"; };
+		32A9B6300FA7027D00FF0967 /* poc_portability_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_def.h; sourceTree = "<group>"; };
+		32A9B6310FA702A600FF0967 /* poc_portability_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_undef.h; sourceTree = "<group>"; };
+		32A9B6320FA702B600FF0967 /* poc_portability_compiler_lang_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_compiler_lang_undef.h; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* poc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* poc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = poc.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,9 +147,13 @@
 				32A9B61A0FA609F700FF0967 /* poc_static_assert.h */,
 				32A9B61D0FA60DF500FF0967 /* poc_static_assert_def.h */,
 				32A9B61E0FA60F4B00FF0967 /* poc_static_assert_undef.h */,
-				32A9B6190FA609E000FF0967 /* poc_utility_macros.h */,
-				32A9B61B0FA60CFE00FF0967 /* poc_utility_macros_def.h */,
-				32A9B61C0FA60D6100FF0967 /* poc_utility_macros_undef.h */,
+				32A9B6190FA609E000FF0967 /* poc_preprocessor_utilities.h */,
+				32A9B61B0FA60CFE00FF0967 /* poc_preprocessor_utilities_def.h */,
+				32A9B61C0FA60D6100FF0967 /* poc_preprocessor_utilities_undef.h */,
+				32A9B62F0FA700D200FF0967 /* poc_portability_macros.h */,
+				32A9B6300FA7027D00FF0967 /* poc_portability_def.h */,
+				32A9B6310FA702A600FF0967 /* poc_portability_undef.h */,
+				32A9B6320FA702B600FF0967 /* poc_portability_compiler_lang_undef.h */,
 			);
 			path = poc;
 			sourceTree = "<group>";

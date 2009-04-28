@@ -3,12 +3,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @name Predefined compiler ids.
 /// @TODO: Move all ids of all POC headers to the value @c 1 to allow binary-logic-or-tests for it.
+/// @TODO: Add OpenCL compiler detection.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///@{
 #define POC_COMPILER_UNKNOWN_ID 0
 #define POC_COMPILER_GCC_ID 1
 #define POC_COMPILER_ICC_ID 2
 #define POC_COMPILER_MSVC_ID 4
+#define POC_COMPILER_OPENCL_GENERIC 8
+#define POC_COMPILER_NVCC_ID 16
 ///@}
 
 
@@ -23,6 +26,8 @@
 #define POC_COMPILER_GCC_STRING "GNU GCC"
 #define POC_COMPILER_MSVC_STRING "Microsoft Visual Studio C++"
 #define POC_COMPILER_ICC_STRING "Intel C/C++"
+#define POC_COMPILER_OPENCL_GENERIC_STRING "Generic OpenCL compiler"
+#define POC_COMPILER_NVCC_STRING "Nvidia NVCC"
 ///@}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +66,20 @@
 #   define POC_COMPILER_MSVC_VERSION _MSC_VER
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
+
+// @TODO: Refactor to extract NVCC compiler version (if possible).
+#if defined(__CUDACC__)
+#   define POC_COMPILER_NVCC POC_COMPILER_NVCC_ID
+#   define POC_COMPILER_NVCC_VERSION POC_COMPILER_UNKNOWN_VERSION
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+
+// @TODO: Refactor to extract OpenCL compiler version and compiler vendor.
+#if defined(__OPENCL_VERSION__)
+#   define POC_COMPILER_OPENCL_GENERIC POC_COMPILER_OPENCL_GENERIC_ID
+#   define POC_COMPILER_OPENCL_GENERIC_VERSION POC_COMPILER_UNKNOWN_VERSION
+#endif
+
 
 // Detect Intel compiler.
 //
@@ -112,6 +131,9 @@
 #endif
 
 
+
+
+
 #endif // !defined(POC_COMPILER_SET_BY_HAND)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,6 +152,20 @@
 #   define POC_COMPILER_STRING POC_COMPILER_MSVC_STRING
 #   define POC_COMPILER_VERSION POC_COMPILER_MSVC_VERSION
 #endif
+
+#if defined(POC_COMPILER_NVCC)
+#   define POC_COMPILER_ID POC_COMPILER_NVCC_ID
+#   define POC_COMPILER_STRING POC_COMPILER_NVCC_STRING
+#   define POC_COMPILER_VERSION POC_COMPILER_NVCC_VERSION
+#endif
+
+
+#if defined(POC_COMPILER_OPENCL_GENERIC)
+#   define POC_COMPILER_ID POC_COMPILER_OPENCL_GENERIC_ID
+#   define POC_COMPILER_STRING POC_COMPILER_OPENCL_GENERIC_STRING
+#   define POC_COMPILER_VERSION POC_COMPILER_OPENCL_GENERIC_VERSION
+#endif
+
 
 // Icc detection must be last to overwrite values that might have been set by host compilers like GCC or MSVC.
 #if defined(POC_COMPILER_ICC)

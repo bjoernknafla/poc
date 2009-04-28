@@ -30,7 +30,7 @@
 
 // Detect little endianness
 // @todo Add detection of big endianness.
-#if defined(__LITTLE_ENDIAN__) || defined(POC_ARCH_X86) || defined(INIGMA_ARCH_X86_32) || defined(POC_ARCH_X86_64)
+#if defined(__LITTLE_ENDIAN__) || defined (__ENDIAN_LITTLE__) || defined(POC_ARCH_X86) || defined(INIGMA_ARCH_X86_32) || defined(POC_ARCH_X86_64)
 #   define POC_ENDIAN_LITTLE POC_ENDIAN_LITTLE_ID
 #endif
 
