@@ -31,7 +31,6 @@
 #define POC_OS_UNIX_STRING "Unix (generic)"
 #define POC_OS_MACOSX_STRING "Mac OS X"
 #define POC_OS_LINUX_STRING "Linux"
-#define POC_OS_WIN_STRING "Windows"
 #define POC_OS_WIN32_STRING "Win32"
 #define POC_OS_WIN64_STRING "Win64"
 ///@}
@@ -65,14 +64,16 @@
 
 // Detect Win32
 #if defined(_WIN32) || defined(__WIN32__)
-#   define POC_OS_WIN POC_OS_WIN_ID
+#   define POC_OS_WIN POC_OS_WIN32_ID
 #   define POC_OS_WIN32 POC_OS_WIN32_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 // Detect Win64
-#if defined(_Win64)
-#   define POC_OS_WIN POC_OS_WIN_ID
+// MSVC defined _WIN32 even if _WIN64 is defined - however to make it clear which OS is used only @c POC_OS_WIN32 or
+// alternatively @c POC_OS_WIN64 is defined, but not both together.
+#if defined(_WIN64)
+#   define POC_OS_WIN POC_OS_WIN64_ID
 #   define POC_OS_WIN64 POC_OS_WIN64_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
@@ -87,37 +88,32 @@
 #if defined(POC_OS_UNIX)
 #   define POC_OS_STRING POC_OS_UNIX_STRING
 #   define POC_OS_ID POC_OS_UNIX_ID
-#   error Operating system unknown.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_OS_MACOSX)
 #   define POC_OS_STRING POS_OS_MACOSX_STRING
 #   define POC_OS_ID POC_OS_MACOSX_ID
-#   error Operating system unknown.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_OS_LINUX)
 #   define POC_OS_STRING POC_OS_LINUX_STRING
 #   define POC_OS_ID POC_OS_LINUX_ID
-#   error Operating system unknown.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
-#if defined(POC_OS_WIN)
-#   define POC_OS_STRING POC_OS_WIN_STRING
-#   define POC_OS_ID POC_OS_WIN_ID
-#   error Operating system unknown.
-#endif
 
 #if defined(POC_OS_WIN32)
 #   define POC_OS_STRING POC_OS_WIN32_STRING
 #   define POC_OS_ID POC_OS_WIN32_ID
-#   error Operating system unknown.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_OS_WIN64)
 #   define POC_OS_STRING POC_OS_WIN64_STRING
 #   define POC_OS_ID POC_OS_WIN64_ID
-#   error Operating system unknown.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 // No known operating system detected

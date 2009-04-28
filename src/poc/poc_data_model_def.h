@@ -82,7 +82,7 @@
 // 32bit Linux uses the ILP32 data model, 64bit Linux uses the LP64 data model.
 // @todo Check facts.
 #if defined(POC_OS_LINUX)
-#   if defined(_LP64) || defined(__LP64__) 
+#   if defined(_LP64) || defined(__LP64__) || defined(__lp64)
 #       define POC_DATA_MODEL_LP64 POC_DATA_MODEL_LP64_ID
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else

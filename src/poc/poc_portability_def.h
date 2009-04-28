@@ -1,4 +1,10 @@
 
+/// @TODO: Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
+/// @TODO: Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?
+/// @TODO: Handle @c wchar_t .
+/// @TODO: Handle library import/export visible/hidden qualifiers.
+
+
 #include "poc_compiler_def.h"
 #include "poc_lang_def.h"
 
@@ -25,6 +31,7 @@
 // @todo Check if ALIGN is correctly used (do the directives assume bit-sized or byte-sized values?).
 // @todo Implement.
 // @todo Move alignment into its own header and possibly put it into the memory sub-project.
+// @TODO: Add documentation how to use @c POC_ALIGN_BEGIN and @c POC_ALIGN_END with typedefs.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #if defined(POC_COMPILER_GCC) // Uses byte-alignment-values
 #   define POC_ALIGN_BEGIN( ALIGN )

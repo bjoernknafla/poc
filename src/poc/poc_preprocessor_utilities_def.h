@@ -1,6 +1,6 @@
 
-
-
+/// @TODO: Check all strings that they are at max 32 characters long.
+#define POC_STRINGS_MAX_LENGTH 32
 
 /**
  * Inspired by Boost's @c suffix.hpp preprocessor macros.

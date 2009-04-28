@@ -2,6 +2,11 @@
  * @file
  *
  * Include @code poc_arch_undef.h  @endcode to undefine all preprocessor symbols potentially set herein.
+ *
+ * @TODO: Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the device.
+ * @TODO: Detect if running on a OpenCL host or device and which one the moment this is possible to detect.
+ * @TODO: Add support for Cell SPU and PPU.
+ * @TODO: Add support for iPhone, iPod Touch, and device emulation.
  */
 
 
@@ -18,6 +23,8 @@
 #define POC_ARCH_x86_64_ID 4
 #define POC_ARCH_PPC_ID 8
 #define POC_ARCH_PPC64_ID 16
+#define POC_ARCH_ARM_ID 32
+#define POC_ARCH_ARM_THUMB_ID 64
 ///@}
 
 
@@ -32,6 +39,8 @@
 #define POC_ARCH_x86_64_STRING "x86-64"
 #define POC_ARCH_PPC_STRING "PowerPC"
 #define POC_ARCH_PPC64_STRING "PowerPC64"
+#define POC_ARCH_ARM_STRING "ARM"
+#define POC_ARCH_ARM_THUMB_STRING "ARM Thumb"
 ///@}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,6 +82,16 @@
 #   endif
 #endif
 
+// Detect ARM and ARM Thumb
+#if defined(__arm__) || (__thumb__)
+#   if defined(__arm__)
+#       define POC_ARCH_ARM POC_ARCH_ARM_ID
+#   endif
+#   if defined(__thumb__)
+#       define POC_ARCH_ARM_THUMB POC_ARCH_ARM_THUMB_ID
+#   endif
+#endif
+
 
 #endif // !defined(POC_ARCH_SET_BY_HAND)
 
@@ -111,6 +130,17 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
+#if defined(POC_ARCH_ARM)
+#   define POC_ARCH_ID POC_ARCH_ARM_ID
+#   define POC_ARCH_STRING  POC_ARCH_ARM_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+
+#if defined(POC_ARCH_ARM_THUMB)
+#   define POC_ARCH_ID POC_ARCH_ARM_THUMB_ID
+#   define POC_ARCH_STRING  POC_ARCH_ARM_THUMB_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
 // No known architecture detected
 #if !defined(POC_ARCH_STRING) || !defined(POC_ARCH_ID)

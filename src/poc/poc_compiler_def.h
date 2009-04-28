@@ -63,7 +63,11 @@
 // Detect Microsoft Visual Studio Compiler.
 #if defined(_MSC_VER)
 #   define POC_COMPILER_MSVC POC_COMPILER_MSVC_ID
-#   define POC_COMPILER_MSVC_VERSION _MSC_VER
+#   if defined(_MSC_FULL_VER) && defined(_MSC_BUILD)
+#       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER * 100 + _MSC_BUILD )
+#   else
+#       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 10000 * 100)
+#   endif
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
