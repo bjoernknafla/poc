@@ -5,6 +5,9 @@
 /// @TODO: Handle library import/export visible/hidden qualifiers.
 
 
+#if !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF)
+
+
 #include "poc_compiler_def.h"
 #include "poc_lang_def.h"
 
@@ -58,3 +61,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+#endif // !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF)

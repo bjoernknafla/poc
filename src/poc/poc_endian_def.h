@@ -1,5 +1,8 @@
 
 
+#if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
+
+
 
 // Include POC_ARCH prefixed preprocessor symbols
 #include "poc_arch_def.h"
@@ -23,6 +26,9 @@
 #define POC_ENDIAN_LITTLE_STRING "Little endian"
 #define POC_ENDIAN_BIG_STRING "Big endian"
 ///@}
+
+
+#if !defined(POC_ENDIAN_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Detect endianness.
@@ -55,12 +61,19 @@
 #endif
 
 
+#endif // !defined(POC_ENDIAN_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
 // Endianess unknown
-#if !defined(POC_ENDIAN) || !defined(POC_ENDIAN_STRING)
+#if !defined(POC_ENDIAN)
 #   define POC_ENDIAN_UNKNOWN POC_ENDIAN_UNKNOWN_ID
 #   define POC_ENDIAN POC_ENDIAN_UNKNOWN_ID
+#   error Unknown endian.
+#endif
+
+#if !defined(POC_ENDIAN_STRING)
 #   define POC_ENDIAN_STRING POC_ENDIAN_UNKNOWN_STRING
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   error Unknown endian string.
 #endif
 
 
@@ -76,3 +89,7 @@
 #   error Little and big endianness mustn't be active at the same time.
 #   error Endianess must be little or big.
 #endif
+
+
+
+#endif // !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)

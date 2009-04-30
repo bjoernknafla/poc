@@ -1,4 +1,7 @@
 
+#if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
+
+
 #undef POC_ENDIAN
 #undef POC_ENDIAN_STRING
 
@@ -13,3 +16,6 @@
 #undef POC_ENDIAN_BIG
 #undef POC_ENDIAN_BIG_ID
 #undef POC_ENDIAN_BIG_STRING
+
+
+#endif // !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)

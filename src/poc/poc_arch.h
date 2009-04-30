@@ -9,4 +9,6 @@
 
 #include "poc_arch_def.h"
 
+#define POC_ARCH_HEADER_DISABLE_DEF_UNDEF
+
 #endif // POC_poc_arch_H

@@ -31,4 +31,6 @@
 #include "poc_lang.h"
 #include "poc_posix.h"
 
+#define POC_HEADER_DISABLE_DEF_UNDEF
+
 #endif // POC_poc_H

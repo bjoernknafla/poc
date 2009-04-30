@@ -1,4 +1,8 @@
 
+
+#if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
+
+
 /// @TODO: Check all strings that they are at max 32 characters long.
 #define POC_STRINGS_MAX_LENGTH 32
 
@@ -15,3 +19,7 @@
 /// Extracts the value of @a Val and converts it into a string.
 #define POC_STRINGIZE( Val ) POC_DO_STRINGIZE( Val )
 #define POC_DO_STRINGIZE( Val ) #Val
+
+
+
+#endif // !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)

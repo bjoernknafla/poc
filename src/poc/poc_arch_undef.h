@@ -1,4 +1,6 @@
 
+#if !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
+
 #undef POC_ARCH
 #undef POC_ARCH_STRING
 
@@ -32,3 +34,6 @@
 #undef POC_ARCH_ARM_THUMB
 #undef POC_ARCH_ARM_THUMB_ID
 #undef POC_ARCH_ARM_THUMB_STRING
+
+
+#endif // !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)

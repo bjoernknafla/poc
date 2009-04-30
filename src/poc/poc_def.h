@@ -1,5 +1,6 @@
 
 
+#if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
 
 #include "poc_os_def.h"
 #include "poc_compiler_def.h"
@@ -9,3 +10,4 @@
 #include "poc_lang_def.h"
 #include "poc_posix_def.h"
 
+#endif // !defined(POC_HEADER_DISABLE_DEF_UNDEF)

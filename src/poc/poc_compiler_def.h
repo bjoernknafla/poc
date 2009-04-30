@@ -1,5 +1,8 @@
 
 
+#if !defined(POC_COMPILER_HEADER_DISABLE_DEF_UNDEF)
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @name Predefined compiler ids.
 /// @TODO: Move all ids of all POC headers to the value @c 1 to allow binary-logic-or-tests for it.
@@ -39,12 +42,14 @@
 ///@}
 
 
+
+
+#if !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Detect compiler.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-#if !defined(POC_COMPILER_SET_BY_HAND)
 
 
 // Detect gcc (and therefor g++).
@@ -129,7 +134,7 @@
 
 
 
-#endif // !defined(POC_COMPILER_SET_BY_HAND)
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Determine @c POC_COMPILER_ID, @c POC_COMPILER_STRING and @c POC_COMPILER_VERSION
@@ -170,13 +175,24 @@
 #endif
 
 
+#endif // !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
 // No known compiler detected.
-#if !defined(POC_COMPILER) || !defined(POC_COMPILER_STRING)
+#if !defined(POC_COMPILER)
 #   define POC_COMPILER_UNKNOWN POC_COMPILER_UNKNOWN_ID
 #   define POC_COMPILER POC_COMPILER_UNKNOWN_ID
-#   define POC_COMPILER_STRING POC_COMPILER_UNKNOWN_STRING
-#   define POC_COMPILER_VERSION POC_COMPILER_UNKNOWN_VERSION
 #   error Compiler unknown.
+#endif
+
+#if !defined(POC_COMPILER_STRING)
+#   define POC_COMPILER_STRING POC_COMPILER_UNKNOWN_STRING
+#   error Compiler string unknown.
+#endif
+
+#if !defined(POC_COMPILER_VERSION)
+#   define POC_COMPILER_VERSION POC_COMPILER_UNKNOWN_VERSION
+#   error Compiler version unknown.
 #endif
 
 
@@ -227,3 +243,5 @@ defined(POC_COMPILER_OPENCL_GENERIC))
 #endif
 
 
+
+#endif // !defined(POC_COMPILER_HEADER_DISABLE_DEF_UNDEF)

@@ -1,7 +1,7 @@
 
 
 
-
+#if !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
 
 
 
@@ -54,6 +54,11 @@
 #define POC_DATA_MODEL_ILP64_STRING "ILP64" // No detection implemented.
 #define POC_DATA_MODEL_SILP64_STRING "SILP64" // No detection implemented.
 ///@}
+
+
+
+#if !defined(POC_DATA_MODEL_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Detect data model.
@@ -133,12 +138,20 @@
 #endif
 
 
+
+#endif // !defined(POC_DATA_MODEL_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
 // No known data model detected.
-#if !defined(POC_DATA_MODEL) || !defined(POC_DATA_MODEL_STRING)
+#if !defined(POC_DATA_MODEL)
 #   define POC_DATA_MODEL_UNKNOWN POC_DATA_MODEL_UNKNOWN_ID
 #   define POC_DATA_MODEL POC_DATA_MODEL_UNKNOWN_ID
-#   define POC_DATA_MODEL_STRING POC_DATA_MODEL_UNKNOWN_STRING
 #   error Unknown data model.
+#endif
+
+#if !defined(POC_DATA_MODEL_STRING)
+#   define POC_DATA_MODEL_STRING POC_DATA_MODEL_UNKNOWN_STRING
+#   error Unknown data model string.
 #endif
 
 
@@ -295,4 +308,10 @@ namespace {
 #include "poc_static_assert_undef.h"
 
 #endif // defined(__cplusplus)
+
+
+
+
+#endif // !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
+
 

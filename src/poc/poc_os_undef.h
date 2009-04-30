@@ -6,6 +6,9 @@
  * @attention This header doesn't have header guards to allow successive inclusion.
  */
 
+
+#if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
+
 #undef POC_OS
 #undef POC_OS_STRING
 
@@ -37,3 +40,6 @@
 #undef POC_OS_WIN64_ID
 #undef POC_OS_WIN64_STRING
 
+
+
+#endif // !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)

@@ -9,7 +9,7 @@
  * @TODO: Add support for iPhone, iPod Touch, and device emulation.
  */
 
-
+#if !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
 
 
 
@@ -41,12 +41,15 @@
 #define POC_ARCH_ARM_THUMB_STRING "ARM Thumb"
 ///@}
 
+
+// If @c POC_ARCH_DISABLE_AUTODETECT or @c POC_DISABLE_AUTODETECT is defined no automatic operating system detection 
+// takes place.
+#if !defined(POC_ARCH_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Detect architecture
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// If @c POC_OS_SET_BY_HAND is defined no automatic operating system detection should take place.
-#if !defined(POC_ARCH_SET_BY_HAND)
 
 
 // Detect x86_32 (not x86_64)
@@ -91,8 +94,6 @@
 #endif
 
 
-#endif // !defined(POC_ARCH_SET_BY_HAND)
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Determine @c POC_ARCH_STRING and @c POC_ARCH_ID
@@ -134,12 +135,23 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
+
+
+
+#endif // !defined(POC_ARCH_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
+
 // No known architecture detected
-#if !defined(POC_ARCH) || !defined(POC_ARCH_STRING)
+#if !defined(POC_ARCH)
 #   define POC_ARCH_UNKNONW POC_ARCH_UNKNOWN_ID
 #   define POC_ARCH POC_ARCH_UNKNOWN_ID
+#   error Machine architecture unknown.
+#endif 
+
+#if !defined(POC_ARCH_STRING)
 #   define POC_ARCH_STRING POC_ARCH_UNKNOWN_STRING
-#   error Architecture unknown.
+#   error Machine architecture string unknown.
 #endif
 
 
@@ -208,3 +220,8 @@ defined(POC_ARCH_ARM_THUMB) || \
 defined(POC_ARCH_PPC) )
 #   error Exactly one architecture must be selected.
 #endif
+
+
+
+#endif // !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
+

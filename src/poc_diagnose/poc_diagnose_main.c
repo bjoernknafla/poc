@@ -178,7 +178,7 @@ int print_macro_definition_string(FILE* outstream,
                                   char const* value_string)
 {
     int chars_written = 0;
-    int const chars_written_description = fprintf(outstream, "%s ", macro_description_string);
+    int const chars_written_description = fprintf(outstream, "  %s ", macro_description_string);
     
     if (0 > chars_written_description)
     {
@@ -231,7 +231,7 @@ int print_macro_definition_integral(FILE* outstream,
                                     long value_integral)
 {
     int chars_written = 0;
-    int const chars_written_description = fprintf(outstream, "%s ", macro_description_string);
+    int const chars_written_description = fprintf(outstream, "  %s ", macro_description_string);
     
     if (0 > chars_written_description)
     {
@@ -282,7 +282,8 @@ void print_std_predefined_macros(FILE* outstream)
     
     std_c_cpp_predefined_macros std_macros = make_std_c_cpp_predefined_macros();
     
-    fprintf(outstream, "Predefined standard preprocessor macros detection\n\n");
+    fprintf(outstream, "Predefined standard preprocessor macros detection");
+    fprintf(outstream, "\n");
     
     
     print_macro_definition_string(outstream, 
@@ -350,9 +351,10 @@ void print_std_predefined_macros(FILE* outstream)
 #include <poc/poc_lang.h>
 void print_lang(FILE* outstream)
 {
-    fprintf(outstream, "POC programming language detection \n\n");
+    fprintf(outstream, "POC programming language detection");
+    fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_LANG defined and set to ");
+    fprintf(outstream, "  POC_LANG defined and set to ");
     
     switch (POC_LANG) 
     {
@@ -385,13 +387,18 @@ void print_lang(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_LANG_STRING defined and set to %s", POC_LANG_STRING);
+    fprintf(outstream, "  POC_LANG_STRING defined and set to %s", POC_LANG_STRING);
     fprintf(outstream, "\n\n");
+    
+#if defined(POC_LANG_DISABLE_AUTODETECT)
+    fprintf(outstream, "  POC_LANG_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n\n\n");
+#endif
     
     
     
 #if defined(POC_LANG_C)
-    fprintf(outstream, "POC_LANG_C defined and set to ");
+    fprintf(outstream, "  POC_LANG_C defined and set to ");
     
     switch (POC_LANG_C)
     {
@@ -411,17 +418,17 @@ void print_lang(FILE* outstream)
 #endif
     
 #if defined(POC_LANG_C_C89)
-    fprintf(outstream, "POC_LANG_C_C89 defined");
+    fprintf(outstream, "  POC_LANG_C_C89 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_LANG_C_C99)
-    fprintf(outstream, "POC_LANG_C_C99 defined");
+    fprintf(outstream, "  POC_LANG_C_C99 defined");
     fprintf(outstream, "\n");
 #endif    
     
 #if defined(POC_LANG_CPP)
-    fprintf(outstream, "POC_LANG_CPP defined and set to ");
+    fprintf(outstream, "  POC_LANG_CPP defined and set to ");
     
     switch (POC_LANG_CPP)
     {
@@ -438,57 +445,57 @@ void print_lang(FILE* outstream)
 #endif
     
 #if defined(POC_LANG_OBJC)
-    fprintf(outstream, "POC_LANG_OBJC defined");
+    fprintf(outstream, "  POC_LANG_OBJC defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_LANG_OPENCL)
-    fprintf(outstream, "POC_LANG_OPENCL defined");
+    fprintf(outstream, "  POC_LANG_OPENCL defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_LANG_C_TYPE_BOOL_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_TYPE_BOOL_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_TYPE_BOOL_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_TYPE_LONG_LONG_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_TYPE_LONG_LONG_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_C_HEADER_STDBOOL_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_HEADER_STDBOOL_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_HEADER_STDBOOL_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_C_HEADER_STDINT_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_HEADER_STDINT_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_HEADER_STDINT_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_C_TYPE_COMPLEX_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_TYPE_COMPLEX_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_TYPE_COMPLEX_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_C_TYPE_IMAGINARY_SUPPORT)
-    fprintf(outstream, "POC_LANG_C_TYPE_IMAGINARY_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_C_TYPE_IMAGINARY_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_CPP_RTTI_SUPPORT)
-    fprintf(outstream, "POC_LANG_CPP_RTTI_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_CPP_RTTI_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
 
 #if defined(POC_LANG_CPP_EXCEPTIONS_SUPPORT)
-    fprintf(outstream, "POC_LANG_CPP_EXCEPTIONS_SUPPORT defined");
+    fprintf(outstream, "  POC_LANG_CPP_EXCEPTIONS_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
     
@@ -498,9 +505,10 @@ void print_lang(FILE* outstream)
 
 void print_data_model(FILE* outstream)
 {
-    fprintf(outstream, "POC data model detection \n\n");
+    fprintf(outstream, "POC data model detection");
+    fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_DATA_MODEL defined and set to ");
+    fprintf(outstream, "  POC_DATA_MODEL defined and set to ");
     
     switch (POC_DATA_MODEL)
     {
@@ -530,38 +538,42 @@ void print_data_model(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_DATA_MODEL_STRING defined set to %s", POC_DATA_MODEL_STRING);
+    fprintf(outstream, "  POC_DATA_MODEL_STRING defined set to %s", POC_DATA_MODEL_STRING);
     fprintf(outstream, "\n\n");
 
+#if defined(POC_DATA_MODEL_DISABLE_AUTODETECT)
+    fprintf(outstream, "  POC_DATA_MODEL_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n\n\n");
+#endif
     
     
 #if defined(POC_DATA_MODEL_LP32)
-    fprintf(outstream, "POC_DATA_MODEL_LP32 defined");
+    fprintf(outstream, "  POC_DATA_MODEL_LP32 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_DATA_MODEL_ILP32)
-    fprintf(outstream, "POC_DATA_MODEL_ILP32 defined");
+    fprintf(outstream, "  POC_DATA_MODEL_ILP32 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_DATA_MODEL_LP64)
-    fprintf(outstream, "POC_DATA_MODEL_LP64 defined");
+    fprintf(outstream, "  POC_DATA_MODEL_LP64 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_DATA_MODEL_LLP64)
-    fprintf(outstream, "POC_DATA_MODEL_LLP64 defined");
+    fprintf(outstream, "  POC_DATA_MODEL_LLP64 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_DATA_MODEL_ILP64)
-    fprintf(outstream, "POC_DATA_MODEL_ILP64 defined");
+    fprintf(outstream, "  POC_DATA_MODEL_ILP64 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_DATA_MODEL_SILP64)
-    fprintf(outstream, "POC_DATA_MODEL_SILP64 defined");
+    fprintf(outstream, "  POC_DATA_MODEL_SILP64 defined");
     fprintf(outstream, "\n");
 #endif
     
@@ -570,9 +582,10 @@ void print_data_model(FILE* outstream)
 #include <poc/poc_compiler.h>
 void print_compiler(FILE* outstream)
 {
-    fprintf(outstream, "POC comiler detection \n\n");
+    fprintf(outstream, "POC comiler detection");
+    fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_COMPILER defined and set to ");
+    fprintf(outstream, "  POC_COMPILER defined and set to ");
     
     switch (POC_COMPILER)
     {
@@ -599,41 +612,41 @@ void print_compiler(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_COMPILER_STRING defined and set to %s", POC_COMPILER_STRING);
+    fprintf(outstream, "  POC_COMPILER_STRING defined and set to %s", POC_COMPILER_STRING);
     fprintf(outstream, "\n");
-    fprintf(outstream, "POC_COMPILER_VERSION defined and set to %i", POC_COMPILER_VERSION);
+    fprintf(outstream, "  POC_COMPILER_VERSION defined and set to %i", POC_COMPILER_VERSION);
     fprintf(outstream, "\n\n");
     
-#if defined(POC_COMPILER_SET_BY_HAND)
-    fprintf(outstream, "POC_COMPILER_SET_BY_HAND defined");
-    fprintf(outstream, "\n");
-#endif  
+#if defined(POC_COMPILER_DISABLE_AUTODETECT)
+    fprintf(outstream, "  POC_COMPILER_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n\n\n");
+#endif
     
 #if defined(POC_COMPILER_GCC)
-    fprintf(outstream, "POC_COMPILER_GCC defined");
+    fprintf(outstream, "  POC_COMPILER_GCC defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_COMPILER_MSVC)
-    fprintf(outstream, "POC_COMPILER_MSVC defined");
+    fprintf(outstream, "  POC_COMPILER_MSVC defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_COMPILER_NVCC)
-    fprintf(outstream, "POC_COMPILER_NVCC defined");
+    fprintf(outstream, "  POC_COMPILER_NVCC defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_COMPILER_OPENCL_GENERIC)
-    fprintf(outstream, "POC_COMPILER_OPENCL_GENERIC defined");
+    fprintf(outstream, "  POC_COMPILER_OPENCL_GENERIC defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_COMPILER_ICC)
-    fprintf(outstream, "POC_COMPILER_ICC defined");
+    fprintf(outstream, "  POC_COMPILER_ICC defined");
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_COMPILER_ICC_HOST defined and set to ");
+    fprintf(outstream, "  POC_COMPILER_ICC_HOST defined and set to ");
     
     switch (POC_COMPILER_ICC_HOST)
     {
@@ -651,30 +664,30 @@ void print_compiler(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_COMPILER_ICC_HOST_STRING defined and set to %s", POC_COMPILER_ICC_HOST_STRING);
+    fprintf(outstream, "  POC_COMPILER_ICC_HOST_STRING defined and set to %s", POC_COMPILER_ICC_HOST_STRING);
     fprintf(outstream, "\n");
-    fprintf(outstream, "POC_COMPILER_ICC_HOST_VERSION defined and set to %i", POC_COMPILER_ICC_HOST_VERSION);
+    fprintf(outstream, "  POC_COMPILER_ICC_HOST_VERSION defined and set to %i", POC_COMPILER_ICC_HOST_VERSION);
     fprintf(outstream, "\n");
     
 #if     defined(POC_COMPILER_ICC_HOST_GCC)
-    fprintf(outstream, "POC_COMPILER_ICC_HOST_GCC defined");
+    fprintf(outstream, "  POC_COMPILER_ICC_HOST_GCC defined");
     fprintf(outstream, "\n");
 #       endif
   
 #if     defined(POC_COMPILER_ICC_HOST_MSVC)
-    fprintf(outstream, "POC_COMPILER_ICC_HOST_MSVC defined");
+    fprintf(outstream, "  POC_COMPILER_ICC_HOST_MSVC defined");
     fprintf(outstream, "\n");
 #       endif
     
 #if     defined(POC_COMPILER_ICC_HOST_UNKNOWN)
-    fprintf(outstream, "POC_COMPILER_ICC_HOST_UNKNOWN defined");
+    fprintf(outstream, "  POC_COMPILER_ICC_HOST_UNKNOWN defined");
     fprintf(outstream, "\n");
 #       endif
     
 #endif
     
 #if defined(POC_COMPILER_UNKNWON)
-    fprintf(outstream, "POC_COMPILER_UNKNOWN defined");
+    fprintf(outstream, "  POC_COMPILER_UNKNOWN defined");
     fprintf(outstream, "\n");
 #endif
     
@@ -683,9 +696,10 @@ void print_compiler(FILE* outstream)
 #include <poc/poc_arch.h>
 void print_arch(FILE* outstream)
 {
-    fprintf(outstream, "POC machine architecture detection \n\n");
+    fprintf(outstream, "POC machine architecture detection");
+    fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_ARCH defined and set to ");
+    fprintf(outstream, "  POC_ARCH defined and set to ");
     
     switch (POC_ARCH)
     {
@@ -715,46 +729,52 @@ void print_arch(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_ARCH_STRING defined and set to %s", POC_ARCH_STRING);
+    fprintf(outstream, "  POC_ARCH_STRING defined and set to %s", POC_ARCH_STRING);
     fprintf(outstream, "\n\n");
     
+#if defined(POC_ARCH_DISABLE_AUTODETECT)
+    fprintf(outstream, "  POC_ARCH_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n\n\n");
+#endif
+    
+    
 #if defined(POC_ARCH_X86)
-    fprintf(outstream, "POC_ARCH_X86 defined");
+    fprintf(outstream, "  POC_ARCH_X86 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_ARCH_X86_32)
-    fprintf(outstream, "POC_ARCH_X86_32 defined");
+    fprintf(outstream, "  POC_ARCH_X86_32 defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ARCH_X86_64)
-    fprintf(outstream, "POC_ARCH_X86_64 defined");
+    fprintf(outstream, "  POC_ARCH_X86_64 defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ARCH_PPC)
-    fprintf(outstream, "POC_ARCH_PPC defined");
+    fprintf(outstream, "  POC_ARCH_PPC defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ARCH_PPC64)
-    fprintf(outstream, "POC_ARCH_PPC64 defined");
+    fprintf(outstream, "  POC_ARCH_PPC64 defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ARCH_ARM)
-    fprintf(outstream, "POC_ARCH_ARM defined");
+    fprintf(outstream, "  POC_ARCH_ARM defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ARCH_ARM_THUMB)
-    fprintf(outstream, "POC_ARCH_ARM_THUMB defined");
+    fprintf(outstream, "  POC_ARCH_ARM_THUMB defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ARCH_UNKNOWN)
-    fprintf(outstream, "POC_ARCH_UNKNOWN defined");
+    fprintf(outstream, "  POC_ARCH_UNKNOWN defined");
     fprintf(outstream, "\n");
 #endif
     
@@ -763,9 +783,10 @@ void print_arch(FILE* outstream)
 #include <poc/poc_endian.h>
 void print_endian(FILE* outstream)
 {
-    fprintf(outstream, "POC machine endianess detection \n\n");
+    fprintf(outstream, "POC machine endianess detection");
+    fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_ENDIAN defined and set to ");
+    fprintf(outstream, "  POC_ENDIAN defined and set to ");
     
     switch (POC_ENDIAN)
     {
@@ -783,21 +804,26 @@ void print_endian(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_ENDIAN_STRING defined and set to %s", POC_ENDIAN_STRING);
+    fprintf(outstream, "  POC_ENDIAN_STRING defined and set to %s", POC_ENDIAN_STRING);
     fprintf(outstream, "\n\n");
     
+#if defined(POC_ENDIAN_DISABLE_AUTODETECT)
+    fprintf(outstream, "  POC_ENDIAN_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n\n\n");
+#endif
+    
 #if defined(POC_ENDIAN_LITTLE)
-    fprintf(outstream, "POC_ENDIAN_LITTLE defined");
+    fprintf(outstream, "  POC_ENDIAN_LITTLE defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_ENDIAN_BIG)
-    fprintf(outstream, "POC_ENDIAN_BIG defined");
+    fprintf(outstream, "  POC_ENDIAN_BIG defined");
     fprintf(outstream, "\n");
 #endif
   
 #if defined(POC_ENDIAN_UNKNOWN)
-    fprintf(outstream, "POC_ENDIAN_UNKNOWN defined");
+    fprintf(outstream, "  POC_ENDIAN_UNKNOWN defined");
     fprintf(outstream, "\n");
 #endif
     
@@ -806,9 +832,10 @@ void print_endian(FILE* outstream)
 #include <poc/poc_os.h>
 void print_os(FILE* outstream)
 {
-    fprintf(outstream, "POC operating system detection \n\n");
+    fprintf(outstream, "POC operating system detection");
+    fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_OS defined and set to ");
+    fprintf(outstream, "  POC_OS defined and set to ");
     
     switch (POC_OS)
     {
@@ -835,41 +862,41 @@ void print_os(FILE* outstream)
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_OS_STRING defined and set to %s", POC_OS_STRING);
+    fprintf(outstream, "  POC_OS_STRING defined and set to %s", POC_OS_STRING);
     fprintf(outstream, "\n\n");
     
-#if defined(POC_OS_SET_BY_HAND)
-    fprintf(outstream, "POC_OS_SET_BY_HAND defined");
-    fprintf(outstream, "\n");
+#if defined(POC_OS_DISABLE_AUTODETECT)
+    fprintf(outstream, "  POC_OS_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n\n\n");
 #endif
     
 #if defined(POC_OS_UNIX)
-    fprintf(outstream, "POC_OS_UNIX defined");
+    fprintf(outstream, "  POC_OS_UNIX defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_OS_MACOSX)
-    fprintf(outstream, "POC_OS_MACOSX defined");
+    fprintf(outstream, "  POC_OS_MACOSX defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_OS_LINUX)
-    fprintf(outstream, "POC_OS_LINUX defined");
+    fprintf(outstream, "  POC_OS_LINUX defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_OS_WIN32)
-    fprintf(outstream, "POC_OS_WIN32 defined");
+    fprintf(outstream, "  POC_OS_WIN32 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_OS_WIN64)
-    fprintf(outstream, "POC_OS_WIN64 defined");
+    fprintf(outstream, "  POC_OS_WIN64 defined");
     fprintf(outstream, "\n");
 #endif
     
 #if defined(POC_OS_UNKNOWN)
-    fprintf(outstream, "POC_OS_UNKNOWN defined");
+    fprintf(outstream, "  POC_OS_UNKNOWN defined");
     fprintf(outstream, "\n");
 #endif
     
@@ -882,25 +909,30 @@ int main(int argc, char* argv[])
     (void)argc;
     
     // Print the app-name.
-    fprintf(stdout, "%s \n\n\n\n", argv[0]);
+    fprintf(stdout, "%s \n\n", argv[0]);
     
     print_std_predefined_macros(stdout);
-    fprintf(stdout, "\n\n\n");
+    fprintf(stdout, "\n");
             
+#if defined(POC_DISABLE_AUTODETECT)
+    fprintf(outstream, "POC_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n");
+#endif
+    
     print_lang(stdout);
-    fprintf(stdout, "\n\n\n");
+    fprintf(stdout, "\n");
     
     print_data_model(stdout);
-    fprintf(stdout, "\n\n\n");
+    fprintf(stdout, "\n");
     
     print_compiler(stdout);
-    fprintf(stdout, "\n\n\n");
+    fprintf(stdout, "\n");
     
     print_arch(stdout);
-    fprintf(stdout, "\n\n\n");
+    fprintf(stdout, "\n");
     
     print_endian(stdout);
-    fprintf(stdout, "\n\n\n");
+    fprintf(stdout, "\n");
             
     print_os(stdout);
     

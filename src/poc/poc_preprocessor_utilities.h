@@ -28,5 +28,7 @@
 
 #include "poc_preprocessor_utilities_def.h"
 
+#define POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF
+
 
 #endif // POC_poc_preprocessor_utilities_H

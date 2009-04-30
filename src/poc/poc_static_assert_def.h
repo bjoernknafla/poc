@@ -1,6 +1,7 @@
 
 
 
+#if !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
 
 
 #include "poc_preprocessor_utilities_def.h"
@@ -79,6 +80,9 @@ sizeof( ::poc::internal::static_assertion_test< (0 != (EXPR) ) >( MSG ) ) > \
 POC_CONCAT(POC_STATIC_ASSERTION_, __LINE__ )
 
 
+
+
+#endif // !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
 
 
 

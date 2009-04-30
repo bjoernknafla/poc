@@ -8,6 +8,9 @@
  */
 
 
+#if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @name Predefined operating system ids
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,13 +39,13 @@
 
 
 
+// If @c POC_OS_SET_BY_HAND is defined no automatic operating system detection should take place.
+#if !defined(POC_OS_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Determine operating system
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// If @c POC_OS_SET_BY_HAND is defined no automatic operating system detection should take place.
-#if !defined(POC_OS_SET_BY_HAND)
 
 // Detect Mac OS X
 #if defined(__APPLE__) && defined(__MACH__)
@@ -77,7 +80,7 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
-#endif // !defined(POC_OS_SET_BY_HAND)
+
 
 
 
@@ -114,12 +117,21 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
+
+#endif // !defined(POC_OS_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
+
 // No known operating system detected
-#if !defined(POC_OS) || !defined(POC_OS_STRING)
+#if !defined(POC_OS)
 #   define POC_OS_UNKNOWN POC_OS_UNKNOWN_ID
 #   define POC_OS POC_OS_UNKNOWN_ID
+#   error Unknown operating system.
+#endif
+
+#if !defined(POC_OS_STRING)
 #   define POC_OS_STRING POC_OS_UNKNOWN_STRING
-#   error Operating system unknown.
+#   error Unknown operating system string.
 #endif
 
 
@@ -167,3 +179,8 @@ defined(POC_OS_WIN64) || \
 defined(POC_OS_UNIX))
 #   error Exactly one operating system must be selected.
 #endif
+
+
+
+#endif // !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
+

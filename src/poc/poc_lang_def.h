@@ -1,4 +1,8 @@
 
+#if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
+
+
+
 // Include macros prefixed with POC_COMPILER
 #include "poc_compiler_def.h"
 
@@ -28,6 +32,11 @@
 #define POC_LANG_C_C89_STANDARDIZED_VERSION 199409L
 #define POC_LANG_C_C99_STANDARDIZED_VERSION 199901L
 #define POC_LANG_CPP_CPP98_STANDARDIZED_VERSION 199711L
+
+
+
+#if !defined(POC_LANG_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
 
 
 // See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
@@ -215,12 +224,23 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
+
+
+
+#endif // !defined(POC_LANG_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+
+
+
 // No known programming language detected.
-#if !defined(POC_LANG) || !defined(POC_LANG_STRING)
+#if !defined(POC_LANG)
 #   define POC_LANG_UNKNOWN POC_LANG_UNKNOWN_ID
 #   define POC_LANG POC_LANG_UNKNOWN_ID
-#   define POC_LANG_STRING POC_LANG_UNKNOWN_STRING
 #   error Unknown programming language.
+#endif
+
+#if !defined(POC_LANG_STRING)
+#   define POC_LANG_STRING POC_LANG_UNKNOWN_STRING
+#   error Unknown programming language string.
 #endif
 
 /*
@@ -257,4 +277,8 @@ defined(POC_LANG_C))
 #   error Exactly one programming language must be selected.
 #endif
 */
+
+
+#endif // !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
+
 
