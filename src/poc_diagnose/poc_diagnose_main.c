@@ -1,3 +1,26 @@
+/*
+ * Copyright (c) 2009, Bjoern Knafla
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
+ * following conditions are met:
+ *
+ * - Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
+ *   disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
+ *   disclaimer in the documentation and/or other materials provided with the distribution.
+ * - Neither the name of the Bjoern Knafla nor the names of its contributors may be used to 
+ *   endorse or promote products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 /**
  * @file
  *
@@ -10,7 +33,7 @@
 // Include stdout, fprintf, FILE
 #include <stdio.h>
 
-
+#include <poc/poc.h>
 
 
 
@@ -89,6 +112,47 @@ void print_compiler(FILE* outstream);
 void print_arch(FILE* outstream);
 void print_endian(FILE* outstream);
 void print_os(FILE* outstream);
+
+
+
+
+int main(int argc, char* argv[])
+{
+    // Prevent warning that argument isn't used.
+    (void)argc;
+    (void)argv;
+    
+    // Print the app-name.
+    fprintf(stdout, "%s \n\n", "POC Diagnose");
+    
+    print_std_predefined_macros(stdout);
+    fprintf(stdout, "\n");
+            
+#if defined(POC_DISABLE_AUTODETECT)
+    fprintf(outstream, "POC_DISABLE_AUTODETECT defined");
+    fprintf(stdout, "\n");
+#endif
+    
+    print_lang(stdout);
+    fprintf(stdout, "\n");
+    
+    print_data_model(stdout);
+    fprintf(stdout, "\n");
+    
+    print_compiler(stdout);
+    fprintf(stdout, "\n");
+    
+    print_arch(stdout);
+    fprintf(stdout, "\n");
+    
+    print_endian(stdout);
+    fprintf(stdout, "\n");
+            
+    print_os(stdout);
+    
+    return EXIT_SUCCESS;
+}
+
 
 
 std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros(void)
@@ -348,7 +412,6 @@ void print_std_predefined_macros(FILE* outstream)
 }
 
 
-#include <poc/poc_lang.h>
 void print_lang(FILE* outstream)
 {
     fprintf(outstream, "POC programming language detection");
@@ -458,42 +521,42 @@ void print_lang(FILE* outstream)
     fprintf(outstream, "  POC_LANG_C_TYPE_BOOL_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_LONG_LONG_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_C_HEADER_STDBOOL_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_HEADER_STDBOOL_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_C_HEADER_STDINT_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_HEADER_STDINT_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_C_TYPE_COMPLEX_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_COMPLEX_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_C_TYPE_IMAGINARY_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_IMAGINARY_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_CPP_RTTI_SUPPORT)
     fprintf(outstream, "  POC_LANG_CPP_RTTI_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-
+    
 #if defined(POC_LANG_CPP_EXCEPTIONS_SUPPORT)
     fprintf(outstream, "  POC_LANG_CPP_EXCEPTIONS_SUPPORT defined");
     fprintf(outstream, "\n");
@@ -501,7 +564,6 @@ void print_lang(FILE* outstream)
     
 }
 
-#include <poc/poc_data_model.h>
 
 void print_data_model(FILE* outstream)
 {
@@ -540,7 +602,7 @@ void print_data_model(FILE* outstream)
     
     fprintf(outstream, "  POC_DATA_MODEL_STRING defined set to %s", POC_DATA_MODEL_STRING);
     fprintf(outstream, "\n\n");
-
+    
 #if defined(POC_DATA_MODEL_DISABLE_AUTODETECT)
     fprintf(outstream, "  POC_DATA_MODEL_DISABLE_AUTODETECT defined");
     fprintf(stdout, "\n\n\n");
@@ -579,7 +641,7 @@ void print_data_model(FILE* outstream)
     
 }
 
-#include <poc/poc_compiler.h>
+
 void print_compiler(FILE* outstream)
 {
     fprintf(outstream, "POC comiler detection");
@@ -673,7 +735,7 @@ void print_compiler(FILE* outstream)
     fprintf(outstream, "  POC_COMPILER_ICC_HOST_GCC defined");
     fprintf(outstream, "\n");
 #       endif
-  
+    
 #if     defined(POC_COMPILER_ICC_HOST_MSVC)
     fprintf(outstream, "  POC_COMPILER_ICC_HOST_MSVC defined");
     fprintf(outstream, "\n");
@@ -693,7 +755,7 @@ void print_compiler(FILE* outstream)
     
 }
 
-#include <poc/poc_arch.h>
+
 void print_arch(FILE* outstream)
 {
     fprintf(outstream, "POC machine architecture detection");
@@ -747,32 +809,32 @@ void print_arch(FILE* outstream)
     fprintf(outstream, "  POC_ARCH_X86_32 defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ARCH_X86_64)
     fprintf(outstream, "  POC_ARCH_X86_64 defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ARCH_PPC)
     fprintf(outstream, "  POC_ARCH_PPC defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ARCH_PPC64)
     fprintf(outstream, "  POC_ARCH_PPC64 defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ARCH_ARM)
     fprintf(outstream, "  POC_ARCH_ARM defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ARCH_ARM_THUMB)
     fprintf(outstream, "  POC_ARCH_ARM_THUMB defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ARCH_UNKNOWN)
     fprintf(outstream, "  POC_ARCH_UNKNOWN defined");
     fprintf(outstream, "\n");
@@ -780,7 +842,7 @@ void print_arch(FILE* outstream)
     
 }
 
-#include <poc/poc_endian.h>
+
 void print_endian(FILE* outstream)
 {
     fprintf(outstream, "POC machine endianess detection");
@@ -821,7 +883,7 @@ void print_endian(FILE* outstream)
     fprintf(outstream, "  POC_ENDIAN_BIG defined");
     fprintf(outstream, "\n");
 #endif
-  
+    
 #if defined(POC_ENDIAN_UNKNOWN)
     fprintf(outstream, "  POC_ENDIAN_UNKNOWN defined");
     fprintf(outstream, "\n");
@@ -829,7 +891,6 @@ void print_endian(FILE* outstream)
     
 }
 
-#include <poc/poc_os.h>
 void print_os(FILE* outstream)
 {
     fprintf(outstream, "POC operating system detection");
@@ -902,39 +963,3 @@ void print_os(FILE* outstream)
     
 }
 
-
-int main(int argc, char* argv[])
-{
-    // Prevent warning that argument isn't used.
-    (void)argc;
-    
-    // Print the app-name.
-    fprintf(stdout, "%s \n\n", argv[0]);
-    
-    print_std_predefined_macros(stdout);
-    fprintf(stdout, "\n");
-            
-#if defined(POC_DISABLE_AUTODETECT)
-    fprintf(outstream, "POC_DISABLE_AUTODETECT defined");
-    fprintf(stdout, "\n");
-#endif
-    
-    print_lang(stdout);
-    fprintf(stdout, "\n");
-    
-    print_data_model(stdout);
-    fprintf(stdout, "\n");
-    
-    print_compiler(stdout);
-    fprintf(stdout, "\n");
-    
-    print_arch(stdout);
-    fprintf(stdout, "\n");
-    
-    print_endian(stdout);
-    fprintf(stdout, "\n");
-            
-    print_os(stdout);
-    
-    return EXIT_SUCCESS;
-}

@@ -25,7 +25,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		324846B80FA314BD00784249 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../../README.txt; sourceTree = SOURCE_ROOT; };
 		324867C70FA3199500784249 /* poc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc.h; sourceTree = "<group>"; };
 		324867C80FA31BA600784249 /* poc_os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_os.h; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_cpp; path = build/Debug/poc_diagnose_cpp; sourceTree = "<group>"; };
 		32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = poc_diagnose_main_objc.m; sourceTree = "<group>"; };
 		32532B590FA9CDB600197F39 /* poc_diagnose_objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_objc; path = build/Debug/poc_diagnose_objc; sourceTree = "<group>"; };
+		32532D440FAA5ABA00197F39 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		32A9B6120FA5C26900FF0967 /* poc_compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler.h; sourceTree = "<group>"; };
 		32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_def.h; sourceTree = "<group>"; };
 		32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_undef.h; sourceTree = "<group>"; };
@@ -137,7 +137,6 @@
 		324846B00FA3148800784249 /* Xcode Specific */ = {
 			isa = PBXGroup;
 			children = (
-				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				C6859E8B029090EE04C91782 /* poc.1 */,
 			);
 			name = "Xcode Specific";
@@ -209,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				324846B80FA314BD00784249 /* README.txt */,
+				32532D440FAA5ABA00197F39 /* LICENSE.txt */,
 			);
 			name = Documentation;
 			sourceTree = "<group>";
