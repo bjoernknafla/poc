@@ -198,8 +198,8 @@
 		32532A6D0FA8A9CE00197F39 /* poc_diagnose */ = {
 			isa = PBXGroup;
 			children = (
-				32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */,
 				32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */,
+				32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */,
 				32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */,
 			);
 			path = poc_diagnose;

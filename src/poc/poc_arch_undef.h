@@ -1,5 +1,5 @@
 
-#undef POC_ARCH_ID
+#undef POC_ARCH
 #undef POC_ARCH_STRING
 
 #undef POC_ARCH_UNKNOWN

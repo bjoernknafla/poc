@@ -38,6 +38,7 @@
 #       define POC_LANG_C POC_LANG_C_C89_ID
 #       define POC_LANG_C_C89 POC_LANG_C_C89_ID
 #       define POC_LANG_C_STRING POC_LANG_C_C89_STRING
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   elif defined(__STDC_VERSION__) && ((__STDC_VERSION__ + 0) == POC_LANG_C_C99_STANDARDIZED_VERSION)
 #       define POC_LANG_C POC_LANG_C_C99_ID
 #       define POC_LANG_C_C99 POC_LANG_C_C99_ID
@@ -57,6 +58,7 @@
 #       define POC_LANG_CPP POC_LANG_CPP_CPP98_ID
 #       define POC_LANG_CPP_CPP98 POC_LANG_CPP_CPP98_ID
 #       define POC_LANG_CPP_STRING POC_LANG_CPP_CPP98_STRING
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else
 #       define POC_LANG_CPP POC_LANG_CPP_UNKNOWN_ID
 #       define POC_LANG_CPP_STRING POC_LANG_CPP_UNKNOWN_STRING
@@ -76,6 +78,7 @@
 #   define POC_LANG_OPENCL POC_LANG_OPENCL_UNKNOWN_ID
 #   define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_UNKNOWN_STRING
 #   // define POC_LANG_OPENCL_VERSION __OPENCL_VERSION__
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
@@ -94,30 +97,37 @@
 #       define POC_LANG_C_TYPE_IMAGINARY_SUPPORT 1
 #   // Freestanding C99 implementation
 #   // It isn't specified if freestanding implementations support complex data types.
-#   elif defined(__STDC_HOSTED__) && (0 == __STDC_HOSTED__)        
+#   elif defined(__STDC_HOSTED__) && (0 == __STDC_HOSTED__)  
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.      
 #   endif
 #   // Compiler performs floating point arithmetic according to the IEC 60559 standard, also known as the 
 #   // IEEE 754 standard.
 #   if defined(__STDC_IEC_559__) && (1 == __STDC_IEC_559__) 
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   // Compiler performs complex arithmetic according to the IEC 60559 standard.
 #   if defined(__STD_IEC_559_COMPLEX__) && (1 == __STD_IEC_559_COMPLEX__) 
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   // Values of the type @c wchar_t are represented by the codes in the ISO/IEC 10646 standard. The macro contains the 
 #   // standard revision as an integral value encoded as the year and month if the revision, @c yyyymmL .
 #   if defined(__STDC_ISO_10646__) 
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #endif
 
 
 
-// Detect if RTTI is enabled for C++
+// Detect if RTTI is for sure enabled for C++. 
+// @attention RTTI might even be enabled if the tested macros aren't defined.
 #if defined(POC_LANG_CPP)
 #   if defined(POC_COMPILER_GCC) && defined(__GXX_RTTI)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(POC_COMPILER_MSVC) && defined(_CPPRTTI)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(POC_COMPILER_ICC) && defined(__INTEL_RTTI__)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
@@ -131,6 +141,7 @@
 #   endif
 #   if defined(POC_COMPILER_MSVC) && defined(_CPPUNWIND)
 #       define POC_LANG_CPP_EXCEPTIONS_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(POC_COMPILER_ICC) && defined(__EXCEPTIONS)
 #       define POC_LANG_CPP_EXCEPTIONS_SUPPORT 1
@@ -141,33 +152,43 @@
 #if defined (POC_LANG_OPENCL)
 #   // Detect extensions.
 #   if defined(cl_khr_fp64)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_select_fprounding_mode)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   // Possible values for @c __ROUNDING_MODE__ are @code rte, rtz, rtp, rtz @endcode .
 #   endif
 #   if defined(cl_khr_global_int32_base_atomics)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_global_int32_extended_atomics)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_local_int32_base_atomics)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_local_int32_extended_atomics)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_int64_base_atomics)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_int64_extended_atomics)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_3d_image_writes)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_byte_addressable_store)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_fp16)
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
-
-// #error Implement setting of POC_LANG, POC_LANG_UNKNOWN, etc.
 
 #if defined(POC_LANG_C)
 #   define POC_LANG POC_LANG_C
@@ -191,5 +212,49 @@
 #if defined(POC_LANG_OPENCL)
 #   define POC_LANG POC_LANG_OPENCL
 #   define POC_LANG_STRING POC_LANG_OBJC_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
+
+// No known programming language detected.
+#if !defined(POC_LANG) || !defined(POC_LANG_STRING)
+#   define POC_LANG_UNKNOWN POC_LANG_UNKNOWN_ID
+#   define POC_LANG POC_LANG_UNKNOWN_ID
+#   define POC_LANG_STRING POC_LANG_UNKNOWN_STRING
+#   error Unknown programming language.
+#endif
+
+/*
+// Exactly one programming language must have been chosen - xor tests to find possible error.
+#if defined(POC_LANG_C) && \
+(defined(POC_LANG_CPP) || \
+defined(POC_LANG_OBJC) || \
+defined(POC_LANG_OPENCL) || \
+defined(POC_LANG_UNKNOWN))
+#   error Exactly one programming language must be selected.
+#elif defined(POC_LANG_CPP) && \
+(defined(POC_LANG_C) || \
+defined(POC_LANG_OBJC) || \
+defined(POC_LANG_OPENCL) || \
+defined(POC_LANG_UNKNOWN))
+#   error Exactly one programming language must be selected.
+#elif defined(POC_LANG_OBJC) && \
+(defined(POC_LANG_CPP) || \
+defined(POC_LANG_C) || \
+defined(POC_LANG_OPENCL) || \
+defined(POC_LANG_UNKNOWN))
+#   error Exactly one programming language must be selected.
+#elif defined(POC_LANG_OPENCL) && \
+(defined(POC_LANG_CPP) || \
+defined(POC_LANG_OBJC) || \
+defined(POC_LANG_C) || \
+defined(POC_LANG_UNKNOWN))
+#   error Exactly one programming language must be selected.
+#elif defined(POC_LANG_UNKNOWN) && \
+(defined(POC_LANG_CPP) || \
+defined(POC_LANG_OBJC) || \
+defined(POC_LANG_OPENCL) || \
+defined(POC_LANG_C))
+#   error Exactly one programming language must be selected.
+#endif
+*/
 

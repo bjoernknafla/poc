@@ -34,8 +34,8 @@
 /// @name Compiler version.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///@{
-#define POC_COMPILER_VERSION_UNKNOWN -1
-#define POC_COMPILER_VERSION_UNKNOWN_STRING "Unkown compiler version"
+#define POC_COMPILER_UNKNOWN_VERSION -1
+// #define POC_COMPILER_UNKNOWN_VERSION_STRING "Unkown compiler version"
 ///@}
 
 
@@ -99,39 +99,30 @@
 #   define POC_COMPILER_ICC_VERSION __INTEL_COMPILER
 #   if defined(POC_COMPILER_GCC)
 #       define POC_COMPILER_ICC_HOST_GCC POC_COMPILER_GCC_ID
-#       define POC_COMPILER_ICC_HOST_GCC_ID POC_COMPILER_GCC_ID
 #       define POC_COMPILER_ICC_HOST_GCC_STRING POC_COMPILER_GCC_STRING
 #       define POC_COMPILER_ICC_HOST_GCC_VERSION POC_COMPILER_GCC_VERSION
 #       define POC_COMPILER_ICC_HOST POC_COMPILER_GCC_ID
-#       define POC_COMPILER_ICC_HOST_ID POC_COMPILER_GCC_ID
 #       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_GCC_VERSION
 #       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_GCC_STRING
 #       undef POC_COMPILER_GCC
-#       undef POC_COMPILER_GCC_VERSION
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   elif defined(POC_COMPILER_MSVC)
 #       define POC_COMPILER_ICC_HOST_MSVC POC_COMPILER_MSVC_ID
-#       define POC_COMPILER_ICC_HOST_MSVC_ID POC_COMPILER_MSVC_ID
 #       define POC_COMPILER_ICC_HOST_MSVC_VERSION POC_COMPILER_MSVC_VERSION
 #       define POC_COMPILER_ICC_HOST_MSVC_STRING POC_COMPILER_MSVC_STRING
 #       define POC_COMPILER_ICC_HOST POC_COMPILER_MSVC_ID
-#       define POC_COMPILER_ICC_HOST_ID POC_COMPILER_MSVC_ID
 #       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_MSVC_STRING
 #       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_MSVC_VERSION
 #       undef POC_COMPILER_MSVC
-#       undef POC_COMPILER_MSVC_VERSION
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   elif
 #       define POC_COMPILER_ICC_HOST_UNKNOWN POC_COMPILER_UNKNOWN_ID
-#       define POC_COMPILER_ICC_HOST_UNKNOWN_ID POC_COMPILER_UNKNOWN_ID
 #       define POC_COMPILER_ICC_HOST_UNKNOWN_VERSION POC_COMPILER_UNKNOWN_VERSION
 #       define POC_COMPILER_ICC_HOST_UNKNOWN_STRING POC_COMPILER_UNKNOWN_STRING
 #       define POC_COMPILER_ICC_HOST POC_COMPILER_UNKNOWN_ID
-#       define POC_COMPILER_ICC_HOST_ID POC_COMPILER_UNKNOWN_ID
 #       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_UNKNOWN_STRING
 #       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_UNKNOWN_VERSION
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
@@ -146,26 +137,26 @@
 
 
 #if defined(POC_COMPILER_GCC)
-#   define POC_COMPILER_ID POC_COMPILER_GCC_ID
+#   define POC_COMPILER POC_COMPILER_GCC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_GCC_STRING
 #   define POC_COMPILER_VERSION POC_COMPILER_GCC_VERSION
 #endif
 
 #if defined(POC_COMPILER_MSVC)
-#   define POC_COMPILER_ID POC_COMPILER_MSVC_ID
+#   define POC_COMPILER POC_COMPILER_MSVC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_MSVC_STRING
 #   define POC_COMPILER_VERSION POC_COMPILER_MSVC_VERSION
 #endif
 
 #if defined(POC_COMPILER_NVCC)
-#   define POC_COMPILER_ID POC_COMPILER_NVCC_ID
+#   define POC_COMPILER POC_COMPILER_NVCC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_NVCC_STRING
 #   define POC_COMPILER_VERSION POC_COMPILER_NVCC_VERSION
 #endif
 
 
 #if defined(POC_COMPILER_OPENCL_GENERIC)
-#   define POC_COMPILER_ID POC_COMPILER_OPENCL_GENERIC_ID
+#   define POC_COMPILER POC_COMPILER_OPENCL_GENERIC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_OPENCL_GENERIC_STRING
 #   define POC_COMPILER_VERSION POC_COMPILER_OPENCL_GENERIC_VERSION
 #endif
@@ -173,16 +164,66 @@
 
 // Icc detection must be last to overwrite values that might have been set by host compilers like GCC or MSVC.
 #if defined(POC_COMPILER_ICC)
-#   define POC_COMPILER_ID POC_COMPILER_ICC_ID
+#   define POC_COMPILER POC_COMPILER_ICC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_ICC_STRING
 #   define POC_COMPILER_VERSION POC_COMPILER_ICC_VERSION
 #endif
 
 
 // No known compiler detected.
-#if !defined(POC_COMPILER_STRING) || !defined(POC_COMPILER_ID)
-#   define POC_COMPILER_ID POC_COMPILER_UNKNOWN_ID
+#if !defined(POC_COMPILER) || !defined(POC_COMPILER_STRING)
+#   define POC_COMPILER_UNKNOWN POC_COMPILER_UNKNOWN_ID
+#   define POC_COMPILER POC_COMPILER_UNKNOWN_ID
 #   define POC_COMPILER_STRING POC_COMPILER_UNKNOWN_STRING
-#   define POC_COMPILER_VERSION POC_COMPILER_VERSION_UNKNOWN
+#   define POC_COMPILER_VERSION POC_COMPILER_UNKNOWN_VERSION
 #   error Compiler unknown.
 #endif
+
+
+// Exactly one main compiler must have been choosen - xor tests to find possible error.
+// The main compiler can have a host compiler (see @c POC_COMPILER_ICC for an example).
+#if defined(POC_LANG_COMPILER_GCC) && \
+(defined(POC_COMPILER_MSVC) || \
+ defined(POC_COMPILER_ICC) || \
+ defined(POC_COMPILER_NVCC) || \
+ defined(POC_COMPILER_OPENCL_GENERIC) || \
+ defined(POC_COMPILER_UNKNOWN))
+#   error Exactly one compiler must be selected.
+#elif defined(POC_LANG_COMPILER_MSVC) && \
+(defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_ICC) || \
+defined(POC_COMPILER_NVCC) || \
+defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_UNKNOWN))
+#   error Exactly one compiler must be selected.
+#elif defined(POC_LANG_COMPILER_ICC) && \
+(defined(POC_COMPILER_MSVC) || \
+defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_NVCC) || \
+defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_UNKNOWN))
+#   error Exactly one compiler must be selected.
+#elif defined(POC_LANG_COMPILER_NVCC) && \
+(defined(POC_COMPILER_MSVC) || \
+defined(POC_COMPILER_ICC) || \
+defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_UNKNOWN))
+#   error Exactly one compiler must be selected.
+#elif defined(POC_COMPILER_OPENCL_GENERIC) && \
+(defined(POC_COMPILER_MSVC) || \
+defined(POC_COMPILER_ICC) || \
+defined(POC_COMPILER_NVCC) || \
+defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_UNKNOWN))
+#   error Exactly one compiler must be selected.
+#elif defined(POC_COMPILER_UNKNOWN) && \
+(defined(POC_COMPILER_MSVC) || \
+defined(POC_COMPILER_ICC) || \
+defined(POC_COMPILER_NVCC) || \
+defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_OPENCL_GENERIC))
+#   error Exactly one compiler must be selected.
+#endif
+
+

@@ -44,21 +44,21 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #if defined(POC_ENDIAN_LITTLE)
-#   define POC_ENDIAN_ID POC_ENDIAN_LITTLE_ID
+#   define POC_ENDIAN POC_ENDIAN_LITTLE_ID
 #   define POC_ENDIAN_STRING POC_ENDIAN_LITTLE_STRING
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_ENDIAN_BIG)
-#   define POC_ENDIAN_ID POC_ENDIAN_BIG_ID
+#   define POC_ENDIAN POC_ENDIAN_BIG_ID
 #   define POC_ENDIAN_STRING POC_ENDIAN_BIG_STRING
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
 // Endianess unknown
-#if !defined(POC_ENDIAN_ID) || !defined(POC_ENDIAN_STRING)
-#   define POC_ENDIAN_ID POC_ENDIAN_UNKNOWN_ID
+#if !defined(POC_ENDIAN) || !defined(POC_ENDIAN_STRING)
+#   define POC_ENDIAN_UNKNOWN POC_ENDIAN_UNKNOWN_ID
+#   define POC_ENDIAN POC_ENDIAN_UNKNOWN_ID
 #   define POC_ENDIAN_STRING POC_ENDIAN_UNKNOWN_STRING
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
@@ -66,7 +66,13 @@
 
 // Detect erroreneous declaration of little and big endianness at the same time
 // @todo How to handle bi-endian architectures?
-#if defined(POC_ENDIAN_LITTLE) && defined(POC_ENDIAN_BIG)
+#if defined(POC_ENDIAN_LITTLE) && (defined(POC_ENDIAN_BIG) || defined(POC_ENDIAN_UNKNOWN))
 #   error Little and big endianness mustn't be active at the same time.
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   error Endianess must be little or big.
+#elif defined(POC_ENDIAN_BIG) && (defined(POC_ENDIAN_LITTLE) || defined(POC_ENDIAN_UNKNOWN))
+#   error Little and big endianness mustn't be active at the same time.
+#   error Endianess must be little or big.
+#elif defined(POC_ENDIAN_UNKNOWN) && (defined(POC_ENDIAN_BIG) || defined(POC_ENDIAN_LITTLE))
+#   error Little and big endianness mustn't be active at the same time.
+#   error Endianess must be little or big.
 #endif

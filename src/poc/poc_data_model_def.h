@@ -20,12 +20,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///@{
 #define POC_DATA_MODEL_UNKNOWN_ID 0
-// #define POC_DATA_MODEL_LP32_ID 1 // No detection implemented.
+#define POC_DATA_MODEL_LP32_ID 1 // No detection implemented.
 #define POC_DATA_MODEL_ILP32_ID 2
 #define POC_DATA_MODEL_LP64_ID 4
 #define POC_DATA_MODEL_LLP64_ID 8
-// #define POC_DATA_MODEL_ILP64_ID 16 // No detection implemented.
-// #define POC_DATA_MODEL_SILP64_ID 32 // No detection implemented.
+#define POC_DATA_MODEL_ILP64_ID 16 // No detection implemented.
+#define POC_DATA_MODEL_SILP64_ID 32 // No detection implemented.
 ///@}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,12 +47,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///@{
 #define POC_DATA_MODEL_UNKNOWN_STRING "Unknown data model"
-// #define POC_DATA_MODEL_LP32_STRING "LP32" // No detection implemented.
+#define POC_DATA_MODEL_LP32_STRING "LP32" // No detection implemented.
 #define POC_DATA_MODEL_ILP32_STRING "ILP32"
 #define POC_DATA_MODEL_LP64_STRING "LP64"
 #define POC_DATA_MODEL_LLP64_STRING "LLP64"
-// #define POC_DATA_MODEL_ILP64_STRING "ILP64" // No detection implemented.
-// #define POC_DATA_MODEL_SILP64_STRING "SILP64" // No detection implemented.
+#define POC_DATA_MODEL_ILP64_STRING "ILP64" // No detection implemented.
+#define POC_DATA_MODEL_SILP64_STRING "SILP64" // No detection implemented.
 ///@}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +90,9 @@
 #           error On 64bit Linux the _LP64 or __LP64__ symbol should be set.
 #       endif
 #       define POC_DATA_MODEL_ILP32 POC_DATA_MODEL_ILP32_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
@@ -114,24 +116,27 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #if defined(POC_DATA_MODEL_ILP32)
-#   define POC_DATA_MODEL_ID POC_DATA_MODEL_ILP32_ID
+#   define POC_DATA_MODEL POC_DATA_MODEL_ILP32_ID
 #   define POC_DATA_MODEL_STRING POC_DATA_MODEL_ILP32_STRING
 #endif
 
 #if defined(POC_DATA_MODEL_LP64)
-#   define POC_DATA_MODEL_ID POC_DATA_MODEL_LP64_ID
+#   define POC_DATA_MODEL POC_DATA_MODEL_LP64_ID
 #   define POC_DATA_MODEL_STRING POC_DATA_MODEL_LP64_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_DATA_MODEL_LLP64)
-#   define POC_DATA_MODEL_ID POC_DATA_MODEL_LLP64_ID
+#   define POC_DATA_MODEL POC_DATA_MODEL_LLP64_ID
 #   define POC_DATA_MODEL_STRING POC_DATA_MODEL_LLP64_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
 // No known data model detected.
-#if !defined(POC_DATA_MODEL_STRING) || !defined(POC_DATA_MODEL_ID)
-#   define POC_DATA_MODEL_ID POC_DATA_MODEL_UNKNOWN_ID
+#if !defined(POC_DATA_MODEL) || !defined(POC_DATA_MODEL_STRING)
+#   define POC_DATA_MODEL_UNKNOWN POC_DATA_MODEL_UNKNOWN_ID
+#   define POC_DATA_MODEL POC_DATA_MODEL_UNKNOWN_ID
 #   define POC_DATA_MODEL_STRING POC_DATA_MODEL_UNKNOWN_STRING
 #   error Unknown data model.
 #endif
@@ -142,7 +147,7 @@
 // Correctnes checks and tests
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Exactly one data model must have been choosen - xor tests to find possible error.
+// Exactly one data model must have been chosen - xor tests to find possible error.
 #if defined(POC_DATA_MODEL_LP32) \
 && (defined(POC_DATA_MODEL_ILP32) \
 || defined(POC_DATA_MODEL_LP64) \

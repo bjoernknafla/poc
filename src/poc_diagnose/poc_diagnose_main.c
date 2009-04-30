@@ -70,7 +70,7 @@ typedef struct std_c_cpp_predefined_macros_t
 
 
 
-std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros();
+std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros(void);
 
 int print_macro_definition_string(FILE* outstream, 
                                   char const* macro_description_string, 
@@ -91,7 +91,7 @@ void print_endian(FILE* outstream);
 void print_os(FILE* outstream);
 
 
-std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros()
+std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros(void)
 {
     std_c_cpp_predefined_macros std_macros = {
         0, 0,
@@ -356,20 +356,20 @@ void print_lang(FILE* outstream)
     
     switch (POC_LANG) 
     {
-        case POC_LANG_C_UNKNOWN_ID:
-            fprintf(outstream, "POC_LANG_C_UNKNOWN_ID");
-            break;
         case POC_LANG_C_C89_ID:
             fprintf(outstream, "POC_LANG_C_C89_ID");
             break;
         case POC_LANG_C_C99_ID:
             fprintf(outstream, "POC_LANG_C_C99_ID");
             break;
-        case POC_LANG_CPP_UNKNOWN_ID:
-            fprintf(outstream, "POC_LANG_CPP_UNKNOWN_ID");
+        case POC_LANG_C_UNKNOWN_ID:
+            fprintf(outstream, "POC_LANG_C_UNKNOWN_ID");
             break;
         case POC_LANG_CPP_CPP98_ID:
             fprintf(outstream, "POC_LANG_CPP_CPP98_ID");
+            break;
+        case POC_LANG_CPP_UNKNOWN_ID:
+            fprintf(outstream, "POC_LANG_CPP_UNKNOWN_ID");
             break;
         case POC_LANG_OBJC_UNKNOWN_ID:
             fprintf(outstream, "POC_LANG_OBJC_UNKNOWN_ID");
@@ -377,13 +377,16 @@ void print_lang(FILE* outstream)
         case POC_LANG_OPENCL_UNKNOWN_ID:
             fprintf(outstream, "POC_LANG_OPENCL_UNKNOWN_ID");
             break;
+        case POC_LANG_UNKNOWN_ID:
+            fprintf(outstream, "POC_LANG_UNKNOWN_ID");
+            break;
         default:
             fprintf(outstream, "non-POC predefined value of %d", POC_LANG);
     };
     fprintf(outstream, "\n");
     
-    fprintf(outstream, "POC_LANG_STRING set to %s", POC_LANG_STRING);
-    fprintf(outstream, "\n");
+    fprintf(outstream, "POC_LANG_STRING defined and set to %s", POC_LANG_STRING);
+    fprintf(outstream, "\n\n");
     
     
     
@@ -392,14 +395,14 @@ void print_lang(FILE* outstream)
     
     switch (POC_LANG_C)
     {
-        case POC_LANG_C_UNKNOWN_ID:
-            fprintf(outstream, "POC_LANC_C_UNKNOWN_ID");
-            break;
         case POC_LANG_C_C89_ID:
             fprintf(outstream, "POC_LANG_C_C89_ID");
             break;
         case POC_LANG_C_C99_ID:
             fprintf(outstream, "POC_LANG_C_C99_ID");
+            break;
+        case POC_LANG_C_UNKNOWN_ID:
+            fprintf(outstream, "POC_LANC_C_UNKNOWN_ID");
             break;
         default:
             fprintf(outstream, "non-POC predefined value of %d", POC_LANG_C);
@@ -422,11 +425,11 @@ void print_lang(FILE* outstream)
     
     switch (POC_LANG_CPP)
     {
-        case POC_LANG_CPP_UNKNOWN_ID:
-            fprintf(outstream, "POC_LANG_CPP_UNKNOWN_ID");
-            break;
         case POC_LANG_CPP_CPP98_ID:
             fprintf(outstream, "POC_LANG_CPP_CPP98_ID");
+            break;
+        case POC_LANG_CPP_UNKNOWN_ID:
+            fprintf(outstream, "POC_LANG_CPP_UNKNOWN_ID");
             break;
         default:
             fprintf(outstream, "non-POC predefined value of %d", POC_LANG_CPP);
@@ -491,34 +494,385 @@ void print_lang(FILE* outstream)
     
 }
 
+#include <poc/poc_data_model.h>
 
 void print_data_model(FILE* outstream)
 {
-    fprintf(outstream, "POC programming language type size data model detection \n\n");
+    fprintf(outstream, "POC data model detection \n\n");
+    
+    fprintf(outstream, "POC_DATA_MODEL defined and set to ");
+    
+    switch (POC_DATA_MODEL)
+    {
+        case POC_DATA_MODEL_LP32_ID:
+            fprintf(outstream, "POC_DATA_MODEL_LP32_ID");
+            break;
+        case POC_DATA_MODEL_ILP32_ID:
+            fprintf(outstream, "POC_DATA_MODEL_ILP32_ID");
+            break;
+        case POC_DATA_MODEL_LP64_ID:
+            fprintf(outstream, "POC_DATA_MODEL_LP64_ID");
+            break;
+        case POC_DATA_MODEL_LLP64_ID:
+            fprintf(outstream, "POC_DATA_MODEL_LLP64_ID");
+            break;
+        case POC_DATA_MODEL_ILP64_ID:
+            fprintf(outstream, "POC_DATA_MODEL_ILP64_ID");
+            break;
+        case POC_DATA_MODEL_SILP64_ID:
+            fprintf(outstream, "POC_DATA_MODEL_SILP64_ID");
+            break;
+        case POC_DATA_MODEL_UNKNOWN_ID:
+            fprintf(outstream, "POC_DATA_MODEL_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_DATA_MODEL);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_DATA_MODEL_STRING defined set to %s", POC_DATA_MODEL_STRING);
+    fprintf(outstream, "\n\n");
+
+    
+    
+#if defined(POC_DATA_MODEL_LP32)
+    fprintf(outstream, "POC_DATA_MODEL_LP32 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_DATA_MODEL_ILP32)
+    fprintf(outstream, "POC_DATA_MODEL_ILP32 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_DATA_MODEL_LP64)
+    fprintf(outstream, "POC_DATA_MODEL_LP64 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_DATA_MODEL_LLP64)
+    fprintf(outstream, "POC_DATA_MODEL_LLP64 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_DATA_MODEL_ILP64)
+    fprintf(outstream, "POC_DATA_MODEL_ILP64 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_DATA_MODEL_SILP64)
+    fprintf(outstream, "POC_DATA_MODEL_SILP64 defined");
+    fprintf(outstream, "\n");
+#endif
+    
 }
 
-
+#include <poc/poc_compiler.h>
 void print_compiler(FILE* outstream)
 {
     fprintf(outstream, "POC comiler detection \n\n");
+    
+    fprintf(outstream, "POC_COMPILER defined and set to ");
+    
+    switch (POC_COMPILER)
+    {
+        case POC_COMPILER_GCC_ID:
+            fprintf(outstream, "POC_COMPILER_GCC_ID");
+            break;
+        case POC_COMPILER_MSVC_ID:
+            fprintf(outstream, "POC_COMPILER_MSVC_ID");
+            break;
+        case POC_COMPILER_NVCC_ID:
+            fprintf(outstream, "POC_COMPILER_NVCC_ID");
+            break;
+        case POC_COMPILER_OPENCL_GENERIC_ID:
+            fprintf(outstream, "POC_COMPILER_OPENCL_GENERIC_ID");
+            break;
+        case POC_COMPILER_ICC_ID:
+            fprintf(outstream, "POC_COMPILER_ICC_ID");
+            break;
+        case POC_COMPILER_UNKNOWN_ID:
+            fprintf(outstream, "POC_COMPILER_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_COMPILER);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_COMPILER_STRING defined and set to %s", POC_COMPILER_STRING);
+    fprintf(outstream, "\n");
+    fprintf(outstream, "POC_COMPILER_VERSION defined and set to %i", POC_COMPILER_VERSION);
+    fprintf(outstream, "\n\n");
+    
+#if defined(POC_COMPILER_SET_BY_HAND)
+    fprintf(outstream, "POC_COMPILER_SET_BY_HAND defined");
+    fprintf(outstream, "\n");
+#endif  
+    
+#if defined(POC_COMPILER_GCC)
+    fprintf(outstream, "POC_COMPILER_GCC defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_COMPILER_MSVC)
+    fprintf(outstream, "POC_COMPILER_MSVC defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_COMPILER_NVCC)
+    fprintf(outstream, "POC_COMPILER_NVCC defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_COMPILER_OPENCL_GENERIC)
+    fprintf(outstream, "POC_COMPILER_OPENCL_GENERIC defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_COMPILER_ICC)
+    fprintf(outstream, "POC_COMPILER_ICC defined");
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_COMPILER_ICC_HOST defined and set to ");
+    
+    switch (POC_COMPILER_ICC_HOST)
+    {
+        case POC_COMPILER_GCC_ID:
+            fprintf(outstream, "POC_COMPILER_GCC_ID");
+            break;
+        case POC_COMPILER_MSVC_ID:
+            fprintf(outstream, "POC_COMPILER_MSVC_ID");
+            break;
+        case POC_COMPILER_UNKNOWN_ID:
+            fprintf(outstream, "POC_COMPILER_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_COMPILER_ICC_HOST);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_COMPILER_ICC_HOST_STRING defined and set to %s", POC_COMPILER_ICC_HOST_STRING);
+    fprintf(outstream, "\n");
+    fprintf(outstream, "POC_COMPILER_ICC_HOST_VERSION defined and set to %i", POC_COMPILER_ICC_HOST_VERSION);
+    fprintf(outstream, "\n");
+    
+#if     defined(POC_COMPILER_ICC_HOST_GCC)
+    fprintf(outstream, "POC_COMPILER_ICC_HOST_GCC defined");
+    fprintf(outstream, "\n");
+#       endif
+  
+#if     defined(POC_COMPILER_ICC_HOST_MSVC)
+    fprintf(outstream, "POC_COMPILER_ICC_HOST_MSVC defined");
+    fprintf(outstream, "\n");
+#       endif
+    
+#if     defined(POC_COMPILER_ICC_HOST_UNKNOWN)
+    fprintf(outstream, "POC_COMPILER_ICC_HOST_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#       endif
+    
+#endif
+    
+#if defined(POC_COMPILER_UNKNWON)
+    fprintf(outstream, "POC_COMPILER_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#endif
+    
 }
 
-
+#include <poc/poc_arch.h>
 void print_arch(FILE* outstream)
 {
     fprintf(outstream, "POC machine architecture detection \n\n");
+    
+    fprintf(outstream, "POC_ARCH defined and set to ");
+    
+    switch (POC_ARCH)
+    {
+        case POC_ARCH_X86_32_ID:
+            fprintf(outstream, "POC_ARCH_X86_32_ID");
+            break;
+        case POC_ARCH_X86_64_ID:
+            fprintf(outstream, "POC_ARCH_X86_64_ID");
+            break;
+        case POC_ARCH_PPC_ID:
+            fprintf(outstream, "POC_ARCH_PPC_ID");
+            break;
+        case POC_ARCH_PPC64_ID:
+            fprintf(outstream, "POC_ARCH_PPC64_ID");
+            break;
+        case POC_ARCH_ARM_ID:
+            fprintf(outstream, "POC_ARCH_ARM_ID");
+            break;
+        case POC_ARCH_ARM_THUMB_ID:
+            fprintf(outstream, "POC_ARCH_ARM_THUMB_ID");
+            break;
+        case POC_ARCH_UNKNOWN_ID:
+            fprintf(outstream, "POC_ARCH_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_ARCH);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_ARCH_STRING defined and set to %s", POC_ARCH_STRING);
+    fprintf(outstream, "\n\n");
+    
+#if defined(POC_ARCH_X86)
+    fprintf(outstream, "POC_ARCH_X86 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_ARCH_X86_32)
+    fprintf(outstream, "POC_ARCH_X86_32 defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ARCH_X86_64)
+    fprintf(outstream, "POC_ARCH_X86_64 defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ARCH_PPC)
+    fprintf(outstream, "POC_ARCH_PPC defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ARCH_PPC64)
+    fprintf(outstream, "POC_ARCH_PPC64 defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ARCH_ARM)
+    fprintf(outstream, "POC_ARCH_ARM defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ARCH_ARM_THUMB)
+    fprintf(outstream, "POC_ARCH_ARM_THUMB defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ARCH_UNKNOWN)
+    fprintf(outstream, "POC_ARCH_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#endif
+    
 }
 
-
+#include <poc/poc_endian.h>
 void print_endian(FILE* outstream)
 {
     fprintf(outstream, "POC machine endianess detection \n\n");
+    
+    fprintf(outstream, "POC_ENDIAN defined and set to ");
+    
+    switch (POC_ENDIAN)
+    {
+        case POC_ENDIAN_LITTLE_ID:
+            fprintf(outstream, "POC_ENDIAN_LITTLE_ID");
+            break;
+        case POC_ENDIAN_BIG_ID:
+            fprintf(outstream, "POC_ENDIAN_BIG_ID");
+            break;
+        case POC_ENDIAN_UNKNOWN_ID:
+            fprintf(outstream, "POC_ENDIAN_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_ENDIAN);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_ENDIAN_STRING defined and set to %s", POC_ENDIAN_STRING);
+    fprintf(outstream, "\n\n");
+    
+#if defined(POC_ENDIAN_LITTLE)
+    fprintf(outstream, "POC_ENDIAN_LITTLE defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_ENDIAN_BIG)
+    fprintf(outstream, "POC_ENDIAN_BIG defined");
+    fprintf(outstream, "\n");
+#endif
+  
+#if defined(POC_ENDIAN_UNKNOWN)
+    fprintf(outstream, "POC_ENDIAN_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#endif
+    
 }
 
-
+#include <poc/poc_os.h>
 void print_os(FILE* outstream)
 {
     fprintf(outstream, "POC operating system detection \n\n");
+    
+    fprintf(outstream, "POC_OS defined and set to ");
+    
+    switch (POC_OS)
+    {
+        case POC_OS_UNIX_ID:
+            fprintf(outstream, "POC_OS_UNIX_ID");
+            break;
+        case POC_OS_MACOSX_ID:
+            fprintf(outstream, "POC_OS_MACOSX_ID");
+            break;
+        case POC_OS_LINUX_ID:
+            fprintf(outstream, "POC_OS_LINUX_ID");
+            break;
+        case POC_OS_WIN32_ID:
+            fprintf(outstream, "POC_OS_WIN32_ID");
+            break;
+        case POC_OS_WIN64_ID:
+            fprintf(outstream, "POC_OS_WIN64_ID");
+            break;
+        case POC_OS_UNKNOWN_ID:
+            fprintf(outstream, "POC_OS_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_OS);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "POC_OS_STRING defined and set to %s", POC_OS_STRING);
+    fprintf(outstream, "\n\n");
+    
+#if defined(POC_OS_SET_BY_HAND)
+    fprintf(outstream, "POC_OS_SET_BY_HAND defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_OS_UNIX)
+    fprintf(outstream, "POC_OS_UNIX defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_OS_MACOSX)
+    fprintf(outstream, "POC_OS_MACOSX defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_OS_LINUX)
+    fprintf(outstream, "POC_OS_LINUX defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_OS_WIN32)
+    fprintf(outstream, "POC_OS_WIN32 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_OS_WIN64)
+    fprintf(outstream, "POC_OS_WIN64 defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_OS_UNKNOWN)
+    fprintf(outstream, "POC_OS_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#endif
+    
 }
 
 

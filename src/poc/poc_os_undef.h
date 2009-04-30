@@ -6,7 +6,7 @@
  * @attention This header doesn't have header guards to allow successive inclusion.
  */
 
-#undef POC_OS_ID
+#undef POC_OS
 #undef POC_OS_STRING
 
 #undef POC_OS_UNKNOWN

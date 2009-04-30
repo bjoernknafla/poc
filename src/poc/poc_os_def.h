@@ -16,9 +16,8 @@
 #define POC_OS_UNIX_ID 1
 #define POC_OS_MACOSX_ID 2
 #define POC_OS_LINUX_ID 4
-#define POC_OS_WIN_ID 8
-#define POC_OS_WIN32_ID 16
-#define POC_OS_WIN64_ID 32
+#define POC_OS_WIN32_ID 8
+#define POC_OS_WIN64_ID 16
 ///@}
 
 
@@ -83,43 +82,88 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Determine @c POC_OS_STRING and @c POC_OS_ID
+// Determine @c POC_OS and @c POC_OS_STRING
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #if defined(POC_OS_UNIX)
+#   define POC_OS POC_OS_UNIX_ID
 #   define POC_OS_STRING POC_OS_UNIX_STRING
-#   define POC_OS_ID POC_OS_UNIX_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_OS_MACOSX)
-#   define POC_OS_STRING POS_OS_MACOSX_STRING
-#   define POC_OS_ID POC_OS_MACOSX_ID
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   define POC_OS POC_OS_MACOSX_ID
+#   define POC_OS_STRING POC_OS_MACOSX_STRING
 #endif
 
 #if defined(POC_OS_LINUX)
+#   define POC_OS POC_OS_LINUX_ID
 #   define POC_OS_STRING POC_OS_LINUX_STRING
-#   define POC_OS_ID POC_OS_LINUX_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
 #if defined(POC_OS_WIN32)
+#   define POC_OS POC_OS_WIN32_ID
 #   define POC_OS_STRING POC_OS_WIN32_STRING
-#   define POC_OS_ID POC_OS_WIN32_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_OS_WIN64)
+#   define POC_OS POC_OS_WIN64_ID
 #   define POC_OS_STRING POC_OS_WIN64_STRING
-#   define POC_OS_ID POC_OS_WIN64_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 // No known operating system detected
-#if !defined(POC_OS_STRING) || !defined(POC_OS_ID)
+#if !defined(POC_OS) || !defined(POC_OS_STRING)
 #   define POC_OS_UNKNOWN POC_OS_UNKNOWN_ID
-#   define POC_OS_ID POC_OS_UNKNOWN_ID
+#   define POC_OS POC_OS_UNKNOWN_ID
 #   define POC_OS_STRING POC_OS_UNKNOWN_STRING
 #   error Operating system unknown.
+#endif
+
+
+// Exaclty one operation system must have been chosen - xor test to find possible error.
+#if defined(POC_OS_UNIX) && \
+(defined(POC_OS_MACOSX) || \
+defined(POC_OS_LINUX) || \
+defined(POC_OS_WIN32) || \
+defined(POC_OS_WIN64) || \
+defined(POC_OS_UNKNOWN))
+#   error Exactly one operating system must be selected.
+#elif defined(POC_OS_MACOSX) && \
+(defined(POC_OS_UNIX) || \
+defined(POC_OS_LINUX) || \
+defined(POC_OS_WIN32) || \
+defined(POC_OS_WIN64) || \
+defined(POC_OS_UNKNOWN))
+#   error Exactly one operating system must be selected.
+#elif defined(POC_OS_LINUX) && \
+(defined(POC_OS_MACOSX) || \
+defined(POC_OS_UNIX) || \
+defined(POC_OS_WIN32) || \
+defined(POC_OS_WIN64) || \
+defined(POC_OS_UNKNOWN))
+#   error Exactly one operating system must be selected.
+#elif defined(POC_OS_WIN32) && \
+(defined(POC_OS_MACOSX) || \
+defined(POC_OS_LINUX) || \
+defined(POC_OS_UNIX) || \
+defined(POC_OS_WIN64) || \
+defined(POC_OS_UNKNOWN))
+#   error Exactly one operating system must be selected.
+#elif defined(POC_OS_WIN64) && \
+(defined(POC_OS_MACOSX) || \
+defined(POC_OS_LINUX) || \
+defined(POC_OS_WIN32) || \
+defined(POC_OS_UNIX) || \
+defined(POC_OS_UNKNOWN))
+#   error Exactly one operating system must be selected.
+#elif defined(POC_OS_UNKNOWN) && \
+(defined(POC_OS_MACOSX) || \
+defined(POC_OS_LINUX) || \
+defined(POC_OS_WIN32) || \
+defined(POC_OS_WIN64) || \
+defined(POC_OS_UNIX))
+#   error Exactly one operating system must be selected.
 #endif
