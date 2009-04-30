@@ -6,6 +6,12 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		32532ADC0FA9B5DB00197F39 /* poc_diagnose_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */; };
+		32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
+		32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		8DD76F690486A84900D96B5E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -30,6 +36,12 @@
 		324867D20FA34E6700784249 /* poc_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_undef.h; sourceTree = "<group>"; };
 		324867D30FA34EA300784249 /* poc_arch_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_arch_def.h; sourceTree = "<group>"; };
 		324867D40FA361D000784249 /* poc_arch_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_arch_undef.h; sourceTree = "<group>"; };
+		32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = poc_diagnose_main.cpp; sourceTree = "<group>"; };
+		32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = poc_diagnose_main.c; sourceTree = "<group>"; };
+		32532AD00FA9B59F00197F39 /* poc_diagnose_c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_c; sourceTree = BUILT_PRODUCTS_DIR; };
+		32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_cpp; path = build/Debug/poc_diagnose_cpp; sourceTree = "<group>"; };
+		32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = poc_diagnose_main_objc.m; sourceTree = "<group>"; };
+		32532B590FA9CDB600197F39 /* poc_diagnose_objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_objc; path = build/Debug/poc_diagnose_objc; sourceTree = "<group>"; };
 		32A9B6120FA5C26900FF0967 /* poc_compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler.h; sourceTree = "<group>"; };
 		32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_def.h; sourceTree = "<group>"; };
 		32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_undef.h; sourceTree = "<group>"; };
@@ -61,6 +73,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		32532ACE0FA9B59F00197F39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32532AD60FA9B5CF00197F39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32532B570FA9CDB600197F39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DD76F660486A84900D96B5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				8DD76F6C0486A84900D96B5E /* poc */,
+				32532AD00FA9B59F00197F39 /* poc_diagnose_c */,
+				32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */,
+				32532B590FA9CDB600197F39 /* poc_diagnose_objc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +146,7 @@
 		324846B90FA3151900784249 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				32532A6D0FA8A9CE00197F39 /* poc_diagnose */,
 				324846BA0FA3151900784249 /* poc */,
 			);
 			name = src;
@@ -158,6 +195,16 @@
 			path = poc;
 			sourceTree = "<group>";
 		};
+		32532A6D0FA8A9CE00197F39 /* poc_diagnose */ = {
+			isa = PBXGroup;
+			children = (
+				32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */,
+				32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */,
+				32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */,
+			);
+			path = poc_diagnose;
+			sourceTree = "<group>";
+		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +216,54 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		32532ACF0FA9B59F00197F39 /* poc_diagnose_c */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32532AD40FA9B5C100197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_c" */;
+			buildPhases = (
+				32532ACD0FA9B59F00197F39 /* Sources */,
+				32532ACE0FA9B59F00197F39 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = poc_diagnose_c;
+			productName = poc_diagnose_c;
+			productReference = 32532AD00FA9B59F00197F39 /* poc_diagnose_c */;
+			productType = "com.apple.product-type.tool";
+		};
+		32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32532ADF0FA9B5FF00197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_cpp" */;
+			buildPhases = (
+				32532AD50FA9B5CF00197F39 /* Sources */,
+				32532AD60FA9B5CF00197F39 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = poc_diagnose_cpp;
+			productName = poc_diagnose_cpp;
+			productReference = 32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */;
+			productType = "com.apple.product-type.tool";
+		};
+		32532B580FA9CDB600197F39 /* poc_diagnose_objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32532B5D0FA9CDD900197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_objc" */;
+			buildPhases = (
+				32532B560FA9CDB600197F39 /* Sources */,
+				32532B570FA9CDB600197F39 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = poc_diagnose_objc;
+			productName = poc_diagnose_objc;
+			productReference = 32532B590FA9CDB600197F39 /* poc_diagnose_objc */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DD76F620486A84900D96B5E /* poc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "poc" */;
@@ -200,11 +295,38 @@
 			projectRoot = "";
 			targets = (
 				8DD76F620486A84900D96B5E /* poc */,
+				32532ACF0FA9B59F00197F39 /* poc_diagnose_c */,
+				32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */,
+				32532B580FA9CDB600197F39 /* poc_diagnose_objc */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		32532ACD0FA9B59F00197F39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32532AD50FA9B5CF00197F39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32532ADC0FA9B5DB00197F39 /* poc_diagnose_main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32532B560FA9CDB600197F39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DD76F640486A84900D96B5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,11 +369,34 @@
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../src\"";
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
@@ -261,12 +406,127 @@
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../src\"";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		32532AD20FA9B5A300197F39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_c;
+			};
+			name = Debug;
+		};
+		32532AD30FA9B5A300197F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = 4.2;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_c;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		32532ADA0FA9B5D100197F39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_cpp;
+			};
+			name = Debug;
+		};
+		32532ADB0FA9B5D100197F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_cpp;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		32532B5B0FA9CDBB00197F39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_objc;
+			};
+			name = Debug;
+		};
+		32532B5C0FA9CDBB00197F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_objc;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -287,6 +547,33 @@
 			buildConfigurations = (
 				1DEB923608733DC60010E9CD /* Debug */,
 				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32532AD40FA9B5C100197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_c" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32532AD20FA9B5A300197F39 /* Debug */,
+				32532AD30FA9B5A300197F39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32532ADF0FA9B5FF00197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_cpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32532ADA0FA9B5D100197F39 /* Debug */,
+				32532ADB0FA9B5D100197F39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32532B5D0FA9CDD900197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32532B5B0FA9CDBB00197F39 /* Debug */,
+				32532B5C0FA9CDBB00197F39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

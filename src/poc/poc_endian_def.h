@@ -34,7 +34,7 @@
 #   define POC_ENDIAN_LITTLE POC_ENDIAN_LITTLE_ID
 #endif
 
-#if defined(__BIG_ENDIAN__)
+#if defined(__BIG_ENDIAN__) || (defined(__OPENCL_VERSION__) && !defined(__ENDIAN_LITTLE__))
 #   define POC_ENDIAN_BIG POC_ENDIAN_BIG_ID
 #endif
 
