@@ -91,7 +91,6 @@
 #if defined(_WIN32) || defined(__WIN32__)
 #   define POC_OS_WIN POC_OS_WIN32_ID
 #   define POC_OS_WIN32 POC_OS_WIN32_ID
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 // Detect Win64
@@ -131,7 +130,6 @@
 #if defined(POC_OS_WIN32)
 #   define POC_OS POC_OS_WIN32_ID
 #   define POC_OS_STRING POC_OS_WIN32_STRING
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 #if defined(POC_OS_WIN64)

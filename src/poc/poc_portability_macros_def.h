@@ -70,7 +70,6 @@
 #elif defined(POC_COMPILER_MSVC)
 #   define POC_ALIGN_BEGIN( ALIGN ) __declspec(align( ALIGN ))
 #   define POC_ALIGN_END( ALIGN )
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #else
 #   error Unknown compiler. Alignment macros not implemented.
 #endif

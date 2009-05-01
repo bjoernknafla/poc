@@ -89,7 +89,6 @@
 #       define POC_LANG_CPP POC_LANG_CPP_CPP98_ID
 #       define POC_LANG_CPP_CPP98 POC_LANG_CPP_CPP98_ID
 #       define POC_LANG_CPP_STRING POC_LANG_CPP_CPP98_STRING
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else
 #       define POC_LANG_CPP POC_LANG_CPP_UNKNOWN_ID
 #       define POC_LANG_CPP_STRING POC_LANG_CPP_UNKNOWN_STRING
@@ -158,7 +157,6 @@
 #   endif
 #   if defined(POC_COMPILER_MSVC) && defined(_CPPRTTI)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(POC_COMPILER_ICC) && defined(__INTEL_RTTI__)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
@@ -172,7 +170,6 @@
 #   endif
 #   if defined(POC_COMPILER_MSVC) && defined(_CPPUNWIND)
 #       define POC_LANG_CPP_EXCEPTIONS_SUPPORT 1
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(POC_COMPILER_ICC) && defined(__EXCEPTIONS)
 #       define POC_LANG_CPP_EXCEPTIONS_SUPPORT 1
@@ -257,12 +254,12 @@
 #if !defined(POC_LANG)
 #   define POC_LANG_UNKNOWN POC_LANG_UNKNOWN_ID
 #   define POC_LANG POC_LANG_UNKNOWN_ID
-#   error Unknown programming language.
+// #   error Unknown programming language.
 #endif
 
 #if !defined(POC_LANG_STRING)
 #   define POC_LANG_STRING POC_LANG_UNKNOWN_STRING
-#   error Unknown programming language string.
+// #   error Unknown programming language string.
 #endif
 
 /*

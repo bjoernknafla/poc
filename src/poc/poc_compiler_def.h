@@ -95,7 +95,6 @@
 #   else
 #       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 10000 * 100)
 #   endif
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 // @TODO: Refactor to extract NVCC compiler version (if possible).

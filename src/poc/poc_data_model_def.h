@@ -126,7 +126,6 @@
 // Win32 uses the ILP32 data model
 #if defined(POC_OS_WIN32)
 #   define POC_DATA_MODEL_ILP32 POC_DATA_MODEL_ILP32_ID
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
