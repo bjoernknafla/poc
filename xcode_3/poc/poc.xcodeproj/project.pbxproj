@@ -6,6 +6,21 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		32535EF30FAAF75D00197F39 /* Doxygen documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 32535EF60FAAF77F00197F39 /* Build configuration list for PBXAggregateTarget "Doxygen documentation" */;
+			buildPhases = (
+				32535EF20FAAF75D00197F39 /* ShellScript */,
+			);
+			comments = "Generates the Doxygen documentation.";
+			dependencies = (
+			);
+			name = "Doxygen documentation";
+			productName = "Doxygen documentation";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		32532ADC0FA9B5DB00197F39 /* poc_diagnose_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */; };
 		32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
@@ -42,6 +57,8 @@
 		32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = poc_diagnose_main_objc.m; sourceTree = "<group>"; };
 		32532B590FA9CDB600197F39 /* poc_diagnose_objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_objc; path = build/Debug/poc_diagnose_objc; sourceTree = "<group>"; };
 		32532D440FAA5ABA00197F39 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		32532E070FAAF68F00197F39 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
+		32533E750FAAF6F800197F39 /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; path = html; sourceTree = "<group>"; };
 		32A9B6120FA5C26900FF0967 /* poc_compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler.h; sourceTree = "<group>"; };
 		32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_def.h; sourceTree = "<group>"; };
 		32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_undef.h; sourceTree = "<group>"; };
@@ -107,9 +124,9 @@
 		08FB7794FE84155DC02AAC07 /* poc */ = {
 			isa = PBXGroup;
 			children = (
-				C6859E8C029090F304C91782 /* Documentation */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				324846B00FA3148800784249 /* Xcode Specific */,
+				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 			);
 			name = poc;
@@ -204,9 +221,28 @@
 			path = poc_diagnose;
 			sourceTree = "<group>";
 		};
+		32532E050FAAF68F00197F39 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				32533E750FAAF6F800197F39 /* html */,
+				32532E060FAAF68F00197F39 /* doxygen */,
+			);
+			name = doc;
+			path = ../../doc;
+			sourceTree = SOURCE_ROOT;
+		};
+		32532E060FAAF68F00197F39 /* doxygen */ = {
+			isa = PBXGroup;
+			children = (
+				32532E070FAAF68F00197F39 /* Doxyfile */,
+			);
+			path = doxygen;
+			sourceTree = "<group>";
+		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				32532E050FAAF68F00197F39 /* doc */,
 				324846B80FA314BD00784249 /* README.txt */,
 				32532D440FAA5ABA00197F39 /* LICENSE.txt */,
 			);
@@ -298,9 +334,27 @@
 				32532ACF0FA9B59F00197F39 /* poc_diagnose_c */,
 				32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B580FA9CDB600197F39 /* poc_diagnose_objc */,
+				32535EF30FAAF75D00197F39 /* Doxygen documentation */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32535EF20FAAF75D00197F39 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n# Change to project root directory\ncd ${SRCROOT}/../../\n# Run Doxygen from the project root to enable relative paths in the Doxyfile\ndoxygen doc/Doxygen/Doxyfile\nexit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32532ACD0FA9B59F00197F39 /* Sources */ = {
@@ -530,6 +584,27 @@
 			};
 			name = Release;
 		};
+		32535EF40FAAF76100197F39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Doxygen documentation";
+			};
+			name = Debug;
+		};
+		32535EF50FAAF76100197F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Doxygen documentation";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -574,6 +649,15 @@
 			buildConfigurations = (
 				32532B5B0FA9CDBB00197F39 /* Debug */,
 				32532B5C0FA9CDBB00197F39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32535EF60FAAF77F00197F39 /* Build configuration list for PBXAggregateTarget "Doxygen documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32535EF40FAAF76100197F39 /* Debug */,
+				32535EF50FAAF76100197F39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

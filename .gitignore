@@ -1,6 +1,9 @@
 #Ignore Mac OS X .DS_Store files
 .DS_Store
 
+#Ignore Doxygen generated html files
+doc/html/
+
 #Ignore user-specific settings
 *.mode1v3
 *.mode2v3
@@ -16,7 +19,7 @@
 *.tm_build_errors
 
 #Ignore the build directory
-build
+build/
 
 #Ignore Visual Studio
 *.suo

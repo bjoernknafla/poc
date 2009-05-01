@@ -7,13 +7,11 @@ POC (Portable Preprocessor Compile-time Target Platform Configurator) is a colle
 manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used, 
 the target operating system, or target data model, etc. 
 
-
-
 See src/poc_diagnose(poc_diagnose_main.c for an usage example.
 
 Author:
 Bjoern Knafla (bknafla@googlemail.com)
 
 Release Notes:
-Version 1.0 (May 1, 2009)
+Version 0.1.0 (May 1, 2009)
 - Initial release
