@@ -30,7 +30,7 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/// Only allow undef of utility macros if @code poc_os.h @endcode hasn't been included in this 
+/// Only allow undef of POC operating system macros if @code poc_os.h @endcode hasn't been included in this 
 /// compilation unit.
 #if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
 

@@ -21,6 +21,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+// Only allow definition of POC programming language macros if @code poc_lang.h @endcode hasn't been included 
+// in this compilation unit.
 #if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
 
 
@@ -29,7 +31,7 @@
 #include "poc_compiler_def.h"
 
 
-/// @TODO: Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
+/// TODO: @todo Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
 
 #define POC_LANG_UNKNOWN_ID 0
 #define POC_LANG_C_UNKNOWN_ID 1

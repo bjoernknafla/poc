@@ -32,6 +32,8 @@
 
 #include "poc_arch_def.h"
 
+// Disable macro undefines via including @code poc_arch_undef.h @endcode and prevent re-defines from accidential
+// includes of @code poc_arch_def.h @endcode .
 #define POC_ARCH_HEADER_DISABLE_DEF_UNDEF
 
 #endif // POC_poc_arch_H

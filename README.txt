@@ -12,6 +12,12 @@ See src/poc_diagnose(poc_diagnose_main.c for an usage example.
 Author:
 Bjoern Knafla (bknafla@googlemail.com)
 
+References:
+- Collection of macros defined by language standards, compilers, libraries, etc.:
+http://predef.sourceforge.net/index.php 
+
+
+
 Release Notes:
 Version 0.1.0 (May 1, 2009)
 - Initial release

@@ -21,7 +21,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+// Only allow definition of POC endianess macros if @code poc_endian.h @endcode hasn't been included 
+// in this compilation unit.
 #if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
 
 

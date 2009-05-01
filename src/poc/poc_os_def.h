@@ -30,7 +30,8 @@
  *            @c poc_os_undef.h. If header guards are wanted or needed use @c poc.h or @c poc_os.h instead.
  */
 
-
+// Only allow definition of POC operating system macros if @code poc_os.h @endcode hasn't been included 
+// in this compilation unit.
 #if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
 
 

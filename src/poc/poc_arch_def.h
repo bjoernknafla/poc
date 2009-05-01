@@ -26,12 +26,14 @@
  *
  * Include @code poc_arch_undef.h  @endcode to undefine all preprocessor symbols potentially set herein.
  *
- * @TODO: Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the device.
- * @TODO: Detect if running on a OpenCL host or device and which one the moment this is possible to detect.
- * @TODO: Add support for Cell SPU and PPU.
- * @TODO: Add support for iPhone, iPod Touch, and device emulation.
+ * TODO: @todo Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the device.
+ * TODO: @todo Detect if running on a OpenCL host or device and which one the moment this is possible to detect.
+ * TODO: @todo ‚Add support for Cell SPU and PPU.
+ * TODO: @todo Add support for iPhone, iPod Touch, and device emulation.
  */
 
+// Only allow definition of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included 
+// in this compilation unit.
 #if !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
 
 

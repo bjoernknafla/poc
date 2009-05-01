@@ -22,7 +22,8 @@
  */
 
 
-
+// Only allow definition of POC data model macros if @code poc_data_model.h @endcode hasn't been included 
+// in this compilation unit.
 #if !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
 
 
@@ -232,7 +233,7 @@
 
 #if defined(__cplusplus)
 
-/// @TODO: Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
+/// TODO: @todo Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
 ///        symbols declared in @c climits leak into this header?
 // Include CHAR_BIT
 #include <climits>

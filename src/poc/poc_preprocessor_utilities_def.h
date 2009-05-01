@@ -31,10 +31,12 @@
  * compilation unit.
  */
 
+// Only allow definition of POC preprocessor utilities macros if @code poc_preprocessor_utilities.h @endcode 
+// hasn't been included in this compilation unit.
 #if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
 
 
-/// @TODO: Check all strings that they are at max 32 characters long.
+/// TODO: @todo Check all strings that they are at max 32 characters long.
 #define POC_STRINGS_MAX_LENGTH 32
 
 /// @name Concatentation macros

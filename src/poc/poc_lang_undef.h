@@ -21,6 +21,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Undefines POC programming language macros potentially set by @code poc_lang_def.h @endcode , see
+ * @code poc_lang.h @endcode and @code poc_lang_def.h @endcode for more details.
+ *
+ * @attention This header doesn't have header guards to enable multiple inclusion.
+ */
+
+/// Only allow undef of POC programming language macros if @code poc_lang.h @endcode hasn't been included in this 
+/// compilation unit.
 #if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
 
 

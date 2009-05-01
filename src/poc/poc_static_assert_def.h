@@ -21,13 +21,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+// Only allow definition of POC compile time assertion macros if @code poc_static_assert.h @endcode hasn't been 
+// included in this compilation unit.
 #if !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
 
 
 #include "poc_preprocessor_utilities_def.h"
 
-
+// Even if @code poc_static_assert_def.h @endcode is included multiple times only one definition of the helper
+// templates should exist in this compilation unit.
 #ifndef POC_poc_poc_static_assert_def_H
 #define POC_poc_poc_static_assert_def_H
 
@@ -47,7 +49,7 @@ namespace poc
          * instantiate it if @c Expr is @c true, which means that the assertion is valid. 
          * If it can't be instantiated the compiler fails and pinpoints the invalid assertion.
          *
-         * Don't use directly.
+         * @attention Don't use directly.
          */
         template< bool Expr>
         struct static_assertion_test;
@@ -55,7 +57,7 @@ namespace poc
         /**
          * Specialization of @c static_assertion_test which can be instantiated.
          *
-         * Don't use directly.
+         * @attention Don't use directly.
          */
         template<>
         struct static_assertion_test< true > {
@@ -65,7 +67,7 @@ namespace poc
         /**
          * Helper class for @c POC_STATIC_ASSERT.
          *
-         * Don't use directly.
+         * @attention Don't use directly.
          */
         template< int >
         struct static_assertion {};
@@ -80,9 +82,9 @@ namespace poc
 
 
 /**
- * Asserts at compile time that the compile time evaluable expression is @c true.
+ * Asserts at compile-time that the compile-time evaluable expression is @c true.
  * 
- * @a expr must be a compile time evalueable expression, like 
+ * @a expr must be a compile-time evalueable expression, like 
  * @code sizeof( char ) <= sizeof( int ) @endcode .
  * @a msg must be a string describing the assertion.
  *

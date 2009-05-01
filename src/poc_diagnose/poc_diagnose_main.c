@@ -33,6 +33,7 @@
 // Include stdout, fprintf, FILE
 #include <stdio.h>
 
+// Include POC macros to detect target platform configuration.
 #include <poc/poc.h>
 
 

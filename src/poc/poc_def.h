@@ -21,6 +21,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Preprocessor symbols to detect the target platform the code is compiled for.
+ *
+ * See @code poc.h @endcode for details.
+ */
+
+// Only allow definition of POC macros if @code poc.h @endcode hasn't been included 
+// in this compilation unit.
 #if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
 
 #include "poc_os_def.h"
@@ -30,5 +40,6 @@
 #include "poc_endian_def.h"
 #include "poc_lang_def.h"
 #include "poc_posix_def.h"
+#inclue "poc_portability_macros_def.h"
 
 #endif // !defined(POC_HEADER_DISABLE_DEF_UNDEF)

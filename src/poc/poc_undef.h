@@ -21,6 +21,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Undefines POC macros potentially set by @code poc_def.h @endcode , see
+ * @code poc.h @endcode and @code poc_def.h @endcode for more details.
+ *
+ * @attention This header doesn't have header guards to enable multiple inclusion.
+ */
+
+/// Only allow undef of POC macros if @code poc.h @endcode hasn't been included in this 
+/// compilation unit.
 #if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
 
 #include "poc_os_unundef.h"
@@ -30,5 +41,6 @@
 #include "poc_endian_arch_undef.h"
 #include "poc_lang_undef.h"
 #include "poc_posix_undef.h"
+#include "poc_portability_macros_undef.h"
 
 #endif // !defined(POC_HEADER_DISABLE_DEF_UNDEF)

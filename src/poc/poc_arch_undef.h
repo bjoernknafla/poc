@@ -21,6 +21,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Undefines POC machine architecture macros potentially set by @code poc_arch_def.h @endcode , see
+ * @code poc_arch.h @endcode and @code poc_arch_def.h @endcode for more details.
+ *
+ * @attention This header doesn't have header guards to enable multiple inclusion.
+ */
+
+/// Only allow undef of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included in this 
+/// compilation unit.
 #if !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
 
 #undef POC_ARCH

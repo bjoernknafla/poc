@@ -30,8 +30,8 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/// Only allow undef of utility macros if @code poc_portability_macros.h @endcode hasn't been included in this 
-/// compilation unit.
+// Only allow undef of POC portability macros if @code poc_portability_macros.h @endcode hasn't been included in this 
+// compilation unit.
 #if !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF)
 
 

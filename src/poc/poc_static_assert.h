@@ -41,7 +41,7 @@
 
 
 
-// @TODO: Decide if undef @c POC_STATIC_ASSERT instead of generating a compile time error.
+// TODO: @todo Decide if undef @c POC_STATIC_ASSERT instead of generating a compile time error.
 #if defined(POC_STATIC_ASSERT)
 #   error POC_STATIC_ASSERT macro shouldn't be defined at this point.
 #endif
