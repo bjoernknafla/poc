@@ -21,11 +21,22 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/// @TODO: Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
-/// @TODO: Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?
-/// @TODO: Handle @c wchar_t .
-/// @TODO: Handle library import/export visible/hidden qualifiers.
-
+/**
+ * @file
+ *
+ * Helper macros to allow portable and compiler-independent declaration of stack memory alignment of types, symbol import 
+ * and export from libraries (not usable yet), and usage of C keywords like @c inline (@c POC_INLINE) or 
+ * @c restrict (@c POC_RESTRICT). See @code poc_portability_macros.h @endcode for details.
+ *
+ * Macro definitions that can be easily undefined by including @code poc_portability_macros_undef.h @endcode if
+ * the less error-prone and convinient @code poc_portability_macros.h @endcode hasn't been included before in the
+ * compilation unit.
+ *
+ * @TODO: Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
+ * @TODO: Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?
+ * @TODO: Handle @c wchar_t .
+ * @TODO: Handle library import/export alas visible/hidden qualifiers.
+ */
 
 #if !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF)
 
@@ -33,6 +44,9 @@
 #include "poc_compiler_def.h"
 #include "poc_lang_def.h"
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Macros for @c POC_INLINE and @c POC_RESTRICT are defined if the compiler supports these keywords.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #if defined(POC_LANG_C_C99)
 #   define POC_INLINE inline
 #   define POC_RESTRICT restrict
@@ -46,24 +60,18 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect and set memory alignment directives.
-// 
-// Be carefull when using the alignment values that the value of @c POC_ALIGN_BEGIN( val ) and the value of the
-// corresponding @c POC_ALIGN_END( val ) are equal.
-//
-// See @example platform_config_lang_test.cpp for an example how to use the alignment macros.
-// 
-// @todo Check if ALIGN is correctly used (do the directives assume bit-sized or byte-sized values?).
-// @todo Implement.
-// @todo Move alignment into its own header and possibly put it into the memory sub-project.
-// @TODO: Add documentation how to use @c POC_ALIGN_BEGIN and @c POC_ALIGN_END with typedefs.
+/// Byte-sized stack memory alignment directives @c POC_ALIGN_BEGIN and @c POC_ALIGN_END .
+/// 
+/// Be carefull when using the alignment values that the value of @c POC_ALIGN_BEGIN( val ) and the value of the
+/// corresponding @c POC_ALIGN_END( val ) are equal.
+/// 
+/// @TODO: Add tests.
+/// @TODO: Add checks in macros for alignment values that don't work on specific compilers.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#if defined(POC_COMPILER_GCC) // Uses byte-alignment-values
+#if defined(POC_COMPILER_GCC)
 #   define POC_ALIGN_BEGIN( ALIGN )
 #   define POC_ALIGN_END( ALIGN ) __attribute__((__aligned__( ALIGN )))
-// #   define POC_ALIGN_MAX_BEGIN
-// #   define POC_ALIGN_MAX_END __attribute__((__aligned__))
-#elif defined(POC_COMPILER_ICC) // Uses byte-alignment-values, for Intel C++ 10.1 alignment values of 8 don't work.
+#elif defined(POC_COMPILER_ICC)
 #   define POC_ALIGN_BEGIN( ALIGN ) __declspec(align( ALIGN ))
 #   define POC_ALIGN_END( ALIGN )
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
@@ -73,13 +81,6 @@
 #else
 #   error Unknown compiler. Alignment macros not implemented.
 #endif
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect and set visibility when importing or exporting symbols from libraries or DLLs.
-//
-// @todo Implement.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

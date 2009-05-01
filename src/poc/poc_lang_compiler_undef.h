@@ -21,5 +21,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Undefines langauge macros and other macros they depend on, see @code poc_lang_undef.h @endcode ,
+ * @code poc_lang.h @endcode , and @code poc_lang_def.h @endcode for more details.
+ */
 #include "poc_lang_undef.h"
 #include "poc_lang_compiler_undef.h"

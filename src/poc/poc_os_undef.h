@@ -24,12 +24,14 @@
 /**
  * @file
  *
- * Undefines all preprocessor symbols potentially set by @c poc_os_def.h.
+ * Undefines POC operating system macros potentially set by @code poc_os_def.h @endcode , see @code poc_os.h @endcode and 
+ * @code poc_os_def.h @endcode for more details.
  *
- * @attention This header doesn't have header guards to allow successive inclusion.
+ * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-
+/// Only allow undef of utility macros if @code poc_os.h @endcode hasn't been included in this 
+/// compilation unit.
 #if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
 
 #undef POC_OS

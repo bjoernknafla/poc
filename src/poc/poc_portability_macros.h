@@ -21,12 +21,46 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+/**
+ * @file
+ *
+ * Helper macros to allow portable and compiler-independent declaration of stack memory alignment of types, symbol import 
+ * and export from libraries (not usable yet), and usage of C keywords like @c inline (@c POC_INLINE) or 
+ * @c restrict (@c POC_RESTRICT).
+ *
+ * Wrap type declarations in @c POC_ALIGN_BEGIN(<byte-alignment>) and @c POC_ALIGN_END(<byte-alignment>). 
+ *
+ * Examples:
+ * @code
+ * struct POC_ALIGN_BEGIN(64) type_t 
+ * {
+ *     long var1;
+ *     int var2;
+ * } POC_ALIGN_END(64);
+ * @endcode
+ * or
+ * @code
+ * typedef a_type_t POC_ALIGN_BEGIN(16) typedefed_name POC_ALIGN_END(16);
+ * @endcode
+ *
+ * For convenience include this header and don't use @c poc_portability_macros_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
+ */
 #ifndef POC_poc_portability_macros_H
 #define POC_poc_portability_macros_H
 
+#include "poc_compiler.h"
+
+#include "poc_lang.h"
+
 #include "poc_portability_macros_def.h"
 
+// Disable macro undefines via including @code poc_portability_macros_undef.h @endcode and prevent re-defines from 
+// accidential includes of @code poc_portability_macros_def.h @endcode .
 #define POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF
 
 #endif // POC_poc_portability_macros_H

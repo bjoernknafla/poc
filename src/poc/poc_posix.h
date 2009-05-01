@@ -21,6 +21,21 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Collection of @c POC_POSIX_ prefixed preprocessor macros to identify the parts of the posix standard supported.
+ *
+ * Currently no parts of the posix standard are detected or supported. The first addition will be to detect 
+ * posix thread specific preprocessor symbols.
+ *
+ * For convenience include this header and don't use @c poc_posix_def.h directly. Use the @code _def.h @endcode and
+ * @code _undef.h @encode files for fine grained control of the parts in the code where @c POC_ prefixed macros are 
+ * defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
+ */
 
 #ifndef POC_poc_posix_H
 #define POC_poc_posix_H
@@ -29,7 +44,8 @@
 // #include "poc_posix_def.h"
 #endif // !defined(POC_POSIX_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
-
+// Disable macro undefines via including @code poc_posix_undef.h @endcode and prevent re-defines from accidential
+// includes of @code poc_posix_def.h @endcode .
 #define POC_POSIX_HEADER_DISABLE_DEF_UNDEF
 
 #endif // POC_poc_posix_H

@@ -21,6 +21,24 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Collection of @c POC_COMPILER_ prefixed preprocessor macros to identify the compiler compiling the code.
+ *
+ * Based on standard defined and compiler specific preprocessor symbols the compiler, its version, and a character string
+ * describing the compiler are identified and specific @c POC_COMPILER_ prefixed macros are defined.
+ *
+ * The macro @c POC_COMPILER is set to the macro representing the id of the detected compiler or to 
+ * @c POC_COMPILER_UNKNOWN_ID if the compiler is unknown.
+ *
+ * The macro @c POC_COMPILER_STRING is set to the macro representing a character string of the compiler name or to
+ * @c POC_COMPILER_UNKNOWN_STRING if the compiler is unknown.
+ *
+ * The macro @c POC_COMPILER_VERSION is set to the macro representing an integral value encoding the compiler version or
+ * to @c POC_COMPILER_UNKNOWN_VERSION if the compiler version is unknown.
+ */
+
 
 #if !defined(POC_COMPILER_HEADER_DISABLE_DEF_UNDEF)
 
@@ -158,9 +176,8 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Determine @c POC_COMPILER_ID, @c POC_COMPILER_STRING and @c POC_COMPILER_VERSION
+// Determine @c POC_COMPILER, @c POC_COMPILER_STRING, and @c POC_COMPILER_VERSION based on the detected compiler.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 #if defined(POC_COMPILER_GCC)
 #   define POC_COMPILER POC_COMPILER_GCC_ID
@@ -180,7 +197,6 @@
 #   define POC_COMPILER_VERSION POC_COMPILER_NVCC_VERSION
 #endif
 
-
 #if defined(POC_COMPILER_OPENCL_GENERIC)
 #   define POC_COMPILER POC_COMPILER_OPENCL_GENERIC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_OPENCL_GENERIC_STRING
@@ -199,7 +215,11 @@
 #endif // !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
 
-// No known compiler detected.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// No known compiler, compiler string, or compiler version detected - set to unknown.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #if !defined(POC_COMPILER)
 #   define POC_COMPILER_UNKNOWN POC_COMPILER_UNKNOWN_ID
 #   define POC_COMPILER POC_COMPILER_UNKNOWN_ID
@@ -217,8 +237,12 @@
 #endif
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Error check
 // Exactly one main compiler must have been choosen - xor tests to find possible error.
 // The main compiler can have a host compiler (see @c POC_COMPILER_ICC for an example).
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #if defined(POC_LANG_COMPILER_GCC) && \
 (defined(POC_COMPILER_MSVC) || \
  defined(POC_COMPILER_ICC) || \

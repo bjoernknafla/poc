@@ -21,6 +21,14 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Undefines portability macros and other macros they depend on, see @code poc_portability_macros_undef.h @endcode ,
+ * @code poc_portability_macros.h @endcode , and @code poc_portability_macros_def.h @endcode for more details.
+ */
+
+
 #include "poc_portability_macros_undef.h"
 #include "poc_compiler_undef.h"
 #include "poc_lang_compiler_undef.h"

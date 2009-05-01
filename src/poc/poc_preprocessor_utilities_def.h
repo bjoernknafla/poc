@@ -21,6 +21,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Internal helper macros, see @code poc_preprocessor_utilities.h @endcode for more details.
+ *
+ * Macro definitions that can be easily undefined by including @code poc_preprocessor_utilities_undef.h @endcode if
+ * the less error-prone and convinient @code poc_preprocessor_utilities.h @endcode hasn't been included before in the
+ * compilation unit.
+ */
 
 #if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
 
@@ -28,20 +37,26 @@
 /// @TODO: Check all strings that they are at max 32 characters long.
 #define POC_STRINGS_MAX_LENGTH 32
 
-/**
- * Inspired by Boost's @c suffix.hpp preprocessor macros.
- * @c POC_CONCAT concatenates the values of its paremeters to one new preprocessor symbol.
- * The two-times indirection by calling @c POC_DO_CONCAT and @c POC_DO_CONCAT_2
- * enables the arguments to be preprocessor expanded before concatenating them.
- */
+/// @name Concatentation macros
+///
+/// Inspired by Boost's @c suffix.hpp preprocessor macros.
+/// @c POC_CONCAT concatenates the values of its paremeters to one new preprocessor symbol.
+/// The two-times indirection by calling @c POC_DO_CONCAT and @c POC_DO_CONCAT_2
+/// enables the arguments to be preprocessor expanded before concatenating them.
+///
+/// @{
 #define POC_CONCAT( X, Y ) POC_DO_CONCAT( X, Y )
 #define POC_DO_CONCAT( X, Y ) POC_DO_CONCAT_2( X, Y )
 #define POC_DO_CONCAT_2( X , Y ) X ## Y
+///@}
 
+/// @name Transfer macro-name into string
+///
 /// Extracts the value of @a Val and converts it into a string.
+///@{
 #define POC_STRINGIZE( Val ) POC_DO_STRINGIZE( Val )
 #define POC_DO_STRINGIZE( Val ) #Val
-
+///@}
 
 
 #endif // !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)

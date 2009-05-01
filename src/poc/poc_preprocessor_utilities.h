@@ -21,6 +21,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Internal helper macros to concatenate preprocessor values and transform them into strings.
+ *
+ * For convenience include this header and don't use @c poc_preprocessor_utility_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
+ */
+
 #ifndef POC_poc_preprocessor_utilities_H
 #define POC_poc_preprocessor_utilities_H
 
@@ -50,6 +63,8 @@
 
 #include "poc_preprocessor_utilities_def.h"
 
+// Disable macro undefines via including @code poc_preprocessor_utilities_undef.h @endcode and prevent re-defines from 
+// accidential includes of @code poc_preprocessor_utilities_def.h @endcode .
 #define POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF
 
 

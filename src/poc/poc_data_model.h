@@ -21,12 +21,31 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Collection of @c POC_DATA_MODEL_ prefixed preprocessor macros to identify the data model used by the platform.
+ *
+ * The data model describes the bit-size of integral, floating point, and pointer types.
+ *
+ * See @c poc_data_model_def.h for a more detailed description. For convenience include this header and don't use
+ * @c poc_data_model_def.h directly. Use the @code _def.h @endcode and @code _undef.h @encode files for fine grained 
+ * control of the parts in the code where @c POC_ prefixed macros are defined (or undefined) but keep care for yourself
+ * that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
+ */
 
 #ifndef POC_poc_data_model_H
 #define POC_poc_data_model_H
 
+#include "poc_os.h"
+
 #include "poc_data_model_def.h"
 
+// Disable macro undefines via including @code poc_data_model_undef.h @endcode and prevent re-defines from accidential
+// includes of @code poc_data_model_def.h @endcode .
 #define POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF
 
 #endif // POC_poc_data_model_H

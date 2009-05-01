@@ -24,7 +24,16 @@
 /**
  * @file
  *
- * Pure C++ helper header defining a compile time (static) assert macro.
+ * C++ only utility code - @code POC_STATIC_ASSERT( <compile-time-condition>, <message>) @endcode macro to check 
+ * conditions at compile-time and generate a compiler error if the condition isn't met. Compareable to C++0x's 
+ * @c static_assert keyword.
+ *
+ * For convenience include this header and don't use @c poc_static_assert_def.h directly. Use the @code _def.h @endcode 
+ * and @code _undef.h @encode files for fine grained control of the parts in the code where @c POC_ prefixed macros are 
+ * defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
  */
 
 #ifndef POC_poc_poc_static_assert_H
@@ -42,7 +51,8 @@
 
 #include "poc_static_assert_def.h"
 
-// If user includes this header certain undefines aren't allowed in this compilation unit anymore.
+// Disable macro undefines via including @code poc_static_assert_undef.h @endcode and prevent re-defines from accidential
+// includes of @code poc_static_assert_def.h @endcode .
 #define POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF
 
 

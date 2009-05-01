@@ -21,6 +21,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * Undefines data model macros and other macros they depend on, see @code poc_data_model_undef.h @endcode ,
+ * @code poc_data_model.h @endcode , and @code poc_data_model_def.h @endcode for more details.
+ */
 
 #include "poc_data_model_undef.h"
 #include "poc_os_undef.h"

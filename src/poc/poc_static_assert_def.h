@@ -31,12 +31,18 @@
 #ifndef POC_poc_poc_static_assert_def_H
 #define POC_poc_poc_static_assert_def_H
 
-
+/**
+ * Container namespace to contain the @c internal namespace for helper templates needed for the @c POC_STATIC_ASSERT
+ * macro.
+ */
 namespace poc 
 {
+    /**
+     * Internal namespace - don't use any contained constructs directly.
+     */
     namespace internal {
         
-        /*
+        /**
          * Declaration but not definition - therefore the @c POC_STATIC_ASSERT macro can only
          * instantiate it if @c Expr is @c true, which means that the assertion is valid. 
          * If it can't be instantiated the compiler fails and pinpoints the invalid assertion.
@@ -46,7 +52,7 @@ namespace poc
         template< bool Expr>
         struct static_assertion_test;
         
-        /*
+        /**
          * Specialization of @c static_assertion_test which can be instantiated.
          *
          * Don't use directly.
@@ -56,8 +62,8 @@ namespace poc
             static_assertion_test( char const* /* message */ ) {}
         };
         
-        /*
-         * Additional class to @c static_assertion_test.
+        /**
+         * Helper class for @c POC_STATIC_ASSERT.
          *
          * Don't use directly.
          */
@@ -104,7 +110,3 @@ POC_CONCAT(POC_STATIC_ASSERTION_, __LINE__ )
 
 
 #endif // !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
-
-
-
-
