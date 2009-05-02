@@ -7,6 +7,7 @@ POC (Portable Preprocessor Compile-time Target Platform Configurator) is a colle
 manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used, 
 the target operating system, or target data model, etc. 
 
+
 Use the preprocessor symbols prefixed with POC_ to detect the target platform the code is compiled for and to allow
 cross platform compatible keywords, for example to align data types on the stack.
 
@@ -50,6 +51,10 @@ Only remove the preprocessor error directive after having ported and tested the 
 
 The error-directive is also present if a platform couldn't be tested yet - remove it but be warned that the code isn't 
 tested and might possibly be erroreneous.
+
+
+The code can be found and downloaded at: http://github.com/bknafla/poc
+Please file issues with the code at: http://github.com/bknafla/poc/issues
 
 
 Author:
