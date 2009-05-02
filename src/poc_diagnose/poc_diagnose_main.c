@@ -25,6 +25,8 @@
  * @file
  *
  * App that outputs POC's compile time target configuration to stdout.
+ *
+ * Code is an example how to possibly use POC's macros.
  */
 
 // Include EXIT_SUCCESS
