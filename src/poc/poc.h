@@ -33,18 +33,18 @@
  *   the compiler version
  * - @c POC_DATA_MODEL stores an id identifying the platforms data model alas the bit-count of integral, floating point,
  *   and pointer types.
- * - @c POC_ENDIAN stores an id identifying the endianess of the platform.
+ * - @c POC_ENDIAN stores an id identifying the endienness of the platform.
  * - @c POC_LANG stores an id identifying the language (C, C++, Objective-C, OpenCL, CUDA, etc.) compiling for.
  * - @c POC_OS stores an id identifying the target operating system.
  * 
- * Each of these preprocessor symbols (other than the ones ending with @code _VERSION @endcode) is acompanied by a macro 
- * with a @code _STRING @endcode postfix that stores a character string describing the macro's value.
+ * Each of these preprocessor symbols (other than the ones ending with @c _VERSION) is acompanied by a macro 
+ * with a @c _STRING postfix that stores a character string describing the macro's value.
  *
  * In addition, each compiler, architecture, language, etc. also defines a specific macro when detected, e.g.
  * @c POC_ARCH_X86_32 is defined if compiling for a 32bit x86 machine architecture. @c POC_ARCH and @c POC_ARCH_X86_32
  * are both set to an (always) predefined @c POC_ARCH_X86_32_ID macro.
  *
- * If no known language, compiler, or endianess could be determined special @c UNKNOWN ids and strings are used as
+ * If no known language, compiler, or endienness could be determined special @c UNKNOWN ids and strings are used as
  * values, e.g. @ POC_OS might be set to @c POC_OS_UNKNOWN_ID and @c POC_OS_STRING is set to @c POC_OS_UNKNOWN_STRING .
  *
  * See @code poc_diagnose_main.c @endcode for an example how to use POC's platform detection macros.
@@ -69,7 +69,7 @@
  * tested and might possibly be erroreneous.
  *
  * For convenience include this header and don't use @c poc_def.h directly. Use the 
- * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 
  * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
@@ -83,9 +83,9 @@
 #include "poc_os.h"
 #include "poc_compiler.h"
 #include "poc_arch.h"
-#include "poc_data_model.h"
 #include "poc_endian.h"
 #include "poc_lang.h"
+#include "poc_data_model.h"
 #include "poc_posix.h"
 #include "poc_portability_macros.h"
 

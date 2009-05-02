@@ -26,17 +26,11 @@
  *
  * Collection of @c POC_COMPILER_ prefixed preprocessor macros to identify the compiler compiling the code.
  *
- * Based on standard defined and compiler specific preprocessor symbols the compiler, its version, and a character string
- * describing the compiler are identified and specific @c POC_COMPILER_ prefixed macros are defined.
+ * See @code poc_arch.h @endcode for details.
  *
- * The macro @c POC_COMPILER is set to the macro representing the id of the detected compiler or to 
- * @c POC_COMPILER_UNKNOWN_ID if the compiler is unknown.
- *
- * The macro @c POC_COMPILER_STRING is set to the macro representing a character string of the compiler name or to
- * @c POC_COMPILER_UNKNOWN_STRING if the compiler is unknown.
- *
- * The macro @c POC_COMPILER_VERSION is set to the macro representing an integral value encoding the compiler version or
- * to @c POC_COMPILER_UNKNOWN_VERSION if the compiler version is unknown.
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_compiler_undef.h @endcode . If header guards are wanted or needed use @code poc.h @endcode or 
+ *            @code poc_compiler.h @endcode instead.
  */
 
 // Only allow definition of POC compiler macros if @code poc_compiler.h @endcode hasn't been included 

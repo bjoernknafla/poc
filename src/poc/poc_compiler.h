@@ -37,7 +37,7 @@
  * additionally.
  *
  * For convenience include this header and don't use @c poc_compiler_def.h directly. Use the 
- * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 
  * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 

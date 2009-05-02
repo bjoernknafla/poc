@@ -24,10 +24,11 @@
 /**
  * @file
  *
- * Preprocessor macros to determine the compile-time target.
+ * See @code poc_os.h @endcode for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @c poc_os_undef.h. If header guards are wanted or needed use @c poc.h or @c poc_os.h instead.
+ *            @code poc_os_undef.h @endcode . If header guards are wanted or needed use 
+ *            @code poc.h @endcode or @code poc_os.h @endcode instead.
  */
 
 // Only allow definition of POC operating system macros if @code poc_os.h @endcode hasn't been included 
@@ -156,6 +157,11 @@
 #   error Unknown operating system string.
 #endif
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Error check
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Exaclty one operation system must have been chosen - xor test to find possible error.
 #if defined(POC_OS_UNIX) && \

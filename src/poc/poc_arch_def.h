@@ -26,9 +26,16 @@
  *
  * Include @code poc_arch_undef.h  @endcode to undefine all preprocessor symbols potentially set herein.
  *
- * TODO: @todo Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the device.
+ * See @code poc_arch.h @endcode for details.
+ *
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_arch_undef.h @endcode . If header guards are wanted or needed use @code poc.h @endcode or 
+ *            @code poc_arch.h @endcode instead.
+ *
+ * TODO: @todo Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the 
+ *             device.
  * TODO: @todo Detect if running on a OpenCL host or device and which one the moment this is possible to detect.
- * TODO: @todo ‚Add support for Cell SPU and PPU.
+ * TODO: @todo Add support for Cell SPU and PPU.
  * TODO: @todo Add support for iPhone, iPod Touch, and device emulation.
  */
 
@@ -179,8 +186,11 @@
 #   error Machine architecture string unknown.
 #endif
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Error detection
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 #if defined(POC_ARCH_X86)
 #   if (POC_ARCH_X86 != POC_ARCH_X86_32_ID) && (POC_ARCH_X86 != POC_ARCH_X86_64_ID)
 #       error POC_ARCH_X86 set to unknown value.

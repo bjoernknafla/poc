@@ -24,13 +24,12 @@
 /**
  * @file
  *
- * Helper macros to allow portable and compiler-independent declaration of stack memory alignment of types, symbol import 
- * and export from libraries (not usable yet), and usage of C keywords like @c inline (@c POC_INLINE) or 
- * @c restrict (@c POC_RESTRICT). See @code poc_portability_macros.h @endcode for details.
+ * See @code poc_portability_macros.h @endcode for details.
  *
- * Macro definitions that can be easily undefined by including @code poc_portability_macros_undef.h @endcode if
- * the less error-prone and convinient @code poc_portability_macros.h @endcode hasn't been included before in the
- * compilation unit.
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_portability_macros_undef.h @endcode . If header guards are wanted or needed use 
+ *            @code poc.h @endcode or @code poc_portability_macros.h @endcode instead.
+ *
  *
  * TODO: @todo Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
  * TODO: @todo Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?

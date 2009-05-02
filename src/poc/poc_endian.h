@@ -24,7 +24,7 @@
 /**
  * @file
  *
- * Collection of @c POC_ENDIAN (prefixed) preprocessor macros to identify the endianess of the platform compiling 
+ * Collection of @c POC_ENDIAN (prefixed) preprocessor macros to identify the endienness of the platform compiling 
  * for.
  * 
  * For example if the code is compiled for x86 platforms,  @c POC_ENDIAN_LITTLE_ID is stored in @c POC_ENDIAN
@@ -32,7 +32,7 @@
  * is set to @c POC_ENDIAN_LITTLE_STRING .
  *
  * For convenience include this header and don't use @c poc_endian_def.h directly. Use the 
- * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 
  * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
@@ -41,11 +41,11 @@
 
 
 /// @def POC_ENDIAN
-/// Stores a predefined value representing the platforms endianess or @c POC_ENDIAN_UNKNOWN_ID if the
-/// endianess can't be identified (is unknown).
+/// Stores a predefined value representing the platforms endienness or @c POC_ENDIAN_UNKNOWN_ID if the
+/// endienness can't be identified (is unknown).
 
 /// @def POC_DATA_ENDIAN_STRING
-/// Stores a C character string describing the identified platforms endianess.
+/// Stores a C character string describing the identified platforms endienness.
 
 #ifndef POC_poc_endian_H
 #define POC_poc_endian_H

@@ -21,7 +21,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Only allow definition of POC endianess macros if @code poc_endian.h @endcode hasn't been included 
+/**
+ * @file
+ *
+ * See @code poc_endian.h @endcode for details.
+ *
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_endian_undef.h @endcode . If header guards are wanted or needed use 
+ *            @code poc.h @endcode or @code poc_endian.h @endcode instead.
+ */
+
+// Only allow definition of POC endienness macros if @code poc_endian.h @endcode hasn't been included 
 // in this compilation unit.
 #if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
 
@@ -58,11 +68,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Detect little endianness
-// @todo Add detection of big endianness.
 #if defined(__LITTLE_ENDIAN__) || defined (__ENDIAN_LITTLE__) || defined(POC_ARCH_X86) || defined(INIGMA_ARCH_X86_32) || defined(POC_ARCH_X86_64)
 #   define POC_ENDIAN_LITTLE POC_ENDIAN_LITTLE_ID
 #endif
 
+// Detect big endianness
 #if defined(__BIG_ENDIAN__) || (defined(__OPENCL_VERSION__) && !defined(__ENDIAN_LITTLE__))
 #   define POC_ENDIAN_BIG POC_ENDIAN_BIG_ID
 #endif
@@ -87,7 +97,7 @@
 #endif // !defined(POC_ENDIAN_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
 
-// Endianess unknown
+// Endienness unknown
 #if !defined(POC_ENDIAN)
 #   define POC_ENDIAN_UNKNOWN POC_ENDIAN_UNKNOWN_ID
 #   define POC_ENDIAN POC_ENDIAN_UNKNOWN_ID
@@ -99,18 +109,20 @@
 #   error Unknown endian string.
 #endif
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Detect erroreneous declaration of little and big endianness at the same time
-// @todo How to handle bi-endian architectures?
+// TODO: @todo How to handle bi-endian architectures?
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #if defined(POC_ENDIAN_LITTLE) && (defined(POC_ENDIAN_BIG) || defined(POC_ENDIAN_UNKNOWN))
 #   error Little and big endianness mustn't be active at the same time.
-#   error Endianess must be little or big.
+#   error Endienness must be little or big.
 #elif defined(POC_ENDIAN_BIG) && (defined(POC_ENDIAN_LITTLE) || defined(POC_ENDIAN_UNKNOWN))
 #   error Little and big endianness mustn't be active at the same time.
-#   error Endianess must be little or big.
+#   error Endienness must be little or big.
 #elif defined(POC_ENDIAN_UNKNOWN) && (defined(POC_ENDIAN_BIG) || defined(POC_ENDIAN_LITTLE))
 #   error Little and big endianness mustn't be active at the same time.
-#   error Endianess must be little or big.
+#   error Endienness must be little or big.
 #endif
 
 

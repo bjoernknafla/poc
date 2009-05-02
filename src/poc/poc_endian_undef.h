@@ -24,13 +24,13 @@
 /**
  * @file
  *
- * Undefines POC endianess macros potentially set by @code poc_endian_def.h @endcode , see
+ * Undefines POC endienness macros potentially set by @code poc_endian_def.h @endcode , see
  * @code poc_endian.h @endcode and @code poc_endian_def.h @endcode for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/// Only allow undef of POC endianess macros if @code poc_endian.h @endcode hasn't been included in this 
+/// Only allow undef of POC endienness macros if @code poc_endian.h @endcode hasn't been included in this 
 /// compilation unit.
 #if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
 

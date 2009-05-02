@@ -21,6 +21,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * @file
+ *
+ * See @code poc_arch.h @endcode for details.
+ *
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_lang_undef.h @endcode . If header guards are wanted or needed use 
+ *            @code poc.h @endcode or @code poc_lang.h @endcode instead.
+ */
+
 // Only allow definition of POC programming language macros if @code poc_lang.h @endcode hasn't been included 
 // in this compilation unit.
 #if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
@@ -31,8 +41,12 @@
 #include "poc_compiler_def.h"
 
 
-/// TODO: @todo Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
+// TODO: @todo Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// @name Predefined programming language ids
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///@{
 #define POC_LANG_UNKNOWN_ID 0
 #define POC_LANG_C_UNKNOWN_ID 1
 #define POC_LANG_C_C89_ID 2
@@ -41,9 +55,12 @@
 #define POC_LANG_CPP_CPP98_ID 16
 #define POC_LANG_OBJC_UNKNOWN_ID 32
 #define POC_LANG_OPENCL_UNKNOWN_ID 64
+///@}
 
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// @name Predefined programming language strings
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///@{
 #define POC_LANG_UNKNOWN_STRING "Unknown language"
 #define POC_LANG_C_UNKNOWN_STRING "C unknown version"
 #define POC_LANG_C_C89_STRING "C C89"
@@ -52,11 +69,16 @@
 #define POC_LANG_CPP_CPP98_STRING "C++ '98"
 #define POC_LANG_OBJC_UNKNOWN_STRING "Objective-C unknown version"
 #define POC_LANG_OPENCL_UNKNOWN_STRING "OpenCL unknown version"
+///@}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// @name Predefined programming language standard version numbers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///@{
 #define POC_LANG_C_C89_STANDARDIZED_VERSION 199409L
 #define POC_LANG_C_C99_STANDARDIZED_VERSION 199901L
 #define POC_LANG_CPP_CPP98_STANDARDIZED_VERSION 199711L
-
+///@}
 
 
 #if !defined(POC_LANG_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
@@ -101,6 +123,7 @@
 #if defined(__OBJC__)
 #   define POC_LANG_OBJC POC_LANG_OBJC_UNKNOWN_ID
 #   define POC_LANG_OBJC_STRING POC_LANG_OBJC_UNKNOWN_STRING
+// TODO: @todo Check if @c OBJC_NEW_PROPERTIES is a documented and therefore reliable macro or not.
 // #   if defined(OBJC_NEW_PROPERTIES)
 // #    endif
 #endif
@@ -182,38 +205,38 @@
 #if defined (POC_LANG_OPENCL)
 #   // Detect extensions.
 #   if defined(cl_khr_fp64)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_select_fprounding_mode)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   // Possible values for @c __ROUNDING_MODE__ are @code rte, rtz, rtp, rtz @endcode .
 #   endif
 #   if defined(cl_khr_global_int32_base_atomics)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_global_int32_extended_atomics)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_local_int32_base_atomics)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_local_int32_extended_atomics)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_int64_base_atomics)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_int64_extended_atomics)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_3d_image_writes)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_byte_addressable_store)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_fp16)
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
@@ -263,6 +286,11 @@
 #   define POC_LANG_STRING POC_LANG_UNKNOWN_STRING
 // #   error Unknown programming language string.
 #endif
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Error check
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
 // Exactly one programming language must have been chosen - xor tests to find possible error.

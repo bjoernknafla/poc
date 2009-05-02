@@ -25,7 +25,7 @@
 /**
  * @file
  *
- * Undefines endianess macros and other macros they depend on, see @code poc_endian_undef.h @endcode ,
+ * Undefines endienness macros and other macros they depend on, see @code poc_endian_undef.h @endcode ,
  * @code poc_endian.h @endcode , and @code poc_endian_def.h @endcode for more details.
  */
 

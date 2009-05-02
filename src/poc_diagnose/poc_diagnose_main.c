@@ -848,7 +848,7 @@ void print_arch(FILE* outstream)
 
 void print_endian(FILE* outstream)
 {
-    fprintf(outstream, "POC machine endianess detection");
+    fprintf(outstream, "POC machine endienness detection");
     fprintf(outstream, "\n");
     
     fprintf(outstream, "  POC_ENDIAN defined and set to ");

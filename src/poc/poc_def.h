@@ -27,6 +27,9 @@
  * Preprocessor symbols to detect the target platform the code is compiled for.
  *
  * See @code poc.h @endcode for details.
+ *
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_undef.h @endcode . If header guards are wanted or needed use @code poc.h @endcode instead.
  */
 
 // Only allow definition of POC macros if @code poc.h @endcode hasn't been included 
@@ -36,9 +39,9 @@
 #include "poc_os_def.h"
 #include "poc_compiler_def.h"
 #include "poc_arch_def.h"
-#include "poc_data_model_def.h"
 #include "poc_endian_def.h"
 #include "poc_lang_def.h"
+#include "poc_data_model_def.h"
 #include "poc_posix_def.h"
 #inclue "poc_portability_macros_def.h"
 

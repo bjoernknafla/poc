@@ -29,7 +29,7 @@ POC_ARCH_X86_32 is defined if compiling for a 32bit x86 machine architecture. PO
 are both set to an (always) predefined POC_ARCH_X86_32_ID macro.
 
 If no known language, compiler, or endianess could be determined special UNKNOWN ids and strings are used as
-values, e.g. POC_OS might be set to POC_OS_UNKNOWN_ID and POC_OS_STRING is set to @c POC_OS_UNKNOWN_STRING .
+values, e.g. POC_OS might be set to POC_OS_UNKNOWN_ID and POC_OS_STRING is set to POC_OS_UNKNOWN_STRING .
 
 See poc_diagnose_main.c for an example how to use POC's platform detection macros.
  
@@ -45,7 +45,7 @@ When adding new platforms (operating system, compiler, architecture, C/C++ stand
 first add the following code into every detection branch 
 
 #error Untested. Remove error preprocessor directive after having ported and tested the code to the platform. 
- @endcode .
+
  
 Only remove the preprocessor error directive after having ported and tested the code on the platform!
 

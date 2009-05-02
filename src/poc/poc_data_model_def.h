@@ -22,6 +22,16 @@
  */
 
 
+/**
+ * @file
+ *
+ * See @code poc_data_model.h @endcode for details.
+ *
+ * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
+ *            @code poc_data_model_undef.h @endcode . If header guards are wanted or needed use 
+ *            @code poc.h @endcode or @code poc_data_model.h @endcode instead.
+ */
+
 // Only allow definition of POC data model macros if @code poc_data_model.h @endcode hasn't been included 
 // in this compilation unit.
 #if !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
@@ -92,8 +102,7 @@
 // @todo Implement data model detection for Linux, Unix, etc.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// 32bit Mac OS X uses the ILP32 data model, 64bit Mac OS X uses the LP64 data model.
-//@{
+// 32bit Mac OS X uses the ILP32 data model, 64bit Mac OS X uses the LP64 data model.
 #if defined(POC_OS_MACOSX)
 #   if defined(_LP64) || defined(__LP64__) 
 #       define POC_DATA_MODEL_LP64 POC_DATA_MODEL_LP64_ID
@@ -105,10 +114,10 @@
 #       define POC_DATA_MODEL_ILP32 POC_DATA_MODEL_ILP32_ID
 #   endif
 #endif
-//@}
+
 
 // 32bit Linux uses the ILP32 data model, 64bit Linux uses the LP64 data model.
-// @todo Check facts.
+// TODO: @todo Check facts.
 #if defined(POC_OS_LINUX)
 #   if defined(_LP64) || defined(__LP64__) || defined(__lp64)
 #       define POC_DATA_MODEL_LP64 POC_DATA_MODEL_LP64_ID
@@ -233,8 +242,8 @@
 
 #if defined(__cplusplus)
 
-/// TODO: @todo Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
-///        symbols declared in @c climits leak into this header?
+// TODO: @todo Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
+//        symbols declared in @c climits leak into this header?
 // Include CHAR_BIT
 #include <climits>
 
