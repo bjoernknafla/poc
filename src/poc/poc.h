@@ -51,8 +51,8 @@
  * 
  *
  * Aside the platform detection macros POC also defines preprocessor symbols to allow portable usage of keywords to:
- * - Align data types automatically on the stack by wrapping the type in @c POC_ALIGN_BEING(<byte-alignment>) and
- *   @c POC_ALIGN_END(<byte-alignment>) macros.
+ * - Align data types automatically on the stack by wrapping the type in @code POC_ALIGN_BEING(<byte-alignment>) @endcode 
+ *   and @code POC_ALIGN_END(<byte-alignment>) @endcode macros.
  * - Using @c POC_RESTRICT to enable C99's @c restrict keyword or disable it when compiling for other languages that
  *   don't support it.
  *
@@ -64,6 +64,16 @@
  * @endcode .
  * 
  * Only remove the preprocessor error directive after having ported and tested the code on the platform!
+ *
+ * The error-directive is also present if a platform couldn't be tested yet - remove it but be warned that the code isn't 
+ * tested and might possibly be erroreneous.
+ *
+ * For convenience include this header and don't use @c poc_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
  */
 
 #ifndef POC_poc_H

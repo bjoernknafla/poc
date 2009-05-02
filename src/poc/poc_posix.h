@@ -24,7 +24,7 @@
 /**
  * @file
  *
- * Collection of @c POC_POSIX_ prefixed preprocessor macros to identify the parts of the posix standard supported.
+ * Collection of @c POC_POSIX (prefixed) preprocessor macros to identify the parts of the posix standard supported.
  *
  * Currently no parts of the posix standard are detected or supported. The first addition will be to detect 
  * posix thread specific preprocessor symbols.
@@ -41,6 +41,7 @@
 #define POC_poc_posix_H
 
 #if !defined(POC_POSIX_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+// Implementation missing yet.
 // #include "poc_posix_def.h"
 #endif // !defined(POC_POSIX_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 

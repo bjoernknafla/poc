@@ -24,16 +24,27 @@
 /**
  * @file
  *
- * Collection of @c POC_OS_ prefixed preprocessor macros to identify the target operating system compiling for.
+ * Collection of @c POC_OS (prefixed) preprocessor macros to identify the operating system compiling for.
+ * 
+ * For example if the code is compiled for the Win32 platform,  @c POC_OS_WIN32_ID is stored in @c POC_OS
+ * and also the macro @c POC_OS_WIN32 is defined with the previous id value. In this case @c POC_OS_STRING 
+ * is set to @c POC_OS_WIN32_STRING .
  *
- * See @c poc_os_def.h for a more detailed description. For convenience include this header and don't use
- * @c poc_os_def.h directly. Use the @code _def.h @endcode and @code _undef.h @encode files for fine grained 
- * control of the parts in the code where @c POC_ prefixed macros are defined (or undefined) but keep care for yourself
- * that macros aren't redefined.
+ * For convenience include this header and don't use @c poc_os_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
  */
+
+
+/// @def POC_OS
+/// Stores a predefined value representing the target operating system compiling for or @c POC_OS_UNKNOWN_ID if the
+/// operating system can't be identified (is unknown).
+
+/// @def POC_OS_STRING
+/// Stores a C character string describing the identified target operating system.
 
 #ifndef POC_poc_os_H
 #define POC_poc_os_H

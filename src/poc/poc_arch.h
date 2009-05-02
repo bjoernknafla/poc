@@ -24,8 +24,28 @@
 /**
  * @file
  *
- * During compilation the header analyzes known preprocessor symbols to detect the target architecture.
+ * Collection of @c POC_ARCH (prefixed) preprocessor macros to identify the machine architecture compiling for.
+ * 
+ * For example if the code is compiled for a 64bit x86 machine the id @c POC_ARCH_X86_64_ID is stored in @c POC_ARCH
+ * and also the macro @c POC_ARCH_X86_64 is defined with the previous id value. In this case @c POC_ARCH_STRING is set to
+ * @c POC_ARCH_X86_64_STRING .
+ *
+ * For convenience include this header and don't use @c poc_arch_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @code _undef.h @endcode anymore.
  */
+
+
+/// @def POC_ARCH
+/// Stores a predefined value representing the machine architecture compiling for or @c POC_ARCH_UNKNOWN_ID if the
+/// architecture can't be identified (is unknown).
+
+/// @def POC_ARCH_STRING
+/// Stores a C character string describing the identified machine architecture.
+
 
 #ifndef POC_poc_arch_H
 #define POC_poc_arch_H

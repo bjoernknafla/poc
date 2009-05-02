@@ -7,7 +7,50 @@ POC (Portable Preprocessor Compile-time Target Platform Configurator) is a colle
 manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used, 
 the target operating system, or target data model, etc. 
 
-See src/poc/poc.h for a more detailed overview and src/poc_diagnose/poc_diagnose_main.c for an usage example.
+Use the preprocessor symbols prefixed with POC_ to detect the target platform the code is compiled for and to allow
+cross platform compatible keywords, for example to align data types on the stack.
+
+Use POC to detect the target platform the code unit is compiled for, for example:
+- POC_ARCH stores an id identifying the machine architecture
+- POC_COMPILER stores an id identifying the used compiler, POC_COMPILER_VERSION stores a number representing
+  the compiler version
+- POC_DATA_MODEL stores an id identifying the platforms data model alas the bit-count of integral, floating point,
+  and pointer types.
+- POC_ENDIAN stores an id identifying the endianess of the platform.
+- POC_LANG stores an id identifying the language (C, C++, Objective-C, OpenCL, CUDA, etc.) compiling for.
+- POC_OS stores an id identifying the target operating system.
+
+Each of these preprocessor symbols (other than the ones ending with _VERSION) is acompanied by a macro 
+with a _STRING postfix that stores a character string describing the macro's value.
+
+In addition, each compiler, architecture, language, etc. also defines a specific macro when detected, e.g.
+POC_ARCH_X86_32 is defined if compiling for a 32bit x86 machine architecture. POC_ARCH and POC_ARCH_X86_32
+are both set to an (always) predefined POC_ARCH_X86_32_ID macro.
+
+If no known language, compiler, or endianess could be determined special UNKNOWN ids and strings are used as
+values, e.g. POC_OS might be set to POC_OS_UNKNOWN_ID and POC_OS_STRING is set to @c POC_OS_UNKNOWN_STRING .
+
+See poc_diagnose_main.c for an example how to use POC's platform detection macros.
+ 
+
+Aside the platform detection macros POC also defines preprocessor symbols to allow portable usage of keywords to:
+- Align data types automatically on the stack by wrapping the type in POC_ALIGN_BEING(<byte-alignment>) and
+  POC_ALIGN_END(<byte-alignment>) macros.
+- Using POC_RESTRICT to enable C99's restrict keyword or disable it when compiling for other languages that
+  don't support it.
+
+
+When adding new platforms (operating system, compiler, architecture, C/C++ standards, etc.) then 
+first add the following code into every detection branch 
+
+#error Untested. Remove error preprocessor directive after having ported and tested the code to the platform. 
+ @endcode .
+ 
+Only remove the preprocessor error directive after having ported and tested the code on the platform!
+
+The error-directive is also present if a platform couldn't be tested yet - remove it but be warned that the code isn't 
+tested and might possibly be erroreneous.
+
 
 Author:
 Bjoern Knafla (bknafla@googlemail.com)

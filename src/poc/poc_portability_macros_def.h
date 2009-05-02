@@ -70,6 +70,7 @@
 // TODO: @todo Add tests.
 // TODO: @todo Add checks in macros for alignment values that don't work on specific compilers.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #if defined(POC_COMPILER_GCC)
 #   define POC_ALIGN_BEGIN( ALIGN )
 #   define POC_ALIGN_END( ALIGN ) __attribute__((__aligned__( ALIGN )))

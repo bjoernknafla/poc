@@ -50,6 +50,17 @@
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
  */
+
+
+/// @def POC_RESTRICT
+/// Defined to @c restrict if compiling for C99, otherwise empty.
+
+/// @def POC_ALIGN_BEGIN( Align )
+/// Wrapping beginning for a type aligned to @c Align bytes.
+
+/// @def POC_ALIGN_END( Align )
+/// Wrapping ending for a type aligned to @c Align bytes.
+
 #ifndef POC_poc_portability_macros_H
 #define POC_poc_portability_macros_H
 

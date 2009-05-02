@@ -24,16 +24,36 @@
 /**
  * @file
  *
- * Collection of @c POC_COMPILER_ prefixed preprocessor macros to identify the compiler compiling the code.
+ * Collection of @c POC_COMPILER (prefixed) preprocessor macros to identify the compiler compiling with.
+ * 
+ * For example if the code is compiled with GNU GCC @c POC_COMPILER_GCC_ID is stored in @c POC_COMPILER
+ * and also the macro @c POC_COMPILER_GCC is defined with the previous id value. In this case @c POC_COMPILER_STRING is 
+ * set to @c POC_COMPILER_GCC_STRING . @c POC_COMPILER_VERSION is set to the compiler verison, an integral value.
  *
- * See @c poc_compiler_def.h for a more detailed description. For convenience include this header and don't use
- * @c poc_compiler_def.h directly. Use the @code _def.h @endcode and @code _undef.h @encode files for fine grained 
- * control of the parts in the code where @c POC_ prefixed macros are defined (or undefined) but keep care for yourself
- * that macros aren't redefined.
+ * If the compiler identified is Intel's C/C++ compiler the macros @c POC_COMPILER_ICC_HOST, 
+ * @c POC_COMPILER_ICC_HOST_STRING, @c POC_COMPILER_ICC_HOST_VERSION are defined because Intel's compiler uses the
+ * infrastructure (headers, tools, etc.) of a host compiler. If GNU GCC is the host compiler of Intel's compiler, then
+ * @c POC_COMPILER_ICC_HOST_GCC, @c POC_COMPILER_ICC_HOST_GCC_STRING, and @c POC_COMPILER_ICC_HOST_VERSION are defined
+ * additionally.
+ *
+ * For convenience include this header and don't use @c poc_compiler_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
  */
+
+
+/// @def POC_COMPILER
+/// Stores a predefined value representing the compiler used or @c POC_COMPILER_UNKNOWN_ID if the
+/// compiler can't be identified (is unknown).
+
+/// @def POC_COMPILER_STRING
+/// Stores a C character string describing the identified compiler.
+
+/// @def POC_COMPILER_VERSION
+/// Stores the found compiler version as an integral value (an integer value).
 
 #ifndef POC_poc_compiler_H
 #define POC_poc_compiler_H

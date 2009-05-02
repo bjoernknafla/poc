@@ -24,16 +24,34 @@
 /**
  * @file
  *
- * Collection of @c POC_LANG_ prefixed preprocessor macros to identify the language the compiler believes it compiles.
+ * Collection of @c POC_LANG (prefixed) preprocessor macros to identify the programming language the compiler assumes 
+ * the code to represent.
+ * 
+ * For example if the code is compiled as C++ according to the '98 standard,  @c POC_LANG_CPP_CPP98_ID is stored in 
+ * @c POC_LANG and also the macro @c POC_LANG_CPP_CPP98 is defined with the previous id value. In this case 
+ * @c POC_LANG_STRING is set to @c POC_LANG_CPP_CPP98_STRING . If the C++ standard version can't be identified 
+ * @c POC_LANG_CPP_UNKNOWN_ID, @c POC_LANG_CPP_UNKNOWN, and @c POC_LANG_CPP_UNKNOWN_STRING are used accordingly.
  *
- * See @c poc_lang_def.h for a more detailed description. For convenience include this header and don't use
- * @c poc_lang_def.h directly. Use the @code _def.h @endcode and @code _undef.h @encode files for fine grained 
- * control of the parts in the code where @c POC_ prefixed macros are defined (or undefined) but keep care for yourself
- * that macros aren't redefined.
+ * Certain other @c POC_LANG_ prefixed macros are defined to represent specific language features if they are certainly
+ * detected (these language features might be available even if the macros aren't set though). For example if code is
+ * compiled according to the C99 C standard the macro @c POC_LANG_C_TYPE_BOOL_SUPPORT is defined, too. See 
+ * @code poc_lang_def.h @endcode for more details.
+ *
+ * For convenience include this header and don't use @c poc_lang_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
  */
+
+
+/// @def POC_LANG
+/// Stores a predefined value representing the programming language compiling for or @c POC_LANG_UNKNOWN_ID if the
+/// language can't be identified (is unknown).
+
+/// @def POC_LANG_STRING
+/// Stores a C character string describing the identified programming language the compiler assumes.
 
 #ifndef POC_poc_lang_H
 #define POC_poc_lang_H

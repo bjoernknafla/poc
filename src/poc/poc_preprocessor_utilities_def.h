@@ -37,9 +37,10 @@
 
 
 /// TODO: @todo Check all strings that they are at max 32 characters long.
+/// Maximum length of POC strings defined.
 #define POC_STRINGS_MAX_LENGTH 32
 
-/// @name Concatentation macros
+/// @name Concatenation macros
 ///
 /// Inspired by Boost's @c suffix.hpp preprocessor macros.
 /// @c POC_CONCAT concatenates the values of its paremeters to one new preprocessor symbol.

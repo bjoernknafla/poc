@@ -24,18 +24,32 @@
 /**
  * @file
  *
- * Collection of @c POC_DATA_MODEL_ prefixed preprocessor macros to identify the data model used by the platform.
+ * Collection of @c POC_DATA_MODEL (prefixed) preprocessor macros to identify the data model of the platform compiling 
+ * for.
  *
- * The data model describes the bit-size of integral, floating point, and pointer types.
+ * The data model defines the bit-size of primitive language types, for example the size of @c int , @c long , 
+ * @c long long , and pointer types.
+ * 
+ * For example if the code is compiled for Mac OS X,  @c POC_DATA_MODEL_LP64_ID is stored in @c POC_DATA_MODEL
+ * and also the macro @c POC_DATA_MODEL_LP64 is defined with the previous id value. In this case @c POC_DATA_MODEL_STRING 
+ * is set to @c POC_DATA_MODEL_LP64_STRING . The LP64 data model defines, that @c int is 32bit sized and @c long and
+ * pointers are 64bit sized.
  *
- * See @c poc_data_model_def.h for a more detailed description. For convenience include this header and don't use
- * @c poc_data_model_def.h directly. Use the @code _def.h @endcode and @code _undef.h @encode files for fine grained 
- * control of the parts in the code where @c POC_ prefixed macros are defined (or undefined) but keep care for yourself
- * that macros aren't redefined.
+ * For convenience include this header and don't use @c poc_data_model_def.h directly. Use the 
+ * @code _def.h @endcode and @code _undef.h @encode files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
  */
+
+
+/// @def POC_DATA_MODEL
+/// Stores a predefined value representing the platforms data model or @c POC_DATA_MODEL_UNKNOWN_ID if the
+/// data model can't be identified (is unknown).
+
+/// @def POC_DATA_MODEL_STRING
+/// Stores a C character string describing the identified data model.
 
 #ifndef POC_poc_data_model_H
 #define POC_poc_data_model_H
