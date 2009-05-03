@@ -50,6 +50,15 @@
  * See @code poc_diagnose_main.c @endcode for an example how to use POC's platform detection macros.
  * 
  *
+ * It is possible to suppress automatic platform detection for everything POC detects by defining
+ * @c POC_DISABLE_AUTODETECT , or to disable the auto-detection for a specific platform attribue, e.g. to suppress
+ * compiler detection define @c POC_COMPILER_DISABLE_AUTODETECT .
+ * By disabling the platform auto-detection it is possible to provide self-defined macros, e.g. to set the compiler
+ * yourself define @c POC_COMPILER_DISABLE_AUTODETECT, and then @c POC_COMPILER, @c POC_COMPILER_STRING, 
+ * @c POC_COMPILER_VERSION, and possible also define a preprocessor macro for the compiler you are
+ * setting, e.g. @c POC_COMPILER_IBM_XLC for IBM's XL C/C++ compiler.
+ *
+ *
  * Aside the platform detection macros POC also defines preprocessor symbols to allow portable usage of keywords to:
  * - Align data types automatically on the stack by wrapping the type in @code POC_ALIGN_BEING(<byte-alignment>) @endcode 
  *   and @code POC_ALIGN_END(<byte-alignment>) @endcode macros.
@@ -74,6 +83,8 @@
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
+ *
+ * All trademarks belong to their trademark holders.
  */
 
 #ifndef POC_poc_H

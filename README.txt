@@ -32,6 +32,15 @@ If no known language, compiler, or endianess could be determined special UNKNOWN
 values, e.g. POC_OS might be set to POC_OS_UNKNOWN_ID and POC_OS_STRING is set to POC_OS_UNKNOWN_STRING .
 
 See poc_diagnose_main.c for an example how to use POC's platform detection macros.
+
+
+It is possible to suppress automatic platform detection for everything POC detects by defining
+POC_DISABLE_AUTODETECT , or to disable the auto-detection for a specific platform attribue, e.g. to suppress
+compiler detection define POC_COMPILER_DISABLE_AUTODETECT .
+By disabling the platform auto-detection it is possible to provide self-defined macros, e.g. to set the compiler
+yourself define POC_COMPILER_DISABLE_AUTODETECT, and then POC_COMPILER, POC_COMPILER_STRING, 
+POC_COMPILER_VERSION, and possible also define a preprocessor macro for the compiler you are
+setting, e.g. POC_COMPILER_IBM_XLC for IBM's XL C/C++ compiler.
  
 
 Aside the platform detection macros POC also defines preprocessor symbols to allow portable usage of keywords to:
@@ -53,8 +62,14 @@ The error-directive is also present if a platform couldn't be tested yet - remov
 tested and might possibly be erroreneous.
 
 
+
 The code can be found and downloaded at: http://github.com/bknafla/poc
 Please file issues with the code at: http://github.com/bknafla/poc/issues
+
+
+
+All trademarks belong to their trademark holders.
+
 
 
 Author:

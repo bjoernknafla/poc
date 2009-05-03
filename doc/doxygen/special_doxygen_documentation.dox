@@ -27,12 +27,21 @@
  * 
  * See @c poc_diagnose_main.c for an example how to use POC's platform detection macros.
  * 
+ *
+ * @section disable_autodetect Disable auto-detection of platform
+ *
+ * It is possible to suppress automatic platform detection for everything POC detects by defining @c POC_DISABLE_AUTODETECT , or to disable the auto-detection for a specific platform attribue, e.g. to suppress compiler detection define @c POC_COMPILER_DISABLE_AUTODETECT .
+ * By disabling the platform auto-detection it is possible to provide self-defined macros, e.g. to set the compiler yourself define @c POC_COMPILER_DISABLE_AUTODETECT, and then @c POC_COMPILER, @c POC_COMPILER_STRING, @c POC_COMPILER_VERSION, and possible also define a preprocessor macro for the compiler you are setting, e.g. @c POC_COMPILER_IBM_XLC for IBM's XL C/C++ compiler.
  * 
+ *
+ * @section portability Portability macros
+ *
  * Aside the platform detection macros POC also defines preprocessor symbols to allow portable usage of keywords to:
  * - Align data types automatically on the stack by wrapping the type in @c POC_ALIGN_BEING(<byte-alignment>) and @c POC_ALIGN_END(<byte-alignment>) macros.
  * - @c Using POC_RESTRICT to enable C99's restrict keyword or disable it when compiling for other languages that
   don't support it.
  * 
+ *
  * @section adding_new_platforms Adding new platforms
  * 
  * When adding new platforms (operating system, compiler, architecture, C/C++ standards, etc.) then first add the following code into every detection branch 
@@ -65,6 +74,10 @@
  * - Collection of macros defined by language standards, compilers, libraries, etc.:
  *   http://predef.sourceforge.net/index.php 
  * 
+ * 
+ * @section trademarks Trademarks
+ *
+ * All trademarks belong to their trademark holders.
  *
  *
  * @section release_notes Release Notes
