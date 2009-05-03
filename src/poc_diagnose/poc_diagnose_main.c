@@ -27,6 +27,14 @@
  * App that outputs POC's compile time target configuration to stdout.
  *
  * Code is an example how to possibly use POC's macros.
+ *
+ * @attention Code is only compilable with hosted C version that offer the
+ *            headers used below and won't work on OpenCL or CUDA devices.
+ *
+ * @todo TODO: Enable platform detection on OpenCL or CUDA devices by only collecting
+ *       which settings are enabled like it is done for standard preprocessor
+ *       defines instead of printing them directly to stdout. Then add a host
+ *       app that takes the collected data and finally prints it to stdout.
  */
 
 // Include EXIT_SUCCESS
