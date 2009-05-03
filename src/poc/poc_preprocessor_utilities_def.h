@@ -36,7 +36,7 @@
 #if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
 
 
-/// TODO: @todo Check all strings that they are at max 32 characters long.
+/// @todo TODO: Check all strings that they are at max 32 characters long.
 /// Maximum length of POC strings defined.
 #define POC_STRINGS_MAX_LENGTH 32
 

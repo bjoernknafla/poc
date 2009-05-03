@@ -41,7 +41,7 @@
 #include "poc_compiler_def.h"
 
 
-// TODO: @todo Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
+// @todo TODO: Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @name Predefined programming language ids
@@ -123,9 +123,9 @@
 #if defined(__OBJC__)
 #   define POC_LANG_OBJC POC_LANG_OBJC_UNKNOWN_ID
 #   define POC_LANG_OBJC_STRING POC_LANG_OBJC_UNKNOWN_STRING
-// TODO: @todo Check if @c OBJC_NEW_PROPERTIES is a documented and therefore reliable macro or not.
-// #   if defined(OBJC_NEW_PROPERTIES)
-// #    endif
+// @todo TODO: Check if @c OBJC_NEW_PROPERTIES is a documented and therefore reliable macro or not.
+#//   if defined(OBJC_NEW_PROPERTIES)
+#//    endif
 #endif
 
 
@@ -153,21 +153,21 @@
 #   // Freestanding C99 implementation
 #   // It isn't specified if freestanding implementations support complex data types.
 #   elif defined(__STDC_HOSTED__) && (0 == __STDC_HOSTED__)  
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.      
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.      
 #   endif
 #   // Compiler performs floating point arithmetic according to the IEC 60559 standard, also known as the 
 #   // IEEE 754 standard.
 #   if defined(__STDC_IEC_559__) && (1 == __STDC_IEC_559__) 
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   // Compiler performs complex arithmetic according to the IEC 60559 standard.
 #   if defined(__STD_IEC_559_COMPLEX__) && (1 == __STD_IEC_559_COMPLEX__) 
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   // Values of the type @c wchar_t are represented by the codes in the ISO/IEC 10646 standard. The macro contains the 
 #   // standard revision as an integral value encoded as the year and month if the revision, @c yyyymmL .
 #   if defined(__STDC_ISO_10646__) 
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #endif
 

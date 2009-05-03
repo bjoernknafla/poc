@@ -31,10 +31,10 @@
  *            @code poc.h @endcode or @code poc_portability_macros.h @endcode instead.
  *
  *
- * TODO: @todo Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
- * TODO: @todo Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?
- * TODO: @todo Handle @c wchar_t .
- * TODO: @todo Handle library import/export alas visible/hidden qualifiers.
+ * @todo TODO: Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
+ * @todo TODO: Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?
+ * @todo TODO: Handle @c wchar_t .
+ * @todo TODO: Handle library import/export alas visible/hidden qualifiers.
  */
 
 // Only allow definition of POC portability macros if @code poc_portability_macros.h @endcode hasn't been included 
@@ -66,8 +66,8 @@
 // Be carefull when using the alignment values that the value of @c POC_ALIGN_BEGIN( val ) and the value of the
 // corresponding @c POC_ALIGN_END( val ) are equal.
 // 
-// TODO: @todo Add tests.
-// TODO: @todo Add checks in macros for alignment values that don't work on specific compilers.
+// @todo TODO: Add tests.
+// @todo TODO: Add checks in macros for alignment values that don't work on specific compilers.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #if defined(POC_COMPILER_GCC)

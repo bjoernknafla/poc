@@ -40,8 +40,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @name Predefined compiler ids.
-/// TODO: @todo Move all ids of all POC headers to the value @c 1 to allow binary-logic-or-tests for it.
-/// TODO: @todo Add OpenCL compiler detection.
+/// @todo TODO: Move all ids of all POC headers to the value @c 1 to allow binary-logic-or-tests for it.
+/// @todo TODO: Add OpenCL compiler detection.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///@{
 #define POC_COMPILER_UNKNOWN_ID 0
@@ -110,14 +110,14 @@
 #   endif
 #endif
 
-// TODO: @todo Refactor to extract NVCC compiler version (if possible).
+// @todo TODO: Refactor to extract NVCC compiler version (if possible).
 #if defined(__CUDACC__)
 #   define POC_COMPILER_NVCC POC_COMPILER_NVCC_ID
 #   define POC_COMPILER_NVCC_VERSION POC_COMPILER_UNKNOWN_VERSION
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
-// TODO: @todo Refactor to extract OpenCL compiler version and compiler vendor.
+// @todo TODO: Refactor to extract OpenCL compiler version and compiler vendor.
 #if defined(__OPENCL_VERSION__)
 #   define POC_COMPILER_OPENCL_GENERIC POC_COMPILER_OPENCL_GENERIC_ID
 #   define POC_COMPILER_OPENCL_GENERIC_VERSION POC_COMPILER_UNKNOWN_VERSION

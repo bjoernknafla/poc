@@ -117,7 +117,7 @@
 
 
 // 32bit Linux uses the ILP32 data model, 64bit Linux uses the LP64 data model.
-// TODO: @todo Check facts.
+// @todo TODO: Check facts.
 #if defined(POC_OS_LINUX)
 #   if defined(_LP64) || defined(__LP64__) || defined(__lp64)
 #       define POC_DATA_MODEL_LP64 POC_DATA_MODEL_LP64_ID
@@ -242,8 +242,8 @@
 
 #if defined(__cplusplus)
 
-// TODO: @todo Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
-//        symbols declared in @c climits leak into this header?
+// @todo TODO: Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
+//       symbols declared in @c climits leak into this header?
 // Include CHAR_BIT
 #include <climits>
 

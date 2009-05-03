@@ -32,11 +32,11 @@
  *            @code poc_arch_undef.h @endcode . If header guards are wanted or needed use @code poc.h @endcode or 
  *            @code poc_arch.h @endcode instead.
  *
- * TODO: @todo Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the 
+ * @todo TODO: Detect if running on a CUDA device or on a @c __DEVICE_EMULATION__ and if running on the host or the 
  *             device.
- * TODO: @todo Detect if running on a OpenCL host or device and which one the moment this is possible to detect.
- * TODO: @todo Add support for Cell SPU and PPU.
- * TODO: @todo Add support for iPhone, iPod Touch, and device emulation.
+ * @todo TODO: Detect if running on a OpenCL host or device and which one the moment this is possible to detect.
+ * @todo TODO: Add support for Cell SPU and PPU.
+ * @todo TODO: Add support for iPhone, iPod Touch, and device emulation.
  */
 
 // Only allow definition of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included 

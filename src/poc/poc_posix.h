@@ -35,6 +35,8 @@
  * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
  * @code _undef.h @endcode anymore.
+ *
+ * @todo TODO: Implement posix support.
  */
 
 #ifndef POC_poc_posix_H

@@ -25,6 +25,7 @@
 		32532ADC0FA9B5DB00197F39 /* poc_diagnose_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */; };
 		32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
 		32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */; };
+		325361AD0FADBB9E00197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,7 @@
 		32533E750FAAF6F800197F39 /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; path = html; sourceTree = "<group>"; };
 		3253610F0FACA1BB00197F39 /* special_doxygen_documentation.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = special_doxygen_documentation.dox; sourceTree = "<group>"; };
 		325361A40FADB8E100197F39 /* how_to_publish.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = how_to_publish.txt; sourceTree = "<group>"; };
+		325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_c_gcc_ansi_c; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A9B6120FA5C26900FF0967 /* poc_compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler.h; sourceTree = "<group>"; };
 		32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_def.h; sourceTree = "<group>"; };
 		32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_undef.h; sourceTree = "<group>"; };
@@ -113,6 +115,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		325361A60FADBB3C00197F39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DD76F660486A84900D96B5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +158,7 @@
 				32532AD00FA9B59F00197F39 /* poc_diagnose_c */,
 				32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B590FA9CDB600197F39 /* poc_diagnose_objc */,
+				325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,6 +322,23 @@
 			productReference = 32532B590FA9CDB600197F39 /* poc_diagnose_objc */;
 			productType = "com.apple.product-type.tool";
 		};
+		325361A70FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 325361AC0FADBB6000197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_c_gcc_ansi_c" */;
+			buildPhases = (
+				325361A50FADBB3C00197F39 /* Sources */,
+				325361A60FADBB3C00197F39 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			comments = "Generates an executable from poc_diagnose_main..c using the most up to date GNU GCC compiler with the language setting ANSI C.";
+			dependencies = (
+			);
+			name = poc_diagnose_c_gcc_ansi_c;
+			productName = poc_diagnose_c_gcc_ansi_c;
+			productReference = 325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DD76F620486A84900D96B5E /* poc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "poc" */;
@@ -344,6 +371,7 @@
 			targets = (
 				8DD76F620486A84900D96B5E /* poc */,
 				32532ACF0FA9B59F00197F39 /* poc_diagnose_c */,
+				325361A70FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */,
 				32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B580FA9CDB600197F39 /* poc_diagnose_objc */,
 				32535EF30FAAF75D00197F39 /* Doxygen documentation */,
@@ -390,6 +418,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		325361A50FADBB3C00197F39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				325361AD0FADBB9E00197F39 /* poc_diagnose_main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +653,40 @@
 			};
 			name = Release;
 		};
+		325361AA0FADBB4200197F39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_c_gcc_ansi_c;
+			};
+			name = Debug;
+		};
+		325361AB0FADBB4200197F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = 4.2;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = poc_diagnose_c_gcc_ansi_c;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -670,6 +740,15 @@
 			buildConfigurations = (
 				32535EF40FAAF76100197F39 /* Debug */,
 				32535EF50FAAF76100197F39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		325361AC0FADBB6000197F39 /* Build configuration list for PBXNativeTarget "poc_diagnose_c_gcc_ansi_c" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				325361AA0FADBB4200197F39 /* Debug */,
+				325361AB0FADBB4200197F39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
