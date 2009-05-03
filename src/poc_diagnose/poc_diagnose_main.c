@@ -37,13 +37,16 @@
  *       app that takes the collected data and finally prints it to stdout.
  */
 
-// Include EXIT_SUCCESS
+/* Include EXIT_SUCCESS
+ */
 #include <stdlib.h>
 
-// Include stdout, fprintf, FILE
+/* Include stdout, fprintf, FILE
+ */
 #include <stdio.h>
 
-// Include POC macros to detect target platform configuration.
+/* Include POC macros to detect target platform configuration.
+ */
 #include <poc/poc.h>
 
 
@@ -129,11 +132,13 @@ void print_os(FILE* outstream);
 
 int main(int argc, char* argv[])
 {
-    // Prevent warning that argument isn't used.
+    /* Prevent warning that argument isn't used.
+     */
     (void)argc;
     (void)argv;
     
-    // Print the app-name.
+    /* Print the app-name.
+     */
     fprintf(stdout, "%s \n\n", "POC Diagnose");
     
     print_std_predefined_macros(stdout);
@@ -254,6 +259,7 @@ int print_macro_definition_string(FILE* outstream,
 {
     int chars_written = 0;
     int const chars_written_description = fprintf(outstream, "  %s ", macro_description_string);
+    int chars_written_newline = 0;
     
     if (0 > chars_written_description)
     {
@@ -285,7 +291,7 @@ int print_macro_definition_string(FILE* outstream,
         chars_written += chars_written_undefined;
     }
     
-    int const chars_written_newline = fprintf(outstream, "\n");
+    chars_written_newline = fprintf(outstream, "\n");
     
     if (0 > chars_written_newline)
     {
@@ -307,6 +313,7 @@ int print_macro_definition_integral(FILE* outstream,
 {
     int chars_written = 0;
     int const chars_written_description = fprintf(outstream, "  %s ", macro_description_string);
+    int chars_written_newline = 0;
     
     if (0 > chars_written_description)
     {
@@ -338,7 +345,7 @@ int print_macro_definition_integral(FILE* outstream,
         chars_written += chars_written_undefined;
     }
     
-    int const chars_written_newline = fprintf(outstream, "\n");
+    chars_written_newline = fprintf(outstream, "\n");
     
     if (0 > chars_written_newline)
     {

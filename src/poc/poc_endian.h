@@ -39,13 +39,16 @@
  * @code _undef.h @endcode anymore.
  */
 
+/**
+ * @def POC_ENDIAN
+ * Stores a predefined value representing the platforms endienness or @c POC_ENDIAN_UNKNOWN_ID if the
+ * endienness can't be identified (is unknown).
+ */
 
-/// @def POC_ENDIAN
-/// Stores a predefined value representing the platforms endienness or @c POC_ENDIAN_UNKNOWN_ID if the
-/// endienness can't be identified (is unknown).
-
-/// @def POC_DATA_ENDIAN_STRING
-/// Stores a C character string describing the identified platforms endienness.
+/**
+ * @def POC_ENDIAN_STRING
+ * Stores a C character string describing the identified platforms endienness.
+ */
 
 #ifndef POC_poc_endian_H
 #define POC_poc_endian_H
@@ -54,8 +57,9 @@
 
 #include "poc_endian_def.h"
 
-// Disable macro undefines via including @code poc_endian_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_endian_def.h @endcode .
+/* Disable macro undefines via including @code poc_endian_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_endian_def.h @endcode .
+ */
 #define POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_endian_H
+#endif /* POC_poc_endian_H */

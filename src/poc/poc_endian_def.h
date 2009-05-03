@@ -29,58 +29,62 @@
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
  *            @code poc_endian_undef.h @endcode . If header guards are wanted or needed use 
  *            @code poc.h @endcode or @code poc_endian.h @endcode instead.
+ *
+ * See http://en.wikipedia.org/wiki/Endianness
  */
 
-// Only allow definition of POC endienness macros if @code poc_endian.h @endcode hasn't been included 
-// in this compilation unit.
+/* Only allow definition of POC endienness macros if @code poc_endian.h @endcode hasn't been included 
+ * in this compilation unit.
+ */
 #if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
 
 
 
-// Include POC_ARCH prefixed preprocessor symbols
+/* Include POC_ARCH prefixed preprocessor symbols
+ */
 #include "poc_arch_def.h"
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Endianness ids
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Endianness ids
+ ******************************************************************************/
+/*@{*/
 #define POC_ENDIAN_UNKNOWN_ID 0
 #define POC_ENDIAN_LITTLE_ID 1
 #define POC_ENDIAN_BIG_ID 2
-///@}
+/*@}*/
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Endianness strings
-///
-/// See http://en.wikipedia.org/wiki/Endianness
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Endianness strings
+ ******************************************************************************/
+/*@{*/
 #define POC_ENDIAN_UNKNOWN_STRING "Unknown endian"
 #define POC_ENDIAN_LITTLE_STRING "Little endian"
 #define POC_ENDIAN_BIG_STRING "Big endian"
-///@}
+/*@}*/
 
 
 #if !defined(POC_ENDIAN_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect endianness.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Detect endianness.
+ ******************************************************************************/
 
-// Detect little endianness
+/* Detect little endianness
+ */
 #if defined(__LITTLE_ENDIAN__) || defined (__ENDIAN_LITTLE__) || defined(POC_ARCH_X86) || defined(INIGMA_ARCH_X86_32) || defined(POC_ARCH_X86_64)
 #   define POC_ENDIAN_LITTLE POC_ENDIAN_LITTLE_ID
 #endif
 
-// Detect big endianness
+/* Detect big endianness
+ */
 #if defined(__BIG_ENDIAN__) || (defined(__OPENCL_VERSION__) && !defined(__ENDIAN_LITTLE__))
 #   define POC_ENDIAN_BIG POC_ENDIAN_BIG_ID
 #endif
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect @c POC_ENDIAN_ID and @c POC_ENDIAN_STRING
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Detect @c POC_ENDIAN_ID and @c POC_ENDIAN_STRING
+ ******************************************************************************/
 
 #if defined(POC_ENDIAN_LITTLE)
 #   define POC_ENDIAN POC_ENDIAN_LITTLE_ID
@@ -94,10 +98,11 @@
 #endif
 
 
-#endif // !defined(POC_ENDIAN_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+#endif /* !defined(POC_ENDIAN_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
 
-// Endienness unknown
+/* Endianness unknown
+ */
 #if !defined(POC_ENDIAN)
 #   define POC_ENDIAN_UNKNOWN POC_ENDIAN_UNKNOWN_ID
 #   define POC_ENDIAN POC_ENDIAN_UNKNOWN_ID
@@ -109,10 +114,13 @@
 #   error Unknown endian string.
 #endif
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect erroreneous declaration of little and big endianness at the same time
-// @todo TODO: How to handle bi-endian architectures?
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Detect erroreneous declaration of little and big endianness at the same time
+ ******************************************************************************/
+
+/**
+ * @todo TODO: How to handle bi-endian architectures?
+ */
 
 #if defined(POC_ENDIAN_LITTLE) && (defined(POC_ENDIAN_BIG) || defined(POC_ENDIAN_UNKNOWN))
 #   error Little and big endianness mustn't be active at the same time.
@@ -127,4 +135,4 @@
 
 
 
-#endif // !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF) */

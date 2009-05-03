@@ -43,12 +43,14 @@
 #define POC_poc_posix_H
 
 #if !defined(POC_POSIX_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
-// Implementation missing yet.
-// #include "poc_posix_def.h"
-#endif // !defined(POC_POSIX_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+/* Implementation missing yet.
+ * #include "poc_posix_def.h"
+ */
+#endif /* !defined(POC_POSIX_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
-// Disable macro undefines via including @code poc_posix_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_posix_def.h @endcode .
+/* Disable macro undefines via including @code poc_posix_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_posix_def.h @endcode .
+ */
 #define POC_POSIX_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_posix_H
+#endif /* POC_poc_posix_H */

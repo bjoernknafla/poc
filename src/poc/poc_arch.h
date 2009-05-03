@@ -39,21 +39,25 @@
  */
 
 
-/// @def POC_ARCH
-/// Stores a predefined value representing the machine architecture compiling for or @c POC_ARCH_UNKNOWN_ID if the
-/// architecture can't be identified (is unknown).
+/**
+ * @def POC_ARCH
+ * Stores a predefined value representing the machine architecture compiling for or @c POC_ARCH_UNKNOWN_ID if the
+ * architecture can't be identified (is unknown).
+ */
 
-/// @def POC_ARCH_STRING
-/// Stores a C character string describing the identified machine architecture.
-
+/**
+ * @def POC_ARCH_STRING
+ * Stores a C character string describing the identified machine architecture.
+ */
 
 #ifndef POC_poc_arch_H
 #define POC_poc_arch_H
 
 #include "poc_arch_def.h"
 
-// Disable macro undefines via including @code poc_arch_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_arch_def.h @endcode .
+/* Disable macro undefines via including @code poc_arch_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_arch_def.h @endcode .
+ */
 #define POC_ARCH_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_arch_H
+#endif /* POC_poc_arch_H */

@@ -44,12 +44,16 @@
  */
 
 
-/// @def POC_DATA_MODEL
-/// Stores a predefined value representing the platforms data model or @c POC_DATA_MODEL_UNKNOWN_ID if the
-/// data model can't be identified (is unknown).
+/**
+ * @def POC_DATA_MODEL
+ * Stores a predefined value representing the platforms data model or @c POC_DATA_MODEL_UNKNOWN_ID if the
+ * data model can't be identified (is unknown).
+ */
 
-/// @def POC_DATA_MODEL_STRING
-/// Stores a C character string describing the identified data model.
+/**
+ * @def POC_DATA_MODEL_STRING
+ * Stores a C character string describing the identified data model.
+ */
 
 #ifndef POC_poc_data_model_H
 #define POC_poc_data_model_H
@@ -62,8 +66,9 @@
 
 #include "poc_data_model_def.h"
 
-// Disable macro undefines via including @code poc_data_model_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_data_model_def.h @endcode .
+/* Disable macro undefines via including @code poc_data_model_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_data_model_def.h @endcode .
+ */
 #define POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_data_model_H
+#endif /* POC_poc_data_model_H */

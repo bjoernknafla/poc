@@ -52,14 +52,20 @@
  */
 
 
-/// @def POC_RESTRICT
-/// Defined to @c restrict if compiling for C99, otherwise empty.
+/**
+ * @def POC_RESTRICT
+ * Defined to @c restrict if compiling for C99, otherwise empty.
+ */
 
-/// @def POC_ALIGN_BEGIN( Align )
-/// Wrapping beginning for a type aligned to @c Align bytes.
+/**
+ * @def POC_ALIGN_BEGIN
+ * Wrapping beginning for a type aligned to @c Align bytes.
+ */
 
-/// @def POC_ALIGN_END( Align )
-/// Wrapping ending for a type aligned to @c Align bytes.
+/**
+ * @def POC_ALIGN_END
+ * Wrapping ending for a type aligned to @c Align bytes.
+ */
 
 #ifndef POC_poc_portability_macros_H
 #define POC_poc_portability_macros_H
@@ -70,8 +76,9 @@
 
 #include "poc_portability_macros_def.h"
 
-// Disable macro undefines via including @code poc_portability_macros_undef.h @endcode and prevent re-defines from 
-// accidential includes of @code poc_portability_macros_def.h @endcode .
+/* Disable macro undefines via including @code poc_portability_macros_undef.h @endcode and prevent re-defines from 
+ * accidential includes of @code poc_portability_macros_def.h @endcode .
+ */
 #define POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_portability_macros_H
+#endif /* POC_poc_portability_macros_H */

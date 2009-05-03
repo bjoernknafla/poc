@@ -67,5 +67,5 @@ http://predef.sourceforge.net/index.php
 
 
 Release Notes:
-Version 0.1.0 (May 1, 2009)
+Version 0.2.0 (May 1, 2009)
 - Initial release

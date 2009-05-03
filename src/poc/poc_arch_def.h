@@ -39,16 +39,17 @@
  * @todo TODO: Add support for iPhone, iPod Touch, and device emulation.
  */
 
-// Only allow definition of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included 
-// in this compilation unit.
+/* Only allow definition of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included 
+ * in this compilation unit.
+ */
 #if !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined architecture ids
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined architecture ids
+ ******************************************************************************/
+/*@{*/
 #define POC_ARCH_UNKNOWN_ID 0
 #define POC_ARCH_X86_32_ID 1
 #define POC_ARCH_X86_64_ID 2
@@ -56,14 +57,14 @@
 #define POC_ARCH_PPC64_ID 8
 #define POC_ARCH_ARM_ID 16
 #define POC_ARCH_ARM_THUMB_ID 32
-///@}
+/*@}*/
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined architecture strings
-/// See http://predef.sourceforge.net/index.php for macros defined by language standards, compilers, libraries, etc.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined architecture strings
+ * See http://predef.sourceforge.net/index.php for macros defined by language standards, compilers, libraries, etc.
+ ******************************************************************************/
+/*@{*/
 #define POC_ARCH_UNKNOWN_STRING "Unknown architecture"
 #define POC_ARCH_X86_32_STRING "x86-32"
 #define POC_ARCH_X86_64_STRING "x86-64"
@@ -71,20 +72,22 @@
 #define POC_ARCH_PPC64_STRING "PowerPC64"
 #define POC_ARCH_ARM_STRING "ARM"
 #define POC_ARCH_ARM_THUMB_STRING "ARM Thumb"
-///@}
+/*@}*/
 
 
-// If @c POC_ARCH_DISABLE_AUTODETECT or @c POC_DISABLE_AUTODETECT is defined no automatic operating system detection 
-// takes place.
+/* If @c POC_ARCH_DISABLE_AUTODETECT or @c POC_DISABLE_AUTODETECT is defined no automatic operating system detection 
+ * takes place.
+ */
 #if !defined(POC_ARCH_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect architecture
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Detect architecture
+ ******************************************************************************/
 
 
-// Detect x86_32 (not x86_64)
+/* Detect x86_32 (not x86_64)
+ */
 #if defined(i386) \
 || defined(__i386) \
 || defined(__i386__) \
@@ -98,7 +101,8 @@
 #endif
 
 
-// Detect x86_64 (AMD not (!!) Itanium)
+/* Detect x86_64 (AMD not (!!) Itanium)
+ */
 #if defined(__x86_64) || defined(__x86_64__) || defined(__amd64) || defined(__amd64__) || defined(_M_X64)
 #   define POC_ARCH_X86 POC_ARCH_X86_64_ID
 #   define POC_ARCH_X86_64 POC_ARCH_X86_64_ID
@@ -106,7 +110,8 @@
 #endif
 
 
-// Detect PowerPC and PowerPC64
+/* Detect PowerPC and PowerPC64
+ */
 #if defined(__ppc__) || defined(__ppc64__)
 #   define POC_ARCH_PPC POC_ARCH_PPC_ID
 #   if defined(__ppc64__)
@@ -115,7 +120,8 @@
 #   endif
 #endif
 
-// Detect ARM and ARM Thumb
+/* Detect ARM and ARM Thumb
+ */
 #if defined(__arm__) || (__thumb__)
 #   if defined(__arm__)
 #       define POC_ARCH_ARM POC_ARCH_ARM_ID
@@ -127,9 +133,9 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Determine @c POC_ARCH_STRING and @c POC_ARCH_ID
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Determine @c POC_ARCH_STRING and @c POC_ARCH_ID
+ ******************************************************************************/
 
 
 #if defined(POC_ARCH_X86_32)
@@ -170,11 +176,12 @@
 
 
 
-#endif // !defined(POC_ARCH_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+#endif /* !defined(POC_ARCH_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
 
 
-// No known architecture detected
+/* No known architecture detected
+ */
 #if !defined(POC_ARCH)
 #   define POC_ARCH_UNKNONW POC_ARCH_UNKNOWN_ID
 #   define POC_ARCH POC_ARCH_UNKNOWN_ID
@@ -186,9 +193,9 @@
 #   error Machine architecture string unknown.
 #endif
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Error detection
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Error detection
+ ******************************************************************************/
 
 
 #if defined(POC_ARCH_X86)
@@ -197,7 +204,8 @@
 #   endif
 #endif
 
-// Exactly one architecture must have been detected - xor tests to find possible error.
+/* Exactly one architecture must have been detected - xor tests to find possible error.
+ */
 #if defined(POC_ARCH_X86_32) && \
 (defined(POC_ARCH_X86_64) || \
  defined(POC_ARCH_PPC) || \
@@ -258,5 +266,5 @@ defined(POC_ARCH_PPC) )
 
 
 
-#endif // !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF) */
 

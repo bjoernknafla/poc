@@ -89,8 +89,9 @@
 #include "poc_posix.h"
 #include "poc_portability_macros.h"
 
-// Disable macro undefines via including @code poc_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_def.h @endcode .
+/* Disable macro undefines via including @code poc_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_def.h @endcode .
+ */
 #define POC_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_H
+#endif /* POC_poc_H */

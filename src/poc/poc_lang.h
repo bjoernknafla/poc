@@ -45,13 +45,16 @@
  * @code _undef.h @endcode anymore.
  */
 
+/**
+ * @def POC_LANG
+ * Stores a predefined value representing the programming language compiling for or @c POC_LANG_UNKNOWN_ID if the
+ * language can't be identified (is unknown).
+ */
 
-/// @def POC_LANG
-/// Stores a predefined value representing the programming language compiling for or @c POC_LANG_UNKNOWN_ID if the
-/// language can't be identified (is unknown).
-
-/// @def POC_LANG_STRING
-/// Stores a C character string describing the identified programming language the compiler assumes.
+/** 
+ * @def POC_LANG_STRING
+ * Stores a C character string describing the identified programming language the compiler assumes.
+ */
 
 #ifndef POC_poc_lang_H
 #define POC_poc_lang_H
@@ -61,8 +64,9 @@
 #include "poc_lang_def.h"
 
 
-// Disable macro undefines via including @code poc_lang_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_lang_def.h @endcode .
+/* Disable macro undefines via including @code poc_lang_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_lang_def.h @endcode .
+ */
 #define POC_LANG_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_lang_H
+#endif /* POC_poc_lang_H */

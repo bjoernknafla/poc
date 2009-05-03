@@ -30,8 +30,9 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-// Only allow undef of POC utility macros if @code poc_preprocessor_utilities.h @endcode hasn't been included in this 
-// compilation unit.
+/* Only allow undef of POC utility macros if @code poc_preprocessor_utilities.h @endcode hasn't been included in this 
+ * compilation unit.
+ */
 #if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
 
 #   undef POC_STRINGS_MAX_LENGTH
@@ -44,4 +45,4 @@
 #   undef POC_DO_STRINGIZE
 
 
-#endif // !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF) */

@@ -33,48 +33,51 @@
  *            @code poc_compiler.h @endcode instead.
  */
 
-// Only allow definition of POC compiler macros if @code poc_compiler.h @endcode hasn't been included 
-// in this compilation unit.
+/* Only allow definition of POC compiler macros if @code poc_compiler.h @endcode hasn't been included 
+ * in this compilation unit.
+ */
 #if !defined(POC_COMPILER_HEADER_DISABLE_DEF_UNDEF)
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined compiler ids.
-/// @todo TODO: Move all ids of all POC headers to the value @c 1 to allow binary-logic-or-tests for it.
-/// @todo TODO: Add OpenCL compiler detection.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined compiler ids.
+ *
+ * @todo TODO: Move all ids of all POC headers to the value @c 1 to allow binary-logic-or-tests for it.
+ * @todo TODO: Add OpenCL compiler detection.
+ ******************************************************************************/
+/*@{*/
 #define POC_COMPILER_UNKNOWN_ID 0
 #define POC_COMPILER_GCC_ID 1
 #define POC_COMPILER_ICC_ID 2
 #define POC_COMPILER_MSVC_ID 4
 #define POC_COMPILER_OPENCL_GENERIC_ID 8
 #define POC_COMPILER_NVCC_ID 16
-///@}
+/*@}*/
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined compiler strings.
-/// See Intel C++ Compiler Documentation.
-/// See http://predef.sourceforge.net/index.php for macros defined by language standards, compilers, libraries, etc. The
-/// documents in CVS have significantly less errors than the website.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined compiler strings.
+ *
+ * See Intel C++ Compiler Documentation.
+ * See http://predef.sourceforge.net/index.php for macros defined by language standards, compilers, libraries, etc. The
+ * documents in CVS have significantly less errors than the website.
+ ******************************************************************************/
+/*@{*/
 #define POC_COMPILER_UNKNOWN_STRING "Unknown compiler"
 #define POC_COMPILER_GCC_STRING "GNU GCC"
 #define POC_COMPILER_MSVC_STRING "Microsoft Visual Studio C++"
 #define POC_COMPILER_ICC_STRING "Intel C/C++"
 #define POC_COMPILER_OPENCL_GENERIC_STRING "Generic OpenCL compiler"
 #define POC_COMPILER_NVCC_STRING "Nvidia NVCC"
-///@}
+/*@}*/
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Compiler version.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Compiler version.
+ ******************************************************************************/
+/*@{*/
 #define POC_COMPILER_UNKNOWN_VERSION -1
-// #define POC_COMPILER_UNKNOWN_VERSION_STRING "Unkown compiler version"
-///@}
+/* #define POC_COMPILER_UNKNOWN_VERSION_STRING "Unkown compiler version" */
+/*@}*/
 
 
 
@@ -82,12 +85,12 @@
 #if !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Detect compiler.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Detect compiler.
+ ******************************************************************************/
 
-
-// Detect gcc (and therefor g++).
+/* Detect gcc (and therefor g++).
+ */
 #if defined(__GNUC__)
 #   define POC_COMPILER_GCC POC_COMPILER_GCC_ID
 #   if defined(__GNUC_PATCHLEVEL__)
@@ -100,7 +103,8 @@
 #   endif
 #endif
 
-// Detect Microsoft Visual Studio Compiler.
+/* Detect Microsoft Visual Studio Compiler.
+ */
 #if defined(_MSC_VER)
 #   define POC_COMPILER_MSVC POC_COMPILER_MSVC_ID
 #   if defined(_MSC_FULL_VER) && defined(_MSC_BUILD)
@@ -110,29 +114,34 @@
 #   endif
 #endif
 
-// @todo TODO: Refactor to extract NVCC compiler version (if possible).
+/**
+ * @todo TODO: Refactor to extract NVCC compiler version (if possible).
+ */
 #if defined(__CUDACC__)
 #   define POC_COMPILER_NVCC POC_COMPILER_NVCC_ID
 #   define POC_COMPILER_NVCC_VERSION POC_COMPILER_UNKNOWN_VERSION
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
-// @todo TODO: Refactor to extract OpenCL compiler version and compiler vendor.
+/**
+ * @todo TODO: Refactor to extract OpenCL compiler version and compiler vendor.
+ */
 #if defined(__OPENCL_VERSION__)
 #   define POC_COMPILER_OPENCL_GENERIC POC_COMPILER_OPENCL_GENERIC_ID
 #   define POC_COMPILER_OPENCL_GENERIC_VERSION POC_COMPILER_UNKNOWN_VERSION
 #endif
 
 
-// Detect Intel compiler.
-//
-// Intel compiler detection must happen after checks for GCC and MSVC because these compiler might be used as hosts
-// by ICC and their settings are needed by the following ICC detection preprocessor constructs.
-//
-// Intel's compiler often uses the systems native compiler infrastructure. If a system has Gnu GCC installed
-// POC_COMPILER_GCC is undefined - this is not the compiler used, but as its infrastructure is used
-// POC_COMPILER_ICC_GCC is used. POC_COMPILER_ICC_GCC is also used to prefix the detected Gnu GCC 
-// version and string describing it.
+/* Detect Intel compiler.
+ *
+ * Intel compiler detection must happen after checks for GCC and MSVC because these compiler might be used as hosts
+ * by ICC and their settings are needed by the following ICC detection preprocessor constructs.
+ *
+ * Intel's compiler often uses the systems native compiler infrastructure. If a system has Gnu GCC installed
+ * @c POC_COMPILER_GCC is undefined - this is not the compiler used, but as its infrastructure is used
+ * @c POC_COMPILER_ICC_GCC is used. @c POC_COMPILER_ICC_GCC is also used to prefix the detected Gnu GCC 
+ * version and string describing it.
+ */
 #if defined(__ICC) || defined(__INTEL_COMPILER)
 #   define POC_COMPILER_ICC POC_COMPILER_ICC_ID
 #   define POC_COMPILER_ICC_VERSION __INTEL_COMPILER
@@ -170,9 +179,9 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Determine @c POC_COMPILER, @c POC_COMPILER_STRING, and @c POC_COMPILER_VERSION based on the detected compiler.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Determine @c POC_COMPILER, @c POC_COMPILER_STRING, and @c POC_COMPILER_VERSION based on the detected compiler.
+ ******************************************************************************/
 
 #if defined(POC_COMPILER_GCC)
 #   define POC_COMPILER POC_COMPILER_GCC_ID
@@ -199,7 +208,8 @@
 #endif
 
 
-// Icc detection must be last to overwrite values that might have been set by host compilers like GCC or MSVC.
+/* Icc detection must be last to overwrite values that might have been set by host compilers like GCC or MSVC.
+ */
 #if defined(POC_COMPILER_ICC)
 #   define POC_COMPILER POC_COMPILER_ICC_ID
 #   define POC_COMPILER_STRING POC_COMPILER_ICC_STRING
@@ -207,13 +217,13 @@
 #endif
 
 
-#endif // !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+#endif /* !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// No known compiler, compiler string, or compiler version detected - set to unknown.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * No known compiler, compiler string, or compiler version detected - set to unknown.
+ ******************************************************************************/
 
 #if !defined(POC_COMPILER)
 #   define POC_COMPILER_UNKNOWN POC_COMPILER_UNKNOWN_ID
@@ -232,12 +242,11 @@
 #endif
 
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Error check
-// Exactly one main compiler must have been choosen - xor tests to find possible error.
-// The main compiler can have a host compiler (see @c POC_COMPILER_ICC for an example).
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Error check
+ * Exactly one main compiler must have been choosen - xor tests to find possible error.
+ * The main compiler can have a host compiler (see @c POC_COMPILER_ICC for an example).
+ ******************************************************************************/
 #if defined(POC_LANG_COMPILER_GCC) && \
 (defined(POC_COMPILER_MSVC) || \
  defined(POC_COMPILER_ICC) || \
@@ -284,4 +293,4 @@ defined(POC_COMPILER_OPENCL_GENERIC))
 
 
 
-#endif // !defined(POC_COMPILER_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_COMPILER_HEADER_DISABLE_DEF_UNDEF) */

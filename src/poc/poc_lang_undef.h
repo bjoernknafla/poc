@@ -30,8 +30,9 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/// Only allow undef of POC programming language macros if @code poc_lang.h @endcode hasn't been included in this 
-/// compilation unit.
+/* Only allow undef of POC programming language macros if @code poc_lang.h @endcode hasn't been included in this 
+ * compilation unit.
+ */
 #if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
 
 
@@ -103,4 +104,4 @@
 
 
 
-#endif // !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF) */

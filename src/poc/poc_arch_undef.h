@@ -30,8 +30,9 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/// Only allow undef of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included in this 
-/// compilation unit.
+/* Only allow undef of POC machine architecture macros if @code poc_arch.h @endcode hasn't been included in this 
+ * compilation unit.
+ */
 #if !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
 
 #undef POC_ARCH
@@ -69,4 +70,4 @@
 #undef POC_ARCH_ARM_THUMB_STRING
 
 
-#endif // !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_ARCH_HEADER_DISABLE_DEF_UNDEF) */

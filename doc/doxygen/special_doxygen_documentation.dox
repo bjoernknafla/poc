@@ -50,6 +50,7 @@
  * @section code_and_issues Where to find the code and file issues
  *
  * The code can be found and downloaded at: http://github.com/bknafla/poc
+ *
  * Please file issues with the code at: http://github.com/bknafla/poc/issues
  * 
  * 
@@ -68,7 +69,7 @@
  *
  * @section release_notes Release Notes
  *
- * Version 0.1.0 (May 1, 2009)
+ * Version 0.2.0 (May 1, 2009)
  * - Initial release
  *
  */

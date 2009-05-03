@@ -31,22 +31,25 @@
  *            @code poc.h @endcode or @code poc_lang.h @endcode instead.
  */
 
-// Only allow definition of POC programming language macros if @code poc_lang.h @endcode hasn't been included 
-// in this compilation unit.
+/* Only allow definition of POC programming language macros if @code poc_lang.h @endcode hasn't been included 
+ * in this compilation unit.
+ */
 #if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
 
 
 
-// Include macros prefixed with POC_COMPILER
+/* Include macros prefixed with POC_COMPILER
+ */
 #include "poc_compiler_def.h"
 
+/**
+ * @todo TODO: Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
+ */
 
-// @todo TODO: Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined programming language ids
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined programming language ids
+ ******************************************************************************/
+/*@{*/
 #define POC_LANG_UNKNOWN_ID 0
 #define POC_LANG_C_UNKNOWN_ID 1
 #define POC_LANG_C_C89_ID 2
@@ -55,12 +58,12 @@
 #define POC_LANG_CPP_CPP98_ID 16
 #define POC_LANG_OBJC_UNKNOWN_ID 32
 #define POC_LANG_OPENCL_UNKNOWN_ID 64
-///@}
+/*@}*/
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined programming language strings
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined programming language strings
+ ******************************************************************************/
+/*@{*/
 #define POC_LANG_UNKNOWN_STRING "Unknown language"
 #define POC_LANG_C_UNKNOWN_STRING "C unknown version"
 #define POC_LANG_C_C89_STRING "C C89"
@@ -69,25 +72,26 @@
 #define POC_LANG_CPP_CPP98_STRING "C++ '98"
 #define POC_LANG_OBJC_UNKNOWN_STRING "Objective-C unknown version"
 #define POC_LANG_OPENCL_UNKNOWN_STRING "OpenCL unknown version"
-///@}
+/*@}*/
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @name Predefined programming language standard version numbers
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///@{
+/***************************************************************************//**
+ * @name Predefined programming language standard version numbers
+ ******************************************************************************/
+/*@{*/
 #define POC_LANG_C_C89_STANDARDIZED_VERSION 199409L
 #define POC_LANG_C_C99_STANDARDIZED_VERSION 199901L
 #define POC_LANG_CPP_CPP98_STANDARDIZED_VERSION 199711L
-///@}
+/*@}*/
 
 
 #if !defined(POC_LANG_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 
 
 
-// See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
-// why to add @c 0 to a preprocessor symbol (if a symbol is defined but doesn't represent a number the @code +0 @endcode
-// transforms it into a number).
+/* See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
+ * why to add @c 0 to a preprocessor symbol (if a symbol is defined but doesn't represent a number the @code +0 @endcode
+ * transforms it into a number).
+ */
 #if defined(__STDC__)
 #   if defined(__STDC_VERSION__) && ((__STDC_VERSION__ + 0) == POC_LANG_C_C89_STANDARDIZED_VERSION)
 #       define POC_LANG_C POC_LANG_C_C89_ID
@@ -105,9 +109,10 @@
 #endif
 
 
-// See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
-// why to add @c 0 to a preprocessor symbol (if a symbol is defined but doesn't represent a number the @code +0 @endcode
-// transforms it into a number).
+/* See http://www.velocityreviews.com/forums/t278643-class-static-variables-amp-stdcversion.html for explanation
+ * why to add @c 0 to a preprocessor symbol (if a symbol is defined but doesn't represent a number the @code +0 @endcode
+ * transforms it into a number).
+ */
 #if defined(__cplusplus)
 #   if ((__cplusplus + 0) == POC_LANG_CPP_CPP98_STANDARDIZED_VERSION)
 #       define POC_LANG_CPP POC_LANG_CPP_CPP98_ID
@@ -123,16 +128,18 @@
 #if defined(__OBJC__)
 #   define POC_LANG_OBJC POC_LANG_OBJC_UNKNOWN_ID
 #   define POC_LANG_OBJC_STRING POC_LANG_OBJC_UNKNOWN_STRING
-// @todo TODO: Check if @c OBJC_NEW_PROPERTIES is a documented and therefore reliable macro or not.
-#//   if defined(OBJC_NEW_PROPERTIES)
-#//    endif
+/**
+ * @todo TODO: Check if @c OBJC_NEW_PROPERTIES is a documented and therefore reliable macro or not.
+ */
+#/*   if defined(OBJC_NEW_PROPERTIES) */
+#/*    endif */
 #endif
 
 
 #if defined(__OPENCL_VERSION__)
 #   define POC_LANG_OPENCL POC_LANG_OPENCL_UNKNOWN_ID
 #   define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_UNKNOWN_STRING
-#   // define POC_LANG_OPENCL_VERSION __OPENCL_VERSION__
+#   /* define POC_LANG_OPENCL_VERSION __OPENCL_VERSION__ */
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
@@ -145,27 +152,30 @@
 #   define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
 #   define POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT 1
 #   define POC_LANG_C_HEADER_STDBOOL_SUPPORT 1
-#   // Hosted C99 implementation.
+#   /* Hosted C99 implementation. */
 #   if defined(__STDC_HOSTED__) && (1 == __STDC_HOSTED__) 
 #       define POC_LANG_C_HEADER_STDINT_SUPPORT 1
 #       define POC_LANG_C_TYPE_COMPLEX_SUPPORT 1
 #       define POC_LANG_C_TYPE_IMAGINARY_SUPPORT 1
-#   // Freestanding C99 implementation
-#   // It isn't specified if freestanding implementations support complex data types.
+#   /* Freestanding C99 implementation
+#    * It isn't specified if freestanding implementations support complex data types.
+#    */
 #   elif defined(__STDC_HOSTED__) && (0 == __STDC_HOSTED__)  
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.      
 #   endif
-#   // Compiler performs floating point arithmetic according to the IEC 60559 standard, also known as the 
-#   // IEEE 754 standard.
+#   /* Compiler performs floating point arithmetic according to the IEC 60559 standard, also known as the 
+#    * IEEE 754 standard.
+#    */
 #   if defined(__STDC_IEC_559__) && (1 == __STDC_IEC_559__) 
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
-#   // Compiler performs complex arithmetic according to the IEC 60559 standard.
+#   /* Compiler performs complex arithmetic according to the IEC 60559 standard. */
 #   if defined(__STD_IEC_559_COMPLEX__) && (1 == __STD_IEC_559_COMPLEX__) 
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
-#   // Values of the type @c wchar_t are represented by the codes in the ISO/IEC 10646 standard. The macro contains the 
-#   // standard revision as an integral value encoded as the year and month if the revision, @c yyyymmL .
+#   /* Values of the type @c wchar_t are represented by the codes in the ISO/IEC 10646 standard. The macro contains the 
+#    * standard revision as an integral value encoded as the year and month if the revision, @c yyyymmL .
+#    */
 #   if defined(__STDC_ISO_10646__) 
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
@@ -173,8 +183,9 @@
 
 
 
-// Detect if RTTI is for sure enabled for C++. 
-// @attention RTTI might even be enabled if the tested macros aren't defined.
+/* Detect if RTTI is for sure enabled for C++. 
+ * @attention RTTI might even be enabled if the tested macros aren't defined.
+ */
 #if defined(POC_LANG_CPP)
 #   if defined(POC_COMPILER_GCC) && defined(__GXX_RTTI)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
@@ -188,7 +199,8 @@
 #   endif
 #endif
 
-// Detect if exceptions are enabled for C++
+/* Detect if exceptions are enabled for C++
+ */
 #if defined(POC_LANG_CPP)
 #   if defined(POC_COMPILER_GCC) && defined(__EXCEPTIONS)
 #       define POC_LANG_CPP_EXCEPTIONS_SUPPORT 1
@@ -203,13 +215,13 @@
 
 
 #if defined (POC_LANG_OPENCL)
-#   // Detect extensions.
+#   /* Detect extensions. */
 #   if defined(cl_khr_fp64)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(cl_khr_select_fprounding_mode)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   // Possible values for @c __ROUNDING_MODE__ are @code rte, rtz, rtp, rtz @endcode .
+#       /* Possible values for @c __ROUNDING_MODE__ are @code rte, rtz, rtp, rtz @endcode . */
 #   endif
 #   if defined(cl_khr_global_int32_base_atomics)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
@@ -271,29 +283,32 @@
 
 
 
-#endif // !defined(POC_LANG_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
+#endif /* !defined(POC_LANG_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
 
 
-// No known programming language detected.
+/* No known programming language detected.
+ */
 #if !defined(POC_LANG)
 #   define POC_LANG_UNKNOWN POC_LANG_UNKNOWN_ID
 #   define POC_LANG POC_LANG_UNKNOWN_ID
-// #   error Unknown programming language.
+/* #   error Unknown programming language. */
 #endif
 
 #if !defined(POC_LANG_STRING)
 #   define POC_LANG_STRING POC_LANG_UNKNOWN_STRING
-// #   error Unknown programming language string.
+/* #   error Unknown programming language string. */
 #endif
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Error check
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************************
+ * Error check
+ ******************************************************************************/
 
-/*
-// Exactly one programming language must have been chosen - xor tests to find possible error.
+
+/* Commented out because need to think why POC_LANG_C and POC_LANG_CPP shouldn't be defined at the same time. 
+ */ 
+/* Exactly one programming language must have been chosen - xor tests to find possible error.
 #if defined(POC_LANG_C) && \
 (defined(POC_LANG_CPP) || \
 defined(POC_LANG_OBJC) || \
@@ -328,6 +343,6 @@ defined(POC_LANG_C))
 */
 
 
-#endif // !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF) */
 
 

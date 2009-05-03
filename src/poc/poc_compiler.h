@@ -44,24 +44,30 @@
  * @code _undef.h @endcode anymore.
  */
 
+/**
+ * @def POC_COMPILER
+ * Stores a predefined value representing the compiler used or @c POC_COMPILER_UNKNOWN_ID if the
+ * compiler can't be identified (is unknown).
+ */
 
-/// @def POC_COMPILER
-/// Stores a predefined value representing the compiler used or @c POC_COMPILER_UNKNOWN_ID if the
-/// compiler can't be identified (is unknown).
-
-/// @def POC_COMPILER_STRING
-/// Stores a C character string describing the identified compiler.
-
-/// @def POC_COMPILER_VERSION
-/// Stores the found compiler version as an integral value (an integer value).
+/**
+ * @def POC_COMPILER_STRING
+ * Stores a C character string describing the identified compiler.
+ */
+ 
+/**
+ * @def POC_COMPILER_VERSION
+ * Stores the found compiler version as an integral value (an integer value).
+ */
 
 #ifndef POC_poc_compiler_H
 #define POC_poc_compiler_H
 
 #include "poc_compiler_def.h"
 
-// Disable macro undefines via including @code poc_compiler_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_compiler_def.h @endcode .
+/* Disable macro undefines via including @code poc_compiler_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_compiler_def.h @endcode .
+ */
 #define POC_COMPILER_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_compiler_H
+#endif /* POC_poc_compiler_H */

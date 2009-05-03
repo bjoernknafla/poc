@@ -39,20 +39,25 @@
  */
 
 
-/// @def POC_OS
-/// Stores a predefined value representing the target operating system compiling for or @c POC_OS_UNKNOWN_ID if the
-/// operating system can't be identified (is unknown).
+/**
+ * @def POC_OS
+ * Stores a predefined value representing the target operating system compiling for or @c POC_OS_UNKNOWN_ID if the
+ * operating system can't be identified (is unknown).
+ */
 
-/// @def POC_OS_STRING
-/// Stores a C character string describing the identified target operating system.
+/**
+ * @def POC_OS_STRING
+ * Stores a C character string describing the identified target operating system.
+ */
 
 #ifndef POC_poc_os_H
 #define POC_poc_os_H
 
 #include "poc_os_def.h"
 
-// Disable macro undefines via including @code poc_os_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_os_def.h @endcode .
+/* Disable macro undefines via including @code poc_os_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_os_def.h @endcode .
+ */
 #define POC_OS_HEADER_DISABLE_DEF_UNDEF
 
-#endif // POC_poc_os_H
+#endif /* POC_poc_os_H */

@@ -63,9 +63,10 @@
 
 #include "poc_preprocessor_utilities_def.h"
 
-// Disable macro undefines via including @code poc_preprocessor_utilities_undef.h @endcode and prevent re-defines from 
-// accidential includes of @code poc_preprocessor_utilities_def.h @endcode .
+/* Disable macro undefines via including @code poc_preprocessor_utilities_undef.h @endcode and prevent re-defines from 
+ * accidential includes of @code poc_preprocessor_utilities_def.h @endcode .
+ */
 #define POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF
 
 
-#endif // POC_poc_preprocessor_utilities_H
+#endif /* POC_poc_preprocessor_utilities_H */

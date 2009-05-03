@@ -30,14 +30,13 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-// Only allow undef of static assertion macros if @code poc_static_assert.h @endcode hasn't been included in this 
-// compilation unit.
+/* Only allow undef of static assertion macros if @code poc_static_assert.h @endcode hasn't been included in this 
+ * compilation unit.
+ */
 #if !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
 
 #   undef POC_STATIC_ASSERT
 
 #   include "poc_preprocessor_utilities_undef.h"
 
-#endif // !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
-
-
+#endif /* !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF) */

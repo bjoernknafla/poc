@@ -41,7 +41,10 @@
 
 
 
-// @todo TODO: Decide if undef @c POC_STATIC_ASSERT instead of generating a compile time error.
+/**
+ * @todo TODO: Decide if undef @c POC_STATIC_ASSERT instead of generating a compile time error.
+ */
+
 #if defined(POC_STATIC_ASSERT)
 #   error POC_STATIC_ASSERT macro shouldn't be defined at this point.
 #endif
@@ -51,9 +54,10 @@
 
 #include "poc_static_assert_def.h"
 
-// Disable macro undefines via including @code poc_static_assert_undef.h @endcode and prevent re-defines from accidential
-// includes of @code poc_static_assert_def.h @endcode .
+/* Disable macro undefines via including @code poc_static_assert_undef.h @endcode and prevent re-defines from accidential
+ * includes of @code poc_static_assert_def.h @endcode .
+ */
 #define POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF
 
 
-#endif // POC_poc_poc_static_assert_H
+#endif /* POC_poc_poc_static_assert_H */

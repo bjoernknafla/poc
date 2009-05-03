@@ -32,8 +32,9 @@
  *            @code poc_undef.h @endcode . If header guards are wanted or needed use @code poc.h @endcode instead.
  */
 
-// Only allow definition of POC macros if @code poc.h @endcode hasn't been included 
-// in this compilation unit.
+/* Only allow definition of POC macros if @code poc.h @endcode hasn't been included 
+ * in this compilation unit.
+ */
 #if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
 
 #include "poc_os_def.h"
@@ -45,4 +46,4 @@
 #include "poc_posix_def.h"
 #inclue "poc_portability_macros_def.h"
 
-#endif // !defined(POC_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */

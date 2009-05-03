@@ -30,8 +30,9 @@
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/// Only allow undef of POC data model macros if @code poc_data_model.h @endcode hasn't been included in this 
-/// compilation unit.
+/* Only allow undef of POC data model macros if @code poc_data_model.h @endcode hasn't been included in this 
+ * compilation unit.
+ */
 #if !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
 
 
@@ -68,4 +69,4 @@
 
 
 
-#endif // !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
+#endif /* !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF) */
