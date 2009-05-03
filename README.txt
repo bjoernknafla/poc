@@ -3,8 +3,8 @@ README.txt
 POC is free software. You may copy, distribute, and modify it under the terms of the License contained in the file 
 LICENSE.txt distributed with this package. This license is the same as the BSD License.
 
-POC (Portable Preprocessor Compile-time Target Platform Configurator) is a collection of C preprocessor symbols to 
-manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used, 
+POC (Portable Preprocessor Compile-time Target Platform Configurator) is a collection of C preprocessor symbols to
+manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used,
 the target operating system, or target data model, etc. 
 
 
@@ -21,7 +21,7 @@ Use POC to detect the target platform the code unit is compiled for, for example
 - POC_LANG stores an id identifying the language (C, C++, Objective-C, OpenCL, CUDA, etc.) compiling for.
 - POC_OS stores an id identifying the target operating system.
 
-Each of these preprocessor symbols (other than the ones ending with _VERSION) is acompanied by a macro 
+Each of these preprocessor symbols (other than the ones ending with _VERSION) is accompanied by a macro 
 with a _STRING postfix that stores a character string describing the macro's value.
 
 In addition, each compiler, architecture, language, etc. also defines a specific macro when detected, e.g.

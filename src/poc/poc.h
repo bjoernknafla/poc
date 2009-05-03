@@ -37,7 +37,7 @@
  * - @c POC_LANG stores an id identifying the language (C, C++, Objective-C, OpenCL, CUDA, etc.) compiling for.
  * - @c POC_OS stores an id identifying the target operating system.
  * 
- * Each of these preprocessor symbols (other than the ones ending with @c _VERSION) is acompanied by a macro 
+ * Each of these preprocessor symbols (other than the ones ending with @c _VERSION) is accompanied by a macro 
  * with a @c _STRING postfix that stores a character string describing the macro's value.
  *
  * In addition, each compiler, architecture, language, etc. also defines a specific macro when detected, e.g.
