@@ -65,7 +65,7 @@ tested and might possibly be erroreneous.
 
 The code can be found and downloaded at: http://github.com/bknafla/poc
 Please file issues with the code at: http://github.com/bknafla/poc/issues
-
+Follow updates on Twitter at: http://twitter.com/bknafla
 
 
 All trademarks belong to their trademark holders.
@@ -73,7 +73,7 @@ All trademarks belong to their trademark holders.
 
 
 Author:
-Bjoern Knafla (bknafla@googlemail.com)
+Bjoern Knafla (poc@bjoernknafla.com)
 
 References:
 - Collection of macros defined by language standards, compilers, libraries, etc.:
