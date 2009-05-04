@@ -76,8 +76,26 @@ Author:
 Bjoern Knafla (poc@bjoernknafla.com)
 
 References:
+
+GCC infos
+- Find out which preprocessor symbols are defined by GCC by executing: touch file.cpp && cpp -dM file.cpp
+  http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
+
+GCC with Apple extensions infos
+- http://developer.apple.com/documentation/DeveloperTools/gcc-4.2.1/cpp/Standard-Predefined-Macros.html#Standard-Predefined-Macros
+- http://developer.apple.com/technotes/tn2002/tn2071.html#Section10
+- http://discussions.apple.com/thread.jspa?threadID=1937142&tstart=0
+
+Microsoft Visual Studio C++ infos
+- http://msdn.microsoft.com/en-us/library/b0084kay.aspx
+- http://msdn.microsoft.com/en-us/library/b0084kay(VS.71).aspx
+- http://msdn.microsoft.com/en-us/library/b0084kay(VS.80).aspx
+
+Other resources
+- Apache C++ Standard Library Wiki with lots of cross-platform infos
+  http://wiki.apache.org/stdcxx/Compilers
 - Collection of macros defined by language standards, compilers, libraries, etc.:
-http://predef.sourceforge.net/index.php 
+  http://predef.sourceforge.net/index.php 
 
 
 
