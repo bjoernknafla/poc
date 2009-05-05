@@ -50,13 +50,17 @@
  * @name Predefined architecture ids
  ******************************************************************************/
 /*@{*/
-#define POC_ARCH_UNKNOWN_ID 0
-#define POC_ARCH_X86_32_ID 1
-#define POC_ARCH_X86_64_ID 2
-#define POC_ARCH_PPC_ID 4
-#define POC_ARCH_PPC64_ID 8
-#define POC_ARCH_ARM_ID 16
-#define POC_ARCH_ARM_THUMB_ID 32
+#define POC_ARCH_UNKNOWN_ID (1)
+#define POC_ARCH_X86_ID (1 << 1)
+#define POC_ARCH_X86_32_ID (1 << 2)
+#define POC_ARCH_X86_64_ID (1 << 3)
+#define POC_ARCH_PPC_ID (1 << 4)
+#define POC_ARCH_PPC64_ID (1 << 5)
+#define POC_ARCH_ARM_ID (1 << 6)
+#define POC_ARCH_ARM_THUMB_ID (1 << 7)
+#define POC_ARCH_CELL_PPU_ID (1 << 8)
+#define POC_ARCH_CELL_SPU_ID (1 << 9)
+#define POC_ARCH_CELL_SPU_EDP_ID (1 << 10)
 /*@}*/
 
 
@@ -66,12 +70,16 @@
  ******************************************************************************/
 /*@{*/
 #define POC_ARCH_UNKNOWN_STRING "Unknown architecture"
+#define POC_ARCH_X86_STRING "x86"
 #define POC_ARCH_X86_32_STRING "x86-32"
 #define POC_ARCH_X86_64_STRING "x86-64"
 #define POC_ARCH_PPC_STRING "PowerPC"
 #define POC_ARCH_PPC64_STRING "PowerPC64"
 #define POC_ARCH_ARM_STRING "ARM"
 #define POC_ARCH_ARM_THUMB_STRING "ARM Thumb"
+#define POC_ARCH_CELL_PPU_STRING "Cell BE PPU"
+#define POC_ARCH_CELL_SPU_STRING "Cell BE SPU"
+#define POC_ARCH_CELL_SPU_EDP_STRING "Cell BE SPU enhanced double-precision instructions"
 /*@}*/
 
 
@@ -96,7 +104,7 @@
 || defined(__THW_INTEL__) \
 || defined(__I86__) \
 || defined(__INTEL__)
-#   define POC_ARCH_X86 POC_ARCH_X86_32_ID
+#   define POC_ARCH_X86 POC_ARCH_X86_ID
 #   define POC_ARCH_X86_32 POC_ARCH_X86_32_ID
 #endif
 
@@ -104,7 +112,7 @@
 /* Detect x86_64 (AMD not (!!) Itanium)
  */
 #if defined(__x86_64) || defined(__x86_64__) || defined(__amd64) || defined(__amd64__) || defined(_M_X64)
-#   define POC_ARCH_X86 POC_ARCH_X86_64_ID
+#   define POC_ARCH_X86 POC_ARCH_X86_ID
 #   define POC_ARCH_X86_64 POC_ARCH_X86_64_ID
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
@@ -112,12 +120,13 @@
 
 /* Detect PowerPC and PowerPC64
  */
-#if defined(__ppc__) || defined(__ppc64__)
+#if defined(__ppc__) || defined(__ppc64__) || defined(__PPU__)
 #   define POC_ARCH_PPC POC_ARCH_PPC_ID
-#   if defined(__ppc64__)
+#   if defined(__ppc64__) || defined(__PPU__)
 #       define POC_ARCH_PPC64 POC_ARCH_PPC64_ID
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 /* Detect ARM and ARM Thumb
@@ -131,7 +140,35 @@
 #   endif
 #endif
 
+/* Detect Cell PPU
+ */
+/**
+ * @todo TODO: Check if @c __PPC__ macros and @c __PPU__ macros are defined when
+ *       compiling for the Cell.
+ */
+#if defined(__PPU__)
+#   if !defined(POC_ARCH_PPC)
+#       define POC_ARCH_PPC POC_ARCH_PPC_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if !defined(POC_ARCH_PPC64)
+#       define POC_ARCH_PPC64 POC_ARCH_PPC64_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   define POC_ARCH_CELL_PPU POC_ARCH_CELL_PPU_ID
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
+/* Detect Cell SPU or Cell SPU with enhanced double precision instructions
+ */
+#if defined(__SPU__) || defined(__SPU_EDP__)
+#   define POC_ARCH_CELL_SPU POC_ARCH_CELL_SPU_ID
+#   if defined(__SPU_EDP__)
+#       define POC_ARCH_CELL_SPU_EDP POC_ARCH_CELL_SPU_EDP_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
 /*******************************************************************************
  * Determine @c POC_ARCH_STRING and @c POC_ARCH_ID
@@ -139,12 +176,12 @@
 
 
 #if defined(POC_ARCH_X86_32)
-#   define POC_ARCH POC_ARCH_X86_32_ID
+#   define POC_ARCH (POC_ARCH_X86_ID | POC_ARCH_X86_32_ID)
 #   define POC_ARCH_STRING POC_ARCH_X86_32_STRING
 #endif
 
 #if defined(POC_ARCH_X86_64)
-#   define POC_ARCH POC_ARCH_X86_64_ID
+#   define POC_ARCH (POC_ARCH_X86_ID | POC_ARCH_X86_64_ID)
 #   define POC_ARCH_STRING POC_ARCH_X86_64_STRING
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
@@ -156,7 +193,9 @@
 #endif
 
 #if defined(POC_ARCH_PPC64)
-#   define POC_ARCH POC_ARCH_PPC64_ID
+#   undef POC_ARCH
+#   undef POC_ARCH_STRING
+#   define POC_ARCH (POC_ARCH_PPC_ID | POC_ARCH_PPC64_ID)
 #   define POC_ARCH_STRING  POC_ARCH_PPC64_STRING
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
@@ -173,8 +212,27 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
+#if defined(POC_ARCH_CELL_PPU)
+#   undef POC_ARCH
+#   undef POC_ARCH_STRING
+#   define POC_ARCH (POC_ARCH_PPC_ID | POC_ARCH_PPC64_ID | POC_ARCH_CELL_PPU_ID)
+#   define POC_ARCH_STRING  POC_ARCH_CELL_PPU_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
+#if defined(POC_ARCH_CELL_SPU)
+#   define POC_ARCH POC_ARCH_CELL_SPU_ID
+#   define POC_ARCH_STRING  POC_ARCH_CELL_SPU_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
+#if defined(POC_ARCH_CELL_SPU_EDP)
+#   undef POC_ARCH
+#   undef POC_ARCH_STRING
+#   define POC_ARCH (POC_ARCH_CELL_SPU_ID | POC_ARCH_CELL_SPU_EDP_ID)
+#   define POC_ARCH_STRING  POC_ARCH_CELL_SPU_EDP_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
 #endif /* !defined(POC_ARCH_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
@@ -183,7 +241,7 @@
 /* No known architecture detected
  */
 #if !defined(POC_ARCH)
-#   define POC_ARCH_UNKNONW POC_ARCH_UNKNOWN_ID
+#   define POC_ARCH_UNKNOWN POC_ARCH_UNKNOWN_ID
 #   define POC_ARCH POC_ARCH_UNKNOWN_ID
 #   error Machine architecture unknown.
 #endif 
@@ -198,69 +256,161 @@
  ******************************************************************************/
 
 
-#if defined(POC_ARCH_X86)
-#   if (POC_ARCH_X86 != POC_ARCH_X86_32_ID) && (POC_ARCH_X86 != POC_ARCH_X86_64_ID)
-#       error POC_ARCH_X86 set to unknown value.
-#   endif
-#endif
 
 /* Exactly one architecture must have been detected - xor tests to find possible error.
  */
+#if defined(POC_ARCH_X86) && !(defined(POC_ARCH_X86_32) || defined(POC_ARCH_X86_64))
+#   error If POC_ARCH_X86 is defined POC_ARCH_X86_32 or POC_ARCH_X86_64 must also be defined.
+#endif
+
 #if defined(POC_ARCH_X86_32) && \
-(defined(POC_ARCH_X86_64) || \
+(!defined(POC_ARCH_X86) || \
+ defined(POC_ARCH_X86_64) || \
  defined(POC_ARCH_PPC) || \
  defined(POC_ARCH_PPC64) || \
  defined(POC_ARCH_ARM) || \
  defined(POC_ARCH_ARM_THUMB) || \
- defined(POC_ARCH_UNKNOWN) )
+ defined(POC_ARCH_UNKNOWN) || \
+ defined(POC_ARCH_CELL_PPU) || \
+ defined(POC_ARCH_CELL_SPU) || \
+ defined(POC_ARCH_CELL_SPU_EDP))
 #   error Exactly one architecture must be selected.
-#elif defined(POC_ARCH_X86_64) && \
-(defined(POC_ARCH_X86_32) || \
-defined(POC_ARCH_PPC) || \
-defined(POC_ARCH_PPC64) || \
-defined(POC_ARCH_ARM) || \
-defined(POC_ARCH_ARM_THUMB) || \
-defined(POC_ARCH_UNKNOWN) )
-#   error Exactly one architecture must be selected.
-#elif defined(POC_ARCH_PPC) && \
-(defined(POC_ARCH_X86_64) || \
-defined(POC_ARCH_X86_32) || \
-defined(POC_ARCH_PPC64) || \
-defined(POC_ARCH_ARM) || \
-defined(POC_ARCH_ARM_THUMB) || \
-defined(POC_ARCH_UNKNOWN) )
-#   error Exactly one architecture must be selected.
-#elif defined(POC_ARCH_PPC64) && \
-(defined(POC_ARCH_X86_64) || \
+#endif
+
+#if defined(POC_ARCH_X86_64) && \
+(!defined(POC_ARCH_X86) || \
 defined(POC_ARCH_X86_32) || \
 defined(POC_ARCH_PPC) || \
+defined(POC_ARCH_PPC64) || \
 defined(POC_ARCH_ARM) || \
 defined(POC_ARCH_ARM_THUMB) || \
-defined(POC_ARCH_UNKNOWN) )
+defined(POC_ARCH_UNKNOWN) || \
+defined(POC_ARCH_CELL_PPU) || \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
 #   error Exactly one architecture must be selected.
-#elif defined(POC_ARCH_ARM) && \
+#endif
+
+#if defined(POC_ARCH_PPC) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
+defined(POC_ARCH_X86_32) || \
+/* defined(POC_ARCH_PPC64) || \ */ \
+defined(POC_ARCH_ARM) || \
+defined(POC_ARCH_ARM_THUMB) || \
+defined(POC_ARCH_UNKNOWN) || \
+/* defined(POC_ARCH_CELL_PPU) || \ */ \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
+#   error Exactly one architecture must be selected.
+#endif
+
+#if defined(POC_ARCH_PPC64) && !defined(POC_ARCH_PPC) 
+#   error If POC_ARCH_PPC64 is defined, POC_ARCH_PPC must also be defined.
+#endif
+
+#if defined(POC_ARCH_PPC64) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
+defined(POC_ARCH_X86_32) || \
+/* defined(POC_ARCH_PPC) || \ */ \
+defined(POC_ARCH_ARM) || \
+defined(POC_ARCH_ARM_THUMB) || \
+defined(POC_ARCH_UNKNOWN) || \
+/* defined(POC_ARCH_CELL_PPU) || \ */ \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
+#   error Exactly one architecture must be selected.
+#endif
+
+#if defined(POC_ARCH_CELL_PPU) && !defined(POC_ARCH_PPC) && !defined(POC_ARCH_PPC64)
+#   error If POC_ARCH_CELL_PPU is defined, POC_ARCH_PPC and POC_ARCH_PPC64 must also be defined.
+#endif
+
+#if defined(POC_ARCH_CELL_PPU) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
+defined(POC_ARCH_X86_32) || \
+/* defined(POC_ARCH_PPC64) || \ */ \
+defined(POC_ARCH_ARM) || \
+defined(POC_ARCH_ARM_THUMB) || \
+/* defined(POC_ARCH_PPC) || \ */ \
+defined(POC_ARCH_UNKNOWN) || \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
+#   error Exactly one architecture must be selected.
+#endif
+
+
+#if defined(POC_ARCH_CELL_SPU) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
+defined(POC_ARCH_X86_32) || \
+defined(POC_ARCH_PPC64) || \
+defined(POC_ARCH_ARM) || \
+defined(POC_ARCH_ARM_THUMB) || \
+defined(POC_ARCH_PPC) || \
+defined(POC_ARCH_UNKNOWN) || \
+defined(POC_ARCH_CELL_PPU) \
+/* defined(POC_ARCH_CELL_SPU_EDP) */ )
+#   error Exactly one architecture must be selected.
+#endif
+
+
+#if defined(POC_ARCH_CELL_SPU_EDP) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
+defined(POC_ARCH_X86_32) || \
+defined(POC_ARCH_PPC64) || \
+defined(POC_ARCH_ARM) || \
+defined(POC_ARCH_ARM_THUMB) || \
+defined(POC_ARCH_PPC) || \
+defined(POC_ARCH_UNKNOWN) || \
+defined(POC_ARCH_CELL_PPU) || \
+! defined(POC_ARCH_CELL_SPU) )
+#   error Exactly one architecture must be selected.
+#endif
+
+
+
+#if defined(POC_ARCH_ARM) && \
 (defined(POC_ARCH_X86_64) || \
 defined(POC_ARCH_X86_32) || \
 defined(POC_ARCH_PPC64) || \
 defined(POC_ARCH_PPC) || \
 defined(POC_ARCH_ARM_THUMB) || \
-defined(POC_ARCH_UNKNOWN) )
+defined(POC_ARCH_UNKNOWN) || \
+defined(POC_ARCH_CELL_PPU) || \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
 #   error Exactly one architecture must be selected.
-#elif defined(POC_ARCH_ARM_THUMB) && \
-(defined(POC_ARCH_X86_64) || \
+#endif
+
+#if defined(POC_ARCH_ARM_THUMB) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
 defined(POC_ARCH_X86_32) || \
 defined(POC_ARCH_PPC64) || \
 defined(POC_ARCH_ARM) || \
 defined(POC_ARCH_PPC) || \
-defined(POC_ARCH_UNKNOWN) )
+defined(POC_ARCH_UNKNOWN) || \
+defined(POC_ARCH_CELL_PPU) || \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
 #   error Exactly one architecture must be selected.
-#elif defined(POC_ARCH_UNKNOWN) && \
-(defined(POC_ARCH_X86_64) || \
+#endif
+
+#if defined(POC_ARCH_UNKNOWN) && \
+(defined(POC_ARCH_X86) || \
+defined(POC_ARCH_X86_64) || \
 defined(POC_ARCH_X86_32) || \
 defined(POC_ARCH_PPC64) || \
 defined(POC_ARCH_ARM) || \
 defined(POC_ARCH_ARM_THUMB) || \
-defined(POC_ARCH_PPC) )
+defined(POC_ARCH_PPC) || \
+defined(POC_ARCH_CELL_PPU) || \
+defined(POC_ARCH_CELL_SPU) || \
+defined(POC_ARCH_CELL_SPU_EDP) )
 #   error Exactly one architecture must be selected.
 #endif
 

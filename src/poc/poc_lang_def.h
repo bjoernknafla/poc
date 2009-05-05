@@ -289,6 +289,7 @@
 
 /* No known programming language detected.
  */
+
 #if !defined(POC_LANG)
 #   define POC_LANG_UNKNOWN POC_LANG_UNKNOWN_ID
 #   define POC_LANG POC_LANG_UNKNOWN_ID

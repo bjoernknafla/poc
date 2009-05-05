@@ -103,6 +103,7 @@
 
 /* Endianness unknown
  */
+
 #if !defined(POC_ENDIAN)
 #   define POC_ENDIAN_UNKNOWN POC_ENDIAN_UNKNOWN_ID
 #   define POC_ENDIAN POC_ENDIAN_UNKNOWN_ID

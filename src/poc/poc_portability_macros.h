@@ -43,12 +43,12 @@
  * typedef a_type_t POC_ALIGN_BEGIN(16) typedefed_name POC_ALIGN_END(16);
  * @endcode
  *
- * For convenience include this header and don't use @c poc_portability_macros_def.h directly. Use the 
- * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 
+ * For convenience include this header and don't use poc_portability_macros_def.h directly. Use the 
+ * @c _def.h and @c _undef.h files for fine grained control of the parts in the code where 
  * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
- * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * By including the POC headers without the @c _def.h or @c _undef.h postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
- * @code _undef.h @endcode anymore.
+ * @c _undef.h anymore.
  */
 
 
@@ -76,8 +76,8 @@
 
 #include "poc_portability_macros_def.h"
 
-/* Disable macro undefines via including @code poc_portability_macros_undef.h @endcode and prevent re-defines from 
- * accidential includes of @code poc_portability_macros_def.h @endcode .
+/* Disable macro undefines via including poc_portability_macros_undef.h and prevent re-defines from 
+ * accidential includes of poc_portability_macros_def.h .
  */
 #define POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF
 

@@ -24,13 +24,13 @@
 /**
  * @file
  *
- * Undefines portability macros potentially set by @code poc_portability_macros_def.h @endcode , see 
- * @code poc_portability_macros.h @endcode and @code poc_portability_macros_def.h @endcode for more details.
+ * Undefines portability macros potentially set by poc_portability_macros_def.h , see 
+ * poc_portability_macros.h and poc_portability_macros_def.h for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/* Only allow undef of POC portability macros if @code poc_portability_macros.h @endcode hasn't been included in this 
+/* Only allow undef of POC portability macros if poc_portability_macros.h hasn't been included in this 
  * compilation unit.
  */
 #if !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF)

@@ -73,6 +73,8 @@
  * @endcode .
  * 
  * Only remove the preprocessor error directive after having ported and tested the code on the platform!
+ * Don't forget to check that your @c POC_ @c _STRING macros are at most @c POC_STRINGS_MAX_LENGTH characters long
+ * (see @c poc_preprocessor_utilities_def.h).
  *
  * The error-directive is also present if a platform couldn't be tested yet - remove it but be warned that the code isn't 
  * tested and might possibly be erroreneous.

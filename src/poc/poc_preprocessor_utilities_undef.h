@@ -24,13 +24,13 @@
 /**
  * @file
  *
- * Undefines POC internal helper macros potentially set by @code poc_preprocessor_utilities_def.h @endcode , see 
- * @code poc_preprocessor_utilities.h @endcode and @code poc_preprocessor_utilities_def.h @endcode for more details.
+ * Undefines POC internal helper macros potentially set by poc_preprocessor_utilities_def.h , see 
+ * poc_preprocessor_utilities.h and poc_preprocessor_utilities_def.h for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/* Only allow undef of POC utility macros if @code poc_preprocessor_utilities.h @endcode hasn't been included in this 
+/* Only allow undef of POC utility macros if poc_preprocessor_utilities.h hasn't been included in this 
  * compilation unit.
  */
 #if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
@@ -44,5 +44,7 @@
 #   undef POC_STRINGIZE
 #   undef POC_DO_STRINGIZE
 
+#   undef POC_MATCHES
+#   undef POC_MATCHES_EXACTLY
 
 #endif /* !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF) */

@@ -24,13 +24,13 @@
 /**
  * @file
  *
- * Undefines POC operating system macros potentially set by @code poc_os_def.h @endcode , see @code poc_os.h @endcode and 
- * @code poc_os_def.h @endcode for more details.
+ * Undefines POC operating system macros potentially set by poc_os_def.h , see poc_os.h and 
+ * poc_os_def.h for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/* Only allow undef of POC operating system macros if @code poc_os.h @endcode hasn't been included in this 
+/* Only allow undef of POC operating system macros if poc_os.h hasn't been included in this 
  * compilation unit.
  */
 #if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)

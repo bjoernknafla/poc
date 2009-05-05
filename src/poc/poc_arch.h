@@ -26,9 +26,26 @@
  *
  * Collection of @c POC_ARCH (prefixed) preprocessor macros to identify the machine architecture compiling for.
  * 
- * For example if the code is compiled for a 64bit x86 machine the id @c POC_ARCH_X86_64_ID is stored in @c POC_ARCH
- * and also the macro @c POC_ARCH_X86_64 is defined with the previous id value. In this case @c POC_ARCH_STRING is set to
- * @c POC_ARCH_X86_64_STRING .
+ * For example if the code is compiled for a 64bit x86 machine the id @c POC_ARCH_X86_64_ID is combined with 
+ * @c POC_ARCH_X86_ID (they are bit-wise or-ed together) and the result stored in @c POC_ARCH . Additionally
+ * the macros @c POC_ARCH_X86_64 and @c POC_ARCH_X86 are defined with their respective id values. In this case 
+ * @c POC_ARCH_STRING is set to @c POC_ARCH_X86_64_STRING , the most specific architecture description.
+ *
+ * To test if a certain machine architecture is represented, for example if comping for a Cell BE SPU see the
+ * following example:
+ * @code
+ * if (POC_ARCH & POC_ARCH_CELL_SPU) {
+ * ...
+ * }
+ * @endcode
+ * or use @c POC_MATCHES from poc_preprocessor_utilities.h:
+ * @code
+ * if (POC_MATCHES(POC_ARCH, POC_ARCH_CELL_SPU)) {
+ * ...
+ * }
+ * @endcode
+ * or use @c POC_MATCHES_EXACTLY from poc_preprocessor_utilities.h if the values should be equal.
+ *
  *
  * For convenience include this header and don't use @c poc_arch_def.h directly. Use the 
  * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 

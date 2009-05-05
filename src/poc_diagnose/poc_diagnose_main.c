@@ -783,17 +783,44 @@ void print_arch(FILE* outstream)
     
     switch (POC_ARCH)
     {
+        case POC_ARCH_X86_ID:
+            fprintf(outstream, "POC_ARCH_X86_ID");
+            break;
         case POC_ARCH_X86_32_ID:
             fprintf(outstream, "POC_ARCH_X86_32_ID");
             break;
         case POC_ARCH_X86_64_ID:
             fprintf(outstream, "POC_ARCH_X86_64_ID");
             break;
+        case (POC_ARCH_X86_ID | POC_ARCH_X86_32_ID):
+            fprintf(outstream, "POC_ARCH_X86_ID | POC_ARCH_X86_32_ID");
+            break;
+        case (POC_ARCH_X86_ID | POC_ARCH_X86_64_ID):
+            fprintf(outstream, "POC_ARCH_X86_ID | POC_ARCH_X86_64_ID");
+            break;    
         case POC_ARCH_PPC_ID:
             fprintf(outstream, "POC_ARCH_PPC_ID");
             break;
         case POC_ARCH_PPC64_ID:
             fprintf(outstream, "POC_ARCH_PPC64_ID");
+            break;
+        case (POC_ARCH_PPC_ID | POC_ARCH_PPC64_ID):
+            fprintf(outstream, "POC_ARCH_PPC_ID | POC_ARCH_PPC64_ID");
+            break;
+        case POC_ARCH_CELL_PPU_ID:
+            fprintf(outstream, "POC_ARCH_CELL_PPU_ID");
+            break;
+        case (POC_ARCH_PPC_ID | POC_ARCH_PPC64_ID | POC_ARCH_CELL_PPU_ID):
+            fprintf(outstream, "POC_ARCH_PPC_ID | POC_ARCH_PPC64_ID | POC_ARCH_CELL_PPU_ID");
+            break;
+        case POC_ARCH_CELL_SPU_ID:
+            fprintf(outstream, "POC_ARCH_CELL_SPU_ID");
+            break;
+        case POC_ARCH_CELL_SPU_EDP_ID:
+            fprintf(outstream, "POC_ARCH_CELL_SPU_EDP_ID");
+            break;
+        case (POC_ARCH_CELL_SPU_ID | POC_ARCH_CELL_SPU_EDP_ID):
+            fprintf(outstream, "POC_ARCH_CELL_SPU_ID | POC_ARCH_CELL_SPU_EDP_ID");
             break;
         case POC_ARCH_ARM_ID:
             fprintf(outstream, "POC_ARCH_ARM_ID");
@@ -850,6 +877,21 @@ void print_arch(FILE* outstream)
     
 #if defined(POC_ARCH_ARM_THUMB)
     fprintf(outstream, "  POC_ARCH_ARM_THUMB defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_ARCH_CELL_PPU)
+    fprintf(outstream, "  POC_ARCH_CELL_PPU defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_ARCH_CELL_SPU)
+    fprintf(outstream, "  POC_ARCH_CELL_SPU defined");
+    fprintf(outstream, "\n");
+#endif
+ 
+#if defined(POC_ARCH_CELL_SPU_EDP)
+    fprintf(outstream, "  POC_ARCH_CELL_SPU_EDP defined");
     fprintf(outstream, "\n");
 #endif
     

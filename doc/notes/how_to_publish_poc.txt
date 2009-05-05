@@ -1,11 +1,11 @@
-How to Publish
+How to Publish POC
 
 Adhere to the following steps when puglishing a new version of POC:
 1. Update the documentation (README.txt, 
    doc/doxygen/special_doxygen_documentation.txt) and the comments in the 
    code (especially the readme-mirroring in poc.h).
-2. Update the version number in the documentation (see above) and in 
-   doc/doxygen/Doxyfile.
+2. Update the version number in the Doxyfile and add new release notes to the
+   documentation (see above).
 3. Run all tests on all supported platforms. 
    Only proceede if all tests run without problems (errors or warnings), 
    otherwise clean-up the code and fix the problems.

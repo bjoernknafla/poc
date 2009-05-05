@@ -26,12 +26,12 @@
  *
  * Internal helper macros to concatenate preprocessor values and transform them into strings.
  *
- * For convenience include this header and don't use @c poc_preprocessor_utility_def.h directly. Use the 
- * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 
+ * For convenience include this header and don't use poc_preprocessor_utility_def.h directly. Use the 
+ * @c _def.h and @c _undef.h files for fine grained control of the parts in the code where 
  * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
- * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * By including the POC headers without the @c _def.h  or @c _undef.h postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
- * @code _undef.h @endcode anymore.
+ * @c _undef.h anymore.
  */
 
 #ifndef POC_poc_preprocessor_utilities_H
@@ -59,12 +59,19 @@
 #   error POC_DO_STRINGIZE macro shouldn't be defined at this point.
 #endif
 
+#if defined(POC_MATCHES)
+#   error POC_MATCHES macro shouldn't be defined at this point.
+#endif
+
+#if defined(POC_MATCHES_EXACTLY)
+#   error POC_MATCHES_EXACTLY macro shouldn't be defined at this point.
+#endif
 
 
 #include "poc_preprocessor_utilities_def.h"
 
-/* Disable macro undefines via including @code poc_preprocessor_utilities_undef.h @endcode and prevent re-defines from 
- * accidential includes of @code poc_preprocessor_utilities_def.h @endcode .
+/* Disable macro undefines via including poc_preprocessor_utilities_undef.h and prevent re-defines from 
+ * accidential includes of poc_preprocessor_utilities_def.h .
  */
 #define POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF
 

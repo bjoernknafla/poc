@@ -57,6 +57,10 @@ first add the following code into every detection branch
 
  
 Only remove the preprocessor error directive after having ported and tested the code on the platform!
+Don't forget to check that your POC STRING macros are at most POC_STRINGS_MAX_LENGTH characters long
+(see poc_preprocessor_utilities_def.h). 
+
+See doc/notes/how_to_extend_poc.txt for more detailed informations how to extend POC.
 
 The error-directive is also present if a platform couldn't be tested yet - remove it but be warned that the code isn't 
 tested and might possibly be erroreneous.
@@ -91,6 +95,9 @@ Microsoft Visual Studio C++ infos
 - http://msdn.microsoft.com/en-us/library/b0084kay(VS.71).aspx
 - http://msdn.microsoft.com/en-us/library/b0084kay(VS.80).aspx
 
+Cell PPU and SPU infos
+- http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/30B3520C93F437AB87257060006FFE5E/$file/Language_Extensions_for_CBEA_2.5.pdf
+
 Other resources
 - Apache C++ Standard Library Wiki with lots of cross-platform infos
   http://wiki.apache.org/stdcxx/Compilers
@@ -100,5 +107,10 @@ Other resources
 
 
 Release Notes:
-Version 0.2.0 (May 1, 2009)
+Version 0.2.0 (May 5, 2009)
+- Code is ANSI C compatible
+- Extended documentation
+- poc_diagnose_main.c compiles and runs on Windows XP using MS Visual Studio 2008
+
+Version 0.1.0 (May 1, 2009)
 - Initial release

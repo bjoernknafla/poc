@@ -1,0 +1,43 @@
+/** @file
+
+How to Extend POC
+
+To extend POC with additional platform detection macros follow these steps:
+
+1. Identify the POC headers to extend. For each of these headers:
+
+1.1 Add an _ID macro to the list of _ID macros in the _def.h header.
+
+1.2 Add a _STRING to the list of _STRING macros in the _def.h header. It must be
+    at most POC_STRINGS_MAX_LENGTH (defined in poc_preprocessor_utilities_def.h)
+    characters in length (inclusive the closing "\0"). 
+
+1.3 Add preprocessor commands to detect your platform and to set a macro
+    identifying it. Add the following line to the extension to be sure to
+    trigger it when compiling - remove it if it triggered during your tests
+    (see point 2):
+    #error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+
+1.4 Add preprocessor commands to set the main platform poc macro and the 
+    _STRING, e.g. if you added a machine architecture, don't forget to set the 
+    POC_ARCH and POC_ARCH_STRING macros at the right place in the 
+    poc_arch_def.h header. Add the following line to the extension to be sure to
+    trigger it when compiling - remove it if it triggered during your tests
+    (see point 2):
+    #error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+    
+1.5 Add #undef's to the headers _undef.h counterpart to allow undefining your
+    extension macros.
+
+2. Add detection code to the appropriate functions in 
+   src/poc_diagnose/poc_diagnose_main.c .
+
+3. Test, test, test, that the extension works and no old functionality got 
+   broken.
+
+4. (Optional but highly appreciated) Share your extension with other POC users, 
+   for example by requesting to push to the main POC repository.
+
+I am looking forward to your extensions!
+
+*/

@@ -24,14 +24,14 @@
 /**
  * @file
  *
- * See @code poc_os.h @endcode for details.
+ * See poc_os.h for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @code poc_os_undef.h @endcode . If header guards are wanted or needed use 
- *            @code poc.h @endcode or @code poc_os.h @endcode instead.
+ *            poc_os_undef.h . If header guards are wanted or needed use 
+ *            poc.h or poc_os.h instead.
  */
 
-/* Only allow definition of POC operating system macros if @code poc_os.h @endcode hasn't been included 
+/* Only allow definition of POC operating system macros if poc_os.h hasn't been included 
  * in this compilation unit.
  */
 #if !defined(POC_OS_HEADER_DISABLE_DEF_UNDEF)
@@ -156,6 +156,7 @@
 
 /* No known operating system detected
  */
+
 #if !defined(POC_OS)
 #   define POC_OS_UNKNOWN POC_OS_UNKNOWN_ID
 #   define POC_OS POC_OS_UNKNOWN_ID

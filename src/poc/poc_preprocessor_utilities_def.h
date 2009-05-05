@@ -24,14 +24,14 @@
 /**
  * @file
  *
- * See @code poc_preprocessor_utilities.h @endcode for details.
+ * See poc_preprocessor_utilities.h for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @code poc_preprocessor_utilities_undef.h @endcode . If header guards are wanted or needed use 
- *            @code poc_preprocessor_utilities.h @endcode instead.
+ *            poc_preprocessor_utilities_undef.h . If header guards are wanted or needed use 
+ *            poc_preprocessor_utilities.h instead.
  */
 
-/* Only allow definition of POC preprocessor utilities macros if @code poc_preprocessor_utilities.h @endcode 
+/* Only allow definition of POC preprocessor utilities macros if poc_preprocessor_utilities.h 
  * hasn't been included in this compilation unit.
  */
 #if !defined(POC_PREPROCESSOR_UTILITIES_HEADER_DISABLE_DEF_UNDEF)
@@ -40,9 +40,10 @@
 /***************************************************************************//**
  * Maximum length of POC strings defined.
  *
- * @todo TODO: Check all strings that they are at max 32 characters long.
+ * @todo TODO: Check all strings that they are at max @c POC_STRING_MAX_LENGTH
+ *       characters long.
  ******************************************************************************/
-#define POC_STRINGS_MAX_LENGTH 32
+#define POC_STRINGS_MAX_LENGTH 64
 
 /***************************************************************************//**
  * @name Concatenation macros
@@ -66,6 +67,24 @@
 /*@{*/
 #define POC_STRINGIZE( Val ) POC_DO_STRINGIZE( Val )
 #define POC_DO_STRINGIZE( Val ) #Val
+/*@}*/
+
+
+/***************************************************************************//**
+ * @name Test macro values for matches
+ ******************************************************************************/
+/*@{*/
+/**
+ * Returns a value unequal from zero if @c A and @c B are equal of have
+ * at least both on same bit set. otherwise returns zero.
+ */
+#define POC_MATCHES(A,B) (((A) & (B)) || ((A) == (B)))
+
+/**
+ * If @c A is equal to @c B a non-zero value is returned, otherwise zero is
+ * returned.
+ */
+#define POC_MATCHES_EXACTLY(A,B) ((A) == (B))
 /*@}*/
 
 

@@ -24,11 +24,11 @@
 /**
  * @file
  *
- * See @code poc_static_assert.h @endcode for details.
+ * See poc_static_assert.h for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @code poc_static_assert_undef.h @endcode . If header guards are wanted or needed use 
- *            @code poc_static_assert.h @endcode instead.
+ *            poc_static_assert_undef.h . If header guards are wanted or needed use 
+ *            poc_static_assert.h instead.
  */
 
 /*
@@ -38,7 +38,7 @@
 #   error poc_static_assert is C++ code - don't compile with a C compiler.
 #endif
 
-/* Only allow definition of POC compile time assertion macros if @code poc_static_assert.h @endcode hasn't been 
+/* Only allow definition of POC compile time assertion macros if poc_static_assert.h hasn't been 
  * included in this compilation unit.
  */
 #if !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
@@ -46,7 +46,7 @@
 
 #include "poc_preprocessor_utilities_def.h"
 
-/* Even if @code poc_static_assert_def.h @endcode is included multiple times only one definition of the helper
+/* Even if poc_static_assert_def.h is included multiple times only one definition of the helper
  * templates should exist in this compilation unit.
  */
 #ifndef POC_poc_poc_static_assert_def_H

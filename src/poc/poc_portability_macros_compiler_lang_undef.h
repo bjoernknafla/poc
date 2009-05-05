@@ -24,8 +24,8 @@
 /**
  * @file
  *
- * Undefines portability macros and other macros they depend on, see @code poc_portability_macros_undef.h @endcode ,
- * @code poc_portability_macros.h @endcode , and @code poc_portability_macros_def.h @endcode for more details.
+ * Undefines portability macros and other macros they depend on, see poc_portability_macros_undef.h ,
+ * poc_portability_macros.h , and poc_portability_macros_def.h for more details.
  */
 
 

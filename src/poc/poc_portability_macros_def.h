@@ -24,11 +24,11 @@
 /**
  * @file
  *
- * See @code poc_portability_macros.h @endcode for details.
+ * See poc_portability_macros.h for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @code poc_portability_macros_undef.h @endcode . If header guards are wanted or needed use 
- *            @code poc.h @endcode or @code poc_portability_macros.h @endcode instead.
+ *            poc_portability_macros_undef.h . If header guards are wanted or needed use 
+ *            poc.h or poc_portability_macros.h instead.
  *
  *
  * @todo TODO: Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
@@ -37,7 +37,7 @@
  * @todo TODO: Handle library import/export alas visible/hidden qualifiers.
  */
 
-/* Only allow definition of POC portability macros if @code poc_portability_macros.h @endcode hasn't been included 
+/* Only allow definition of POC portability macros if poc_portability_macros.h hasn't been included 
  * in this compilation unit.
  */
 #if !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF)
@@ -47,7 +47,8 @@
 #include "poc_lang_def.h"
 
 /*******************************************************************************
- * Macros for @c POC_INLINE and @c POC_RESTRICT are defined if the compiler supports these keywords.
+ * Macros for @c POC_INLINE and @c POC_RESTRICT are defined if the compiler 
+ * supports these keywords.
  ******************************************************************************/
 
 #if defined(POC_LANG_C_C99)
@@ -63,10 +64,12 @@
 
 
 /*******************************************************************************
- * Byte-sized stack memory alignment directives @c POC_ALIGN_BEGIN and @c POC_ALIGN_END .
+ * Byte-sized stack memory alignment directives @c POC_ALIGN_BEGIN and 
+ * @c POC_ALIGN_END .
  * 
- * Be carefull when using the alignment values that the value of @c POC_ALIGN_BEGIN( val ) and the value of the
- * corresponding @c POC_ALIGN_END( val ) are equal.
+ * Be carefull when using the alignment values that the value of 
+ * @c POC_ALIGN_BEGIN( val ) and the value of the corresponding 
+ * @c POC_ALIGN_END( val ) are equal.
  ******************************************************************************/
 
 /**

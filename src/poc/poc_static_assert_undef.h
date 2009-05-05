@@ -24,13 +24,13 @@
 /**
  * @file
  *
- * Undefines POC static assertion macros potentially set by @code poc_static_assert_def.h @endcode , 
- * see @code poc_static_assert.h @endcode and @code poc_static_assert_def.h @endcode for more details.
+ * Undefines POC static assertion macros potentially set by poc_static_assert_def.h , 
+ * see poc_static_assert.h and poc_static_assert_def.h for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/* Only allow undef of static assertion macros if @code poc_static_assert.h @endcode hasn't been included in this 
+/* Only allow undef of static assertion macros if poc_static_assert.h hasn't been included in this 
  * compilation unit.
  */
 #if !defined(POC_STATIC_ASSERT_HEADER_DISABLE_DEF_UNDEF)
