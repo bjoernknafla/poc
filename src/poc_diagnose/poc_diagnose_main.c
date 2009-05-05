@@ -2,23 +2,29 @@
  * Copyright (c) 2009, Bjoern Knafla
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
- * following conditions are met:
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are permitted provided that the following conditions are met:
  *
- * - Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
- *   disclaimer.
- * - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
- *   disclaimer in the documentation and/or other materials provided with the distribution.
- * - Neither the name of the Bjoern Knafla nor the names of its contributors may be used to 
- *   endorse or promote products derived from this software without specific prior written permission.
+ * - Redistributions of source code must retain the above copyright notice, this 
+ *   list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright notice, 
+ *   this list of conditions and the following disclaimer in the documentation 
+ *   and/or other materials provided with the distribution.
+ * - Neither the name of the Bjoern Knafla nor the names of its contributors may 
+ *   be used to endorse or promote products derived from this software without 
+ *   specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
- * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 /**
@@ -50,7 +56,10 @@
 #include <poc/poc.h>
 
 
-
+/**
+ * name: String constants describing standard preprocessor defined macros.
+ */
+/*@{*/
 char const* c_cpp_std_macro_date_string = "__DATE__";
 char const* c_cpp_std_macro_time_string = "__TIME__";
 char const* c_cpp_std_macro_file_string = "__FILE__";
@@ -63,44 +72,75 @@ char const* c_cpp_std_macro_stdc_iec_559_string = "__STDC_IEC_559__";
 char const* c_cpp_std_macro_stdc_iec_559_complex_string = "__STDC_IEC_559_COMPLEX__";
 char const* c_cpp_std_macro_stdc_iso_10646_string = "__STDC_ISO_10646__";
 char const* c_cpp_std_macro_ndebug_string = "NDEBUG";
+/*@}*/
 
 
-typedef struct std_c_cpp_predefined_macros_t
+/**
+ * Struct to collect settings of standard preprocessor macros, if they are
+ * defined or undefined, and which value they carry.
+ *
+ * Created by @c make_std_c_cpp_predefined_macros .
+ */
+typedef struct std_c_cpp_predefined_macros
     {
+        /** @c 0 if @c __DATA__ isn't defined, otherwise unequal to @c 0 */
         int is_date_defined;
+        /** Value of @c __DATA__ if defined, otherwise @c 0. */
         char const* date_string;
         
+        /** @c 0 if @c __TIME__ isn't defined, otherwise unequal to @c 0 */
         int is_time_defined;
+        /** Value of @c __TIME__ if defined, otherwise @c 0. */
         char const* time_string;
         
+        /** @c 0 if @c __FILE__ isn't defined, otherwise unequal to @c 0 */
         int is_file_defined;
+        /** Value of @c __FILE__ if defined, otherwise @c 0. */
         char const* file_string;
         
+        /** @c 0 if @c __LINE__ isn't defined, otherwise unequal to @c 0 */
         int is_line_defined;
+        /** Value of @c __LINE__ if defined, otherwise @c 0. */
         long line_integral;
         
+        /** @c 0 if @c __cplusplus isn't defined, otherwise unequal to @c 0 */
         int is_cplusplus_defined;
+        /** Value of @c __cplusplus if defined, otherwise @c 0. */
         long cplusplus_integral;
         
+        /** @c 0 if @c __STDC__ isn't defined, otherwise unequal to @c 0 */
         int is_stdc_defined;
+        /** Value of @c __STDC__ if defined, otherwise @c 0. */
         long stdc_integral;
         
+        /** @c 0 if @c __STDC_HOSTED__ isn't defined, otherwise unequal to @c 0 */
         int is_stdc_hosted_defined;
+        /** Value of @c __STDC_HOSTED__ if defined, otherwise @c 0. */
         long stdc_hosted_integral;
         
+        /** @c 0 if @c __STDC_VERSION__ isn't defined, otherwise unequal to @c 0 */
         int is_stdc_version_defined;
+        /** Value of @c __STDC_VERSION__ if defined, otherwise @c 0. */
         long stdc_version_integral;
         
+        /** @c 0 if @c __STDC_IEC_559__ isn't defined, otherwise unequal to @c 0 */
         int is_stdc_iec_559_defined;
+        /** Value of @c __STDC_IEC_559__ if defined, otherwise @c 0. */
         long stdc_iec_559_integral;
         
+        /** @c 0 if @c __STDC_IEC_559_COMPLEX__ isn't defined, otherwise unequal to @c 0 */
         int is_stdc_iec_559_complex_defined;
+        /** Value of @c __STDC_IEC_559_COMPLEX__ if defined, otherwise @c 0. */
         long stdc_iec_559_complex_integral;
         
+        /** @c 0 if @c __STDC_ISO_10646__ isn't defined, otherwise unequal to @c 0 */
         int is_stdc_iso_10646_defined;
+        /** Value of @c __STDC_ISO_10646__ if defined, otherwise @c 0. */
         long stdc_iso_10646_integral;
         
+        /** @c 0 if @c NDEBUG isn't defined, otherwise unequal to @c 0 */
         int is_ndebug_defined;
+        /** Value of @c NDEBUG if defined, otherwise @c 0. */
         long ndebug_integral;
         
     } std_c_cpp_predefined_macros;
@@ -129,7 +169,9 @@ void print_os(FILE* outstream);
 
 
 
-
+/**
+ * Main.
+ */
 int main(int argc, char* argv[])
 {
     /* Prevent warning that argument isn't used.
@@ -170,7 +212,10 @@ int main(int argc, char* argv[])
 }
 
 
-
+/**
+ * Creates instances of @c std_c_cpp_predefined_macros based on the 
+ * C/C++/Objective-C standard preprocessor macros set at compile-time.
+ */
 std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros(void)
 {
     std_c_cpp_predefined_macros std_macros = {
@@ -218,7 +263,7 @@ std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros(void)
     std_macros.stdc_integral = __STDC__;
 #endif
     
-#if defined(__STDC__HOSTED__)
+#if defined(__STDC_HOSTED__)
     std_macros.is_stdc_hosted_defined = 1;
     std_macros.stdc_hosted_integral = __STDC_HOSTED__;
 #endif
@@ -251,7 +296,10 @@ std_c_cpp_predefined_macros make_std_c_cpp_predefined_macros(void)
     return std_macros;
 }
 
-
+/**
+ * Prints to @a outstream if the macro @c macro_description_string is defined
+ * or not and if it is defined also prints its value.
+ */
 int print_macro_definition_string(FILE* outstream, 
                                   char const* macro_description_string, 
                                   int is_macro_defined, 
@@ -305,7 +353,10 @@ int print_macro_definition_string(FILE* outstream,
 }
 
 
-
+/**
+ * Prints to @a outstream if the macro @c macro_description_string is defined
+ * or not and if it is defined also prints its value.
+ */
 int print_macro_definition_integral(FILE* outstream, 
                                     char const* macro_description_string, 
                                     int is_macro_defined, 
@@ -358,7 +409,10 @@ int print_macro_definition_integral(FILE* outstream,
     return chars_written;
 }
 
-
+/**
+ * Prints for all standard preprocessor macros if they are defined or undefined
+ * and if they are defined which value they hold.
+ */
 void print_std_predefined_macros(FILE* outstream)
 {
     
@@ -429,7 +483,10 @@ void print_std_predefined_macros(FILE* outstream)
                                     std_macros.ndebug_integral);
 }
 
-
+/**
+ * Print (most) defined @c POC_LANG related macros and their values to 
+ * @a outstream.
+ */
 void print_lang(FILE* outstream)
 {
     fprintf(outstream, "POC programming language detection");
@@ -559,7 +616,12 @@ void print_lang(FILE* outstream)
     fprintf(outstream, "  POC_LANG_C_HEADER_STDINT_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
-    
+   
+#if defined(POC_LANG_C_HEADER_INTTYPES_SUPPORT)
+    fprintf(outstream, "  POC_LANG_C_HEADER_INTTYPES_SUPPORT defined");
+    fprintf(outstream, "\n");
+#endif    
+
 #if defined(POC_LANG_C_TYPE_COMPLEX_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_COMPLEX_SUPPORT defined");
     fprintf(outstream, "\n");
@@ -583,6 +645,10 @@ void print_lang(FILE* outstream)
 }
 
 
+/**
+ * Print (most) defined @c POC_DATA_MODEL related macros and their values to 
+ * @a outstream.
+ */
 void print_data_model(FILE* outstream)
 {
     fprintf(outstream, "POC data model detection");
@@ -660,6 +726,10 @@ void print_data_model(FILE* outstream)
 }
 
 
+/**
+ * Print (most) defined @c POC_COMPILER related macros and their values to 
+ * @a outstream.
+ */
 void print_compiler(FILE* outstream)
 {
     fprintf(outstream, "POC comiler detection");
@@ -773,7 +843,10 @@ void print_compiler(FILE* outstream)
     
 }
 
-
+/**
+ * Print (most) defined @c POC_ARCH related macros and their values to 
+ * @a outstream.
+ */
 void print_arch(FILE* outstream)
 {
     fprintf(outstream, "POC machine architecture detection");
@@ -902,7 +975,10 @@ void print_arch(FILE* outstream)
     
 }
 
-
+/**
+ * Print (most) defined @c POC_ENDIAN related macros and their values to 
+ * @a outstream.
+ */
 void print_endian(FILE* outstream)
 {
     fprintf(outstream, "POC machine endienness detection");
@@ -951,6 +1027,11 @@ void print_endian(FILE* outstream)
     
 }
 
+
+/**
+ * Print (most) defined @c POC_OS related macros and their values to 
+ * @a outstream.
+ */
 void print_os(FILE* outstream)
 {
     fprintf(outstream, "POC operating system detection");

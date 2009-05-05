@@ -19,6 +19,21 @@
 			name = "Doxygen documentation";
 			productName = "Doxygen documentation";
 		};
+		325365510FB0C97C00197F39 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 325365620FB0C9BE00197F39 /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				325365550FB0C98400197F39 /* PBXTargetDependency */,
+				325365570FB0C98800197F39 /* PBXTargetDependency */,
+				325365590FB0C98B00197F39 /* PBXTargetDependency */,
+				3253655B0FB0C98D00197F39 /* PBXTargetDependency */,
+				3253655D0FB0C99000197F39 /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -27,6 +42,44 @@
 		32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */; };
 		325361AD0FADBB9E00197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		325365540FB0C98400197F39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32532ACF0FA9B59F00197F39 /* poc_diagnose_c */;
+			remoteInfo = poc_diagnose_c;
+		};
+		325365560FB0C98800197F39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 325361A70FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */;
+			remoteInfo = poc_diagnose_c_gcc_ansi_c;
+		};
+		325365580FB0C98B00197F39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */;
+			remoteInfo = poc_diagnose_cpp;
+		};
+		3253655A0FB0C98D00197F39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32532B580FA9CDB600197F39 /* poc_diagnose_objc */;
+			remoteInfo = poc_diagnose_objc;
+		};
+		3253655C0FB0C99000197F39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32535EF30FAAF75D00197F39 /* Doxygen documentation */;
+			remoteInfo = "Doxygen documentation";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8DD76F690486A84900D96B5E /* CopyFiles */ = {
@@ -64,6 +117,7 @@
 		325361A40FADB8E100197F39 /* how_to_publish_poc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = how_to_publish_poc.txt; sourceTree = "<group>"; };
 		325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_c_gcc_ansi_c; sourceTree = BUILT_PRODUCTS_DIR; };
 		325363AC0FB0599000197F39 /* how_to_extend_poc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = how_to_extend_poc.txt; sourceTree = "<group>"; };
+		325364E80FB0AC4C00197F39 /* poc_data_model_cpp_compile_time_checks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_data_model_cpp_compile_time_checks.h; sourceTree = "<group>"; };
 		32A9B6120FA5C26900FF0967 /* poc_compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler.h; sourceTree = "<group>"; };
 		32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_def.h; sourceTree = "<group>"; };
 		32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_undef.h; sourceTree = "<group>"; };
@@ -157,9 +211,9 @@
 			children = (
 				8DD76F6C0486A84900D96B5E /* poc */,
 				32532AD00FA9B59F00197F39 /* poc_diagnose_c */,
+				325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */,
 				32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B590FA9CDB600197F39 /* poc_diagnose_objc */,
-				325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,6 +252,7 @@
 				32A9B6170FA5F83900FF0967 /* poc_data_model_def.h */,
 				32A9B6280FA6452800FF0967 /* poc_data_model_undef.h */,
 				32A9B6180FA5F84400FF0967 /* poc_data_model_os_arch_lang_undef.h */,
+				325364E80FB0AC4C00197F39 /* poc_data_model_cpp_compile_time_checks.h */,
 				32A9B6250FA63F2D00FF0967 /* poc_endian.h */,
 				32A9B6260FA63F2D00FF0967 /* poc_endian_def.h */,
 				32A9B6290FA6455400FF0967 /* poc_endian_undef.h */,
@@ -377,6 +432,7 @@
 				32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B580FA9CDB600197F39 /* poc_diagnose_objc */,
 				32535EF30FAAF75D00197F39 /* Doxygen documentation */,
+				325365510FB0C97C00197F39 /* All */,
 			);
 		};
 /* End PBXProject section */
@@ -439,6 +495,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		325365550FB0C98400197F39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32532ACF0FA9B59F00197F39 /* poc_diagnose_c */;
+			targetProxy = 325365540FB0C98400197F39 /* PBXContainerItemProxy */;
+		};
+		325365570FB0C98800197F39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 325361A70FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */;
+			targetProxy = 325365560FB0C98800197F39 /* PBXContainerItemProxy */;
+		};
+		325365590FB0C98B00197F39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */;
+			targetProxy = 325365580FB0C98B00197F39 /* PBXContainerItemProxy */;
+		};
+		3253655B0FB0C98D00197F39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32532B580FA9CDB600197F39 /* poc_diagnose_objc */;
+			targetProxy = 3253655A0FB0C98D00197F39 /* PBXContainerItemProxy */;
+		};
+		3253655D0FB0C99000197F39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32535EF30FAAF75D00197F39 /* Doxygen documentation */;
+			targetProxy = 3253655C0FB0C99000197F39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB923208733DC60010E9CD /* Debug */ = {
@@ -689,6 +773,27 @@
 			};
 			name = Release;
 		};
+		325365520FB0C97E00197F39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = All;
+			};
+			name = Debug;
+		};
+		325365530FB0C97E00197F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = All;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -751,6 +856,15 @@
 			buildConfigurations = (
 				325361AA0FADBB4200197F39 /* Debug */,
 				325361AB0FADBB4200197F39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		325365620FB0C9BE00197F39 /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				325365520FB0C97E00197F39 /* Debug */,
+				325365530FB0C97E00197F39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

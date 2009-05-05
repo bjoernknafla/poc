@@ -2,7 +2,7 @@
 /**
  * @mainpage POC - Portable Preprocessor Compile-time Target Platform Configuration Lib
  *
- * POC is free software. You may copy, distribute, and modify it under the terms of the License contained in the file @c LICENSE.txt distributed with this package. This license is the same as the BSD License.
+ * POC is free software. You may copy, distribute, and modify it under the terms of the License contained in the file @c LICENSE.txt distributed with this package. This license is equal to the BSD License.
  * 
  * @section overview Overview and introduction
  *
@@ -96,6 +96,12 @@
  * - http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/30B3520C93F437AB87257060006FFE5E/$file/Language_Extensions_for_CBEA_2.5.pdf
  * - http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/1AEEE1270EA2776387257060006E61BA/$file/CBEA_v1.02_11Oct2007_pub.pdf
  *
+ * @subsection data_models Data model infos
+ * - http://www.ddj.com/hpc-high-performance-computing/184401972
+ * - http://en.wikipedia.org/wiki/64-bit
+ * - http://en.wikipedia.org/wiki/32-bit
+ * - http://archive.opengroup.org/public/tech/aspen/lp64_wp.htm
+ *
  * @subsection diverse Other resources
  * - Apache C++ Standard Library Wiki with lots of cross-platform infos
  *   http://wiki.apache.org/stdcxx/Compilers
@@ -111,9 +117,11 @@
  * @section release_notes Release Notes
  *
  * @subsection version_0_2_0 Version 0.2.0 (May 5, 2009)
+ * - POC_ARCH possibly contains or-ed bit-values of architecture ids
  * - Code is ANSI C compatible
- * - Extended documentation
+ * - Extended and refined documentation
  * - poc_diagnose_main.c compiles and runs on Windows XP using MS Visual Studio 2008
+ * - Added detection of Cell BE PPU and SPU and their endianness
  *
  * @subsection version_0_1_0 Version 0.1.0 (May 1, 2009)
  * - Initial release

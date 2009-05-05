@@ -2,23 +2,29 @@
  * Copyright (c) 2009, Bjoern Knafla
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
- * following conditions are met:
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are permitted provided that the following conditions are met:
  *
- * - Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
- *   disclaimer.
- * - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
- *   disclaimer in the documentation and/or other materials provided with the distribution.
- * - Neither the name of the Bjoern Knafla nor the names of its contributors may be used to 
- *   endorse or promote products derived from this software without specific prior written permission.
+ * - Redistributions of source code must retain the above copyright notice, this 
+ *   list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright notice, 
+ *   this list of conditions and the following disclaimer in the documentation 
+ *   and/or other materials provided with the distribution.
+ * - Neither the name of the Bjoern Knafla nor the names of its contributors may 
+ *   be used to endorse or promote products derived from this software without 
+ *   specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
- * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 /**
@@ -47,7 +53,7 @@
  * If no known language, compiler, or endienness could be determined special @c UNKNOWN ids and strings are used as
  * values, e.g. @ POC_OS might be set to @c POC_OS_UNKNOWN_ID and @c POC_OS_STRING is set to @c POC_OS_UNKNOWN_STRING .
  *
- * See @code poc_diagnose_main.c @endcode for an example how to use POC's platform detection macros.
+ * See poc_diagnose_main.c for an example how to use POC's platform detection macros.
  * 
  *
  * It is possible to suppress automatic platform detection for everything POC detects by defining
@@ -60,8 +66,8 @@
  *
  *
  * Aside the platform detection macros POC also defines preprocessor symbols to allow portable usage of keywords to:
- * - Align data types automatically on the stack by wrapping the type in @code POC_ALIGN_BEING(<byte-alignment>) @endcode 
- *   and @code POC_ALIGN_END(<byte-alignment>) @endcode macros.
+ * - Align data types automatically on the stack by wrapping the type in @c POC_ALIGN_BEING(<byte-alignment>) 
+ *   and @c POC_ALIGN_END(<byte-alignment>) macros.
  * - Using @c POC_RESTRICT to enable C99's @c restrict keyword or disable it when compiling for other languages that
  *   don't support it.
  *
@@ -74,17 +80,17 @@
  * 
  * Only remove the preprocessor error directive after having ported and tested the code on the platform!
  * Don't forget to check that your @c POC_ @c _STRING macros are at most @c POC_STRINGS_MAX_LENGTH characters long
- * (see @c poc_preprocessor_utilities_def.h).
+ * (see poc_preprocessor_utilities_def.h).
  *
  * The error-directive is also present if a platform couldn't be tested yet - remove it but be warned that the code isn't 
  * tested and might possibly be erroreneous.
  *
- * For convenience include this header and don't use @c poc_def.h directly. Use the 
- * @code _def.h @endcode and @code _undef.h @endcode files for fine grained control of the parts in the code where 
+ * For convenience include this header and don't use poc_def.h directly. Use the 
+ * @c _def.h and @c _undef.h files for fine grained control of the parts in the code where 
  * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
- * By including the POC headers without the @code _def.h @endcode or @code _undef.h @endcode postfix the defined macros
+ * By including the POC headers without the @c _def.h or @c _undef.h postfix the defined macros
  * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
- * @code _undef.h @endcode anymore.
+ * @c _undef.h anymore.
  *
  * All trademarks belong to their trademark holders.
  */
@@ -102,8 +108,8 @@
 #include "poc_posix.h"
 #include "poc_portability_macros.h"
 
-/* Disable macro undefines via including @code poc_undef.h @endcode and prevent re-defines from accidential
- * includes of @code poc_def.h @endcode .
+/* Disable macro undefines via including poc_undef.h and prevent re-defines from accidential
+ * includes of poc_def.h .
  */
 #define POC_HEADER_DISABLE_DEF_UNDEF
 

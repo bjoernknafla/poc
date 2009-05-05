@@ -2,38 +2,47 @@
  * Copyright (c) 2009, Bjoern Knafla
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
- * following conditions are met:
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are permitted provided that the following conditions are met:
  *
- * - Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
- *   disclaimer.
- * - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
- *   disclaimer in the documentation and/or other materials provided with the distribution.
- * - Neither the name of the Bjoern Knafla nor the names of its contributors may be used to 
- *   endorse or promote products derived from this software without specific prior written permission.
+ * - Redistributions of source code must retain the above copyright notice, this 
+ *   list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright notice, 
+ *   this list of conditions and the following disclaimer in the documentation 
+ *   and/or other materials provided with the distribution.
+ * - Neither the name of the Bjoern Knafla nor the names of its contributors may 
+ *   be used to endorse or promote products derived from this software without 
+ *   specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
- * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 /**
  * @file
  *
- * See @code poc_endian.h @endcode for details.
+ * See poc_endian.h for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @code poc_endian_undef.h @endcode . If header guards are wanted or needed use 
- *            @code poc.h @endcode or @code poc_endian.h @endcode instead.
+ *            poc_endian_undef.h . If header guards are wanted or needed use 
+ *            poc.h or poc_endian.h instead.
  *
  * See http://en.wikipedia.org/wiki/Endianness
+ *
+ * @todo TODO: How to handle bi-endian architectures? Does an app on a PowerPC
+ *       change its endianess at run-time or is it set at compile-time?
  */
 
-/* Only allow definition of POC endienness macros if @code poc_endian.h @endcode hasn't been included 
+/* Only allow definition of POC endienness macros if poc_endian.h hasn't been included 
  * in this compilation unit.
  */
 #if !defined(POC_ENDIAN_HEADER_DISABLE_DEF_UNDEF)
@@ -80,8 +89,8 @@
 #if defined(__BIG_ENDIAN__) || \
 (defined(POC_ARCH_CELL_PPU) || \
 defined(POC_ARCH_CELL_SPU) || \
-defined(POC_ARCH_CELL_SPU_EDP || \
-defined(__OPENCL_VERSION__) && !defined(__ENDIAN_LITTLE__))
+defined(POC_ARCH_CELL_SPU_EDP) || \
+(defined(__OPENCL_VERSION__) && !defined(__ENDIAN_LITTLE__)))
 #   define POC_ENDIAN_BIG POC_ENDIAN_BIG_ID
 #endif
 

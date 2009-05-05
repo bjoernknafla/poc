@@ -1,7 +1,7 @@
 README.txt
 
 POC is free software. You may copy, distribute, and modify it under the terms of the License contained in the file 
-LICENSE.txt distributed with this package. This license is the same as the BSD License.
+LICENSE.txt distributed with this package. This license is equal to the BSD License.
 
 POC (Portable Preprocessor Compile-time Target Platform Configurator) is a collection of C preprocessor symbols to
 manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used,
@@ -109,9 +109,11 @@ Other resources
 
 Release Notes:
 Version 0.2.0 (May 5, 2009)
+- POC_ARCH possibly contains or-ed bit-values of architecture ids
 - Code is ANSI C compatible
-- Extended documentation
+- Extended and refined documentation
 - poc_diagnose_main.c compiles and runs on Windows XP using MS Visual Studio 2008
+- Added detection of Cell BE PPU and SPU and their endianness
 
 Version 0.1.0 (May 1, 2009)
 - Initial release

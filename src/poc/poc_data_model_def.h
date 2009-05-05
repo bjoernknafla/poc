@@ -2,38 +2,48 @@
  * Copyright (c) 2009, Bjoern Knafla
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the 
- * following conditions are met:
+ * Redistribution and use in source and binary forms, with or without 
+ * modification, are permitted provided that the following conditions are met:
  *
- * - Redistributions of source code must retain the above copyright notice, this list of conditions and the following 
- *   disclaimer.
- * - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
- *   disclaimer in the documentation and/or other materials provided with the distribution.
- * - Neither the name of the Bjoern Knafla nor the names of its contributors may be used to 
- *   endorse or promote products derived from this software without specific prior written permission.
+ * - Redistributions of source code must retain the above copyright notice, this 
+ *   list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright notice, 
+ *   this list of conditions and the following disclaimer in the documentation 
+ *   and/or other materials provided with the distribution.
+ * - Neither the name of the Bjoern Knafla nor the names of its contributors may 
+ *   be used to endorse or promote products derived from this software without 
+ *   specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
- * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 
 /**
  * @file
  *
- * See @code poc_data_model.h @endcode for details.
+ * See poc_data_model.h for details.
  *
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
- *            @code poc_data_model_undef.h @endcode . If header guards are wanted or needed use 
- *            @code poc.h @endcode or @code poc_data_model.h @endcode instead.
+ *            poc_data_model_undef.h . If header guards are wanted or needed use 
+ *            poc.h or poc_data_model.h instead.
  */
 
-/* Only allow definition of POC data model macros if @code poc_data_model.h @endcode hasn't been included 
+/* Only allow definition of POC data model macros if poc_data_model.h hasn't been included 
  * in this compilation unit.
+ *
+ * When compiling with C++ include the header 
+ * poc_data_models_cpp_compile_time_checks.h for compile-time checks if the data
+ * model corresponds with the primary type bit-sizes.
  */
 #if !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF)
 
@@ -78,7 +88,8 @@
  * - LP32: int type is 16 bit long and pointer types are 32 bit. Unsupported.
  * - ILP32: int, long, and pointer data types are 32 bit.
  * - LP64: long and pointer types are 64bit, the int type is 32 bit.
- * - LLP64: pointer types are 64bit, the int type is 32 bit, long long is a 64 bit type.
+ * - LLP64: pointer types are 64bit, the int type is 32 bit, long long is a 
+ *          64 bit type.
  * - ILP64: int, long, and pointer types are 64 bit. Unsupported.
  * - SILP64: short, int, long, and pointer types are 64 bit. Unsupported.
  ******************************************************************************/
@@ -100,15 +111,16 @@
 /*******************************************************************************
  * Detect data model.
  *
- * To detect the data model used by the target platform first the target operating system and then the architecture are
- * analyzed.
+ * To detect the data model used by the target platform first the target 
+ * operating system and then the architecture are analyzed.
  ******************************************************************************/
 
 /**
  * @todo TODO: Implement data model detection for Linux, Unix, etc.
  */
 
-/* 32bit Mac OS X uses the ILP32 data model, 64bit Mac OS X uses the LP64 data model.
+/* 
+ * 32bit Mac OS X uses the ILP32 data model, 64bit Mac OS X uses the LP64 data model.
  */
 #if defined(POC_OS_MACOSX)
 #   if defined(_LP64) || defined(__LP64__) 
@@ -123,7 +135,8 @@
 #endif
 
 
-/* 32bit Linux uses the ILP32 data model, 64bit Linux uses the LP64 data model.
+/* 
+ * 32bit Linux uses the ILP32 data model, 64bit Linux uses the LP64 data model.
  */
 #if defined(POC_OS_LINUX)
 #   if defined(_LP64) || defined(__LP64__) || defined(__lp64)
@@ -140,14 +153,16 @@
 #endif
 
 
-/* Win32 uses the ILP32 data model
+/* 
+ * Win32 uses the ILP32 data model
  */
 #if defined(POC_OS_WIN32)
 #   define POC_DATA_MODEL_ILP32 POC_DATA_MODEL_ILP32_ID
 #endif
 
 
-/* Win64 uses the LLP64 data model
+/* 
+ * Win64 uses the LLP64 data model
  */
 #if defined(POC_OS_WIN64)
 #   define POC_DATA_MODEL_LLP64 POC_DATA_MODEL_LLP64_ID
@@ -182,7 +197,8 @@
 #endif /* !defined(POC_DATA_MODEL_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
 
-/* No known data model detected.
+/* 
+ * No known data model detected.
  */
 #if !defined(POC_DATA_MODEL)
 #   define POC_DATA_MODEL_UNKNOWN POC_DATA_MODEL_UNKNOWN_ID
@@ -246,116 +262,6 @@
 || defined(POC_DATA_MODEL_ILP64) )
 #   error Exactly one data model must be selected.
 #endif
-
-
-
-
-
-#if defined(__cplusplus)
-
-/**
- * @todo TODO: Is there a way to prevent reliably (if @c climits is included by a header including this header) that any 
- *       symbols declared in @c climits leak into this header?
- */
-/* Include CHAR_BIT
- */
-#include <climits>
-
-/* Include POC_STATIC_ASSERT
- */
-#include "poc_static_assert_def.h"
-
-
-namespace {
-    /*******************************************************************************
-     * Compile time check of data model correctness
-     ******************************************************************************/
-#if defined(POC_DATA_MODEL_LP32)
-    POC_STATIC_ASSERT( sizeof( char ) * CHAR_BIT == 8, "The LP32 data model requires char to be 8 bit" );
-    POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16,"The LP32 data model requires short to be 16 bit" );
-    POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 16, "The LP32 data model requires int to be 16 bit" );
-    POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 32, "The LP32 data model requires long to be 32 bit");
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
-    POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The LP32 data model requires long long to be 64 bit" );
-#   endif
-    POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 32, "The LP32 data model requires pointers to be 32 bit" );
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-    
-    
-#if defined(POC_DATA_MODEL_ILP32)
-    POC_STATIC_ASSERT( sizeof( char ) * CHAR_BIT == 8, "The ILP32 data model requires char to be 8 bit" );
-    POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The ILP32 data model requires short to be 16 bit" );
-    POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 32, "The ILP32 data model requires int to be 32 bit" );
-    POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 32, "The ILP32 data model requires long to be 32 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
-    POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The ILP32 data model requires long long to be 64 bit" );
-#   endif
-    POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 32, "The ILP32 data model requires pointers to be 32 bit" );                        
-#endif
-    
-    
-#if defined(POC_DATA_MODEL_LP64)
-    POC_STATIC_ASSERT( sizeof( char ) * CHAR_BIT == 8, "The LP64 data model requires char to be 8 bit" );
-    POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The LP64 data model requires short to be 16 bit" );
-    POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 32, "The LP64 data model requires int to be 32 bit" );
-    POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 64, "The LP64 data model requires long to be 64 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
-    POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The LP64 data model requires long long to be 64 bit" );
-#   endif
-    POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The LP64 data model requires pointers to be 64 bit" );
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-    
-#if defined(POC_DATA_MODEL_LLP64)
-    POC_STATIC_ASSERT( sizeof( char ) * CHAR_BIT == 8, "The LLP64 data model requires char to be 8 bit" );
-    POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The LLP64 data model requires short to be 16 bit" );
-    POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 32, "The LLP64 data model requires int to be 32 bit" );
-    POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 32, "The LLP64 data model requires long to be 32 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
-    POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The LLP64 data model requires lonb long to be 64 bit" );
-#   endif
-    POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The LLP64 data model requires pointers to be 64 bit" );                        
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-    
-#if defined(POC_DATA_MODEL_ILP64)
-    POC_STATIC_ASSERT( sizeof( char ) * CHAR_BIT == 8, "The ILP64 data model requires char to be 8 bit" );
-    POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The ILP64 data model requires short to be 16 bit" );
-    POC_STATIC_ASSERT( sizeof( _int32 ) * CHAR_BIT == 32, "The ILP64 data model requires _int32 to be 32 bit" );
-    POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 64, "The ILP64 data model requires int to be 64 bit" );
-    POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 64, "The ILP64 data model requires long to be 64 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
-    POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The ILP64 data model requires long long to be 64 bit" );
-#   endif
-    POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The ILP64 data model requires pointers to be 64 bit" );                        
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-    
-    
-#if defined(POC_DATA_MODEL_SILP64)
-    POC_STATIC_ASSERT( sizeof( char ) * CHAR_BIT == 8, "The SILP64 data model requires char to be 8 bit" );
-    POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 64, "The SILP64 data model requires short to be 64 bit" );
-    POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 64, "The SILP64 data model requires int to be 64 bit" );
-    POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 64, "The SILP64 data model requires long to be 64 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
-    POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The SILP64 data model requires long long to be 64 bit" );
-#   endif
-    POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The SILP64 data model requires pointers to be 64 bit" );                        
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#endif
-    
-    
-    
-    
-    
-} /* anonymous namespace */
-
-#include "poc_static_assert_undef.h"
-
-#endif /* defined(__cplusplus) */
-
-
 
 
 #endif /* !defined(POC_DATA_MODEL_HEADER_DISABLE_DEF_UNDEF) */
