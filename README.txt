@@ -97,6 +97,7 @@ Microsoft Visual Studio C++ infos
 
 Cell PPU and SPU infos
 - http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/30B3520C93F437AB87257060006FFE5E/$file/Language_Extensions_for_CBEA_2.5.pdf
+- http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/1AEEE1270EA2776387257060006E61BA/$file/CBEA_v1.02_11Oct2007_pub.pdf
 
 Other resources
 - Apache C++ Standard Library Wiki with lots of cross-platform infos
