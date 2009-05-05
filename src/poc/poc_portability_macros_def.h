@@ -89,7 +89,6 @@
 #elif defined(POC_COMPILER_ICC)
 #   define POC_ALIGN_BEGIN( ALIGN ) __declspec(align( ALIGN ))
 #   define POC_ALIGN_END( ALIGN )
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #elif defined(POC_COMPILER_MSVC)
 #   define POC_ALIGN_BEGIN( ALIGN ) __declspec(align( ALIGN ))
 #   define POC_ALIGN_END( ALIGN )
