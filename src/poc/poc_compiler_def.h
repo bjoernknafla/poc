@@ -113,10 +113,10 @@
  */
 #if defined(_MSC_VER)
 #   define POC_COMPILER_MSVC POC_COMPILER_MSVC_ID
-#   if defined(_MSC_FULL_VER) && defined(_MSC_BUILD)
-#       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER * 100 + _MSC_BUILD )
+#   if defined(_MSC_FULL_VER)
+#       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER)
 #   else
-#       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 10000 * 100)
+#       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 1000000)
 #   endif
 #endif
 
