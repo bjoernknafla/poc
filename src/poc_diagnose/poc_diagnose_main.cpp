@@ -37,4 +37,4 @@
 
 // Check at compile-time if the data model detected corresponds to the primary
 // type bit-sizes.
-#include "poc_data_model_cpp_compile_time_checks.h"
+#include <poc/poc_data_model_cpp_compile_time_checks.h>
