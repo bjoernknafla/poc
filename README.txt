@@ -112,8 +112,12 @@ Version 0.2.0 (May 5, 2009)
 - POC_ARCH possibly contains or-ed bit-values of architecture ids
 - Code is ANSI C compatible
 - Extended and refined documentation
-- poc_diagnose_main.c compiles and runs on Windows XP using MS Visual Studio 2008
+- poc_diagnose_main.c compiles and runs on Windows XP using 
+  MS Visual Studio 2008
 - Added detection of Cell BE PPU and SPU and their endianness
+- Added C and C++ and Doxygen documentation generation projects to 
+  MS Visual Studio solution
+- Removed the revision number from POC_COMPILER_MSVC_VERSION generation
 
 Version 0.1.0 (May 1, 2009)
 - Initial release

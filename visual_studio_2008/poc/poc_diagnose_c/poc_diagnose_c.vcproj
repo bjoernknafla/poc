@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="poc_diagnose_cpp"
+	Name="poc_diagnose_c"
 	ProjectGUID="{04C97FA5-DEC9-4A4D-BDD0-09D4D788F0C9}"
 	RootNamespace="poc_diagnose_c"
 	Keyword="Win32Proj"
@@ -51,6 +51,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				CompileAs="1"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -174,7 +175,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\src\poc_diagnose\poc_diagnose_main.cpp"
+				RelativePath="..\..\..\src\poc_diagnose\poc_diagnose_main.c"
 				>
 			</File>
 		</Filter>
@@ -213,6 +214,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\poc\poc_data_model.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\poc\poc_data_model_cpp_compile_time_checks.h"
 				>
 			</File>
 			<File
@@ -323,12 +328,6 @@
 				RelativePath="..\..\..\src\poc\poc_undef.h"
 				>
 			</File>
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
-			>
 		</Filter>
 	</Files>
 	<Globals>

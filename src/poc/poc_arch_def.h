@@ -141,7 +141,7 @@
 
 /* Detect ARM and ARM Thumb
  */
-#if defined(__arm__) || (__thumb__)
+#if defined(__arm__) || defined(__thumb__)
 #   if defined(__arm__)
 #       define POC_ARCH_ARM POC_ARCH_ARM_ID
 #   endif
