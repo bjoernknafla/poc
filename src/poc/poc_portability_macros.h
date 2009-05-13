@@ -60,17 +60,27 @@
 
 /**
  * @def POC_RESTRICT
+ *
  * Defined to @c restrict if compiling for C99, otherwise empty.
  */
 
 /**
  * @def POC_ALIGN_BEGIN
+ *
  * Wrapping beginning for a type aligned to @c Align bytes.
  */
 
 /**
  * @def POC_ALIGN_END
+ *
  * Wrapping ending for a type aligned to @c Align bytes.
+ */
+
+/**
+ * @def POC_ALIGN(DECL, ALIGN)
+ *
+ * Convenience macro wrapping @c DECL in @c POC_ALIGN_BEGIN(ALIGN) and 
+ * @c POC_ALIGN_END(ALIGN).
  */
 
 #ifndef POC_poc_portability_macros_H

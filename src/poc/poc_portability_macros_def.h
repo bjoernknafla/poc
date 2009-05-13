@@ -52,6 +52,7 @@
 #include "poc_compiler_def.h"
 #include "poc_lang_def.h"
 
+
 /*******************************************************************************
  * Macros for @c POC_INLINE and @c POC_RESTRICT are defined if the compiler 
  * supports these keywords.
@@ -96,7 +97,7 @@
 #   error Unknown compiler. Alignment macros not implemented.
 #endif
 
-
+#define POC_ALIGN(DECL, ALIGN) POC_ALIGN_BEGIN(ALIGN) DECL POC_ALIGN_END(ALIGN)
 
 
 #endif /* !defined(POC_PORTABILITY_MACROS_HEADER_DISABLE_DEF_UNDEF) */

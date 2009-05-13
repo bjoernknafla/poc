@@ -45,6 +45,7 @@
 #undef POC_INLINE
 #undef POC_RESTRICT
 
+#undef POC_ALIGN
 #undef POC_ALIGN_BEGIN
 #undef POC_ALIGN_END
 
