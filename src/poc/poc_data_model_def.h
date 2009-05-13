@@ -36,6 +36,8 @@
  * @attention This header doesn't have header guards to allow successive inclusion of it and its sibling 
  *            poc_data_model_undef.h . If header guards are wanted or needed use 
  *            poc.h or poc_data_model.h instead.
+ *
+ * @todo TODO: Detect data model based on OS and compiler.
  */
 
 /* Only allow definition of POC data model macros if poc_data_model.h hasn't been included 
@@ -67,12 +69,13 @@
  ******************************************************************************/
 /*@{*/
 #define POC_DATA_MODEL_UNKNOWN_ID 0
-#define POC_DATA_MODEL_LP32_ID 1 /* No detection implemented. */
-#define POC_DATA_MODEL_ILP32_ID 2
-#define POC_DATA_MODEL_LP64_ID 4
-#define POC_DATA_MODEL_LLP64_ID 8
-#define POC_DATA_MODEL_ILP64_ID 16 /* No detection implemented. */
-#define POC_DATA_MODEL_SILP64_ID 32 /* No detection implemented. */
+#define POC_DATA_MODEL_IP32_ID (1)
+#define POC_DATA_MODEL_LP32_ID (1 << 1) /* No detection implemented. */
+#define POC_DATA_MODEL_ILP32_ID (1 << 2)
+#define POC_DATA_MODEL_LP64_ID (1 << 3)
+#define POC_DATA_MODEL_LLP64_ID (1 << 4)
+#define POC_DATA_MODEL_ILP64_ID (1 << 5) /* No detection implemented. */
+#define POC_DATA_MODEL_SILP64_ID (1 << 6) /* No detection implemented. */
 /*@}*/
 
 /***************************************************************************//**
@@ -85,6 +88,7 @@
  * - http://archive.opengroup.org/public/tech/aspen/lp64_wp.htm
  *
  * Data models:
+ * - IP32: int type and pointer types are 32bit, long might be 64bit.
  * - LP32: int type is 16 bit long and pointer types are 32 bit. Unsupported.
  * - ILP32: int, long, and pointer data types are 32 bit.
  * - LP64: long and pointer types are 64bit, the int type is 32 bit.
@@ -95,6 +99,7 @@
  ******************************************************************************/
 /*@{*/
 #define POC_DATA_MODEL_UNKNOWN_STRING "Unknown data model"
+#define POC_DATA_MODEL_IP32_STRING "IP32"
 #define POC_DATA_MODEL_LP32_STRING "LP32" /* No detection implemented. */
 #define POC_DATA_MODEL_ILP32_STRING "ILP32"
 #define POC_DATA_MODEL_LP64_STRING "LP64"
@@ -169,11 +174,32 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
-
+/*
+ * OpenCL uses the IP32 data model when compiling for 32bit devices or the
+ * LP64 data model when compiling for 64bit devices.
+ */
+#if defined(POC_LANG_OPENCL)
+#   if defined(CL_DEVICE_ADDRESS_SPACE) && (32 == CL_DEVICE_ADDRESS_SPACE)
+#       define POC_DATA_MODEL_IP32 POC_DATA_MODEL_IP32_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(CL_DEVICE_ADDRESS_SPACE) && (64 == CL_DEVICE_ADDRESS_SPACE)
+#       define POC_DATA_MODEL_LP64 POC_DATA_MODEL_LP64_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       error Can't determine OpenCL device address space via CL_DEVICE_ADDRESS_SPACE.
+#   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
 /*******************************************************************************
  * Detect @c POC_DATA_MODEL_ID and @c POC_DATA_MODEL_STRING
  ******************************************************************************/
+
+#if defined(POC_DATA_MODEL_IP32)
+#   define POC_DATA_MODEL POC_DATA_MODEL_IP32_ID
+#   define POC_DATA_MODEL_STRING POC_DATA_MODEL_IP32_STRING
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
 #if defined(POC_DATA_MODEL_ILP32)
 #   define POC_DATA_MODEL POC_DATA_MODEL_ILP32_ID
@@ -224,42 +250,56 @@
 || defined(POC_DATA_MODEL_LP64) \
 || defined(POC_DATA_MODEL_LLP64) \
 || defined(POC_DATA_MODEL_ILP64) \
-|| defined(POC_DATA_MODEL_SILP64) )
+|| defined(POC_DATA_MODEL_SILP64) \
+|| defined(POC_DATA_MODEL_IP32) )
 #   error Exactly one data model must be selected.
 #elif defined(POC_DATA_MODEL_ILP32) \
 && (defined(POC_DATA_MODEL_LP32) \
 || defined(POC_DATA_MODEL_LP64) \
 || defined(POC_DATA_MODEL_LLP64) \
 || defined(POC_DATA_MODEL_ILP64) \
-|| defined(POC_DATA_MODEL_SILP64) )
+|| defined(POC_DATA_MODEL_SILP64) \
+|| defined(POC_DATA_MODEL_IP32) )
 #   error Exactly one data model must be selected.
 #elif defined(POC_DATA_MODEL_LP64) \
 && (defined(POC_DATA_MODEL_LP32) \
 || defined(POC_DATA_MODEL_ILP32) \
 || defined(POC_DATA_MODEL_LLP64) \
 || defined(POC_DATA_MODEL_ILP64) \
-|| defined(POC_DATA_MODEL_SILP64) )
+|| defined(POC_DATA_MODEL_SILP64) \
+|| defined(POC_DATA_MODEL_IP32) )
 #   error Exactly one data model must be selected.
 #elif defined(POC_DATA_MODEL_LLP64) \
 && (defined(POC_DATA_MODEL_LP32) \
 || defined(POC_DATA_MODEL_ILP32) \
 || defined(POC_DATA_MODEL_LP64) \
 || defined(POC_DATA_MODEL_ILP64) \
-|| defined(POC_DATA_MODEL_SILP64) )
+|| defined(POC_DATA_MODEL_SILP64) \
+|| defined(POC_DATA_MODEL_IP32) )
 #   error Exactly one data model must be selected.
 #elif defined(POC_DATA_MODEL_ILP64) \
 && (defined(POC_DATA_MODEL_LP32) \
 || defined(POC_DATA_MODEL_ILP32) \
 || defined(POC_DATA_MODEL_LP64) \
 || defined(POC_DATA_MODEL_LLP64) \
-|| defined(POC_DATA_MODEL_SILP64) )
+|| defined(POC_DATA_MODEL_SILP64) \
+|| defined(POC_DATA_MODEL_IP32) )
 #   error Exactly one data model must be selected.
 #elif defined(POC_DATA_MODEL_SILP64) \
 && (defined(POC_DATA_MODEL_LP32) \
 || defined(POC_DATA_MODEL_ILP32) \
 || defined(POC_DATA_MODEL_LP64) \
 || defined(POC_DATA_MODEL_LLP64) \
-|| defined(POC_DATA_MODEL_ILP64) )
+|| defined(POC_DATA_MODEL_ILP64) \
+|| defined(POC_DATA_MODEL_IP32) )
+#   error Exactly one data model must be selected.
+#elif defined(POC_DATA_MODEL_IP32) \
+&& (defined(POC_DATA_MODEL_LP32) \
+|| defined(POC_DATA_MODEL_ILP32) \
+|| defined(POC_DATA_MODEL_LP64) \
+|| defined(POC_DATA_MODEL_LLP64) \
+|| defined(POC_DATA_MODEL_ILP64) \
+|| defined(POC_DATA_MODEL_SILP64) )
 #   error Exactly one data model must be selected.
 #endif
 
