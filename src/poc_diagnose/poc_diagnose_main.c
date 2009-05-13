@@ -658,6 +658,9 @@ void print_data_model(FILE* outstream)
     
     switch (POC_DATA_MODEL)
     {
+        case POC_DATA_MODEL_IP32_ID:
+            fprintf(outstream, "POC_DATA_MODEL_IP32_ID");
+            break;
         case POC_DATA_MODEL_LP32_ID:
             fprintf(outstream, "POC_DATA_MODEL_LP32_ID");
             break;
@@ -692,6 +695,11 @@ void print_data_model(FILE* outstream)
     fprintf(stdout, "\n\n\n");
 #endif
     
+  
+#if defined(POC_DATA_MODEL_IP32)
+    fprintf(outstream, "  POC_DATA_MODEL_IP32 defined");
+    fprintf(outstream, "\n");
+#endif
     
 #if defined(POC_DATA_MODEL_LP32)
     fprintf(outstream, "  POC_DATA_MODEL_LP32 defined");
