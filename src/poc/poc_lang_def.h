@@ -229,6 +229,9 @@
 
 #if defined (POC_LANG_OPENCL)
 #   /* Detect extensions. */
+#   if defined(CL_DEVICE_ADDRESS_SPACE)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
 #   if defined(cl_khr_fp64)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
