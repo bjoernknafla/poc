@@ -130,9 +130,12 @@
 
 /* Detect PowerPC and PowerPC64
  */
-#if defined(__ppc__) || defined(__ppc64__) || defined(__PPU__)
+#if defined(__powerpc) || defined(__powerpc__) || defined(__powerpc64__) || \
+    defined(__PPC) || defined(__PPC__) || defined(__PPC64__) || \
+    defined(__ppc__) || defined(__ppc64__) || defined(__PPU__)
 #   define POC_ARCH_PPC POC_ARCH_PPC_ID
-#   if defined(__ppc64__) || defined(__PPU__)
+#   if defined(__powerpc64__) || defined(__PPC64__) || \
+    defined(__ppc64__) || defined(__PPU__)
 #       define POC_ARCH_PPC64 POC_ARCH_PPC64_ID
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif

@@ -191,6 +191,36 @@
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
+
+
+/*
+ * Cell BE PPU binaries use the ILP32 data model when compiled for 32bit, or
+ * may use the LP64 data model when compiled for 64bits.
+ */
+#if defined(POC_ARCH_CELL_PPU) && !(defined(POC_DATA_MODEL_LP64) || defined(POC_DATA_MODEL_ILP32))
+#   if defined(__LP64__) || defined(_LP64)
+#       define POC_DATA_MODEL_LP64 POC_DATA_MODEL_LP64_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(__ILP32__) || defined(_ILP32)
+#       define POC_DATA_MODEL_ILP32 POC_DATA_MODEL_ILP32_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       /* Assuming ILP32 data model if @c __LP64__ isn't defined */
+#       define POC_DATA_MODEL_ILP32 POC_DATA_MODEL_ILP32_ID
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+
+/*
+ * Cell BE SPU binaries always uses an ILP32 ABI. See http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/1741C509C5F64B3300257460006FD68D/$file/CellBE_PXCell_Handbook_v1.11_12May08_pub.pdf .
+ */
+#if defined(POC_ARCH_CELL_SPU)
+#   define POC_DATA_MODEL POC_DATA_MODEL_ILP32_ID
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+
+
 /*******************************************************************************
  * Detect @c POC_DATA_MODEL_ID and @c POC_DATA_MODEL_STRING
  ******************************************************************************/

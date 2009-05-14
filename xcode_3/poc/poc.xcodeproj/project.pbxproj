@@ -48,35 +48,35 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 32532ACF0FA9B59F00197F39 /* poc_diagnose_c */;
+			remoteGlobalIDString = 32532ACF0FA9B59F00197F39;
 			remoteInfo = poc_diagnose_c;
 		};
 		325365560FB0C98800197F39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 325361A70FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */;
+			remoteGlobalIDString = 325361A70FADBB3C00197F39;
 			remoteInfo = poc_diagnose_c_gcc_ansi_c;
 		};
 		325365580FB0C98B00197F39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */;
+			remoteGlobalIDString = 32532AD70FA9B5CF00197F39;
 			remoteInfo = poc_diagnose_cpp;
 		};
 		3253655A0FB0C98D00197F39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 32532B580FA9CDB600197F39 /* poc_diagnose_objc */;
+			remoteGlobalIDString = 32532B580FA9CDB600197F39;
 			remoteInfo = poc_diagnose_objc;
 		};
 		3253655C0FB0C99000197F39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 32535EF30FAAF75D00197F39 /* Doxygen documentation */;
+			remoteGlobalIDString = 32535EF30FAAF75D00197F39;
 			remoteInfo = "Doxygen documentation";
 		};
 /* End PBXContainerItemProxy section */
@@ -107,9 +107,9 @@
 		32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = poc_diagnose_main.cpp; sourceTree = "<group>"; };
 		32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = poc_diagnose_main.c; sourceTree = "<group>"; };
 		32532AD00FA9B59F00197F39 /* poc_diagnose_c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_c; sourceTree = BUILT_PRODUCTS_DIR; };
-		32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_cpp; path = build/Debug/poc_diagnose_cpp; sourceTree = "<group>"; };
+		32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
 		32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = poc_diagnose_main_objc.m; sourceTree = "<group>"; };
-		32532B590FA9CDB600197F39 /* poc_diagnose_objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = poc_diagnose_objc; path = build/Debug/poc_diagnose_objc; sourceTree = "<group>"; };
+		32532B590FA9CDB600197F39 /* poc_diagnose_objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_objc; sourceTree = BUILT_PRODUCTS_DIR; };
 		32532D440FAA5ABA00197F39 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		32532E070FAAF68F00197F39 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		32533E750FAAF6F800197F39 /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; path = html; sourceTree = "<group>"; };
@@ -144,6 +144,7 @@
 		32A9B6300FA7027D00FF0967 /* poc_portability_macros_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_def.h; sourceTree = "<group>"; };
 		32A9B6310FA702A600FF0967 /* poc_portability_macros_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_undef.h; sourceTree = "<group>"; };
 		32A9B6320FA702B600FF0967 /* poc_portability_macros_compiler_lang_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_compiler_lang_undef.h; sourceTree = "<group>"; };
+		32ADA94D0FBAEFD000D48693 /* poc_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_platform.h; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* poc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* poc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = poc.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,6 +276,7 @@
 				32A9B6300FA7027D00FF0967 /* poc_portability_macros_def.h */,
 				32A9B6310FA702A600FF0967 /* poc_portability_macros_undef.h */,
 				32A9B6320FA702B600FF0967 /* poc_portability_macros_compiler_lang_undef.h */,
+				32ADA94D0FBAEFD000D48693 /* poc_platform.h */,
 			);
 			path = poc;
 			sourceTree = "<group>";

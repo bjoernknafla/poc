@@ -85,9 +85,14 @@
 #endif
 
 /* Detect big endianness
+ *
+ * On the CELL BE platform big endianness is used. Additionally: the most
+ * significant bit in a byte is stored at bit 0. See http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/FC857AE550F7EB83872571A80061F788/$file/CBE_Programming_Tutorial_v3.0.pdf .
+ *
  */
 #if defined(__BIG_ENDIAN__) || \
-(defined(POC_ARCH_CELL_PPU) || \
+(defined(_BIG_ENDIAN) || \
+defined(POC_ARCH_CELL_PPU) || \
 defined(POC_ARCH_CELL_SPU) || \
 defined(POC_ARCH_CELL_SPU_EDP) || \
 (defined(__OPENCL_VERSION__) && !defined(__ENDIAN_LITTLE__)))
