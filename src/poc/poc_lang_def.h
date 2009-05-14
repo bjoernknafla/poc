@@ -39,6 +39,9 @@
 
 /* Only allow definition of POC programming language macros if poc_lang.h hasn't been included 
  * in this compilation unit.
+ *
+ * @todo TODO: Add preprocessor macros for @c printf and @c scanf, etc. when
+ *       handling @c long @ long or @c long @c double types?
  */
 #if !defined(POC_LANG_HEADER_DISABLE_DEF_UNDEF)
 
@@ -202,7 +205,72 @@
 #   endif
 #endif
 
+/*
+ * @c long @c double type extension by MSVC C compiler
+ */
+#if defined(POC_LANG_C) && !(POC_LANG_C > POC_LANG_C_C99_ID)
+#   if defined(POC_COMPILER_MSVC) /* || defined(POC_COMPILER_ICC_HOST_MSVC) */
+#       define POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC)
+#       if defined(__LONG_LONG_MAX__)
+#           define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       if defined(__SIZEOF_LONG_DOUBLE__)
+#           define POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT 1
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(POC_COMPILER_ICC)
+#       if !defined(POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT)
+#           if defined(__LONG_DOUBLE_SIZE__)
+#               define POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT 1
+#               error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#           endif
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
+
+
+/*
+ * @c long @c long type extension by pre C++0x compilers
+ */
+#if defined(POC_LANG_CPP)
+#   if defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
+#       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
+#       define POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC)
+#       if defined(__LONG_LONG_MAX__)
+#           define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       if defined(__SIZEOF_LONG_DOUBLE__) /* Not defined by ICC 11.0 */
+#           define POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT 1
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(POC_COMPILER_ICC)
+#       if !defined(POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT)
+#           if defined(__LONG_DOUBLE_SIZE__)
+#               define POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT 1
+#               error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#           endif
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
 
 /* Detect if RTTI is for sure enabled for C++. 
  * @attention RTTI might even be enabled if the tested macros aren't defined.

@@ -6,9 +6,11 @@
 
 #include "poc.h"
 #include "poc_portability_macros.h"
-// #include "poc_platform_stddef.h"
-#include "poc_platform_stdbool.h"
-#include "poc_platform_inttypes.h"
+
+
+#include "poc_lang.h"
+#include "poc_compiler.h"
+
 
 /* Define @c POC_BOOL, @c POC_TRUE, and @c POC_FALSE */
 #if defined(POC_LANG_CPP)
@@ -87,13 +89,32 @@
 #   /* define POC_IEEE_754 1 */
 #   define POC_FLOAT32 float
 #   define POC_FLOAT64 double
-#elif defined(POC_COMPILER_GCC) && (POC_COMPILER_GCC_VERSION >= )
-
-#elif defined(POC_COMPILER_MSVC) && (POC_COMPILER_MSVC_VERSION >= )
-
-#elif defined(POC_COMPILER_ICC) && (POC_COMPILER_ICC_VERSION >= )
-
-
+#elif defined(POC_COMPILER_GCC) || (POC_COMPILER_ICC_HOST_GCC)
+#   define POC_PTRDIFF_T __PTRDIFF_TYPE__
+#   define POC_SIZE_T __SIZE_TYPE__
+#   define POC_FLOAT32 float
+#   define POC_FLOAT64 double
+#elif defined(POC_COMPILER_MSVC) || (POC_COMPILER_ICC_HOST_MSVC)
+#   include <stddef.h>
+#   define POC_BYTE unsigned char
+#   define POC_CHAR char
+#   define POC_SIGNED_CHAR signed char
+#   define POC_UNSIGNED_CHAR unsigned char
+#   define POC_INT8 signed char
+#   define POC_UINT8 unsigned char
+#   define POC_INT16 short
+#   define POC_UINT16 unsigned short
+#   define POC_INT32 int
+#   define POC_UINT32 unsigned int
+#   /* See http://msdn.microsoft.com/en-us/library/94z15h2c.aspx */
+#   if defined(_INTEGRAL_MAX_BITS) && (_INTEGRAL_MAX_BITS >= 64)
+#       define POC_INT64 __int64 /* Defined since Visual Studio 6.0 , printf use I64 */
+#       define POC_UINT64 unsigned __int64
+#   endif
+#   define POC_FLOAT32 float
+#   define POC_FLOAT64 double
+#   define POC_PTRDIFF_T ptrdiff_t
+#   define POC_SIZE_T size_t
 #elif defined(POC_LANG_OPENCL)
 #   /* Based on OpenCL Specification 1.0.33 */
 #   define POC_BYTE unsigned char
@@ -115,7 +136,8 @@
 #   /* define POC_IEEE_754 1 */
 #   define POC_FLOAT32 float
 #   define POC_FLOAT64 double
-#else
+#else 
+#   /* Use the data model to at least try to define the platform types */
 #   error Unknown integral, floating point, and pointer bit-sizes.
 #endif
 

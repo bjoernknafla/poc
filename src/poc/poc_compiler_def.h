@@ -82,10 +82,31 @@
  ******************************************************************************/
 /*@{*/
 #define POC_COMPILER_UNKNOWN_VERSION -1
-/* #define POC_COMPILER_UNKNOWN_VERSION_STRING "Unkown compiler version" */
 /*@}*/
 
+/***************************************************************************//**
+ * @name Compiler standardized versions by vendor/creator.
+ ******************************************************************************/
+/*@{*/
+#define POC_COMPILER_MSVC_VC6_STANDARDIZED_VERSION 120000000L
+#define POC_COMPILER_MSVC_VC2003_STANDARDIZED_VERSION 130000000L
+#define POC_COMPILER_MSVC_VC2005_STANDARDIZED_VERSION 140000000L
+#define POC_COMPILER_MSVC_VC2008_STANDARDIZED_VERSION 150000000L
 
+#define POC_COMPILER_GCC_GCC0295_STANDARDIZED_VERSION 20900L
+#define POC_COMPILER_GCC_GCC0304_STANDARDIZED_VERSION 30000L
+#define POC_COMPILER_GCC_GCC0311_STANDARDIZED_VERSION 30100L
+#define POC_COMPILER_GCC_GCC0323_STANDARDIZED_VERSION 30200L
+#define POC_COMPILER_GCC_GCC0336_STANDARDIZED_VERSION 30400L
+#define POC_COMPILER_GCC_GCC0346_STANDARDIZED_VERSION 30400L
+#define POC_COMPILER_GCC_GCC0404_STANDARDIZED_VERSION 40000L
+#define POC_COMPILER_GCC_GCC0412_STANDARDIZED_VERSION 40100L
+#define POC_COMPILER_GCC_GCC0424_STANDARDIZED_VERSION 40200L
+#define POC_COMPILER_GCC_GCC0433_STANDARDIZED_VERSION 40300L
+#define POC_COMPILER_GCC_GCC0440_STANDARDIZED_VERSION 40400L
+
+# /* define POC_COMPILER_ICC_ICC1100 1100L Unkown version encoding for ICC */
+/*@}*/
 
 
 #if !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
@@ -100,12 +121,12 @@
 #if defined(__GNUC__)
 #   define POC_COMPILER_GCC POC_COMPILER_GCC_ID
 #   if defined(__GNUC_PATCHLEVEL__)
-#       define POC_COMPILER_GCC_VERSION (__GNUC__ * 10000 \
-+ __GNUC_MINOR__ * 100 \
+#       define POC_COMPILER_GCC_VERSION (__GNUC__ * 10000L \
++ __GNUC_MINOR__ * 100L \
 + __GNUC_PATCHLEVEL__ )
 #   else
-#       define POC_COMPILER_GCC_VERSION (__GNUC__ * 10000 \
-+ __GNUC_MINOR__ * 100 )
+#       define POC_COMPILER_GCC_VERSION (__GNUC__ * 10000L \
++ __GNUC_MINOR__ * 100L )
 #   endif
 #endif
 
@@ -115,8 +136,10 @@
 #   define POC_COMPILER_MSVC POC_COMPILER_MSVC_ID
 #   if defined(_MSC_FULL_VER)
 #       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else
-#       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 1000000)
+#       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 100000L)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #endif
 

@@ -632,6 +632,17 @@ void print_lang(FILE* outstream)
     fprintf(outstream, "\n");
 #endif
     
+    
+#if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
+    fprintf(outstream, "  POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT)
+    fprintf(outstream, "  POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT defined");
+    fprintf(outstream, "\n");
+#endif
+    
 #if defined(POC_LANG_CPP_RTTI_SUPPORT)
     fprintf(outstream, "  POC_LANG_CPP_RTTI_SUPPORT defined");
     fprintf(outstream, "\n");
