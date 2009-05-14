@@ -602,11 +602,6 @@ void print_lang(FILE* outstream)
     fprintf(outstream, "\n");
 #endif
     
-#if defined(POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT)
-    fprintf(outstream, "  POC_LANG_C_TYPE_LONG_DOUBLE_SUPPORT defined");
-    fprintf(outstream, "\n");
-#endif
-    
 #if defined(POC_LANG_C_HEADER_STDBOOL_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_HEADER_STDBOOL_SUPPORT defined");
     fprintf(outstream, "\n");
@@ -635,11 +630,6 @@ void print_lang(FILE* outstream)
     
 #if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     fprintf(outstream, "  POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT defined");
-    fprintf(outstream, "\n");
-#endif
-    
-#if defined(POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT)
-    fprintf(outstream, "  POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT defined");
     fprintf(outstream, "\n");
 #endif
     

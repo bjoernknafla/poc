@@ -29,7 +29,7 @@
 #   define POC_BOOL int
 #   define POC_TRUE 1
 #   define POC_FALSE 0
-#elif(POC_LANG_C_C99_ID)
+#elif(POC_LANG_C >= POC_LANG_C_C99_ID)
 #   define POC_BOOL _Bool
 #   define POC_TRUE 1
 #   define POC_FALSE 0
@@ -63,8 +63,8 @@
 #   define POC_PTRDIFF_T ptrdiff_t
 #   define POC_SIZE_T size_t
 #   /* define POC_IEEE_754 1 */
-#   define POC_FLOAT32 float
-#   define POC_FLOAT64 double
+#   define POC_FLOAT32 float /* This must be tested... No guarantee by GCC */
+#   define POC_FLOAT64 double /* This must be tested... No guarantee by GCC */
 #elif defined(POC_LANG_CPP_CPP2010)
 #   include <cstdint>
 #   include <cstddef>
@@ -87,8 +87,8 @@
 #   define POC_PTRDIFF_T std::ptrdiff_t
 #   define POC_SIZE_T std::size_t
 #   /* define POC_IEEE_754 1 */
-#   define POC_FLOAT32 float
-#   define POC_FLOAT64 double
+#   define POC_FLOAT32 float /* This must be tested... No guarantee by GCC */
+#   define POC_FLOAT64 double /* This must be tested... No guarantee by GCC */
 #elif defined(POC_COMPILER_GCC) || (POC_COMPILER_ICC_HOST_GCC)
 #   define POC_PTRDIFF_T __PTRDIFF_TYPE__
 #   define POC_SIZE_T __SIZE_TYPE__
