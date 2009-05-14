@@ -72,7 +72,7 @@
 
 
 
-/* If @c POC_OS_SET_BY_HAND is defined no automatic operating system detection should take place.
+/* If @c POC_OS_DISABLE_AUTODETECT is defined no automatic operating system detection should take place.
  */
 #if !defined(POC_OS_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT)
 

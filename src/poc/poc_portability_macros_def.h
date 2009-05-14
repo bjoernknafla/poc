@@ -36,10 +36,6 @@
  *            poc_portability_macros_undef.h . If header guards are wanted or needed use 
  *            poc.h or poc_portability_macros.h instead.
  *
- *
- * @todo TODO: Add @c POC_LONG_LONG_TYPE, @c POC_UNSIGNED_LONG_LONG_TYPE, @c POC_LONG_DOUBLE_TYPE .
- * @todo TODO: Add macros for different bit-sized integral and floating point types to simplify implementing @c stdint.h ?
- * @todo TODO: Handle @c wchar_t .
  * @todo TODO: Handle library import/export alas visible/hidden qualifiers.
  */
 

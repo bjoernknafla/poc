@@ -107,6 +107,7 @@
 #include "poc_data_model.h"
 #include "poc_posix.h"
 #include "poc_portability_macros.h"
+#include "poc_primary_types.h"
 
 /* Disable macro undefines via including poc_undef.h and prevent re-defines from accidential
  * includes of poc_def.h .

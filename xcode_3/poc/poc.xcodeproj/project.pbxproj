@@ -94,6 +94,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		320F250E0FBCCAED00E198D1 /* poc_primary_types_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_def.h; sourceTree = "<group>"; };
+		320F250F0FBCCAF900E198D1 /* poc_primary_types_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_undef.h; sourceTree = "<group>"; };
+		320F25110FBCCCCB00E198D1 /* poc_primary_types_lang_compiler_data_model_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_lang_compiler_data_model_undef.h; sourceTree = "<group>"; };
 		324846B80FA314BD00784249 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../../README.txt; sourceTree = SOURCE_ROOT; };
 		324867C70FA3199500784249 /* poc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc.h; sourceTree = "<group>"; };
 		324867C80FA31BA600784249 /* poc_os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_os.h; sourceTree = "<group>"; };
@@ -144,7 +147,7 @@
 		32A9B6300FA7027D00FF0967 /* poc_portability_macros_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_def.h; sourceTree = "<group>"; };
 		32A9B6310FA702A600FF0967 /* poc_portability_macros_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_undef.h; sourceTree = "<group>"; };
 		32A9B6320FA702B600FF0967 /* poc_portability_macros_compiler_lang_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_compiler_lang_undef.h; sourceTree = "<group>"; };
-		32ADA94D0FBAEFD000D48693 /* poc_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_platform.h; sourceTree = "<group>"; };
+		32ADA94D0FBAEFD000D48693 /* poc_primary_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types.h; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* poc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* poc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = poc.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,7 +279,10 @@
 				32A9B6300FA7027D00FF0967 /* poc_portability_macros_def.h */,
 				32A9B6310FA702A600FF0967 /* poc_portability_macros_undef.h */,
 				32A9B6320FA702B600FF0967 /* poc_portability_macros_compiler_lang_undef.h */,
-				32ADA94D0FBAEFD000D48693 /* poc_platform.h */,
+				32ADA94D0FBAEFD000D48693 /* poc_primary_types.h */,
+				320F250E0FBCCAED00E198D1 /* poc_primary_types_def.h */,
+				320F250F0FBCCAF900E198D1 /* poc_primary_types_undef.h */,
+				320F25110FBCCCCB00E198D1 /* poc_primary_types_lang_compiler_data_model_undef.h */,
 			);
 			path = poc;
 			sourceTree = "<group>";

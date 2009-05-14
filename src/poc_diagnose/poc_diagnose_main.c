@@ -773,7 +773,7 @@ void print_compiler(FILE* outstream)
     
     fprintf(outstream, "  POC_COMPILER_STRING defined and set to %s", POC_COMPILER_STRING);
     fprintf(outstream, "\n");
-    fprintf(outstream, "  POC_COMPILER_VERSION defined and set to %i", POC_COMPILER_VERSION);
+    fprintf(outstream, "  POC_COMPILER_VERSION defined and set to %ld", POC_COMPILER_VERSION);
     fprintf(outstream, "\n\n");
     
 #if defined(POC_COMPILER_DISABLE_AUTODETECT)

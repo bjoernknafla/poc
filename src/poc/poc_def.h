@@ -50,6 +50,7 @@
 #include "poc_lang_def.h"
 #include "poc_data_model_def.h"
 #include "poc_posix_def.h"
-/* @todo TODO: Remove comment and line #include "poc_portability_macros_def.h" - removed becasue these macros belong to poc_platform.h */
+#include "poc_portability_macros_def.h"
+#include "poc_primary_types_def.h"
 
 #endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */

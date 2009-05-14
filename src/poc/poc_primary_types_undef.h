@@ -30,25 +30,47 @@
 /**
  * @file
  *
- * Undefines POC macros potentially set by poc_def.h , see
- * poc.h and poc_def.h for more details.
+ * Undefines portability macros potentially set by poc_primary_types_def.h , see 
+ * poc_primary_types.h and poc_primary_types_def.h for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/* Only allow undef of POC macros if poc.h hasn't been included in this 
- * compilation unit.
+
+
+/* Only allow definition of POC primary types if poc_primary_types.h hasn't been 
+ * included in this compilation unit.
  */
-#if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
+#if !defined(POC_PRIMARY_TYPES_HEADER_DISABLE_DEF_UNDEF)
 
-#include "poc_os_unundef.h"
-#include "poc_compiler_undef.h"
-#include "poc_arch_undef.h"
-#include "poc_data_model_os_arch_lang_undef.h"
-#include "poc_endian_arch_undef.h"
-#include "poc_lang_undef.h"
-#include "poc_posix_undef.h"
-#include "poc_portability_macros_undef.h"
-#include "poc_primary_types_undef.h"
 
-#endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */
+#undef POC_LONG_DOUBLE
+#undef POC_LONG_LONG
+#undef POC_UNSIGNED_LONG_LONG
+
+#undef POC_BOOL
+#undef POC_TRUE
+#undef POC_FALSE
+
+
+#undef POC_BYTE
+#undef POC_CHAR
+#undef POC_SIGNED_CHAR
+#undef POC_UNSIGNED_CHAR
+#undef POC_INT8
+#undef POC_UINT8
+#undef POC_INT16
+#undef POC_UINT16
+#undef POC_INT32
+#undef POC_UINT32
+#undef POC_INT64
+#undef POC_UINT64
+#undef POC_INTPTR_T
+#undef POC_UINTPTR_T
+#undef POC_PTRDIFF_T
+#undef POC_SIZE_T
+#undef POC_FLOAT32
+#undef POC_FLOAT64
+
+
+#endif /* !defined(POC_PRIMARY_TYPES_HEADER_DISABLE_DEF_UNDEF) */

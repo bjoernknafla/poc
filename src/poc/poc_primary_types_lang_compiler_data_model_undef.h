@@ -30,25 +30,14 @@
 /**
  * @file
  *
- * Undefines POC macros potentially set by poc_def.h , see
- * poc.h and poc_def.h for more details.
+ * Undefines portability macros potentially set by poc_primary_types_def.h , see 
+ * poc_primary_types.h and poc_primary_types_def.h for more details.
  *
  * @attention This header doesn't have header guards to enable multiple inclusion.
  */
 
-/* Only allow undef of POC macros if poc.h hasn't been included in this 
- * compilation unit.
- */
-#if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
 
-#include "poc_os_unundef.h"
-#include "poc_compiler_undef.h"
-#include "poc_arch_undef.h"
-#include "poc_data_model_os_arch_lang_undef.h"
-#include "poc_endian_arch_undef.h"
 #include "poc_lang_undef.h"
-#include "poc_posix_undef.h"
-#include "poc_portability_macros_undef.h"
+#include "poc_compiler_undef.h"
+#include "poc_data_model_undef.h"
 #include "poc_primary_types_undef.h"
-
-#endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */

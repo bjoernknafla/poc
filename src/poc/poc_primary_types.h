@@ -30,25 +30,42 @@
 /**
  * @file
  *
- * Undefines POC macros potentially set by poc_def.h , see
- * poc.h and poc_def.h for more details.
+ * Collection of macros defining primary types like @c POC_BOOL, 
+ * @c POC_LONG_LONG (if supported), @c POC_INTPTR_T, @c POC_UINTPTR_T,
+ * @c POC_PTRDIFF_T, @c POC_SIZE_T, and sized types like @c POC_INT32,
+ * @c POC_UINT32, @c POC_FLOAT32, and @c POC_FLOAT64.
  *
- * @attention This header doesn't have header guards to enable multiple inclusion.
+ * @attenetion The detection of sized types isn't fail-proof - compile and run
+ *             @c poc_diagnose to check that all defines are correct.
+ *
+ * For convenience include this header and don't use poc_primary_types_def.h directly. Use the 
+ * @c _def.h and @c _undef.h files for fine grained control of the parts in the code where 
+ * @c POC_ prefixed macros are defined (or undefined) but keep care for yourself that macros aren't redefined.
+ * By including the POC headers without the @c _def.h or @c _undef.h postfix the defined macros
+ * exist throughout the whole compilation unit and can't be undefined by including the corresponding 
+ * @c _undef.h anymore.
  */
 
-/* Only allow undef of POC macros if poc.h hasn't been included in this 
- * compilation unit.
+
+#ifndef POC_poc_primary_types_H
+#define POC_poc_primary_types_H
+
+
+#include "poc_lang.h"
+#include "poc_compiler.h"
+#include "poc_data_model.h"
+
+
+#include "poc_primary_types_def.h"
+
+/* Disable macro undefines via including poc_portability_macros_undef.h and prevent re-defines from 
+ * accidential includes of poc_portability_macros_def.h .
  */
-#if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
+#define POC_PRIMARY_TYPES_HEADER_DISABLE_DEF_UNDEF
 
-#include "poc_os_unundef.h"
-#include "poc_compiler_undef.h"
-#include "poc_arch_undef.h"
-#include "poc_data_model_os_arch_lang_undef.h"
-#include "poc_endian_arch_undef.h"
-#include "poc_lang_undef.h"
-#include "poc_posix_undef.h"
-#include "poc_portability_macros_undef.h"
-#include "poc_primary_types_undef.h"
 
-#endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */
+
+
+
+
+#endif /* POC_poc_primary_types_H */
