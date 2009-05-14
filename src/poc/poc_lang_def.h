@@ -49,11 +49,16 @@
 #include "poc_compiler_def.h"
 
 /**
- * @todo TODO: Add detection of C++0x the moment they finalize the version number stored in @c __cplusplus .
+ * @todo TODO: Add detection of C++0x the moment they finalize the version number 
+ *       stored in @c __cplusplus and adapt the @c POC_LANG_CPP_CPP2010 
+ *       accordingly.
  */
 
 /***************************************************************************//**
  * @name Predefined programming language ids
+ *
+ * Ids of later standards of the same language have higher values, e.g.
+ * @c POC_LANG_C_C99_ID is greater than @c POC_LANG_C_C89_ID .
  ******************************************************************************/
 /*@{*/
 #define POC_LANG_UNKNOWN_ID 0
@@ -62,8 +67,9 @@
 #define POC_LANG_C_C99_ID 4
 #define POC_LANG_CPP_UNKNOWN_ID 8
 #define POC_LANG_CPP_CPP98_ID 16
-#define POC_LANG_OBJC_UNKNOWN_ID 32
-#define POC_LANG_OPENCL_UNKNOWN_ID 64
+#define POC_LANG_CPP_CPP2010_ID 32
+#define POC_LANG_OBJC_UNKNOWN_ID 64
+#define POC_LANG_OPENCL_UNKNOWN_ID 128
 /*@}*/
 
 /***************************************************************************//**
@@ -76,6 +82,7 @@
 #define POC_LANG_C_C99_STRING "C99"
 #define POC_LANG_CPP_UNKNOWN_STRING "C++ unknown version"
 #define POC_LANG_CPP_CPP98_STRING "C++98"
+#define POC_LANG_CPP_CPP2010_STRING "C++2010"
 #define POC_LANG_OBJC_UNKNOWN_STRING "Objective-C unknown version"
 #define POC_LANG_OPENCL_UNKNOWN_STRING "OpenCL unknown version"
 /*@}*/
@@ -87,6 +94,7 @@
 #define POC_LANG_C_C89_STANDARDIZED_VERSION 199409L
 #define POC_LANG_C_C99_STANDARDIZED_VERSION 199901L
 #define POC_LANG_CPP_CPP98_STANDARDIZED_VERSION 199711L
+/* #define POC_LANG_CPP_CPP2010_STANDARDIZED_VERSION 2010??L */
 /*@}*/
 
 
