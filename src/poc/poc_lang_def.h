@@ -212,26 +212,11 @@
 #if defined(POC_LANG_CPP)
 #   if defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
-#       define POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC)
 #       if defined(__LONG_LONG_MAX__)
 #           define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
-#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#       endif
-#       if defined(__SIZEOF_LONG_DOUBLE__) /* Not defined by ICC 11.0 */
-#           define POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT 1
-#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#       endif
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   endif
-#   if defined(POC_COMPILER_ICC)
-#       if !defined(POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT)
-#           if defined(__LONG_DOUBLE_SIZE__)
-#               define POC_LANG_CPP_TYPE_LONG_DOUBLE_SUPPORT 1
-#               error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#           endif
 #           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #       endif
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
