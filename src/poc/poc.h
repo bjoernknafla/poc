@@ -30,8 +30,10 @@
 /**
  * @file
  *
- * Preprocessor symbols prefixed with @c POC_ to detect the target platform the code is compiled for and to allow
- * cross platform compatible keywords, for example to align data types on the stack.
+ * Preprocessor symbols prefixed with @c POC_ to detect the target platform the 
+ * code is compiled for and to allow cross platform compatible keywords, for 
+ * example to align data types on the stack.
+ * POC is primarily targeted at 32 or 64 bit gaming platforms.
  *
  * Use POC to detect the target platform the code unit is compiled for, for example:
  * - @c POC_ARCH stores an id identifying the machine architecture

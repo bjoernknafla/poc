@@ -6,7 +6,7 @@ LICENSE.txt distributed with this package. This license is equal to the BSD Lice
 POC (Portable Preprocessor Compile-time Target Platform Configurator) is a collection of C preprocessor symbols to
 manually select or automatically detect certain properties of the target platform compiling for, e.g. the compiler used,
 the target operating system, or target data model, etc. 
-
+POC is primarily targeted at 32 or 64 bit gaming platforms.
 
 Use the preprocessor symbols prefixed with POC_ to detect the target platform the code is compiled for and to allow
 cross platform compatible keywords, for example to align data types on the stack.
