@@ -35,7 +35,7 @@
  * @c POC_PTRDIFF_T, @c POC_SIZE_T, and sized types like @c POC_INT32,
  * @c POC_UINT32, @c POC_FLOAT32, and @c POC_FLOAT64.
  *
- * @attenetion The detection of sized types isn't fail-proof - compile and run
+ * @attention The detection of sized types isn't fail-proof - compile and run
  *             @c poc_diagnose to check that all defines are correct.
  *
  * For convenience include this header and don't use poc_primary_types_def.h directly. Use the 
@@ -46,6 +46,160 @@
  * @c _undef.h anymore.
  */
 
+
+/**
+ * @def POC_BOOL
+ *
+ * Maps to the platforms bool type or to an integral type if no native boolean
+ * type exists.
+ */
+
+/**
+ * @def POC_TRUE
+ *
+ * Maps to a value representing a boolean @c true value.
+ */
+
+/**
+ * @def POC_FALSE
+ *
+ * Maps to a value representing a boolean @c false value.
+ */
+
+/**
+ * @def POC_LONG_LONG
+ *
+ * If defined a @c long @c long type exists, @c POC_LONG_LONG can then be used
+ * instead of writing @c long @c long.
+ */
+
+/**
+ * @def POC_UNSIGNED_LONG_LONG
+ *
+ * If defined a @c unsigned @c long @c long type exists,
+ * @c POC_UNSIGNED_LONG_LONG can then be used instead of writing 
+ * @c unsigned @c long @c long.
+ */
+
+/**
+ * @def POC_LONG_DOUBLE
+ *
+ * If defined a @c long @c double floating point type exists, @c POC_LONG_DOUBLE
+ * can then be used instead of writing @c long @c double.
+ */
+
+/**
+ * @def POC_BYTE
+ *
+ * Unsigned integral type of size 8 bit / 1 byte.
+ */
+
+/**
+ * @def POC_CHAR
+ *
+ * Placeholder for @c char.
+ * @c char, @c unsigned @c char, and @c signed @c char are different types.
+ */
+
+/**
+ * @def POC_SIGNED_CHAR
+ *
+ * Placeholder for @c signed @ char.
+ * @c char, @c unsigned @c char, and @c signed @c char are different types.
+ */
+
+/**
+ * @def POC_UNSIGNED_CHAR
+ *
+ * Placeholder for @c unsigned @c char.
+ * @c char, @c unsigned @c char, and @c signed @c char are different types.
+ */
+
+/**
+ * @def POC_INT8
+ *
+ * Signed integral type of size 8 bit / 1 byte.
+ */
+
+/**
+ * @def POC_UINT8
+ *
+ * Unsigned integral type of size 8 bit / 1 byte.
+ */
+
+/**
+ * @def POC_INT16
+ *
+ * Signed integral type of size 16 bit / 2 byte.
+ */
+
+/**
+ * @def POC_UINT16
+ *
+ * Unigned integral type of size 16 bit / 2 byte.
+ */
+
+/**
+ * @def POC_INT32
+ *
+ * Signed integral type of size 32 bit / 4 byte.
+ */
+
+/**
+ * @def POC_UINT32
+ *
+ * Unsigned integral type of size 32 bit / 4 byte.
+ */
+
+/**
+ * @def POC_INT64
+ *
+ * If defined, signed integral type of size 64 bit / 8 byte.
+ */
+
+/**
+ * @def POC_UINT64
+ *
+ * If defined, unsigned integral type of size 64 bit / 8 byte.
+ */
+
+/**
+ * @def POC_FLOAT32
+ *
+ * If defined, signed floating point type of size 32 bit / 4 byte.
+ */
+
+/**
+ * @def POC_FLOAT64
+ *
+ * If defined, signed floating point type of size 64 bit / 8 byte.
+ */
+
+/**
+ * @def POC_INTPTR_T
+ *
+ * Signed integral type that can hold the cast value of a pointer.
+ */
+
+/**
+ * @def POC_UINTPTR_T
+ *
+ * Unsigned integral type that can hold the cast value of a pointer.
+ */
+
+/**
+ * @def POC_PTRDIFF_T
+ *
+ * Signed integral value that can store the arithmetic difference betwenn two 
+ * pointers.
+ */
+
+/**
+ * @def POC_SIZE_T
+ *
+ * Unsigned type of size to address the greatest arrays, also return type of
+ * the @c sizeof operator.
+ */
 
 #ifndef POC_poc_primary_types_H
 #define POC_poc_primary_types_H

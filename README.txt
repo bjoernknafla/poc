@@ -49,6 +49,11 @@ Aside the platform detection macros POC also defines preprocessor symbols to all
 - Using POC_RESTRICT to enable C99's restrict keyword or disable it when compiling for other languages that
   don't support it.
 
+POC can also be used to @c typedef primary types of specified bit sized on 
+platforms that don't support C99's stdint.h or C++0x cstdint headers for example 
+by using POC_BYTE, POC_INT32, POC_UINT32, POC_FLOAT32, POC_INTPTR_T, 
+POC_UINTPTR_T, etc.
+
 
 When adding new platforms (operating system, compiler, architecture, C/C++ standards, etc.) then 
 first add the following code into every detection branch 

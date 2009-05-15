@@ -71,6 +71,11 @@
  * - Using @c POC_RESTRICT to enable C99's @c restrict keyword or disable it when compiling for other languages that
  *   don't support it.
  *
+ * POC can also be used to @c typedef primary types of specified bit sized on platforms
+ * that don't support C99's stdint.h or C++0x cstdint headers for example by using 
+ * @c POC_BYTE, @c POC_INT32, @c POC_UINT32, @c POC_FLOAT32, @c POC_INTPTR_T, 
+ * @c POC_UINTPTR_T, etc.
+ *
  *
  * When adding new platforms (operating system, compiler, architecture, C/C++ standards, etc.) then 
  * first add the following code into every detection branch 
