@@ -73,6 +73,7 @@
 #define POC_LANG_CPP_CPP2010_ID 32
 #define POC_LANG_OBJC_UNKNOWN_ID 64
 #define POC_LANG_OPENCL_UNKNOWN_ID 128
+#define POC_LANG_OPENCL_OPENCL0100_ID 256
 /*@}*/
 
 /***************************************************************************//**
@@ -88,6 +89,7 @@
 #define POC_LANG_CPP_CPP2010_STRING "C++2010"
 #define POC_LANG_OBJC_UNKNOWN_STRING "Objective-C unknown version"
 #define POC_LANG_OPENCL_UNKNOWN_STRING "OpenCL unknown version"
+#define POC_LANG_OPENCL_OPENCL0100_STRING "OpenCL 0100"
 /*@}*/
 
 /***************************************************************************//**
@@ -98,6 +100,7 @@
 #define POC_LANG_C_C99_STANDARDIZED_VERSION 199901L
 #define POC_LANG_CPP_CPP98_STANDARDIZED_VERSION 199711L
 /* #define POC_LANG_CPP_CPP2010_STANDARDIZED_VERSION 2010??L */
+#define POC_LANG_OPENCL_OPENCL0100_STANDARDIZED_VERSION 100L
 /*@}*/
 
 
@@ -156,9 +159,15 @@
 
 
 #if defined(__OPENCL_VERSION__)
-#   define POC_LANG_OPENCL POC_LANG_OPENCL_UNKNOWN_ID
-#   define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_UNKNOWN_STRING
-#   /* define POC_LANG_OPENCL_VERSION __OPENCL_VERSION__ */
+#   if (100 == __OPENCL_VERSION__)
+#       define POC_LANG_OPENCL POC_LANG_OPENCL_OPENCL0100_ID
+#       define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_OPENCL0100_STRING
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       define POC_LANG_OPENCL POC_LANG_OPENCL_UNKNOWN_ID
+#       define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_UNKNOWN_STRING
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
@@ -253,6 +262,13 @@
 
 
 #if defined (POC_LANG_OPENCL)
+#   if defined(__EMBEDDED_PROFILE__)
+#       define POC_LANG_OPENCL_EMBEDDED_PROFILE 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(__IMAGE_SUPPORT__)
+#       define POC_LANG_OPENCL_IMAGE_SUPPORT
+#   endif
 #   /* Detect extensions. */
 #   if defined(CL_DEVICE_ADDRESS_SPACE)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
@@ -324,7 +340,7 @@
 #   undef POC_LANG
 #   undef POC_LANG_STRING
 #   define POC_LANG POC_LANG_OPENCL
-#   define POC_LANG_STRING POC_LANG_OBJC_STRING
+#   define POC_LANG_STRING POC_LANG_OPENCL_STRING
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 

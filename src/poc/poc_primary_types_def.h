@@ -160,8 +160,10 @@
 #   define POC_UINT16 unsigned short
 #   define POC_INT32 int
 #   define POC_UINT32 unsigned int
-#   define POC_INT64 long
-#   define POC_UINT64 unsigned long
+#   if !defined(POC_LANG_OPENCL_EMBEDDED_PROFILE) /* No 64bit integrals in OpenCL's embedded profile */
+#       define POC_INT64 long
+#       define POC_UINT64 unsigned long
+#   endif
 #   define POC_INTPTR_T intptr_t
 #   define POC_UINTPTR_T uintptr_t
 #   define POC_PTRDIFF_T ptrdiff_t

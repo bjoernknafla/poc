@@ -159,6 +159,7 @@
 #if defined(__OPENCL_VERSION__)
 #   define POC_COMPILER_OPENCL_GENERIC POC_COMPILER_OPENCL_GENERIC_ID
 #   define POC_COMPILER_OPENCL_GENERIC_VERSION POC_COMPILER_UNKNOWN_VERSION
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #endif
 
 
