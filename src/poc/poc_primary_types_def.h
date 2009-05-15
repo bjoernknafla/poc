@@ -169,7 +169,10 @@
 #   define POC_PTRDIFF_T ptrdiff_t
 #   define POC_SIZE_T size_t
 #   define POC_FLOAT32 float
-#   define POC_FLOAT64 double
+#   if defined(cl_khr_fp64) && defined(POC_OPENCL_EXTENSION_TRY_ENABLE_KHR_FP64) /* OpenCL extension for double precision floating point types */
+#       pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#       define POC_FLOAT64 double
+#   endif
 #   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #elif defined(POC_DATA_MODEL_ILP32)
 #   /* As the ILP32 data model doesn't specify a 64bit type or the size of @c float or @c double

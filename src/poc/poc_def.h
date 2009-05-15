@@ -52,5 +52,7 @@
 #include "poc_posix_def.h"
 #include "poc_portability_macros_def.h"
 #include "poc_primary_types_def.h"
+#include "poc_opencl_extensions_def.h"
+
 
 #endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */

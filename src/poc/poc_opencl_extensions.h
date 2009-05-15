@@ -30,27 +30,40 @@
 /**
  * @file
  *
- * Undefines POC macros potentially set by poc_def.h , see
- * poc.h and poc_def.h for more details.
+ * POC users can define @c POC_OPENCL_EXTENSION_ prefixed macros to try to 
+ * enable or disable certain OpenCL extensions. Enabling an extension activates 
+ * the associated extension pragma and defines an associated 
+ * @c POC_OPENCL_EXTENSION_ENABLED_ prefixed macro.
  *
- * @attention This header doesn't have header guards to enable multiple inclusion.
+ * An extension can only be enabled if it is supported by the OpenCL compiler
+ * and device.
+ *
+ * Other macros mirror mode settings of OpenCL. e.g. 
+ * @c POC_OPENCL_SET_FP_CONTRACT_ON, @c POC_OPENCL_SET_FP_CONTRACT_OFF, 
+ * @c POC_OPENCL_SET_FP_CONTRACT_DEFAULT, or 
+ * @c POC_OPENCL_SET_SELECT_ROUNDING_MODE_NEAREST_EVEN, etc.
+ *
+ * @todo TODO: Add further OpenCL extensions, add _def.h and @c _undef.h
+ *       headers, include headers into poc_primary_types headers.
+ * @todo TODO: Document header.
  */
 
-/* Only allow undef of POC macros if poc.h hasn't been included in this 
- * compilation unit.
+/**
+ * @def POC_OPENCL_EXTENSION_ENABLED_KHR_FP64
+ *
  */
-#if !defined(POC_HEADER_DISABLE_DEF_UNDEF)
-
-#include "poc_os_unundef.h"
-#include "poc_compiler_undef.h"
-#include "poc_arch_undef.h"
-#include "poc_data_model_os_arch_lang_undef.h"
-#include "poc_endian_arch_undef.h"
-#include "poc_lang_undef.h"
-#include "poc_posix_undef.h"
-#include "poc_portability_macros_undef.h"
-#include "poc_primary_types_undef.h"
-#include "poc_opencl_extensions_undef.h"
 
 
-#endif /* !defined(POC_HEADER_DISABLE_DEF_UNDEF) */
+#ifndef POC_poc_opencl_extensions_H
+#define POC_poc_opencl_extensions_H
+
+#include "poc_lang.h"
+
+#include "poc_opencl_extensions_def.h"
+
+/* Disable macro undefines via including poc_opencl_extensions_undef.h and 
+ * prevent re-defines from accidential includes of poc_opencl_extensions_def.h .
+ */
+#define POC_OPENCL_EXTENSIONS_HEADER_DISABLE_DEF_UNDEF
+
+#endif /* POC_poc_opencl_extensions_H */

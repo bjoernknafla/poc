@@ -38,7 +38,7 @@
 
 
 
-/* Only allow definition of POC primary types if poc_primary_types.h hasn't been 
+/* Only allow undefines of POC primary types if poc_primary_types.h hasn't been 
  * included in this compilation unit.
  */
 #if !defined(POC_PRIMARY_TYPES_HEADER_DISABLE_DEF_UNDEF)

@@ -265,16 +265,26 @@
 
 #if defined (POC_LANG_OPENCL)
 #   if defined(__EMBEDDED_PROFILE__)
-#       define POC_LANG_OPENCL_EMBEDDED_PROFILE 1
+#       define POC_LANG_OPENCL_EMBEDDED_PROFILE __EMBEDDED_PROFILE__
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #   if defined(__IMAGE_SUPPORT__)
-#       define POC_LANG_OPENCL_IMAGE_SUPPORT
-#   endif
-#   /* Detect extensions. */
-#   if defined(CL_DEVICE_ADDRESS_SPACE)
+#       define POC_LANG_OPENCL_IMAGE_SUPPORT __IMAGE_SUPPORT__
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
+#   if defined(__FAST_RELAXED_MATH__)
+#       define POC_LANG_OPENCL_FAST_RELAXED_MATH __FAST_RELAXED_MATH__
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(CL_DEVICE_ADDRESS_SPACE)
+#       POC_LANG_OPENCL_DEVICE_ADDRESS_SPACE CL_DEVICE_ADDRESS_SPACE
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   if defined(__ROUNDING_MODE__)
+#       define POC_LANG_OPENCL_ROUNDING_MODE __ROUNDING_MODE__
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#   /* Detect extensions. */
 #   if defined(cl_khr_fp64)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif

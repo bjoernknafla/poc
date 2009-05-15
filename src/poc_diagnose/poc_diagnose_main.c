@@ -55,6 +55,8 @@
  */
 #include <poc/poc.h>
 
+/* Include @c POC_STRINGIZE */
+#include <poc/poc_preprocessor_utilities.h>
 
 /**
  * name: String constants describing standard preprocessor defined macros.
@@ -166,7 +168,7 @@ void print_compiler(FILE* outstream);
 void print_arch(FILE* outstream);
 void print_endian(FILE* outstream);
 void print_os(FILE* outstream);
-
+void print_primary_types(FILE* outstream);
 
 
 /**
@@ -207,6 +209,9 @@ int main(int argc, char* argv[])
     fprintf(stdout, "\n");
             
     print_os(stdout);
+    fprintf(stdout, "\n");
+    
+    print_primary_types(stdout);
     
     return EXIT_SUCCESS;
 }
@@ -577,7 +582,7 @@ void print_lang(FILE* outstream)
             fprintf(outstream, "POC_LANG_CPP_CPP98_ID");
             break;
         case POC_LANG_OPENCL_OPENCL0100_ID:
-            fprint(outstream, "POC_LANG_OPENCL_OPENCL0100_ID");
+            fprintf(outstream, "POC_LANG_OPENCL_OPENCL0100_ID");
             break;
         case POC_LANG_CPP_UNKNOWN_ID:
             fprintf(outstream, "POC_LANG_CPP_UNKNOWN_ID");
@@ -618,7 +623,33 @@ void print_lang(FILE* outstream)
 #if defined(POC_LANG_OPENCL_UNKNOWN)
     fprintf(outstream, "  POC_LANG_OPENCL_UNKNOWN defined");
     fprintf(outstream, "\n");
-#endif 
+#endif
+    
+#if defined(POC_LANG_OPENCL_EMBEDDED_PROFILE)
+    fprintf(outstream, "  POC_LANG_OPENCL_EMBEDDED_PROFILE defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_LANG_OPENCL_IMAGE_SUPPORT)
+    fprintf(outstream, "  POC_LANG_OPENCL_IMAGE_SUPPORT defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_LANG_OPENCL_FAST_RELAXED_MATH)
+    fprintf(outstream, "  POC_LANG_OPENCL_ROUNDING_MODE defined");
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_LANG_OPENCL_DEVICE_ADDRESS_SPACE)
+    fprintf(outstream, "  POC_LANG_OPENCL_DEVICE_ADDRESS_SPACE set to %s", POC_STRINGIZE(POC_LANG_OPENCL_DEVICE_ADDRESS_SPACE));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_LANG_OPENCL_ROUNDING_MODE)
+    fprintf(outstream, "  POC_LANG_OPENCL_ROUNDING_MODE set to %s", POC_STRINGIZE(POC_LANG_OPENCL_ROUNDING_MODE));
+    fprintf(outstream, "\n");
+#endif
+    
     
 #if defined(POC_LANG_C_TYPE_BOOL_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_BOOL_SUPPORT defined");
@@ -1138,6 +1169,129 @@ void print_os(FILE* outstream)
     fprintf(outstream, "  POC_OS_UNKNOWN defined");
     fprintf(outstream, "\n");
 #endif
+    
+}
+
+
+void print_primary_types(FILE* outstream)
+{
+    fprintf(outstream, "POC primary types definitions");
+    fprintf(outstream, "\n");    
+    
+#if defined(POC_LONG_LONG)
+    fprintf(outstream, "  POC_LONG_LONG set to %s", POC_STRINGIZE(POC_LONG_LONG));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UNSIGNED_LONG_LONG)
+    fprintf(outstream, "  POC_UNSIGNED_LONG_LONG set to %s", POC_STRINGIZE(POC_UNSIGNED_LONG_LONG));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_LONG_DOUBLE)
+    fprintf(outstream, "  POC_LONG_DOUBLE set to %s", POC_STRINGIZE(POC_LONG_DOUBLE));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_BOOL)
+    fprintf(outstream, "  POC_BOOL set to %s", POC_STRINGIZE(POC_BOOL));
+    fprintf(outstream, "\n");
+    fprintf(outstream, "  POC_TRUE set to %s", POC_STRINGIZE(POC_TRUE));
+    fprintf(outstream, "\n");
+    fprintf(outstream, "  POC_FALSE set to %s", POC_STRINGIZE(POC_FALSE));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_CHAR)
+    fprintf(outstream, "  POC_CHAR set to %s", POC_STRINGIZE(POC_CHAR));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_SIGNED_CHAR)
+    fprintf(outstream, "  POC_SIGNED_CHAR set to %s", POC_STRINGIZE(POC_SIGNED_CHAR));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UNSIGNED_CHAR)
+    fprintf(outstream, "  POC_UNSIGNED_CHAR set to %s", POC_STRINGIZE(POC_UNSIGNED_CHAR));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_BYTE)
+    fprintf(outstream, "  POC_BYTE set to %s", POC_STRINGIZE(POC_BYTE));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_INT8)
+    fprintf(outstream, "  POC_INT8 set to %s", POC_STRINGIZE(POC_INT8));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UINT8)
+    fprintf(outstream, "  POC_UINT8 set to %s", POC_STRINGIZE(POC_UINT8));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_INT16)
+    fprintf(outstream, "  POC_INT16 set to %s", POC_STRINGIZE(POC_INT16));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UINT16)
+    fprintf(outstream, "  POC_UINT16 set to %s", POC_STRINGIZE(POC_UINT16));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_INT32)
+    fprintf(outstream, "  POC_INT32 set to %s", POC_STRINGIZE(POC_INT32));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UINT32)
+    fprintf(outstream, "  POC_UINT32 set to %s", POC_STRINGIZE(POC_UINT32));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_INT64)
+    fprintf(outstream, "  POC_INT64 set to %s", POC_STRINGIZE(POC_INT64));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UINT64)
+    fprintf(outstream, "  POC_UINT64 set to %s", POC_STRINGIZE(POC_UINT64));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_FLOAT32)
+    fprintf(outstream, "  POC_FLOAT32 set to %s", POC_STRINGIZE(POC_FLOAT32));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_FLOAT64)
+    fprintf(outstream, "  POC_FLOAT64 set to %s", POC_STRINGIZE(POC_FLOAT64));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_INTPTR_T)
+    fprintf(outstream, "  POC_INTPTR_T set to %s", POC_STRINGIZE(POC_INTPTR_T));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UINTPTR_T)
+    fprintf(outstream, "  POC_UINTPTR_T set to %s", POC_STRINGIZE(POC_UINTPTR_T));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_PTRDIFF_T)
+    fprintf(outstream, "  POC_PTRDIFF_T set to %s", POC_STRINGIZE(POC_PTRDIFF_T));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_SIZE_T)
+    fprintf(outstream, "  POC_SIZE_T set to %s", POC_STRINGIZE(POC_SIZE_T));
+    fprintf(outstream, "\n");
+#endif
+
     
 }
 

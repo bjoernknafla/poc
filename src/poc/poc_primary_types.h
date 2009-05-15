@@ -35,6 +35,13 @@
  * @c POC_PTRDIFF_T, @c POC_SIZE_T, and sized types like @c POC_INT32,
  * @c POC_UINT32, @c POC_FLOAT32, and @c POC_FLOAT64.
  *
+ * To define @c POC_FLOAT32 when compiling for OpenCL and if the 64bit floating
+ * point extension is supported, define 
+ * @c POC_OPENCL_EXTENSION_TRY_ENABLE_KHR_FP64. If the extension is supported 
+ * @c POC_FLOAT64 will be defined and the extension will be enabled via an 
+ * OpenCL pragma, otherwise the extension isn't enabled and @c POC_FLOAT64 
+ * isn't defined.
+ *
  * @attention The detection of sized types isn't fail-proof - compile and run
  *             @c poc_diagnose to check that all defines are correct.
  *
@@ -200,6 +207,7 @@
  * Unsigned type of size to address the greatest arrays, also return type of
  * the @c sizeof operator.
  */
+
 
 #ifndef POC_poc_primary_types_H
 #define POC_poc_primary_types_H
