@@ -514,6 +514,9 @@ void print_lang(FILE* outstream)
         case POC_LANG_OBJC_UNKNOWN_ID:
             fprintf(outstream, "POC_LANG_OBJC_UNKNOWN_ID");
             break;
+        case POC_LANG_OPENCL_OPENCL0100_ID:
+            fprintf(outstream, "POC_LANG_OPENCL_OPENCL0100_ID");
+            break;
         case POC_LANG_OPENCL_UNKNOWN_ID:
             fprintf(outstream, "POC_LANG_OPENCL_UNKNOWN_ID");
             break;
@@ -573,6 +576,9 @@ void print_lang(FILE* outstream)
         case POC_LANG_CPP_CPP98_ID:
             fprintf(outstream, "POC_LANG_CPP_CPP98_ID");
             break;
+        case POC_LANG_OPENCL_OPENCL0100_ID:
+            fprint(outstream, "POC_LANG_OPENCL_OPENCL0100_ID");
+            break;
         case POC_LANG_CPP_UNKNOWN_ID:
             fprintf(outstream, "POC_LANG_CPP_UNKNOWN_ID");
             break;
@@ -588,9 +594,31 @@ void print_lang(FILE* outstream)
 #endif
     
 #if defined(POC_LANG_OPENCL)
-    fprintf(outstream, "  POC_LANG_OPENCL defined");
+    fprintf(outstream, "  POC_LANG_OPENCL defined and set to ");
+    
+    switch (POC_LANG_OPENCL)
+    {
+        case POC_LANG_OPENCL_OPENCL0100_ID:
+            fprintf(outstream, "POC_LANG_OPENCL_OPENCL0100_ID");
+            break;
+        case POC_LANG_OPENCL_UNKNOWN_ID:
+            fprintf(outstream, "POC_LANG_OPENCL_UNKNOWN_ID");
+            break;
+        default:
+           fprintf(outstream, "non-POC predefined value of %d", POC_LANG_OPENCL); 
+    };
     fprintf(outstream, "\n");
 #endif
+    
+#if defined(POC_LANG_OPENCL_OPENCL0100)
+    fprintf(outstream, "  POC_LANG_OPENCL_OPENCL0100 defined");
+    fprintf(outstream, "\n");
+#endif 
+    
+#if defined(POC_LANG_OPENCL_UNKNOWN)
+    fprintf(outstream, "  POC_LANG_OPENCL_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#endif 
     
 #if defined(POC_LANG_C_TYPE_BOOL_SUPPORT)
     fprintf(outstream, "  POC_LANG_C_TYPE_BOOL_SUPPORT defined");

@@ -160,10 +160,12 @@
 
 #if defined(__OPENCL_VERSION__)
 #   if (100 == __OPENCL_VERSION__)
+#       define POC_LANG_OPENCL_OPENCL0100 POC_LANG_OPENCL_OPENCL0100_ID
 #       define POC_LANG_OPENCL POC_LANG_OPENCL_OPENCL0100_ID
 #       define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_OPENCL0100_STRING
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else
+#       define POC_LANG_OPENCL_UNKNOWN POC_LANG_OPENCL_UNKNOWN_ID
 #       define POC_LANG_OPENCL POC_LANG_OPENCL_UNKNOWN_ID
 #       define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_UNKNOWN_STRING
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
