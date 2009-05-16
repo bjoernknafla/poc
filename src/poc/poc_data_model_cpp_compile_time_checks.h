@@ -45,11 +45,16 @@
 #include <climits>
 
 /*
- * Include POC_ARCH_
+ * Include POC_DATA_MODEL_
  *
  * Will be undefined at the end of the file.
  */
 #include "poc_data_model_def.h"
+
+/* 
+ * Include POC_LANG preprocessor symbols
+ */
+#include "poc_lang_def.h"
 
 /* 
  * Include POC_STATIC_ASSERT
@@ -70,7 +75,7 @@ namespace {
     POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16,"The LP32 data model requires short to be 16 bit" );
     POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 16, "The LP32 data model requires int to be 16 bit" );
     POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 32, "The LP32 data model requires long to be 32 bit");
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
+#   if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The LP32 data model requires long long to be 64 bit" );
 #   endif
     POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 32, "The LP32 data model requires pointers to be 32 bit" );
@@ -83,7 +88,7 @@ namespace {
     POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The ILP32 data model requires short to be 16 bit" );
     POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 32, "The ILP32 data model requires int to be 32 bit" );
     POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 32, "The ILP32 data model requires long to be 32 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
+#   if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The ILP32 data model requires long long to be 64 bit" );
 #   endif
     POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 32, "The ILP32 data model requires pointers to be 32 bit" );                        
@@ -95,7 +100,7 @@ namespace {
     POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The LP64 data model requires short to be 16 bit" );
     POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 32, "The LP64 data model requires int to be 32 bit" );
     POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 64, "The LP64 data model requires long to be 64 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
+#   if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The LP64 data model requires long long to be 64 bit" );
 #   endif
     POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The LP64 data model requires pointers to be 64 bit" );
@@ -107,7 +112,7 @@ namespace {
     POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 16, "The LLP64 data model requires short to be 16 bit" );
     POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 32, "The LLP64 data model requires int to be 32 bit" );
     POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 32, "The LLP64 data model requires long to be 32 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
+#   if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The LLP64 data model requires lonb long to be 64 bit" );
 #   endif
     POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The LLP64 data model requires pointers to be 64 bit" );                        
@@ -120,7 +125,7 @@ namespace {
     POC_STATIC_ASSERT( sizeof( _int32 ) * CHAR_BIT == 32, "The ILP64 data model requires _int32 to be 32 bit" );
     POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 64, "The ILP64 data model requires int to be 64 bit" );
     POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 64, "The ILP64 data model requires long to be 64 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
+#   if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The ILP64 data model requires long long to be 64 bit" );
 #   endif
     POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The ILP64 data model requires pointers to be 64 bit" );                        
@@ -133,7 +138,7 @@ namespace {
     POC_STATIC_ASSERT( sizeof( short ) * CHAR_BIT == 64, "The SILP64 data model requires short to be 64 bit" );
     POC_STATIC_ASSERT( sizeof( int ) * CHAR_BIT == 64, "The SILP64 data model requires int to be 64 bit" );
     POC_STATIC_ASSERT( sizeof( long ) * CHAR_BIT == 64, "The SILP64 data model requires long to be 64 bit" );
-#   if defined(POC_LANG_TYPE_LONG_LONG_SUPPORTED)
+#   if defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
     POC_STATIC_ASSERT( sizeof( long long ) * CHAR_BIT == 64, "The SILP64 data model requires long long to be 64 bit" );
 #   endif
     POC_STATIC_ASSERT( sizeof( void* ) * CHAR_BIT == 64, "The SILP64 data model requires pointers to be 64 bit" );                        
@@ -148,6 +153,9 @@ namespace {
 
 // Undefine static assertion macros.
 #include "poc_static_assert_undef.h"
+
+// Undefine poc lang macros
+#include "poc_lang_undef.h"
 
 // Undefine POC data model, os, arch, and lang macros.
 #include "poc_data_model_os_arch_lang_undef.h"

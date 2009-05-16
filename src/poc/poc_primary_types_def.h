@@ -68,15 +68,21 @@
  * Define @c POC_LONG_LONG and @c POC_UNSIGNED_LONG_LONG and 
  * @c POC_LONG_DOUBLE 
  */
-#if defined(POC_LANG_C) || defined(POC_LANG_CPP)
+#if defined(POC_LANG_C) && (POC_LANG == POC_LANG_C)
 #   define POC_LONG_DOUBLE long double
-#   if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
+#   if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT)
 #       define POC_LONG_LONG long long
 #       define POC_UNSIGNED_LONG_LONG unsigned long long
 #   endif
 #endif
 
-
+#if defined(POC_LANG_CPP) && (POC_LANG == POC_LANG_CPP)
+#   define POC_LONG_DOUBLE long double
+#   if  defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)
+#       define POC_LONG_LONG long long
+#       define POC_UNSIGNED_LONG_LONG unsigned long long
+#   endif
+#endif
 
 /* 
  * Define @c POC_BOOL, @c POC_TRUE, and @c POC_FALSE 
@@ -231,11 +237,37 @@
 #endif
 
 
+/*
+ * Macros to define sized integral literals.
+ */
+#define POC_INT8_C(Literal) (Literal)
+#define POC_UINT8_C(Literal) (Literal ## U)
+
+#define POC_INT16_C(Literal) (Literal)
+#define POC_UINT16_C(Literal) (Literal ## U)
+
+#define POC_INT32_C(Literal) (Literal)
+#define POC_UINT32_C(Literal) (Literal ## U)
+
+#if defined(POC_INT64)
+#   define POC_INT64_C(Literal) (Literal ## LL)
+#endif
+#if defined(POC_UINT64)
+#   define POC_UINT64_C(Literal) (Literal ## ULL)
+#endif
+
+#if defined(POC_FLOAT32)
+#   define POC_FLOAT32_C(Literal) (Literal ## F)
+#endif
+#if defined(POC_FLOAT64)
+#   define POC_FLOAT64_C(Literal) (Literal)
+#endif
 
 
 /*******************************************************************************
  * Error check
  ******************************************************************************/
+
 
 
 /* 

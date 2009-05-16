@@ -159,7 +159,7 @@
 
 
 #if defined(__OPENCL_VERSION__)
-#   if (100 == __OPENCL_VERSION__)
+#   if (100 == __OPENCL_VERSION__ + 0)
 #       define POC_LANG_OPENCL_OPENCL0100 POC_LANG_OPENCL_OPENCL0100_ID
 #       define POC_LANG_OPENCL POC_LANG_OPENCL_OPENCL0100_ID
 #       define POC_LANG_OPENCL_STRING POC_LANG_OPENCL_OPENCL0100_STRING
@@ -221,14 +221,15 @@
  * @c long @c long type extension by pre C++0x compilers
  */
 #if defined(POC_LANG_CPP)
-#   if defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
+#   if (POC_LANG_CPP >= POC_LANG_CPP_CPP2010_ID)
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   endif
-#   if defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC)
-#       if defined(__LONG_LONG_MAX__)
-#           define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
-#       endif
+#   elif defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
+#       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_COMPILER_GCC) && defined(__GCC_EXPERIMENTAL_CXX0X__)
+#       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #endif
 

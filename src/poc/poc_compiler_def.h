@@ -136,7 +136,7 @@
 #if defined(_MSC_VER)
 #   define POC_COMPILER_MSVC POC_COMPILER_MSVC_ID
 #   if defined(_MSC_FULL_VER)
-#       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER)
+#       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER + 0)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else
 #       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 100000L)
@@ -175,7 +175,7 @@
  */
 #if defined(__ICC) || defined(__INTEL_COMPILER)
 #   define POC_COMPILER_ICC POC_COMPILER_ICC_ID
-#   define POC_COMPILER_ICC_VERSION __INTEL_COMPILER
+#   define POC_COMPILER_ICC_VERSION __INTEL_COMPILER + 0
 #   if defined(POC_COMPILER_GCC)
 #       define POC_COMPILER_ICC_HOST_GCC POC_COMPILER_GCC_ID
 #       define POC_COMPILER_ICC_HOST_GCC_STRING POC_COMPILER_GCC_STRING

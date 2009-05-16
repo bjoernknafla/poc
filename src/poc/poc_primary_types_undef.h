@@ -72,5 +72,17 @@
 #undef POC_FLOAT32
 #undef POC_FLOAT64
 
+#undef POC_INT8_C
+#undef POC_UINT8_C
+#undef POC_INT16_C
+#undef POC_UINT16_C
+#undef POC_INT32_C
+#undef POC_UINT32_C
+#undef POC_INT64_C
+#undef POC_UINT64_C
+
+#undef POC_FLOAT32_C
+#undef POC_FLOAT64_C
+
 
 #endif /* !defined(POC_PRIMARY_TYPES_HEADER_DISABLE_DEF_UNDEF) */

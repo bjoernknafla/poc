@@ -100,6 +100,7 @@
 		320F26040FBDA87500E198D1 /* poc_opencl_extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_opencl_extensions.h; sourceTree = "<group>"; };
 		320F26180FBE0D4700E198D1 /* poc_opencl_extensions_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_opencl_extensions_def.h; sourceTree = "<group>"; };
 		320F26190FBE0D5D00E198D1 /* poc_opencl_extensions_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_opencl_extensions_undef.h; sourceTree = "<group>"; };
+		320F26420FBEE83600E198D1 /* poc_primary_types_cpp_compile_time_checks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_cpp_compile_time_checks.h; sourceTree = "<group>"; };
 		324846B80FA314BD00784249 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../../README.txt; sourceTree = SOURCE_ROOT; };
 		324867C70FA3199500784249 /* poc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc.h; sourceTree = "<group>"; };
 		324867C80FA31BA600784249 /* poc_os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_os.h; sourceTree = "<group>"; };
@@ -286,6 +287,7 @@
 				320F250E0FBCCAED00E198D1 /* poc_primary_types_def.h */,
 				320F250F0FBCCAF900E198D1 /* poc_primary_types_undef.h */,
 				320F25110FBCCCCB00E198D1 /* poc_primary_types_lang_compiler_data_model_undef.h */,
+				320F26420FBEE83600E198D1 /* poc_primary_types_cpp_compile_time_checks.h */,
 				320F26040FBDA87500E198D1 /* poc_opencl_extensions.h */,
 				320F26180FBE0D4700E198D1 /* poc_opencl_extensions_def.h */,
 				320F26190FBE0D5D00E198D1 /* poc_opencl_extensions_undef.h */,

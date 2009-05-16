@@ -35,7 +35,11 @@
  * @c POC_PTRDIFF_T, @c POC_SIZE_T, and sized types like @c POC_INT32,
  * @c POC_UINT32, @c POC_FLOAT32, and @c POC_FLOAT64.
  *
- * To define @c POC_FLOAT32 when compiling for OpenCL and if the 64bit floating
+ * Macros if the form @c POC_INT64_C(intergral_literal) or for example
+ * @c POC_UINT8(integral_literal) can be used to convert integral literals
+ * into the sized integral choosen.
+ *
+ * To define @c POC_FLOAT64 when compiling for OpenCL and if the 64bit floating
  * point extension is supported, define 
  * @c POC_OPENCL_EXTENSION_TRY_ENABLE_KHR_FP64. If the extension is supported 
  * @c POC_FLOAT64 will be defined and the extension will be enabled via an 
