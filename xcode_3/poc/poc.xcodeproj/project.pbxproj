@@ -37,6 +37,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		320F26A20FBF1FEA00E198D1 /* poc_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 320F26A10FBF1FEA00E198D1 /* poc_tests.c */; };
+		320F26A30FBF1FEA00E198D1 /* poc_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 320F26A10FBF1FEA00E198D1 /* poc_tests.c */; };
+		320F26A40FBF1FEA00E198D1 /* poc_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 320F26A10FBF1FEA00E198D1 /* poc_tests.c */; };
+		320F26A50FBF1FEA00E198D1 /* poc_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 320F26A10FBF1FEA00E198D1 /* poc_tests.c */; };
 		32532ADC0FA9B5DB00197F39 /* poc_diagnose_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */; };
 		32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
 		32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */; };
@@ -101,6 +105,8 @@
 		320F26180FBE0D4700E198D1 /* poc_opencl_extensions_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_opencl_extensions_def.h; sourceTree = "<group>"; };
 		320F26190FBE0D5D00E198D1 /* poc_opencl_extensions_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_opencl_extensions_undef.h; sourceTree = "<group>"; };
 		320F26420FBEE83600E198D1 /* poc_primary_types_cpp_compile_time_checks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_cpp_compile_time_checks.h; sourceTree = "<group>"; };
+		320F26A00FBF1FEA00E198D1 /* poc_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_tests.h; sourceTree = "<group>"; };
+		320F26A10FBF1FEA00E198D1 /* poc_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = poc_tests.c; sourceTree = "<group>"; };
 		324846B80FA314BD00784249 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../../README.txt; sourceTree = SOURCE_ROOT; };
 		324867C70FA3199500784249 /* poc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc.h; sourceTree = "<group>"; };
 		324867C80FA31BA600784249 /* poc_os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_os.h; sourceTree = "<group>"; };
@@ -301,6 +307,8 @@
 				32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */,
 				32532A6E0FA8AA6C00197F39 /* poc_diagnose_main.cpp */,
 				32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */,
+				320F26A00FBF1FEA00E198D1 /* poc_tests.h */,
+				320F26A10FBF1FEA00E198D1 /* poc_tests.c */,
 			);
 			path = poc_diagnose;
 			sourceTree = "<group>";
@@ -476,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */,
+				320F26A20FBF1FEA00E198D1 /* poc_tests.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32532ADC0FA9B5DB00197F39 /* poc_diagnose_main.cpp in Sources */,
+				320F26A40FBF1FEA00E198D1 /* poc_tests.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */,
+				320F26A50FBF1FEA00E198D1 /* poc_tests.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				325361AD0FADBB9E00197F39 /* poc_diagnose_main.c in Sources */,
+				320F26A30FBF1FEA00E198D1 /* poc_tests.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

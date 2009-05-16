@@ -58,6 +58,9 @@
 /* Include @c POC_STRINGIZE */
 #include <poc/poc_preprocessor_utilities.h>
 
+/* Include poc_tests_execute */
+#include "poc_tests.h"
+
 /**
  * name: String constants describing standard preprocessor defined macros.
  */
@@ -212,6 +215,13 @@ int main(int argc, char* argv[])
     fprintf(stdout, "\n");
     
     print_primary_types(stdout);
+    
+    
+#define TEST_COUNT 2
+    int test_results[TEST_COUNT] = {};
+    poc_tests_execute(test_results, TEST_COUNT);
+    
+    
     
     return EXIT_SUCCESS;
 }
@@ -1172,7 +1182,9 @@ void print_os(FILE* outstream)
     
 }
 
-
+/**
+ * Print the defines for POC primary type macros.
+ */
 void print_primary_types(FILE* outstream)
 {
     fprintf(outstream, "POC primary types definitions");
