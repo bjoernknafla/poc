@@ -10,6 +10,7 @@
 #define CHECK_UNSIGNED(Type, Result) { Type a = (Type)1 << (sizeof(Type) * CHAR_BIT - 1); Result = (a > (a - 1)); }
 
 
+// @todo TODO: Use function pointer typedef? @c typedef int (*test_func_t)(void);
 typedef int (test_func_t)(void);
 
 int poc_byte_size_8_test(void);

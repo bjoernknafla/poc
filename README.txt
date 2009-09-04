@@ -72,9 +72,8 @@ tested and might possibly be erroreneous.
 
 
 
-The code can be found and downloaded at: http://github.com/bknafla/poc
-Please file issues with the code at: http://github.com/bknafla/poc/issues
-Follow updates on Twitter at: http://twitter.com/bknafla
+The code can be found and downloaded at: http://github.com/bjoernknafla/poc
+Please file issues with the code at: http://github.com/bjoernknafla/poc/issues
 
 
 All trademarks belong to their trademark holders.
