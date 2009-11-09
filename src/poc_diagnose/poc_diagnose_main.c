@@ -215,12 +215,9 @@ int main(int argc, char* argv[])
     fprintf(stdout, "\n");
     
     print_primary_types(stdout);
+    fprintf(stdout, "\n");
     
-    
-#define TEST_COUNT 2
-    int test_results[TEST_COUNT] = {0};
-    poc_tests_execute(test_results, TEST_COUNT);
-    
+    poc_tests_print_all(stdout);
     
     
     return EXIT_SUCCESS;
