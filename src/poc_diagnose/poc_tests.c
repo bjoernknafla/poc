@@ -10,7 +10,8 @@
 #define CHECK_UNSIGNED(Type, Result) { Type a = (Type)1 << (sizeof(Type) * CHAR_BIT - 1); Result = (a > (a - 1)); }
 
 
-// @todo TODO: Use function pointer typedef? @c typedef int (*test_func_t)(void);
+/* @todo TODO: Use function pointer typedef? @c typedef int (*test_func_t)(void);
+ */
 typedef int (test_func_t)(void);
 
 int poc_byte_size_8_test(void);
@@ -79,7 +80,6 @@ size_t poc_tests_execute(int* results, size_t size)
     
     how_many_tests_to_run = (size > TEST_COUNT) ? TEST_COUNT : size;
     
-    test_counter = 0;
     for (test_counter = 0; test_counter < how_many_tests_to_run; ++test_counter) {
         results[test_counter] = (test_functions[test_counter])();
     }

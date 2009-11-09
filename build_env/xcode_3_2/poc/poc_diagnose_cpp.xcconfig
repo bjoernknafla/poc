@@ -1,0 +1,12 @@
+//
+//  poc_diagnose_cpp.xcconfig
+//  poc
+//
+//  Created by Björn Knafla on 09.11.09.
+//  Copyright 2009 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
+//
+
+#include "poc"
+
+PRODUCT_NAME = poc_diagnose_cpp
+

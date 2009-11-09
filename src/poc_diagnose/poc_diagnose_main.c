@@ -218,7 +218,7 @@ int main(int argc, char* argv[])
     
     
 #define TEST_COUNT 2
-    int test_results[TEST_COUNT] = {};
+    int test_results[TEST_COUNT] = {0};
     poc_tests_execute(test_results, TEST_COUNT);
     
     
@@ -810,7 +810,7 @@ void print_data_model(FILE* outstream)
  */
 void print_compiler(FILE* outstream)
 {
-    fprintf(outstream, "POC comiler detection");
+    fprintf(outstream, "POC compiler detection");
     fprintf(outstream, "\n");
     
     fprintf(outstream, "  POC_COMPILER defined and set to ");

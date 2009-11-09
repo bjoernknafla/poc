@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -107,7 +107,13 @@
 		320F26420FBEE83600E198D1 /* poc_primary_types_cpp_compile_time_checks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_cpp_compile_time_checks.h; sourceTree = "<group>"; };
 		320F26A00FBF1FEA00E198D1 /* poc_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_tests.h; sourceTree = "<group>"; };
 		320F26A10FBF1FEA00E198D1 /* poc_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = poc_tests.c; sourceTree = "<group>"; };
-		324846B80FA314BD00784249 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../../README.txt; sourceTree = SOURCE_ROOT; };
+		322D153B10A8684D0043C140 /* compiler_warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = compiler_warnings.xcconfig; sourceTree = "<group>"; };
+		322D153C10A8686A0043C140 /* poc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc.xcconfig; sourceTree = "<group>"; };
+		322D153D10A869210043C140 /* poc_diagnose_c.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_c.xcconfig; sourceTree = "<group>"; };
+		322D153E10A869470043C140 /* poc_diagnose_c_gcc_ansi_c.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_c_gcc_ansi_c.xcconfig; sourceTree = "<group>"; };
+		322D153F10A869580043C140 /* poc_diagnose_cpp.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_cpp.xcconfig; sourceTree = "<group>"; };
+		322D154010A869660043C140 /* poc_diagnose_objc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_objc.xcconfig; sourceTree = "<group>"; };
+		324846B80FA314BD00784249 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../../../README.txt; sourceTree = SOURCE_ROOT; };
 		324867C70FA3199500784249 /* poc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc.h; sourceTree = "<group>"; };
 		324867C80FA31BA600784249 /* poc_os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_os.h; sourceTree = "<group>"; };
 		324867CC0FA34A3100784249 /* poc_arch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_arch.h; sourceTree = "<group>"; };
@@ -123,7 +129,7 @@
 		32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
 		32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = poc_diagnose_main_objc.m; sourceTree = "<group>"; };
 		32532B590FA9CDB600197F39 /* poc_diagnose_objc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_objc; sourceTree = BUILT_PRODUCTS_DIR; };
-		32532D440FAA5ABA00197F39 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		32532D440FAA5ABA00197F39 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../../LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		32532E070FAAF68F00197F39 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		32533E750FAAF6F800197F39 /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; path = html; sourceTree = "<group>"; };
 		3253610F0FACA1BB00197F39 /* special_doxygen_documentation.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = special_doxygen_documentation.dox; sourceTree = "<group>"; };
@@ -205,8 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				08FB7795FE84155DC02AAC07 /* Source */,
-				324846B00FA3148800784249 /* Xcode Specific */,
 				C6859E8C029090F304C91782 /* Documentation */,
+				324846B00FA3148800784249 /* Xcode Specific */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 			);
 			name = poc;
@@ -232,9 +238,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		322D153A10A8681C0043C140 /* Configuration Settings */ = {
+			isa = PBXGroup;
+			children = (
+				322D153B10A8684D0043C140 /* compiler_warnings.xcconfig */,
+				322D153C10A8686A0043C140 /* poc.xcconfig */,
+				322D153D10A869210043C140 /* poc_diagnose_c.xcconfig */,
+				322D153E10A869470043C140 /* poc_diagnose_c_gcc_ansi_c.xcconfig */,
+				322D153F10A869580043C140 /* poc_diagnose_cpp.xcconfig */,
+				322D154010A869660043C140 /* poc_diagnose_objc.xcconfig */,
+			);
+			name = "Configuration Settings";
+			sourceTree = "<group>";
+		};
 		324846B00FA3148800784249 /* Xcode Specific */ = {
 			isa = PBXGroup;
 			children = (
+				322D153A10A8681C0043C140 /* Configuration Settings */,
 				C6859E8B029090EE04C91782 /* poc.1 */,
 			);
 			name = "Xcode Specific";
@@ -247,7 +267,7 @@
 				324846BA0FA3151900784249 /* poc */,
 			);
 			name = src;
-			path = ../../src;
+			path = ../../../src;
 			sourceTree = SOURCE_ROOT;
 		};
 		324846BA0FA3151900784249 /* poc */ = {
@@ -321,7 +341,7 @@
 				32532E060FAAF68F00197F39 /* doxygen */,
 			);
 			name = doc;
-			path = ../../doc;
+			path = ../../../doc;
 			sourceTree = SOURCE_ROOT;
 		};
 		32532E060FAAF68F00197F39 /* doxygen */ = {
@@ -444,7 +464,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "poc" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = 08FB7794FE84155DC02AAC07 /* poc */;
 			projectDirPath = "";
@@ -584,165 +604,57 @@
 		};
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153C10A8686A0043C140 /* poc.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PEDANTIC = YES;
-				GCC_WARN_PROTOTYPE_CONVERSION = YES;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
-				GCC_WARN_UNUSED_VALUE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../src\"";
-				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153C10A8686A0043C140 /* poc.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PEDANTIC = YES;
-				GCC_WARN_PROTOTYPE_CONVERSION = YES;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
-				GCC_WARN_UNUSED_VALUE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../src\"";
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};
 		32532AD20FA9B5A300197F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153D10A869210043C140 /* poc_diagnose_c.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = 4.2;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_c;
 			};
 			name = Debug;
 		};
 		32532AD30FA9B5A300197F39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153D10A869210043C140 /* poc_diagnose_c.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_VERSION = 4.2;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_c;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
 		32532ADA0FA9B5D100197F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153F10A869580043C140 /* poc_diagnose_cpp.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_cpp;
 			};
 			name = Debug;
 		};
 		32532ADB0FA9B5D100197F39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153F10A869580043C140 /* poc_diagnose_cpp.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_cpp;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
 		32532B5B0FA9CDBB00197F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D154010A869660043C140 /* poc_diagnose_objc.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_objc;
 			};
 			name = Debug;
 		};
 		32532B5C0FA9CDBB00197F39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D154010A869660043C140 /* poc_diagnose_objc.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_objc;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -769,35 +681,15 @@
 		};
 		325361AA0FADBB4200197F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153E10A869470043C140 /* poc_diagnose_c_gcc_ansi_c.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = ansi;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = 4.2;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_c_gcc_ansi_c;
 			};
 			name = Debug;
 		};
 		325361AB0FADBB4200197F39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 322D153E10A869470043C140 /* poc_diagnose_c_gcc_ansi_c.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = ansi;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_VERSION = 4.2;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = poc_diagnose_c_gcc_ansi_c;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};

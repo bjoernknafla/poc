@@ -1,0 +1,15 @@
+//
+//  poc_diagnose_objc.xcconfig
+//  poc
+//
+//  Created by Björn Knafla on 09.11.09.
+//  Copyright 2009 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
+//
+
+#include "poc"
+
+PRODUCT_NAME = poc_diagnose_objc
+
+GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+RUN_CLANG_STATIC_ANALYZER = YES
+

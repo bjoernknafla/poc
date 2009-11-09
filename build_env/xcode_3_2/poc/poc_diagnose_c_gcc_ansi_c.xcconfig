@@ -1,0 +1,13 @@
+//
+//  poc_diagnose_c_gcc_ansi_c.xcconfig
+//  poc
+//
+//  Created by Björn Knafla on 09.11.09.
+//  Copyright 2009 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
+//
+
+#include "poc"
+
+PRODUCT_NAME = poc_diagnose_c_gcc_ansi_c
+
+GCC_C_LANGUAGE_STANDARD = ansi
