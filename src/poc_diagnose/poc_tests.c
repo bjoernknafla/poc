@@ -17,18 +17,8 @@
 
 
 #define CHECK_SIZE(Type, ExpectedSize) (sizeof(Type) * CHAR_BIT == ExpectedSize)
-#define CHECK_SIGNED(Type, Result) { Type a = (Type)~(((size_t)1) << (sizeof(Type) * CHAR_BIT - 1)); Result = (a > (a + (Type)1)); }
-#define CHECK_UNSIGNED(Type, Result) { Type a = ((Type)1) << (sizeof(Type) * CHAR_BIT - 1); Result = (a > (a - (Type)1)); }
-
-
-
-void compile_check(void);
-void compile_check(void)
-{
-    POC_INT8 a = (POC_INT8)~(((POC_SIZE_T)1) << ((sizeof(POC_INT8) * CHAR_BIT) - 1)); 
-    int Result = (a > (a + (POC_INT8)1));
-}
-
+#define CHECK_SIGNED(Type, Result) { Type a = (Type)~((size_t)0) ; Result = (a < (Type)0); }
+#define CHECK_UNSIGNED(Type, Result) { Type a = (Type)~((size_t)0) ; Result = (a > (Type)0); }
 
 
 
@@ -179,9 +169,6 @@ CREATE_CHECK_SIZE_AND_SIGNED(POC_PTRDIFF_T,REQUIRED_POINTER_BIT_SIZE)
 #if defined(POC_SIZE_T)
 CREATE_CHECK_SIZE_AND_UNSIGNED(POC_SIZE_T,REQUIRED_POINTER_BIT_SIZE)
 #endif
-
-
-
 
 
 
@@ -366,7 +353,7 @@ int poc_tests_print_results(FILE* outstream, int* results, size_t size)
         
         for (test_counter = 0; test_counter < number_of_tests; ++test_counter) {
             if (0 == results[test_counter]) {
-                fprintf(outstream, "    %s", tests[test_counter].name);
+                fprintf(outstream, "    %s failed", tests[test_counter].name);
                 fprintf(outstream, "\n");
             }
         }
