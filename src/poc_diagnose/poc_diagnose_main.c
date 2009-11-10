@@ -829,6 +829,9 @@ void print_compiler(FILE* outstream)
         case POC_COMPILER_ICC_ID:
             fprintf(outstream, "POC_COMPILER_ICC_ID");
             break;
+        case POC_COMPILER_LLVM_ID:
+            fprintf(outstream, "POC_COMPILER_LLVM_ID");
+            break;
         case POC_COMPILER_UNKNOWN_ID:
             fprintf(outstream, "POC_COMPILER_UNKNOWN_ID");
             break;
@@ -910,6 +913,74 @@ void print_compiler(FILE* outstream)
 #       endif
     
 #endif
+    
+    
+    
+    
+#if defined(POC_COMPILER_LLVM)
+    fprintf(outstream, "  POC_COMPILER_LLVM defined");
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "  POC_COMPILER_LLVM_FRONTEND defined and set to ");
+    
+    switch (POC_COMPILER_LLVM_FRONTEND)
+    {
+        case POC_COMPILER_GCC_ID:
+            fprintf(outstream, "POC_COMPILER_GCC_ID");
+            break;
+        case POC_COMPILER_LLVM_CLANG_ID:
+            fprintf(outstream, "POC_COMPILER_LLVM_CLANG_ID");
+            break;
+        case POC_COMPILER_UNKNOWN_ID:
+            fprintf(outstream, "POC_COMPILER_UNKNOWN_ID");
+            break;
+        default:
+            fprintf(outstream, "non-POC predefined value of %d", POC_COMPILER_LLVM_FRONTEND);
+    };
+    fprintf(outstream, "\n");
+    
+    fprintf(outstream, "  POC_COMPILER_LLVM_FRONTEND_STRING defined and set to %s", POC_COMPILER_LLVM_FRONTEND_STRING);
+    fprintf(outstream, "\n");
+    fprintf(outstream, "  POC_COMPILER_LLVM_FRONTEND_VERSION defined and set to %li", POC_COMPILER_LLVM_FRONTEND_VERSION);
+    fprintf(outstream, "\n");
+    fprintf(outstream, "\n");
+
+#if     defined(POC_COMPILER_LLVM_FRONTEND_CLANG)    
+    fprintf(outstream, "  POC_COMPILER_LLVM_FRONTEND_CLANG defined");
+    fprintf(outstream, "\n");
+#       endif
+    
+#if     defined(POC_COMPILER_LLVM_FRONTEND_GCC)
+    fprintf(outstream, "  POC_COMPILER_LLVM_FRONTEND_GCC defined");
+    fprintf(outstream, "\n");
+#       endif
+    
+#if     defined(POC_COMPILER_LLVM_FRONTEND_UNKNOWN)
+    fprintf(outstream, "  POC_COMPILER_LLVM_FRONTEND_UNKNOWN defined");
+    fprintf(outstream, "\n");
+#       endif
+    
+    
+#if     defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)
+    fprintf(outstream, "\n");
+    fprintf(outstream, "  POC_COMPILER_LLVM_COMPATIBILITY_GCC defined");
+    fprintf(outstream, "\n");
+
+    fprintf(outstream, "  POC_COMPILER_LLVM_COMPATIBILITY_GCC_STRING defined and set to %s", POC_COMPILER_LLVM_COMPATIBILITY_GCC_STRING);
+    fprintf(outstream, "\n");
+
+    fprintf(outstream, "  POC_COMPILER_LLVM_COMPATIBILITY_GCC_VERSION defined and set to %li", POC_COMPILER_LLVM_COMPATIBILITY_GCC_VERSION);
+    fprintf(outstream, "\n");
+#endif
+    
+ 
+    
+    
+#endif
+    
+    
+    
+    
     
 #if defined(POC_COMPILER_UNKNWON)
     fprintf(outstream, "  POC_COMPILER_UNKNOWN defined");

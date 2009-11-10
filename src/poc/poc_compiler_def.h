@@ -58,6 +58,8 @@
 #define POC_COMPILER_MSVC_ID 4
 #define POC_COMPILER_OPENCL_GENERIC_ID 8
 #define POC_COMPILER_NVCC_ID 16
+#define POC_COMPILER_LLVM_ID 32
+#define POC_COMPILER_LLVM_CLANG_ID 64
 /*@}*/
 
 
@@ -75,6 +77,8 @@
 #define POC_COMPILER_ICC_STRING "Intel C/C++"
 #define POC_COMPILER_OPENCL_GENERIC_STRING "Generic OpenCL compiler"
 #define POC_COMPILER_NVCC_STRING "Nvidia NVCC"
+#define POC_COMPILER_LLVM_STRING "LLVM"
+#define POC_COMPILER_LLVM_CLANG_STRING "LLVM Clang"
 /*@}*/
 
 /***************************************************************************//**
@@ -86,6 +90,8 @@
 
 /***************************************************************************//**
  * @name Compiler standardized versions by vendor/creator.
+ *
+ * TODO: @todo Find out how to handle LLVM and versions numbers.
  ******************************************************************************/
 /*@{*/
 #define POC_COMPILER_MSVC_VC6_STANDARDIZED_VERSION 120000000L
@@ -107,6 +113,9 @@
 
 # define POC_COMPILER_ICC_ICC1000_STANDARDIZED_VERSION 1000L
 # define POC_COMPILER_ICC_ICC1100_STANDARDIZED_VERSION 1100L
+
+#define POC_COMPILER_LLVM_STANDARDIZED_VERSION 1L
+#define POC_COMPILER_LLVM_CLANG_STANDARDIZED_VERSION 1L
 /*@}*/
 
 
@@ -170,8 +179,9 @@
  *
  * Intel's compiler often uses the systems native compiler infrastructure. If a system has Gnu GCC installed
  * @c POC_COMPILER_GCC is undefined - this is not the compiler used, but as its infrastructure is used
- * @c POC_COMPILER_ICC_GCC is used. @c POC_COMPILER_ICC_GCC is also used to prefix the detected Gnu GCC 
+ * @c POC_COMPILER_ICC_HOST_GCC is used. @c POC_COMPILER_ICC_HOST_GCC is also used to prefix the detected Gnu GCC 
  * version and string describing it.
+ * Microsoft Visual Studio is handled accordingly.
  */
 #if defined(__ICC) || defined(__INTEL_COMPILER)
 #   define POC_COMPILER_ICC POC_COMPILER_ICC_ID
@@ -180,33 +190,79 @@
 #       define POC_COMPILER_ICC_HOST_GCC POC_COMPILER_GCC_ID
 #       define POC_COMPILER_ICC_HOST_GCC_STRING POC_COMPILER_GCC_STRING
 #       define POC_COMPILER_ICC_HOST_GCC_VERSION POC_COMPILER_GCC_VERSION
-#       define POC_COMPILER_ICC_HOST POC_COMPILER_GCC_ID
-#       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_GCC_VERSION
-#       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_GCC_STRING
+#       define POC_COMPILER_ICC_HOST POC_COMPILER_ICC_HOST_GCC
+#       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_ICC_HOST_GCC_STRING
+#       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_ICC_HOST_GCC_VERSION
 #       undef POC_COMPILER_GCC
 #   elif defined(POC_COMPILER_MSVC)
 #       define POC_COMPILER_ICC_HOST_MSVC POC_COMPILER_MSVC_ID
 #       define POC_COMPILER_ICC_HOST_MSVC_VERSION POC_COMPILER_MSVC_VERSION
 #       define POC_COMPILER_ICC_HOST_MSVC_STRING POC_COMPILER_MSVC_STRING
-#       define POC_COMPILER_ICC_HOST POC_COMPILER_MSVC_ID
-#       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_MSVC_STRING
-#       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_MSVC_VERSION
+#       define POC_COMPILER_ICC_HOST POC_COMPILER_ICC_HOST_MSVC
+#       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_ICC_HOST_MSVC_VERSION
+#       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_ICC_HOST_MSVC_STRING
 #       undef POC_COMPILER_MSVC
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   elif
 #       define POC_COMPILER_ICC_HOST_UNKNOWN POC_COMPILER_UNKNOWN_ID
 #       define POC_COMPILER_ICC_HOST_UNKNOWN_VERSION POC_COMPILER_UNKNOWN_VERSION
 #       define POC_COMPILER_ICC_HOST_UNKNOWN_STRING POC_COMPILER_UNKNOWN_STRING
-#       define POC_COMPILER_ICC_HOST POC_COMPILER_UNKNOWN_ID
-#       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_UNKNOWN_STRING
-#       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_UNKNOWN_VERSION
+#       define POC_COMPILER_ICC_HOST POC_COMPILER_ICC_HOST_UNKNOWN
+#       define POC_COMPILER_ICC_HOST_VERSION POC_COMPILER_ICC_HOST_UNKNOWN_VERSION
+#       define POC_COMPILER_ICC_HOST_STRING POC_COMPILER_ICC_HOST_UNKNOWN_STRING
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #endif
 
 
-
-
+/* Detect LLVM compiler.
+ *
+ * LLVM compiler detection must happen after checks for GCC because auf GCC
+ * compatibility definitions are present or GCC is used as a frontend by LLVM.
+ * 
+ * If GCC compatibility is provided @c POC_COMPILER_LLVM_COMPATIBILITY_GCC
+ * preprocessor symbols are defined. 
+ * If Gnu GCC is used as a frontend to LLVM @c POC_COMPILER_LLVM_FRONTEND_GCC
+ * preprocessor symbols are defined.
+ * If LLVM Clang is used as a frontend to LLVM, 
+ * @c POC_COMPILER_LLVM_FRONTEND_CLANG preprocessor symbols are defined.
+ *
+ * See http://stackoverflow.com/questions/1617877/how-to-detect-llvm-and-its-version-through-define-directives
+ */
+#if defined(__llvm__) || defined(__clang__)
+#   define POC_COMPILER_LLVM POC_COMPILER_LLVM_ID
+#   define POC_COMPILER_LLVM_VERSION POC_COMPILER_LLVM_STANDARDIZED_VERSION
+#   if defined(POC_COMPILER_GCC)
+#       define POC_COMPILER_LLVM_COMPATIBILITY_GCC POC_COMPILER_GCC_ID
+#       define POC_COMPILER_LLVM_COMPATIBILITY_GCC_STRING POC_COMPILER_GCC_STRING
+#       define POC_COMPILER_LLVM_COMPATIBILITY_GCC_VERSION POC_COMPILER_GCC_VERSION
+#       undef POC_COMPILER_GCC
+#   endif
+#   if defined(__clang__)
+#       define POC_COMPILER_LLVM_FRONTEND_CLANG POC_COMPILER_LLVM_CLANG_ID
+#       define POC_COMPILER_LLVM_FRONTEND_CLANG_STRING POC_COMPILER_LLVM_CLANG_STRING
+#       define POC_COMPILER_LLVM_FRONTEND_CLANG_VERSION POC_COMPILER_LLVM_CLANG_STANDARDIZED_VERSION
+#       define POC_COMPILER_LLVM_FRONTEND POC_COMPILER_LLVM_FRONTEND_CLANG
+#       define POC_COMPILER_LLVM_FRONTEND_STRING POC_COMPILER_LLVM_FRONTEND_CLANG_STRING
+#       define POC_COMPILER_LLVM_FRONTEND_VERSION POC_COMPILER_LLVM_FRONTEND_CLANG_VERSION
+#   elif defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)
+#       define POC_COMPILER_LLVM_FRONTEND_GCC POC_COMPILER_LLVM_COMPATIBILITY_GCC
+#       define POC_COMPILER_LLVM_FRONTEND_GCC_STRING POC_COMPILER_LLVM_COMPATIBILITY_GCC_STRING
+#       define POC_COMPILER_LLVM_FRONTEND_GCC_VERSION POC_COMPILER_LLVM_COMPATIBILITY_GCC_VERSION
+#       define POC_COMPILER_LLVM_FRONTEND POC_COMPILER_LLVM_FRONTEND_GCC
+#       define POC_COMPILER_LLVM_FRONTEND_STRING POC_COMPILER_LLVM_FRONTEND_GCC_STRING
+#       define POC_COMPILER_LLVM_FRONTEND_VERSION POC_COMPILER_LLVM_FRONTEND_GCC_VERSION
+#       undef POC_COMPILER_GCC
+#   else
+#       define POC_COMPILER_LLVM_FRONTEND_UNKNOWN POC_COMPILER_UNKNOWN_ID
+#       define POC_COMPILER_LLVM_FRONTEND_UNKNOWN_VERSION POC_COMPILER_UNKNOWN_VERSION 
+#       define POC_COMPILER_LLMV_FRONTEND_UNKNOWN_STRING POC_COMPILER_UNKNOWN_STRING
+#       define POC_COMPILER_LLVM_FRONTEND POC_COMPILER_LLVM_FRONTEND_UNKNOWN
+#       define POC_COMPILER_LLVM_FRONTEND_VERSION POC_COMPILER_LLVM_FRONTEND_UNKNOWN_VERSION 
+#       define POC_COMPILER_LLMV_FRONTEND_STRING POC_COMPILER_LLMV_FRONTEND_UNKNOWN_STRING
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#endif
 
 
 
@@ -251,6 +307,17 @@
 #endif
 
 
+/*
+ * LLVM detection must be last to overwrite values that might have been set by
+ * compatibility or frontend compiler settings.
+ */
+#if defined(POC_COMPILER_LLVM)
+#   define POC_COMPILER POC_COMPILER_LLVM_ID
+#   define POC_COMPILER_STRING POC_COMPILER_LLVM_STRING
+#   define POC_COMPILER_VERSION POC_COMPILER_LLVM_VERSION
+#endif
+
+
 #endif /* !defined(POC_COMPILER_DISABLE_AUTODETECT) && !defined(POC_DISABLE_AUTODETECT) */
 
 
@@ -289,6 +356,7 @@
  defined(POC_COMPILER_ICC) || \
  defined(POC_COMPILER_NVCC) || \
  defined(POC_COMPILER_OPENCL_GENERIC) || \
+ defined(POC_COMPILER_LLVM) || \
  defined(POC_COMPILER_UNKNOWN))
 #   error Exactly one compiler must be selected.
 #elif defined(POC_LANG_COMPILER_MSVC) && \
@@ -296,6 +364,7 @@
 defined(POC_COMPILER_ICC) || \
 defined(POC_COMPILER_NVCC) || \
 defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_LLVM) || \
 defined(POC_COMPILER_UNKNOWN))
 #   error Exactly one compiler must be selected.
 #elif defined(POC_LANG_COMPILER_ICC) && \
@@ -303,6 +372,7 @@ defined(POC_COMPILER_UNKNOWN))
 defined(POC_COMPILER_GCC) || \
 defined(POC_COMPILER_NVCC) || \
 defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_LLVM) || \
 defined(POC_COMPILER_UNKNOWN))
 #   error Exactly one compiler must be selected.
 #elif defined(POC_LANG_COMPILER_NVCC) && \
@@ -310,6 +380,7 @@ defined(POC_COMPILER_UNKNOWN))
 defined(POC_COMPILER_ICC) || \
 defined(POC_COMPILER_GCC) || \
 defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_LLVM) || \
 defined(POC_COMPILER_UNKNOWN))
 #   error Exactly one compiler must be selected.
 #elif defined(POC_COMPILER_OPENCL_GENERIC) && \
@@ -317,6 +388,15 @@ defined(POC_COMPILER_UNKNOWN))
 defined(POC_COMPILER_ICC) || \
 defined(POC_COMPILER_NVCC) || \
 defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_LLVM) || \
+defined(POC_COMPILER_UNKNOWN))
+#   error Exactly one compiler must be selected.
+#elif defined(POC_COMPILER_LLVM) && \
+(defined(POC_COMPILER_MSVC) || \
+defined(POC_COMPILER_ICC) || \
+defined(POC_COMPILER_NVCC) || \
+defined(POC_COMPILER_GCC) || \
+defined(POC_COMPILER_OPENCL_GENERIC) || \
 defined(POC_COMPILER_UNKNOWN))
 #   error Exactly one compiler must be selected.
 #elif defined(POC_COMPILER_UNKNOWN) && \
@@ -324,7 +404,8 @@ defined(POC_COMPILER_UNKNOWN))
 defined(POC_COMPILER_ICC) || \
 defined(POC_COMPILER_NVCC) || \
 defined(POC_COMPILER_GCC) || \
-defined(POC_COMPILER_OPENCL_GENERIC))
+defined(POC_COMPILER_OPENCL_GENERIC) || \
+defined(POC_COMPILER_LLVM))
 #   error Exactly one compiler must be selected.
 #endif
 
