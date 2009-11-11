@@ -222,11 +222,10 @@
  * TODO: @todo Add LLVM compiler handling.
  */
 #if defined(POC_LANG_C_C89)
-#   if defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
+#   if (defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
 #       define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
-#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__LONG_LONG_MAX__)
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (defined(__LONG_LONG_MAX__)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
 #       define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
 #endif
 
@@ -239,11 +238,13 @@
 #   if (POC_LANG_CPP >= POC_LANG_CPP_CPP2010_ID)
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   elif defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
+#   elif (defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
-#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__GCC_EXPERIMENTAL_CXX0X__)
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (defined(__GCC_EXPERIMENTAL_CXX0X__))
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
+#       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #   endif
 #endif
 

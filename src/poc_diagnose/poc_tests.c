@@ -167,6 +167,12 @@ int POC_INTMAX_greater_than_other_integral_types_size_test(void)
     }
 #endif
 
+#if defined(POC_LONG_LONG)
+    if (sizeof(POC_INTMAX) < sizeof(POC_LONG_LONG)) {
+        return 0;
+    }
+#endif
+    
     return greater_than_others;
 }
 
@@ -217,6 +223,12 @@ int POC_UINTMAX_greater_than_other_integral_types_size_test(void)
     }
 #endif
 
+#if defined(POC_UNSIGNED_LONG_LONG)
+    if (sizeof(POC_UINTMAX) < sizeof(POC_UNSIGNED_LONG_LONG)) {
+        return 0;
+    }
+#endif
+    
     return greater_than_others;
 }
 
@@ -362,7 +374,7 @@ static struct test_s tests[] = {
     },
 #endif
 
-#if defined(POC_UINT_MAX)
+#if defined(POC_UINTMAX)
     {
         "POC_UINTMAX_greater_than_other_integral_types_size_test",
         POC_UINTMAX_greater_than_other_integral_types_size_test
