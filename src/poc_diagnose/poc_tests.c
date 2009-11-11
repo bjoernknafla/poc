@@ -17,8 +17,8 @@
 
 
 #define CHECK_SIZE(Type, ExpectedSize) (sizeof(Type) * CHAR_BIT == ExpectedSize)
-#define CHECK_SIGNED(Type, Result) { Type a = (Type)~((size_t)0) ; Result = (a < (Type)0); }
-#define CHECK_UNSIGNED(Type, Result) { Type a = (Type)~((size_t)0) ; Result = (a > (Type)0); }
+#define CHECK_SIGNED(Type, Result) { Type a = (Type)~((POC_UINTMAX)0) ; Result = (a < (Type)0); }
+#define CHECK_UNSIGNED(Type, Result) { Type a = (Type)~((POC_UINTMAX)0) ; Result = (a > (Type)0); }
 
 
 
@@ -127,6 +127,111 @@ CREATE_CHECK_SIZE_AND_SIGNED(POC_INT64,64)
 CREATE_CHECK_SIZE_AND_UNSIGNED(POC_UINT64,64)
 #endif
 
+
+
+#if defined(POC_INTMAX)
+int POC_INTMAX_greater_than_other_integral_types_size_test(void);
+int POC_INTMAX_greater_than_other_integral_types_size_test(void)
+{
+    int greater_than_others;
+
+    greater_than_others  = 1;
+
+#if defined(POC_INTPTR_T)
+    if (sizeof(POC_INTMAX) < sizeof(POC_INTPTR_T)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_INT64)
+    if (sizeof(POC_INTMAX) < sizeof(POC_INT64)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_INT32)
+    if (sizeof(POC_INTMAX) < sizeof(POC_INT32)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_INT16)
+    if (sizeof(POC_INTMAX) < sizeof(POC_INT16)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_INT8)
+    if (sizeof(POC_INTMAX) < sizeof(POC_INT8)) {
+        return 0;
+    }
+#endif
+
+    return greater_than_others;
+}
+
+int POC_INTMAX_is_signed_test(void);
+int POC_INTMAX_is_signed_test(void)
+{
+    int is_signed = 0;
+    CHECK_SIGNED(POC_INTMAX,is_signed);
+    return is_signed;    
+}
+#endif
+
+#if defined(POC_UINTMAX)
+int POC_UINTMAX_greater_than_other_integral_types_size_test(void);
+int POC_UINTMAX_greater_than_other_integral_types_size_test(void)
+{
+    int greater_than_others;
+
+    greater_than_others  = 1;
+
+#if defined(POC_UINTPTR_T)
+    if (sizeof(POC_UINTMAX) < sizeof(POC_UINTPTR_T)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_UINT64)
+    if (sizeof(POC_UINTMAX) < sizeof(POC_UINT64)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_UINT32)
+    if (sizeof(POC_UINTMAX) < sizeof(POC_UINT32)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_UINT16)
+    if (sizeof(POC_UINTMAX) < sizeof(POC_UINT16)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_UINT8)
+    if (sizeof(POC_UINTMAX) < sizeof(POC_UINT8)) {
+        return 0;
+    }
+#endif
+
+    return greater_than_others;
+}
+
+int POC_UINTMAX_is_unsigned_test(void);
+int POC_UINTMAX_is_unsigned_test(void)
+{
+    int is_unsigned = 0;
+    CHECK_UNSIGNED(POC_UINTMAX,is_unsigned);
+    return is_unsigned;    
+}
+
+#endif
+
+
+
 #if defined(POC_FLOAT32)
 int POC_FLOAT32_size_32_test(void);
 int POC_FLOAT32_size_32_test(void)
@@ -170,6 +275,36 @@ CREATE_CHECK_SIZE_AND_SIGNED(POC_PTRDIFF_T,REQUIRED_POINTER_BIT_SIZE)
 CREATE_CHECK_SIZE_AND_UNSIGNED(POC_SIZE_T,REQUIRED_POINTER_BIT_SIZE)
 #endif
 
+
+int poc_pointer_type_size_test(void);
+int poc_pointer_type_size_test(void)
+{
+#if defined(POC_INTPTR_T)
+    if (sizeof(void*) != sizeof(POC_INTPTR_T)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_UINTPTR_T)
+    if (sizeof(void*) != sizeof(POC_UINTPTR_T)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_PTRDIFF_T)
+    if (sizeof(void*) != sizeof(POC_PTRDIFF_T)) {
+        return 0;
+    }
+#endif
+
+#if defined(POC_SIZE_T)
+    if (sizeof(void*) != sizeof(POC_SIZE_T)) {
+        return 0;
+    }
+#endif
+
+    return 1;
+}
 
 
 struct test_s {
@@ -216,6 +351,28 @@ static struct test_s tests[] = {
     CREATE_TEST_ENTRIES_SIZE_AND_UNSIGNED(POC_UINT64,64),
 #endif
     
+#if defined(POC_INTMAX)
+    {
+        "POC_INTMAX_greater_than_other_integral_types_size_test",
+        POC_INTMAX_greater_than_other_integral_types_size_test
+    },
+    {
+        "POC_INTMAX_is_signed_test",
+        POC_INTMAX_is_signed_test
+    },
+#endif
+
+#if defined(POC_UINT_MAX)
+    {
+        "POC_UINTMAX_greater_than_other_integral_types_size_test",
+        POC_UINTMAX_greater_than_other_integral_types_size_test
+    },
+    {
+        "POC_UINTMAX_is_unsigned_test",
+        POC_UINTMAX_is_unsigned_test
+    },
+#endif
+
 #if defined(POC_FLOAT32)
     {
         "POC_FLOAT32_size_32_test",
@@ -245,6 +402,11 @@ static struct test_s tests[] = {
 #if defined(POC_SIZE_T)
     CREATE_TEST_ENTRIES_SIZE_AND_UNSIGNED(POC_SIZE_T,REQUIRED_POINTER_BIT_SIZE),
 #endif 
+
+    {
+        "poc_pointer_type_size_test",
+        poc_pointer_type_size_test
+    },
 };
 
 

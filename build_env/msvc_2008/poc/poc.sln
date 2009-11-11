@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "poc_diagnose_c", "poc_diagnose_c\poc_diagnose_c.vcproj", "{3987A15A-F6AA-4F38-8FA5-49FC5805A746}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "poc_diagnose_cpp", "poc_diagnose_cpp\poc_diagnose_cpp.vcproj", "{9CEB7F07-55F8-4224-ABFA-3230FCE07C2E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Doxygen Documentation", "Doxygen Documentation\Doxygen Documentation.vcproj", "{70589687-D41A-47AF-8C81-69D50C2A6C6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3987A15A-F6AA-4F38-8FA5-49FC5805A746}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3987A15A-F6AA-4F38-8FA5-49FC5805A746}.Debug|Win32.Build.0 = Debug|Win32
+		{3987A15A-F6AA-4F38-8FA5-49FC5805A746}.Release|Win32.ActiveCfg = Release|Win32
+		{3987A15A-F6AA-4F38-8FA5-49FC5805A746}.Release|Win32.Build.0 = Release|Win32
+		{9CEB7F07-55F8-4224-ABFA-3230FCE07C2E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9CEB7F07-55F8-4224-ABFA-3230FCE07C2E}.Debug|Win32.Build.0 = Debug|Win32
+		{9CEB7F07-55F8-4224-ABFA-3230FCE07C2E}.Release|Win32.ActiveCfg = Release|Win32
+		{9CEB7F07-55F8-4224-ABFA-3230FCE07C2E}.Release|Win32.Build.0 = Release|Win32
+		{70589687-D41A-47AF-8C81-69D50C2A6C6E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{70589687-D41A-47AF-8C81-69D50C2A6C6E}.Debug|Win32.Build.0 = Debug|Win32
+		{70589687-D41A-47AF-8C81-69D50C2A6C6E}.Release|Win32.ActiveCfg = Release|Win32
+		{70589687-D41A-47AF-8C81-69D50C2A6C6E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

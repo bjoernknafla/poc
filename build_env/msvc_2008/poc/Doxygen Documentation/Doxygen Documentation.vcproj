@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9,00"
+	Name="Doxygen Documentation"
+	ProjectGUID="{70589687-D41A-47AF-8C81-69D50C2A6C6E}"
+	RootNamespace="DoxygenDocumentation"
+	TargetFrameworkVersion="196613"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="10"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				CommandLine="cd $(SolutionDir)\..\..\..\&#x0D;&#x0A;echo %CD%"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="cd $(SolutionDir)\..\..\..\&#x0D;&#x0A;Doxygen doc/Doxygen/Doxyfile"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="10"
+			CharacterSet="2"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				CommandLine="cd $(SolutionDir)\..\..\..\&#x0D;&#x0A;echo %CD%"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="cd $(SolutionDir)\..\..\..\&#x0D;&#x0A;echo %CD%&#x0D;&#x0A;Doxygen doc/Doxygen/Doxyfile"
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Documentation"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath="..\..\..\..\doc\doxygen\Doxyfile"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\..\doc\html\index.html"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\..\LICENSE.txt"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\..\README.txt"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\..\doc\doxygen\special_doxygen_documentation.dox"
+				>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

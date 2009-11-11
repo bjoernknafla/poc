@@ -216,9 +216,24 @@
 #endif
 
 
+/*
+ * @c long @c long type extension by some C compilers
+ *
+ * TODO: @todo Add LLVM compiler handling.
+ */
+#if defined(POC_LANG_C_C89)
+#   if defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
+#       define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__LONG_LONG_MAX__)
+#       define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#endif
 
 /*
  * @c long @c long type extension by pre C++0x compilers
+ *
+ * TODO: @todo Add LLVM compiler handling.
  */
 #if defined(POC_LANG_CPP)
 #   if (POC_LANG_CPP >= POC_LANG_CPP_CPP2010_ID)
@@ -226,8 +241,7 @@
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   elif defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   elif defined(POC_COMPILER_GCC) && defined(__GCC_EXPERIMENTAL_CXX0X__)
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__GCC_EXPERIMENTAL_CXX0X__)
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
@@ -235,9 +249,11 @@
 
 /* Detect if RTTI is for sure enabled for C++. 
  * @attention RTTI might even be enabled if the tested macros aren't defined.
+ *
+ * TODO: @todo Add LLVM compiler handling.
  */
 #if defined(POC_LANG_CPP)
-#   if defined(POC_COMPILER_GCC) && defined(__GXX_RTTI)
+#   if (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__GXX_RTTI)
 #       define POC_LANG_CPP_RTTI_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   endif
@@ -250,9 +266,11 @@
 #endif
 
 /* Detect if exceptions are enabled for C++
+ *
+ * TODO: @todo Add LLVM compiler 
  */
 #if defined(POC_LANG_CPP)
-#   if defined(POC_COMPILER_GCC) && defined(__EXCEPTIONS)
+#   if (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__EXCEPTIONS)
 #       define POC_LANG_CPP_EXCEPTIONS_SUPPORT 1
 #   endif
 #   if defined(POC_COMPILER_MSVC) && defined(_CPPUNWIND)

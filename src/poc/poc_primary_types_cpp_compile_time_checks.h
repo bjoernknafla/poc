@@ -113,6 +113,25 @@ namespace {
     POC_STATIC_ASSERT(sizeof(POC_UINT64) * CHAR_BIT == 64, "Size of POC_UINT64 must be 64 bits.");
 #endif
     
+#if defined(POC_INTMAX)
+#   if defined(POC_INT64)
+    POC_STATIC_ASSERT(sizeof(POC_INT64) == sizeof(POC_INTMAX), "Size of POC_INTMAX must be equal to the greatest integral type.");
+#   elif defined(POC_INT32)
+    POC_STATIC_ASSERT(sizeof(POC_INT32) == sizeof(POC_INTMAX), "Size of POC_INTMAX must be equal to the greatest integral type.");
+#   else
+#       error Currently only 64bit or 32bit POC_INTMAX types are supported.
+#   endif
+#endif
+#if defined(POC_UINTMAX)
+#   if defined(POC_UINT64)
+    POC_STATIC_ASSERT(sizeof(POC_UINT64) == sizeof(POC_UINTMAX), "Size of POC_UINTMAX must be equal to the greatest integral type.");
+#   elif defined(POC_INT32)
+    POC_STATIC_ASSERT(sizeof(POC_UINT32) == sizeof(POC_UINTMAX), "Size of POC_UINTMAX must be equal to the greatest integral type.");
+#   else
+#       error Currently only 64bit or 32bit POC_UINTMAX types are supported.
+#   endif
+#endif
+
 #if defined(POC_INTPTR_T)
     POC_STATIC_ASSERT(sizeof(POC_INTPTR_T) == sizeof(void*), "Size of POC_INTPTR_T must be the same as pointer size.");
 #endif

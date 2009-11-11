@@ -132,6 +132,7 @@
 #   define POC_INT32 int
 #   define POC_UINT32 unsigned int
 #   /* See http://msdn.microsoft.com/en-us/library/94z15h2c.aspx */
+#   /* See http://msdn.microsoft.com/en-us/library/cc953fe1.aspx */
 #   if defined(_INTEGRAL_MAX_BITS) && (_INTEGRAL_MAX_BITS >= 64)
 #       define POC_INT64 __int64 /* Defined since Visual Studio 6.0 , printf use I64 */
 #       define POC_UINT64 unsigned __int64
@@ -143,7 +144,6 @@
 #       define POC_UINTPTR_T unsigned int
 #       define POC_PTRDIFF_T int
 #       define POC_SIZE_T unsigned int
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   elif defined(POC_DATA_MODEL_LLP64)
 #       define POC_INTPTR_T __int64
 #       define POC_UINTPTR_T unsigned __int64
@@ -153,7 +153,6 @@
 #   else
 #       Unknown data model for MSVC compiler.
 #   endif
-#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #elif defined(POC_LANG_OPENCL)
 #   /* Based on OpenCL Specification 1.0.33 */
 #   define POC_BYTE unsigned char
@@ -237,6 +236,27 @@
 #endif
 
 
+#if defined(POC_INT64)
+#   define POC_INTMAX POC_INT64
+#elif defined(POC_INT32)
+#   define POC_INTMAX POC_INT32
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#else
+#   error Unknown max integral type.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+#if defined(POC_UINT64)
+#   define POC_UINTMAX POC_UINT64
+#elif defined(POC_UINT32)
+#   define POC_UINTMAX POC_UINT32
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#else
+#   error Unknown max unsigned integral type.
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+
+
+
 /*
  * Macros to define sized integral literals.
  */
@@ -246,15 +266,92 @@
 #define POC_INT16_C(Literal) (Literal)
 #define POC_UINT16_C(Literal) (Literal ## U)
 
-#define POC_INT32_C(Literal) (Literal)
-#define POC_UINT32_C(Literal) (Literal ## U)
+#if defined(POC_INT32)
+#   if defined(POC_DATA_MODEL_IP32)
+#       define POC_INT32_C(Literal) (Literal)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODE_LP32)
+#       define POC_INT32_C(Literal) (Literal ## L)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_ILP32)
+#       define POC_INT32_C(Literal) (Literal ## L)
+#   else
+#       error Unknown how to represent a 32bit literal.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#endif
+#if defined(POC_UINT32)
+#   if defined(POC_DATA_MODEL_IP32)
+#       define POC_UINT32_C(Literal) (Literal ## U)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODE_LP32)
+#       define POC_UINT32_C(Literal) (Literal ## UL)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_ILP32)
+#       define POC_UINT32_C(Literal) (Literal ## UL)
+#   else
+#       error Unknown how to represent a 32bit literal.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#endif
 
 #if defined(POC_INT64)
-#   define POC_INT64_C(Literal) (Literal ## LL)
+#   if defined(POC_DATA_MODEL_LP64)
+#       define POC_INT64_C(Literal) (Literal ## L)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_LLP64)
+#       if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_OPENCL_TYPE_LONG_LONG_SUPPORT)
+#           define POC_INT64_C(Literal) (Literal ## LL)
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       else
+#           error Unknown way to define a long long literal.
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_ILP64)
+#       define POC_INT64_C(Literal) (Literal)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_SILP64)
+#       define POC_INT64_C(Literal) (Literal)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_OPENCL_TYPE_LONG_LONG_SUPPORT)
+#           define POC_INT64_C(Literal) (Literal ## LL)
+#       else
+#           error Unknown way to define a 64 bit literal.
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#   endif
 #endif
 #if defined(POC_UINT64)
-#   define POC_UINT64_C(Literal) (Literal ## ULL)
+#   if defined(POC_DATA_MODEL_LP64)
+#       define POC_UINT64_C(Literal) (Literal ## UL)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_LLP64)
+#       if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_OPENCL_TYPE_LONG_LONG_SUPPORT)
+#           define POC_UINT64_C(Literal) (Literal ## ULL)
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       else
+#           error Unknown way to define an unsigned long long literal.
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_ILP64)
+#       define POC_UINT64_C(Literal) (Literal ## U)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   elif defined(POC_DATA_MODEL_SILP64)
+#       define POC_UINT64_C(Literal) (Literal ## U)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       if defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT) || defined(POC_LANG_OPENCL_TYPE_LONG_LONG_SUPPORT)
+#           define POC_UINT64_C(Literal) (Literal ## ULL)
+#       else
+#           error Unknown way to define a 64bit literal.
+#           error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#       endif
+#   endif
 #endif
+
 
 #if defined(POC_FLOAT32)
 #   define POC_FLOAT32_C(Literal) (Literal ## F)
@@ -263,6 +360,28 @@
 #   define POC_FLOAT64_C(Literal) (Literal)
 #endif
 
+#if defined(POC_INTMAX)
+#   if defined(POC_INT64)
+#       define POC_INTMAX_C(Literal) POC_INT64_C(Literal)
+#   elif defined(POC_INT32)
+#       define POC_INTMAX_C(Literal) POC_INT32_C(Literal)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       error Unknown max integer type.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#endif
+#if defined(POC_UINTMAX)
+#   if defined(POC_UINT64)
+#       define POC_UINTMAX_C(Literal) POC_UINT64_C(Literal)
+#   elif defined(POC_UINT32)
+#       define POC_UINTMAX_C(Literal) POC_UINT32_C(Literal)
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   else
+#       error Unknown max unsigned integer type.
+#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#   endif
+#endif
 
 /*******************************************************************************
  * Error check

@@ -146,7 +146,6 @@
 #   define POC_COMPILER_MSVC POC_COMPILER_MSVC_ID
 #   if defined(_MSC_FULL_VER)
 #       define POC_COMPILER_MSVC_VERSION (_MSC_FULL_VER + 0)
-#       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
 #   else
 #       define POC_COMPILER_MSVC_VERSION (_MSC_VER * 100000L)
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.

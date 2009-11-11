@@ -1342,6 +1342,16 @@ void print_primary_types(FILE* outstream)
     fprintf(outstream, "\n");
 #endif
     
+#if defined(POC_INTMAX)
+    fprintf(outstream, "  POC_INTMAX set to %s", POC_STRINGIZE(POC_INTMAX));
+    fprintf(outstream, "\n");
+#endif
+    
+#if defined(POC_UINTMAX)
+    fprintf(outstream, "  POC_UINTMAX set to %s", POC_STRINGIZE(POC_UINTMAX));
+    fprintf(outstream, "\n");
+#endif
+
 #if defined(POC_FLOAT32)
     fprintf(outstream, "  POC_FLOAT32 set to %s", POC_STRINGIZE(POC_FLOAT32));
     fprintf(outstream, "\n");
