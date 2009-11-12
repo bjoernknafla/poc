@@ -16,6 +16,7 @@ Use the preprocessor symbols prefixed with `POC_` to detect the target platform 
 cross platform compatible keywords, for example to align data types on the stack.
 
 Use *POC* to detect the target platform the code unit is compiled for, for example:
+
 - `POC_ARCH` stores an id identifying the machine architecture
 - `POC_COMPILER` stores an id identifying the used compiler, `POC_COMPILER_VERSION` stores a number representing
   the compiler version
@@ -52,6 +53,7 @@ setting, e.g. `POC_COMPILER_IBM_XLC` for IBM's XL C/C++ compiler.
 ### Portability macros ###
 
 Aside the platform detection macros *POC* also defines preprocessor symbols to allow portable usage of keywords to:
+
 - Align data types automatically on the stack by wrapping the type in `POC_ALIGN_BEING(<byte-alignment>)` and
   `POC_ALIGN_END(<byte-alignment>)` macros.
 - Using `POC_RESTRICT` to enable C99's restrict keyword or disable it when compiling for other languages that
@@ -97,7 +99,7 @@ tested and might possibly be erroreneous.
 
 ### Where to find the code and file issues ###
 
-The code can be found and downloaded at: [http://github.com/bjoernknafla/poc](http://github.com/bjoernknafla/poc)
+The code can be found and downloaded at: [http://github.com/bjoernknafla/poc](http://github.com/bjoernknafla/poc)  
 Please file issues with the code at: [http://github.com/bjoernknafla/poc/issues](http://github.com/bjoernknafla/poc/issues)
 
 
@@ -115,28 +117,28 @@ Bjoern Knafla Parallelization + AI + Gamedev Consulting
 ### References ###
 
 #### GCC infos ####
-- Find out which preprocessor symbols are defined by GCC by executing: touch file.cpp && cpp -dM file.cpp
-  http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
+- Find out which preprocessor symbols are defined by GCC by executing: `touch file.cpp && cpp -dM file.cpp`   
+  <http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html>
 
 #### GCC with Apple extensions infos ####
-- http://developer.apple.com/documentation/DeveloperTools/gcc-4.2.1/cpp/Standard-Predefined-Macros.html#Standard-Predefined-Macros
-- http://developer.apple.com/technotes/tn2002/tn2071.html#Section10
-- http://discussions.apple.com/thread.jspa?threadID=1937142&tstart=0
+- <http://developer.apple.com/documentation/DeveloperTools/gcc-4.2.1/cpp>  Standard-Predefined-Macros.html#Standard-Predefined-Macros
+- <http://developer.apple.com/technotes/tn2002/tn2071.html#Section10>
+- <http://discussions.apple.com/thread.jspa?threadID=1937142&tstart=0>
 
 #### Microsoft Visual Studio C++ infos ####
-- http://msdn.microsoft.com/en-us/library/b0084kay.aspx
-- http://msdn.microsoft.com/en-us/library/b0084kay(VS.71).aspx
-- http://msdn.microsoft.com/en-us/library/b0084kay(VS.80).aspx
+- <http://msdn.microsoft.com/en-us/library/b0084kay.aspx>
+- <http://msdn.microsoft.com/en-us/library/b0084kay(VS.71).aspx>
+- <http://msdn.microsoft.com/en-us/library/b0084kay(VS.80).aspx>
 
 #### Cell PPU and SPU infos ####
-- http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/30B3520C93F437AB87257060006FFE5E/$file/Language_Extensions_for_CBEA_2.5.pdf
-- http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/1AEEE1270EA2776387257060006E61BA/$file/CBEA_v1.02_11Oct2007_pub.pdf
+- <http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/30B3520C93F437AB87257060006FFE5E/$file/Language_Extensions_for_CBEA_2.5.pdf>
+- <http://www-01.ibm.com/chips/techlib/techlib.nsf/techdocs/1AEEE1270EA2776387257060006E61BA/$file/CBEA_v1.02_11Oct2007_pub.pdf>
 
 #### Other resources ####
-- Apache C++ Standard Library Wiki with lots of cross-platform infos
-  http://wiki.apache.org/stdcxx/Compilers
-- Collection of macros defined by language standards, compilers, libraries, etc.:
-  http://predef.sourceforge.net/index.php 
+- Apache C++ Standard Library Wiki with lots of cross-platform infos  
+  <http://wiki.apache.org/stdcxx/Compilers>
+- Collection of macros defined by language standards, compilers, libraries, etc.:  
+  <http://predef.sourceforge.net/index.php>
 
 
 ### Disclaimer ###
@@ -148,7 +150,7 @@ copyright owners.
 ### Release Notes ###
 
 #### Version 0.2.0 (May 5, 2009) ####
-- POC_ARCH possibly contains or-ed bit-values of architecture ids
+- `POC_ARCH` possibly contains or-ed bit-values of architecture ids
 - Code is ANSI C compatible
 - Extended and refined documentation
 - poc_diagnose_main.c compiles and runs on Windows XP using 
@@ -156,7 +158,7 @@ copyright owners.
 - Added detection of Cell BE PPU and SPU and their endianness
 - Added C and C++ and Doxygen documentation generation projects to 
   MS Visual Studio solution
-- Removed the revision number from POC_COMPILER_MSVC_VERSION generation
+- Removed the revision number from `POC_COMPILER_MSVC_VERSION` generation
 
 #### Version 0.1.0 (May 1, 2009) ####
 - Initial release
