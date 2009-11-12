@@ -114,7 +114,9 @@ namespace {
 #endif
     
 #if defined(POC_INTMAX)
-#   if defined(POC_INT64)
+#   if defined(POC_LONG_LONG)
+    POC_STATIC_ASSERT(sizeof(long long) == sizeof(POC_INTMAX), "Size of POC_INTMAX must be equal to the greatest integral type.");
+#   elif defined(POC_INT64)
     POC_STATIC_ASSERT(sizeof(POC_INT64) == sizeof(POC_INTMAX), "Size of POC_INTMAX must be equal to the greatest integral type.");
 #   elif defined(POC_INT32)
     POC_STATIC_ASSERT(sizeof(POC_INT32) == sizeof(POC_INTMAX), "Size of POC_INTMAX must be equal to the greatest integral type.");
@@ -123,7 +125,9 @@ namespace {
 #   endif
 #endif
 #if defined(POC_UINTMAX)
-#   if defined(POC_UINT64)
+#   if defined(POC_UNSIGNED_LONG_LONG)
+    POC_STATIC_ASSERT(sizeof(unsigned long long) == sizeof(POC_UINTMAX), "Size of POC_UINTMAX must be equal to the greatest integral type.");
+#   elif defined(POC_UINT64)
     POC_STATIC_ASSERT(sizeof(POC_UINT64) == sizeof(POC_UINTMAX), "Size of POC_UINTMAX must be equal to the greatest integral type.");
 #   elif defined(POC_INT32)
     POC_STATIC_ASSERT(sizeof(POC_UINT32) == sizeof(POC_UINTMAX), "Size of POC_UINTMAX must be equal to the greatest integral type.");

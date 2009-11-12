@@ -66,11 +66,11 @@
 
 /*
  * Define @c POC_LONG_LONG and @c POC_UNSIGNED_LONG_LONG and 
- * @c POC_LONG_DOUBLE
+ * @c POC_LONG_DOUBLE when compiling C sources (not C++) and 
+ * @c POC_LANG_C_TYPE_LONG_LONG_SUPPORT is defined.
  *
  * Check for POC_LANG_C or POC_LANG_OBJC as OpenCL might identify as C99 
  * compatible but does not support long long or double long in OpenCL version 1.
- * 
  */
 #if defined(POC_LANG_C) && ((POC_LANG == POC_LANG_C) || (POC_LANG == POC_LANG_OBJC))
 #   define POC_LONG_DOUBLE long double
@@ -80,6 +80,14 @@
 #   endif
 #endif
 
+/*
+ * Define @c POC_LONG_LONG and @c POC_UNSIGNED_LONG_LONG and 
+ * @c POC_LONG_DOUBLE when compiling C++ sources (not C) and 
+ * @c POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT is defined.
+ *
+ * Check for POC_LANG_CPP or POC_LANG_OBJC as OpenCL might identify as C99 
+ * compatible but does not support long long or double long in OpenCL version 1.
+ */
 #if defined(POC_LANG_CPP) && ((POC_LANG == POC_LANG_CPP) || (POC_LANG == POC_LANG_OBJC))
 #   define POC_LONG_DOUBLE long double
 #   if  defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT)

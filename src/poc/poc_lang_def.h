@@ -177,7 +177,7 @@
 
 
 /*******************************************************************************
- * Detect language specific settings/defines.
+ * Detect language and compiler language extension specific settings/defines.
  ******************************************************************************/
 
 #if defined(POC_LANG_C_C99)
@@ -219,18 +219,43 @@
 /*
  * @c long @c long type extension by some C compilers
  *
+ * Only support type long long for C89 if @c POC_FORCE_LANG_C_STD_COMPLIANCE
+ * isn't defined and if no compiler options to adhere to the language std are 
+ * used.
+ *
  * TODO: @todo Add LLVM compiler handling.
  */
 #if defined(POC_LANG_C_C89)
-#   if (defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
+#   if (defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)) && (!defined(POC_FORCE_LANG_C_STD_COMPLIANCE))
 #       define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
-#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (defined(__LONG_LONG_MAX__)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (!defined(__STRICT_ANSI__) && !defined(POC_FORCE_LANG_C_STD_COMPLIANCE))
 #       define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
 #   endif
 #endif
 
+
+/*
+ * Force enabling C type long long support if 
+ * @c POC_FORCE_LANG_C_TYPE_LONG_LONG_SUPPORT is set and doesn't collide with
+ * compiler settings or @c POC_FORCE_LANG_C_STD_COMPLIANCE .
+ */
+#if defined(POC_FORCE_LANG_C_TYPE_LONG_LONG_SUPPORT) && (!defined(POC_LANG_C_TYPE_LONG_LONG_SUPPORT))
+#   if defined(POC_FORCE_LANG_C_STD_COMPLIANCE)
+#       error Conflict between forcing C STD compliance and forcing long long type support.
+#   endif
+#   if (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__STRICT_ANSI__)
+#       error Forcing C long long type support collides with invoking the compiler with options like -ansi or -std=c89, -std=c++98
+#   endif
+#   define POC_LANG_C_TYPE_LONG_LONG_SUPPORT 1
+#endif
+
+
 /*
  * @c long @c long type extension by pre C++0x compilers
+ *
+ * Only support type long long for C++98 if @c POC_FORCE_LANG_CPP_STD_COMPLIANCE
+ * isn't defined and if no compiler options to adhere to the language std are 
+ * used.
  *
  * TODO: @todo Add LLVM compiler handling.
  */
@@ -238,15 +263,32 @@
 #   if (POC_LANG_CPP >= POC_LANG_CPP_CPP2010_ID)
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   elif (defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
+#   elif (defined(POC_COMPILER_MSVC) || defined(POC_COMPILER_ICC_HOST_MSVC)) && (!defined(POC_FORCE_LANG_CPP_STD_COMPLIANCE))
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (defined(__GCC_EXPERIMENTAL_CXX0X__))
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #       error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
-#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (defined(POC_TRY_ENABLE_LANG_NON_STD_LONG_LONG_SUPPORT))
+#   elif (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && (!defined(__STRICT_ANSI__) && !defined(POC_FORCE_LANG_CPP_STD_COMPLIANCE))
 #       define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
 #   endif
 #endif
+
+/*
+ * Force enabling C++ type long long support if 
+ * @c POC_FORCE_LANG_CPP_TYPE_LONG_LONG_SUPPORT is set and doesn't collide with
+ * compiler settings or @c POC_FORCE_LANG_CPP_STD_COMPLIANCE .
+ */
+#if defined(POC_FORCE_LANG_CPP_TYPE_LONG_LONG_SUPPORT) && (!defined(POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT))
+#   if defined(POC_FORCE_LANG_CPP_STD_COMPLIANCE)
+#       error Conflict between forcing C++ STD compliance and forcing long long type support.
+#   endif
+#   if (defined(POC_COMPILER_GCC) || defined(POC_COMPILER_ICC_HOST_GCC) || defined(POC_COMPILER_LLVM_COMPATIBILITY_GCC)) && defined(__STRICT_ANSI__)
+#       error Forcing C++ long long type support collides with invoking the compiler with options like -ansi or -std=c89, -std=c++98.
+#   endif
+#   define POC_LANG_CPP_TYPE_LONG_LONG_SUPPORT 1
+#   error Untested. Remove error preprocessor directive after having ported and tested the code to the platform.
+#endif
+
 
 /* Detect if RTTI is for sure enabled for C++. 
  * @attention RTTI might even be enabled if the tested macros aren't defined.

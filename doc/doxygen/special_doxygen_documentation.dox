@@ -44,8 +44,22 @@
  * 
  * POC can also be used to @c typedef primary types of specified bit sized on platforms
  * that don't support C99's stdint.h or C++0x cstdint headers for example by using 
- * @c POC_BYTE, @c POC_INT32, @c POC_UINT32, @c POC_FLOAT32, @c POC_INTPTR_T, 
- * @c POC_UINTPTR_T, etc.
+ * @c POC_BYTE, @c POC_INT32, @c POC_UINT32, @c POC_INTMAX, @c POC_UINTMAX,
+ * @c POC_FLOAT32, @c POC_INTPTR_T, @c POC_UINTPTR_T, etc.
+ *
+ * POC tries to detect if the language or the compiler support the languages 
+ * <tt>long long</tt> type. When invoking the compiler, e.g. GCC, with certain 
+ * language warning options this can lead to compiler warnings and errors. To 
+ * surpress the non-language standard conform use of <tt>long long</tt> by POC 
+ * define the preprocessor symbol @c POC_FORCE_LANG_C_STD_COMPLIANCE when
+ * compiling C code or @c POC_FORCE_LANG_CPP_STD_COMPLIANCE when compiling 
+ * C++ code.
+ * 
+ * If POC doesn't enable the <tt>long long</tt> type but it is supported by the 
+ * compiler used force POC to enable its <tt>long long</tt> support by defining 
+ * the following preprocessor symbol:
+ * @c POC_FORCE_LANG_C_TYPE_LONG_LONG_SUPPORT for C code or 
+ * @c POC_FORCE_LANG_CPP_TYPE_LONG_LONG_SUPPORT for C++ code.
  *
  *
  * @section adding_new_platforms Adding new platforms
