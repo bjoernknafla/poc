@@ -121,7 +121,8 @@ Bjoern Knafla Parallelization + AI + Gamedev Consulting
   <http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html>
 
 #### GCC with Apple extensions infos ####
-- <http://developer.apple.com/documentation/DeveloperTools/gcc-4.2.1/cpp>  Standard-Predefined-Macros.html#Standard-Predefined-Macros
+- <http://developer.apple.com/documentation/DeveloperTools/gcc-4.2.1/cpp>  
+    Standard-Predefined-Macros.html#Standard-Predefined-Macros
 - <http://developer.apple.com/technotes/tn2002/tn2071.html#Section10>
 - <http://discussions.apple.com/thread.jspa?threadID=1937142&tstart=0>
 
