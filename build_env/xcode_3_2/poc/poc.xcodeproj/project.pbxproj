@@ -45,6 +45,50 @@
 		32532ADD0FA9B5E100197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
 		32532B5E0FA9CDED00197F39 /* poc_diagnose_main_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 32532B550FA9CD7E00197F39 /* poc_diagnose_main_objc.m */; };
 		325361AD0FADBB9E00197F39 /* poc_diagnose_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32532ACC0FA9B57200197F39 /* poc_diagnose_main.c */; };
+		328DEB51117C541300F7A0C0 /* poc_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867D20FA34E6700784249 /* poc_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB52117C541400F7A0C0 /* poc_static_assert_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B61E0FA60F4B00FF0967 /* poc_static_assert_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB53117C541500F7A0C0 /* poc_static_assert_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B61D0FA60DF500FF0967 /* poc_static_assert_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB54117C541600F7A0C0 /* poc_static_assert.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B61A0FA609F700FF0967 /* poc_static_assert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB55117C541600F7A0C0 /* poc_primary_types_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F250F0FBCCAF900E198D1 /* poc_primary_types_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB56117C541700F7A0C0 /* poc_primary_types_lang_compiler_data_model_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F25110FBCCCCB00E198D1 /* poc_primary_types_lang_compiler_data_model_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB57117C541800F7A0C0 /* poc_primary_types_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F250E0FBCCAED00E198D1 /* poc_primary_types_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB58117C541900F7A0C0 /* poc_primary_types_cpp_compile_time_checks.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F26420FBEE83600E198D1 /* poc_primary_types_cpp_compile_time_checks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB59117C541A00F7A0C0 /* poc_primary_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 32ADA94D0FBAEFD000D48693 /* poc_primary_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB5A117C541B00F7A0C0 /* poc_preprocessor_utilities_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B61C0FA60D6100FF0967 /* poc_preprocessor_utilities_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB5B117C541B00F7A0C0 /* poc_preprocessor_utilities_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B61B0FA60CFE00FF0967 /* poc_preprocessor_utilities_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB5C117C541C00F7A0C0 /* poc_preprocessor_utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6190FA609E000FF0967 /* poc_preprocessor_utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB5D117C541D00F7A0C0 /* poc_posix.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B62E0FA6471D00FF0967 /* poc_posix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB5E117C541E00F7A0C0 /* poc_portability_macros_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6310FA702A600FF0967 /* poc_portability_macros_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB5F117C541F00F7A0C0 /* poc_portability_macros_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6300FA7027D00FF0967 /* poc_portability_macros_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB60117C542000F7A0C0 /* poc_portability_macros_compiler_lang_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6320FA702B600FF0967 /* poc_portability_macros_compiler_lang_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB61117C542100F7A0C0 /* poc_portability_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B62F0FA700D200FF0967 /* poc_portability_macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB62117C542100F7A0C0 /* poc_os_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867CD0FA34B0200784249 /* poc_os_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB63117C542200F7A0C0 /* poc_os_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867CE0FA34B0E00784249 /* poc_os_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB64117C542300F7A0C0 /* poc_os.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867C80FA31BA600784249 /* poc_os.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB65117C542400F7A0C0 /* poc_opencl_extensions_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F26190FBE0D5D00E198D1 /* poc_opencl_extensions_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB66117C542500F7A0C0 /* poc_opencl_extensions_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F26180FBE0D4700E198D1 /* poc_opencl_extensions_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB67117C542600F7A0C0 /* poc_opencl_extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 320F26040FBDA87500E198D1 /* poc_opencl_extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB68117C542700F7A0C0 /* poc_lang_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B62C0FA6469E00FF0967 /* poc_lang_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB69117C542700F7A0C0 /* poc_lang_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B62B0FA6469100FF0967 /* poc_lang_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB6A117C542800F7A0C0 /* poc_lang_compiler_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B62D0FA646D600FF0967 /* poc_lang_compiler_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB6B117C542900F7A0C0 /* poc_lang.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B62A0FA6468D00FF0967 /* poc_lang.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB6C117C542A00F7A0C0 /* poc_endian_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6290FA6455400FF0967 /* poc_endian_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB6D117C542B00F7A0C0 /* poc_endian_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6260FA63F2D00FF0967 /* poc_endian_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB6E117C542C00F7A0C0 /* poc_endian_arch_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6270FA63F2D00FF0967 /* poc_endian_arch_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB6F117C542D00F7A0C0 /* poc_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6250FA63F2D00FF0967 /* poc_endian.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB70117C542D00F7A0C0 /* poc_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867D00FA34DD500784249 /* poc_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB71117C542F00F7A0C0 /* poc_data_model_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6280FA6452800FF0967 /* poc_data_model_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB72117C542F00F7A0C0 /* poc_data_model_os_arch_lang_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6180FA5F84400FF0967 /* poc_data_model_os_arch_lang_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB73117C543000F7A0C0 /* poc_data_model_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6170FA5F83900FF0967 /* poc_data_model_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB74117C543100F7A0C0 /* poc_data_model_cpp_compile_time_checks.h in Headers */ = {isa = PBXBuildFile; fileRef = 325364E80FB0AC4C00197F39 /* poc_data_model_cpp_compile_time_checks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB75117C543200F7A0C0 /* poc_data_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6160FA5F83100FF0967 /* poc_data_model.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB76117C543200F7A0C0 /* poc_compiler_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB77117C543300F7A0C0 /* poc_compiler_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB78117C543500F7A0C0 /* poc_compiler.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A9B6120FA5C26900FF0967 /* poc_compiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB79117C543500F7A0C0 /* poc_arch_undef.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867D40FA361D000784249 /* poc_arch_undef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB7A117C543600F7A0C0 /* poc_arch_def.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867D30FA34EA300784249 /* poc_arch_def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB7B117C543700F7A0C0 /* poc_arch.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867CC0FA34A3100784249 /* poc_arch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		328DEB7C117C543800F7A0C0 /* poc.h in Headers */ = {isa = PBXBuildFile; fileRef = 324867C70FA3199500784249 /* poc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,18 +129,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		8DD76F690486A84900D96B5E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		320F250E0FBCCAED00E198D1 /* poc_primary_types_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_def.h; sourceTree = "<group>"; };
 		320F250F0FBCCAF900E198D1 /* poc_primary_types_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types_undef.h; sourceTree = "<group>"; };
@@ -108,7 +140,7 @@
 		320F26A00FBF1FEA00E198D1 /* poc_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_tests.h; sourceTree = "<group>"; };
 		320F26A10FBF1FEA00E198D1 /* poc_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = poc_tests.c; sourceTree = "<group>"; };
 		322D153B10A8684D0043C140 /* compiler_warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = compiler_warnings.xcconfig; sourceTree = "<group>"; };
-		322D153C10A8686A0043C140 /* poc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc.xcconfig; sourceTree = "<group>"; };
+		322D153C10A8686A0043C140 /* poc_common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_common.xcconfig; sourceTree = "<group>"; };
 		322D153D10A869210043C140 /* poc_diagnose_c.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_c.xcconfig; sourceTree = "<group>"; };
 		322D153E10A869470043C140 /* poc_diagnose_c_gcc_ansi_c.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_c_gcc_ansi_c.xcconfig; sourceTree = "<group>"; };
 		322D153F10A869580043C140 /* poc_diagnose_cpp.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc_diagnose_cpp.xcconfig; sourceTree = "<group>"; };
@@ -137,6 +169,9 @@
 		325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc_diagnose_c_gcc_ansi_c; sourceTree = BUILT_PRODUCTS_DIR; };
 		325363AC0FB0599000197F39 /* how_to_extend_poc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = how_to_extend_poc.txt; sourceTree = "<group>"; };
 		325364E80FB0AC4C00197F39 /* poc_data_model_cpp_compile_time_checks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_data_model_cpp_compile_time_checks.h; sourceTree = "<group>"; };
+		328DCAB9117C50D200F7A0C0 /* poc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = poc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		328DCABA117C50D200F7A0C0 /* poc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "poc-Info.plist"; sourceTree = "<group>"; };
+		328DCAC0117C524E00F7A0C0 /* poc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = poc.xcconfig; sourceTree = "<group>"; };
 		32A9B6120FA5C26900FF0967 /* poc_compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler.h; sourceTree = "<group>"; };
 		32A9B6130FA5C27400FF0967 /* poc_compiler_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_def.h; sourceTree = "<group>"; };
 		32A9B6140FA5C27F00FF0967 /* poc_compiler_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_compiler_undef.h; sourceTree = "<group>"; };
@@ -164,7 +199,6 @@
 		32A9B6310FA702A600FF0967 /* poc_portability_macros_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_undef.h; sourceTree = "<group>"; };
 		32A9B6320FA702B600FF0967 /* poc_portability_macros_compiler_lang_undef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_portability_macros_compiler_lang_undef.h; sourceTree = "<group>"; };
 		32ADA94D0FBAEFD000D48693 /* poc_primary_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poc_primary_types.h; sourceTree = "<group>"; };
-		8DD76F6C0486A84900D96B5E /* poc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = poc; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* poc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = poc.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,7 +231,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8DD76F660486A84900D96B5E /* Frameworks */ = {
+		328DCAB7117C50D200F7A0C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,11 +263,11 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DD76F6C0486A84900D96B5E /* poc */,
 				32532AD00FA9B59F00197F39 /* poc_diagnose_c */,
 				325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */,
 				32532AD80FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B590FA9CDB600197F39 /* poc_diagnose_objc */,
+				328DCAB9117C50D200F7A0C0 /* poc.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,7 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				322D153B10A8684D0043C140 /* compiler_warnings.xcconfig */,
-				322D153C10A8686A0043C140 /* poc.xcconfig */,
+				322D153C10A8686A0043C140 /* poc_common.xcconfig */,
+				328DCAC0117C524E00F7A0C0 /* poc.xcconfig */,
 				322D153D10A869210043C140 /* poc_diagnose_c.xcconfig */,
 				322D153E10A869470043C140 /* poc_diagnose_c_gcc_ansi_c.xcconfig */,
 				322D153F10A869580043C140 /* poc_diagnose_cpp.xcconfig */,
@@ -256,6 +291,7 @@
 			children = (
 				322D153A10A8681C0043C140 /* Configuration Settings */,
 				C6859E8B029090EE04C91782 /* poc.1 */,
+				328DCABA117C50D200F7A0C0 /* poc-Info.plist */,
 			);
 			name = "Xcode Specific";
 			sourceTree = "<group>";
@@ -374,6 +410,60 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		328DCAB4117C50D200F7A0C0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328DEB51117C541300F7A0C0 /* poc_undef.h in Headers */,
+				328DEB52117C541400F7A0C0 /* poc_static_assert_undef.h in Headers */,
+				328DEB53117C541500F7A0C0 /* poc_static_assert_def.h in Headers */,
+				328DEB54117C541600F7A0C0 /* poc_static_assert.h in Headers */,
+				328DEB55117C541600F7A0C0 /* poc_primary_types_undef.h in Headers */,
+				328DEB56117C541700F7A0C0 /* poc_primary_types_lang_compiler_data_model_undef.h in Headers */,
+				328DEB57117C541800F7A0C0 /* poc_primary_types_def.h in Headers */,
+				328DEB58117C541900F7A0C0 /* poc_primary_types_cpp_compile_time_checks.h in Headers */,
+				328DEB59117C541A00F7A0C0 /* poc_primary_types.h in Headers */,
+				328DEB5A117C541B00F7A0C0 /* poc_preprocessor_utilities_undef.h in Headers */,
+				328DEB5B117C541B00F7A0C0 /* poc_preprocessor_utilities_def.h in Headers */,
+				328DEB5C117C541C00F7A0C0 /* poc_preprocessor_utilities.h in Headers */,
+				328DEB5D117C541D00F7A0C0 /* poc_posix.h in Headers */,
+				328DEB5E117C541E00F7A0C0 /* poc_portability_macros_undef.h in Headers */,
+				328DEB5F117C541F00F7A0C0 /* poc_portability_macros_def.h in Headers */,
+				328DEB60117C542000F7A0C0 /* poc_portability_macros_compiler_lang_undef.h in Headers */,
+				328DEB61117C542100F7A0C0 /* poc_portability_macros.h in Headers */,
+				328DEB62117C542100F7A0C0 /* poc_os_undef.h in Headers */,
+				328DEB63117C542200F7A0C0 /* poc_os_def.h in Headers */,
+				328DEB64117C542300F7A0C0 /* poc_os.h in Headers */,
+				328DEB65117C542400F7A0C0 /* poc_opencl_extensions_undef.h in Headers */,
+				328DEB66117C542500F7A0C0 /* poc_opencl_extensions_def.h in Headers */,
+				328DEB67117C542600F7A0C0 /* poc_opencl_extensions.h in Headers */,
+				328DEB68117C542700F7A0C0 /* poc_lang_undef.h in Headers */,
+				328DEB69117C542700F7A0C0 /* poc_lang_def.h in Headers */,
+				328DEB6A117C542800F7A0C0 /* poc_lang_compiler_undef.h in Headers */,
+				328DEB6B117C542900F7A0C0 /* poc_lang.h in Headers */,
+				328DEB6C117C542A00F7A0C0 /* poc_endian_undef.h in Headers */,
+				328DEB6D117C542B00F7A0C0 /* poc_endian_def.h in Headers */,
+				328DEB6E117C542C00F7A0C0 /* poc_endian_arch_undef.h in Headers */,
+				328DEB6F117C542D00F7A0C0 /* poc_endian.h in Headers */,
+				328DEB70117C542D00F7A0C0 /* poc_def.h in Headers */,
+				328DEB71117C542F00F7A0C0 /* poc_data_model_undef.h in Headers */,
+				328DEB72117C542F00F7A0C0 /* poc_data_model_os_arch_lang_undef.h in Headers */,
+				328DEB73117C543000F7A0C0 /* poc_data_model_def.h in Headers */,
+				328DEB74117C543100F7A0C0 /* poc_data_model_cpp_compile_time_checks.h in Headers */,
+				328DEB75117C543200F7A0C0 /* poc_data_model.h in Headers */,
+				328DEB76117C543200F7A0C0 /* poc_compiler_undef.h in Headers */,
+				328DEB77117C543300F7A0C0 /* poc_compiler_def.h in Headers */,
+				328DEB78117C543500F7A0C0 /* poc_compiler.h in Headers */,
+				328DEB79117C543500F7A0C0 /* poc_arch_undef.h in Headers */,
+				328DEB7A117C543600F7A0C0 /* poc_arch_def.h in Headers */,
+				328DEB7B117C543700F7A0C0 /* poc_arch.h in Headers */,
+				328DEB7C117C543800F7A0C0 /* poc.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		32532ACF0FA9B59F00197F39 /* poc_diagnose_c */ = {
 			isa = PBXNativeTarget;
@@ -440,23 +530,24 @@
 			productReference = 325361A80FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */;
 			productType = "com.apple.product-type.tool";
 		};
-		8DD76F620486A84900D96B5E /* poc */ = {
+		328DCAB8117C50D200F7A0C0 /* poc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "poc" */;
+			buildConfigurationList = 328DCABD117C50D300F7A0C0 /* Build configuration list for PBXNativeTarget "poc" */;
 			buildPhases = (
-				8DD76F640486A84900D96B5E /* Sources */,
-				8DD76F660486A84900D96B5E /* Frameworks */,
-				8DD76F690486A84900D96B5E /* CopyFiles */,
+				328DCAB4117C50D200F7A0C0 /* Headers */,
+				328DCAB5117C50D200F7A0C0 /* Resources */,
+				328DCAB6117C50D200F7A0C0 /* Sources */,
+				328DCAB7117C50D200F7A0C0 /* Frameworks */,
 			);
 			buildRules = (
 			);
+			comments = "Empty shell only containing header files.";
 			dependencies = (
 			);
 			name = poc;
-			productInstallPath = "$(HOME)/bin";
 			productName = poc;
-			productReference = 8DD76F6C0486A84900D96B5E /* poc */;
-			productType = "com.apple.product-type.tool";
+			productReference = 328DCAB9117C50D200F7A0C0 /* poc.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -470,16 +561,26 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DD76F620486A84900D96B5E /* poc */,
 				32532ACF0FA9B59F00197F39 /* poc_diagnose_c */,
 				325361A70FADBB3C00197F39 /* poc_diagnose_c_gcc_ansi_c */,
 				32532AD70FA9B5CF00197F39 /* poc_diagnose_cpp */,
 				32532B580FA9CDB600197F39 /* poc_diagnose_objc */,
 				32535EF30FAAF75D00197F39 /* Doxygen documentation */,
 				325365510FB0C97C00197F39 /* All */,
+				328DCAB8117C50D200F7A0C0 /* poc */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		328DCAB5117C50D200F7A0C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		32535EF20FAAF75D00197F39 /* ShellScript */ = {
@@ -535,7 +636,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8DD76F640486A84900D96B5E /* Sources */ = {
+		328DCAB6117C50D200F7A0C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -573,45 +674,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB923208733DC60010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"_GLIBCXX_DEBUG=1",
-					"_GLIBCXX_DEBUG_PEDANTIC=1",
-				);
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = poc;
-			};
-			name = Debug;
-		};
-		1DEB923308733DC60010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = poc;
-			};
-			name = Release;
-		};
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 322D153C10A8686A0043C140 /* poc.xcconfig */;
+			baseConfigurationReference = 322D153C10A8686A0043C140 /* poc_common.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 322D153C10A8686A0043C140 /* poc.xcconfig */;
+			baseConfigurationReference = 322D153C10A8686A0043C140 /* poc_common.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -714,18 +786,39 @@
 			};
 			name = Release;
 		};
+		328DCABB117C50D300F7A0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 328DCAC0117C524E00F7A0C0 /* poc.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+			};
+			name = Debug;
+		};
+		328DCABC117C50D300F7A0C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 328DCAC0117C524E00F7A0C0 /* poc.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				PREBINDING = NO;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "poc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB923208733DC60010E9CD /* Debug */,
-				1DEB923308733DC60010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "poc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -785,6 +878,15 @@
 			buildConfigurations = (
 				325365520FB0C97E00197F39 /* Debug */,
 				325365530FB0C97E00197F39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		328DCABD117C50D300F7A0C0 /* Build configuration list for PBXNativeTarget "poc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				328DCABB117C50D300F7A0C0 /* Debug */,
+				328DCABC117C50D300F7A0C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

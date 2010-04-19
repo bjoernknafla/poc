@@ -3,10 +3,12 @@
 //  poc
 //
 //  Created by Björn Knafla on 09.11.09.
-//  Copyright 2009 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
+//  Copyright 2009-2010 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
 //
 
-#include "poc"
+#include "poc_common"
+
+HEADER_SEARCH_PATHS = $(POC_COMMON_HEADER_PATHS)
 
 PRODUCT_NAME = poc_diagnose_c_gcc_ansi_c
 

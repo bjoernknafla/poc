@@ -2,13 +2,18 @@
 //  poc.xcconfig
 //  poc
 //
-//  Created by Björn Knafla on 09.11.09.
-//  Copyright 2009 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
+//  Created by Björn Knafla on 19.04.10.
+//  Copyright 2009-2010 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
 //
 
-#include "compiler_warnings"
+#include "poc_common"
 
-ALWAYS_SEARCH_USER_PATHS = NO
-PREBINDING = NO
 
-HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../src"
+HEADER_SEARCH_PATHS = $(POC_COMMON_HEADER_PATHS)
+
+
+INSTALL_PATH = @executable_path/../Frameworks
+OTHER_LDFLAGS = 
+FRAMEWORK_VERSION = A
+INFOPLIST_FILE = poc-Info.plist
+PRODUCT_NAME = poc

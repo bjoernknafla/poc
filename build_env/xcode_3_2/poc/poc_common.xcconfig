@@ -1,0 +1,14 @@
+//
+//  poc_common.xcconfig
+//  poc
+//
+//  Created by Björn Knafla on 09.11.09.
+//  Copyright 2009-2010 Bjoern Knafla www.bjoernknafla.com. All rights reserved.
+//
+
+#include "compiler_warnings"
+
+ALWAYS_SEARCH_USER_PATHS = NO
+PREBINDING = NO
+
+POC_COMMON_HEADER_PATHS = "$(SRCROOT)/../../../src"
